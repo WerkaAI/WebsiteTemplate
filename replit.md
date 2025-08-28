@@ -47,6 +47,12 @@ A professional marketing website and blog for AutoŻaba SaaS platform, focusing 
 - Pricing: 149 PLN per shop, unlimited employees
 
 ## Recent Changes
+- 2025-01-28: Migrated to Next.js 14 App Router
+  - Converted from Vite + wouter to Next.js with App Router
+  - Preserved all visual design and functionality 1:1
+  - Routes: / (landing) and /blog working identically
+  - Marked interactive components as Client Components
+  - Fixed all ESLint errors for production build
 - 2025-01-28: Completed "Calm & Control" theme implementation
   - Applied AutoŻaba brand colors (#006625 primary green)
   - Enhanced calculator with realistic franchise owner benefits
