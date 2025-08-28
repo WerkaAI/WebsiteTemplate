@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* AutoŻaba Brand Colors - Calm & Control Theme */
+  --brand-green: #006625; /* Main green - professional authority */
+  --brand-green-secondary: #16A34A; /* Secondary green - subtle highlights */
+  --blackout: #090909; /* Strong texts and headlines */
+  --stone: #313847; /* Secondary text - calming gray */
+  --almost-white: #F9FAFB; /* Clean, breathing background */
+  --accent-orange: #FD7E14; /* Warnings/legal only - never CTAs */
+  
+  /* Semantic Colors - Calm & Control Mapping */
+  --background: #F9FAFB; /* Almost white - breathing space */
+  --foreground: #090909; /* Blackout - main text */
+  --card: #FFFFFF; /* Pure white cards for clarity */
+  --card-foreground: #090909; /* Blackout text on cards */
+  --popover: #FFFFFF;
+  --popover-foreground: #090909;
+  --primary: #006625; /* Main green - authority and trust */
+  --primary-foreground: #FFFFFF;
+  --secondary: #16A34A; /* Secondary green - gentle accents */
+  --secondary-foreground: #FFFFFF;
+  --muted: #F3F4F6; /* Soft backgrounds */
+  --muted-foreground: #313847; /* Stone - secondary text */
+  --accent: #FD7E14; /* Orange - warnings and legal only */
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB; /* Subtle, light borders */
+  --input: #E5E7EB;
+  --ring: #006625; /* Main green focus ring */
+  --chart-1: hsl(145, 100%, 20%);
+  --chart-2: hsl(123, 47%, 42%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar: hsl(210, 40%, 96%);
+  --sidebar-foreground: hsl(210, 25%, 4%);
+  --sidebar-primary: hsl(145, 100%, 20%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(210, 40%, 96%);
+  --sidebar-accent-foreground: hsl(145, 100%, 20%);
+  --sidebar-border: hsl(214, 32%, 91%);
+  --sidebar-ring: hsl(145, 100%, 20%);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --shadow-2xs: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05);
+  --shadow-xs: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05);
+  --shadow-sm: 0px 1px 3px 0px hsl(0, 0%, 0%, 0.1), 0px 1px 2px -1px hsl(0, 0%, 0%, 0.1);
+  --shadow: 0px 1px 3px 0px hsl(0, 0%, 0%, 0.1), 0px 1px 2px -1px hsl(0, 0%, 0%, 0.1);
+  --shadow-md: 0px 4px 6px -1px hsl(0, 0%, 0%, 0.1), 0px 2px 4px -2px hsl(0, 0%, 0%, 0.1);
+  --shadow-lg: 0px 10px 15px -3px hsl(0, 0%, 0%, 0.1), 0px 4px 6px -4px hsl(0, 0%, 0%, 0.1);
+  --shadow-xl: 0px 20px 25px -5px hsl(0, 0%, 0%, 0.1), 0px 8px 10px -6px hsl(0, 0%, 0%, 0.1);
+  --shadow-2xl: 0px 25px 50px -12px hsl(0, 0%, 0%, 0.25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: hsl(210, 25%, 4%);
+  --foreground: hsl(210, 40%, 96%);
+  --card: hsl(210, 25%, 8%);
+  --card-foreground: hsl(210, 40%, 96%);
+  --popover: hsl(210, 25%, 4%);
+  --popover-foreground: hsl(210, 40%, 96%);
+  --primary: hsl(145, 100%, 25%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(123, 47%, 35%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(210, 25%, 12%);
+  --muted-foreground: hsl(215, 16%, 60%);
+  --accent: hsl(25, 95%, 48%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 55%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 25%, 16%);
+  --input: hsl(210, 25%, 16%);
+  --ring: hsl(145, 100%, 25%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground scroll-smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-foreground;
+  }
+
+  .chaos-gradient {
+    background: linear-gradient(135deg, 
+      hsl(0, 84%, 95%) 0%, 
+      hsl(25, 95%, 95%) 25%, 
+      hsl(210, 40%, 98%) 50%);
+  }
+
+  .control-gradient {
+    background: linear-gradient(135deg, 
+      hsl(145, 100%, 97%) 0%, 
+      hsl(210, 40%, 98%) 100%);
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  .container-spacing {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .calm-shadow {
+    box-shadow: 0 4px 6px -1px hsl(0, 0%, 0%, 0.05), 0 2px 4px -2px hsl(0, 0%, 0%, 0.05);
+  }
+
+  .calm-shadow-lg {
+    box-shadow: 0 10px 15px -3px hsl(0, 0%, 0%, 0.08), 0 4px 6px -4px hsl(0, 0%, 0%, 0.08);
+  }
+  
+  /* Calm & Control Effects */
+  .chaos-section {
+    animation: chaosToCalm 2s ease-out;
+  }
+  
+  .calm-section {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+  
+  .slide-in-right {
+    animation: slideInFromRight 0.8s ease-out;
+  }
+  
+  .floating {
+    animation: gentleFloat 3s ease-in-out infinite;
+  }
+}
+
+/* Calm & Control Animations - Journey from Chaos to Peace */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chaosToCalm {
+  0% {
+    transform: rotate(-1deg) scale(0.98);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(0.5deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
