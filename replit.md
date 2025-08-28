@@ -47,6 +47,12 @@ A professional marketing website and blog for AutoŻaba SaaS platform, focusing 
 - Pricing: 149 PLN per shop, unlimited employees
 
 ## Recent Changes
+- 2025-01-28: Completed "Calm & Control" theme implementation
+  - Applied AutoŻaba brand colors (#006625 primary green)
+  - Enhanced calculator with realistic franchise owner benefits
+  - Removed trial offers, focused on 149 PLN/month pricing
+  - Added chaos-to-calm animations and professional shadows
+  - Updated CTAs to direct to registration instead of trial
 - 2025-01-26: Initial project setup
 - Created data models for blog system
 - Implemented landing page structure
