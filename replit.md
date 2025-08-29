@@ -47,6 +47,11 @@ A professional marketing website and blog for AutoŻaba SaaS platform, focusing 
 - Pricing: 149 PLN per shop, unlimited employees
 
 ## Recent Changes
+- 2025-01-28: Cleaned up Next.js migration
+  - Fixed tailwind.config.ts content paths (./client/src/** → ./src/**)
+  - Removed duplicate nextjs-app/ folder and old Vite files
+  - Removed unused drizzle.config.ts and shared/ folder
+  - Single clean Next.js structure with working Tailwind styles
 - 2025-01-28: Migrated to Next.js 14 App Router
   - Converted from Vite + wouter to Next.js with App Router
   - Preserved all visual design and functionality 1:1
