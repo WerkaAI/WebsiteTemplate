@@ -1,20 +1,54 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { blogPosts } from "@/data/blog-posts";
+import { getBlogPost, getBlogPostSlugs } from "@/lib/posts";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { format } from 'date-fns';
+import { pl } from 'date-fns/locale';
+import { MDXContent } from "@/components/mdx-content";
+
+interface BlogPostPageProps {
+  params: {
+    slug: string
+  }
+}
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
+  const slugs = getBlogPostSlugs();
+  return slugs.map((slug) => ({
+    slug: slug,
   }));
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(p => p.slug === params.slug);
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const post = getBlogPost(params.slug);
+
+  if (!post) {
+    return {
+      title: 'Post nie znaleziony - AutoŻaba',
+      description: 'Szukany post nie istnieje.'
+    };
+  }
+
+  return {
+    title: `${post.title} | AutoŻaba Blog`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.date,
+      images: post.cover ? [post.cover] : undefined,
+    }
+  };
+}
+
+export default function BlogPost({ params }: BlogPostPageProps) {
+  const post = getBlogPost(params.slug);
   
   if (!post) {
     notFound();
@@ -37,11 +71,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
-                  <span data-testid="text-post-date">{post.date}</span>
+                  <time dateTime={post.date} data-testid="text-post-date">
+                    {format(new Date(post.date), 'dd MMMM yyyy', { locale: pl })}
+                  </time>
                 </div>
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
-                  <span data-testid="text-read-time">{post.readTime}</span>
+                  <span data-testid="text-read-time">~5 min czytania</span>
                 </div>
               </div>
               
@@ -49,24 +85,34 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 {post.title}
               </h1>
               
-              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-post-excerpt">
-                {post.excerpt}
+              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="text-post-description">
+                {post.description}
               </p>
               
-              <Badge variant="secondary" data-testid="badge-post-category">{post.category}</Badge>
+              {post.tags && post.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag: string) => (
+                    <Badge key={tag} variant="secondary" data-testid={`badge-post-tag-${tag}`}>
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
             </header>
             
-            <div className="w-full h-64 lg:h-96 bg-muted rounded-2xl overflow-hidden">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                className="w-full h-full object-cover"
-                data-testid="img-post-featured"
-              />
-            </div>
+            {post.cover && (
+              <div className="w-full h-64 lg:h-96 bg-muted rounded-2xl overflow-hidden">
+                <img 
+                  src={post.cover} 
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                  data-testid="img-post-featured"
+                />
+              </div>
+            )}
             
-            <div className="prose prose-lg max-w-none" data-testid="content-post-body">
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="prose prose-lg prose-green max-w-none" data-testid="content-post-body">
+              <MDXContent slug={params.slug} />
             </div>
           </article>
         </div>
