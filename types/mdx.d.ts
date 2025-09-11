@@ -1,12 +1,12 @@
 declare module '*.mdx' {
-  let MDXComponent: (props: any) => JSX.Element
-  export default MDXComponent
   export const meta: {
     title: string
-    description: string
+    description?: string
     date: string
     tags?: string[]
     cover?: string
     draft?: boolean
-  }
+  };
+  const MDXContent: (props: any) => JSX.Element;
+  export default MDXContent;
 }
