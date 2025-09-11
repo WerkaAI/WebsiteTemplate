@@ -5,12 +5,16 @@ import BlogListing from "@/components/blog-listing";
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
-  title: 'Blog - AutoŻaba | Zarządzanie personelem w sklepach Żabka',
-  description: 'Poznaj najlepsze praktyki zarządzania zespołem, prawo pracy i automatyzację procesów kadrowych w sklepach Żabka.',
+  title: 'Blog - Prawo Pracy w Pigułce',
+  description: 'Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. Bez żargonu prawniczego, same konkretne wskazówki.',
+  alternates: {
+    canonical: '/blog'
+  },
   openGraph: {
-    title: 'Blog - AutoŻaba',
-    description: 'Poznaj najlepsze praktyki zarządzania zespołem, prawo pracy i automatyzację procesów kadrowych w sklepach Żabka.',
+    title: 'Blog - AutoŻaba | Prawo Pracy w Pigułce',
+    description: 'Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem.',
     type: 'website',
+    url: '/blog'
   }
 }
 

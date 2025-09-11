@@ -22,8 +22,30 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const mod = await loadPost(params.slug).catch(() => null);
   if (!mod) return {};
-  const { title, description } = mod.meta ?? {};
-  return { title, description };
+  const { title, description, date, cover, tags } = mod.meta ?? {};
+  
+  return { 
+    title,
+    description,
+    alternates: {
+      canonical: `/blog/${params.slug}`
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime: date,
+      url: `/blog/${params.slug}`,
+      images: cover ? [cover] : ['/og-image.jpg'],
+      tags
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: cover ? [cover] : ['/og-image.jpg']
+    }
+  };
 }
 
 export default async function Page({ params }: BlogPostPageProps) {
@@ -31,8 +53,27 @@ export default async function Page({ params }: BlogPostPageProps) {
   if (!mod) return notFound();
   const { Component: Post, meta } = mod;
 
+  // JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": meta.title,
+    "datePublished": meta.date,
+    "image": meta.cover || "/og-image.jpg",
+    "author": {
+      "@type": "Organization", 
+      "name": "AutoŻaba"
+    },
+    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/blog/${params.slug}`
+  };
+
   return (
-    <main className="container mx-auto max-w-3xl px-4 md:px-6 py-8 lg:py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="container mx-auto max-w-3xl px-4 md:px-6 py-8 lg:py-12">
       {/* Nagłówek artykułu z metadanymi */}
       <div className="mb-8 space-y-4">
         {/* Placeholder okładki */}
@@ -69,6 +110,7 @@ export default async function Page({ params }: BlogPostPageProps) {
       <article className="prose prose-slate max-w-none md:prose-lg lg:prose-xl prose-headings:font-semibold prose-headings:scroll-mt-28 prose-a:underline-offset-4 hover:prose-a:text-emerald-700 prose-img:rounded-xl prose-pre:rounded-xl">
         <Post />
       </article>
-    </main>
+      </main>
+    </>
   );
 }
