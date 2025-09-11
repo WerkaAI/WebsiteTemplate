@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -11,10 +10,15 @@ export interface BlogPost {
   date: string
   tags?: string[]
   cover?: string
-  content: string
+  draft?: boolean
 }
 
-export function getBlogPosts(): BlogPost[] {
+export interface MDXPost extends BlogPost {
+  default: React.ComponentType
+  meta: BlogPost
+}
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
   // Check if directory exists
   if (!fs.existsSync(postsDirectory)) {
     return []
@@ -22,56 +26,49 @@ export function getBlogPosts(): BlogPost[] {
 
   const fileNames = fs.readdirSync(postsDirectory)
   
-  const allPostsData = fileNames
-    .filter(fileName => fileName.endsWith('.mdx'))
-    .map(fileName => {
-      // Remove ".mdx" from file name to get slug
-      const slug = fileName.replace(/\.mdx$/, '')
+  const allPostsData = await Promise.all(
+    fileNames
+      .filter(fileName => fileName.endsWith('.mdx'))
+      .map(async fileName => {
+        // Remove ".mdx" from file name to get slug
+        const slug = fileName.replace(/\.mdx$/, '')
 
-      // Read markdown file as string
-      const fullPath = path.join(postsDirectory, fileName)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-      // Use gray-matter to parse the post metadata section
-      const matterResult = matter(fileContents)
-
-      // Extract meta from content if it exists as export
-      let meta = matterResult.data
-      if (Object.keys(meta).length === 0) {
-        // Try to extract meta from export statement
-        const metaMatch = fileContents.match(/export const meta = ({[\s\S]*?})/m)
-        if (metaMatch) {
-          try {
-            // Simple eval of the meta object (safe in this context)
-            meta = eval(`(${metaMatch[1]})`)
-          } catch (error) {
-            console.warn(`Failed to parse meta from ${fileName}:`, error)
+        try {
+          // Dynamic import of MDX file
+          const mdxModule = await import(`../../../content/blog/${fileName}`) as MDXPost
+          
+          const post = {
+            slug,
+            title: mdxModule.meta.title || '',
+            description: mdxModule.meta.description || '',
+            date: mdxModule.meta.date || '',
+            tags: mdxModule.meta.tags || [],
+            cover: mdxModule.meta.cover,
+            draft: mdxModule.meta.draft || false
           }
+          
+          return post
+        } catch (error) {
+          console.warn(`Failed to import ${fileName}:`, error)
+          return null
         }
+      })
+  )
+
+  // Filter out null results and draft posts, then sort by date
+  return allPostsData
+    .filter((post): post is BlogPost => post !== null && !post.draft)
+    .sort((a, b) => {
+      if (!a || !b) return 0
+      if (a.date < b.date) {
+        return 1
+      } else {
+        return -1
       }
-
-      return {
-        slug,
-        title: meta.title || '',
-        description: meta.description || '',
-        date: meta.date || '',
-        tags: meta.tags || [],
-        cover: meta.cover,
-        content: matterResult.content
-      } as BlogPost
     })
-
-  // Sort posts by date in descending order
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
 }
 
-export function getBlogPost(slug: string): BlogPost | null {
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`)
     
@@ -79,33 +76,38 @@ export function getBlogPost(slug: string): BlogPost | null {
       return null
     }
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-
-    // Extract meta from export statement
-    let meta = matterResult.data
-    if (Object.keys(meta).length === 0) {
-      const metaMatch = fileContents.match(/export const meta = ({[\s\S]*?})/m)
-      if (metaMatch) {
-        try {
-          meta = eval(`(${metaMatch[1]})`)
-        } catch (error) {
-          console.warn(`Failed to parse meta from ${slug}.mdx:`, error)
-        }
-      }
-    }
-
+    // Dynamic import of MDX file
+    const mdxModule = await import(`../../../content/blog/${slug}.mdx`) as MDXPost
+    
     return {
       slug,
-      title: meta.title || '',
-      description: meta.description || '',
-      date: meta.date || '',
-      tags: meta.tags || [],
-      cover: meta.cover,
-      content: matterResult.content
+      title: mdxModule.meta.title || '',
+      description: mdxModule.meta.description || '',
+      date: mdxModule.meta.date || '',
+      tags: mdxModule.meta.tags || [],
+      cover: mdxModule.meta.cover,
+      draft: mdxModule.meta.draft || false
     }
   } catch (error) {
     console.error(`Error reading blog post ${slug}:`, error)
+    return null
+  }
+}
+
+export async function getBlogPostComponent(slug: string): Promise<React.ComponentType | null> {
+  try {
+    const fullPath = path.join(postsDirectory, `${slug}.mdx`)
+    
+    if (!fs.existsSync(fullPath)) {
+      return null
+    }
+
+    // Dynamic import of MDX file
+    const mdxModule = await import(`../../../content/blog/${slug}.mdx`) as MDXPost
+    
+    return mdxModule.default
+  } catch (error) {
+    console.error(`Error importing blog post component ${slug}:`, error)
     return null
   }
 }
