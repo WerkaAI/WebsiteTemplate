@@ -1,0 +1,62 @@
+
+
+**Akceptuję plan. Przejdź do trybu Build i wykonaj diagnostykę oraz naprawę.**
+Proszę:
+
+1. **Najpierw sprawdź, czy w HTML jest link do bundla CSS** i czy odpowiada 200:
+
+   * `npm run dev`
+   * `curl -s http://localhost:5000 | grep -i "_next/static/css"`
+   * jeśli link jest → spróbuj `curl -I http://localhost:5000/_next/static/css/<nazwa>.css` (ma być 200).
+   * jeśli linku **nie ma** → to znaczy, że globalny CSS **nie został zaimportowany** lub build go wyciął.
+
+2. **Wyczyść cache Nexta i zbuduj ponownie**:
+
+   * `rm -rf .next && npm run dev`
+   * potem `npm run build && npm run start`, sprawdź ponownie link do CSS.
+
+3. **Zweryfikuj minimalny „baseline” w kodzie (nie zmieniaj nic poza tym):**
+
+   * `src/app/layout.tsx` musi mieć u góry:
+
+     ```ts
+     import './globals.css';
+     ```
+
+     i renderować dzieci:
+
+     ```tsx
+     export default function RootLayout({ children }: { children: React.ReactNode }) {
+       return (
+         <html lang="pl">
+           <body>{children}</body>
+         </html>
+       );
+     }
+     ```
+   * `src/app/globals.css`:
+
+     ```css
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities;
+     ```
+
+4. **Konfiguracje zostaw, tylko potwierdź:**
+
+   * `tailwind.config.ts` → `content: ["./src/**/*.{js,ts,jsx,tsx,mdx}", "./content/**/*.mdx", "./src/mdx-components.tsx"]`
+   * `postcss.config.js` → `plugins: { tailwindcss: {}, autoprefixer: {} }`
+   * `next.config.mjs` → brak `assetPrefix`/`basePath` (nie dodawaj).
+
+5. **Raport:**
+
+   * pokaż wynik `grep` z punktu 1,
+   * podlinkuj `_next/static/css/<plik>.css` (HEAD 200),
+   * wrzuć diff tylko tych plików, które faktycznie zmieniałeś,
+   * potwierdź, że UI wrócił do normalnych styli w `/` i `/blog`.
+
+> **Ważne:** nie zmieniaj MDX/SEO ani żadnych komponentów — dotykamy wyłącznie pipeline’u CSS i cache.
+
+---
+
+Jeśli po tym link do CSS **jest** w `<head>`, ale plik zwraca 404 — to problem z serwowaniem assets; jeśli linku **nie ma**, wrócimy do layoutu i importu (czasem to literówka w ścieżce `./globals.css` lub przypadkowo przeniesiony plik).
