@@ -1,0 +1,47 @@
+Jasne — poniżej masz krótki, dwustopniowy prompt dla Replit Agenta, który:
+
+* przechodzi na **YAML front-matter** (kanoniczne dla MDX),
+* **nie renderuje** już `export const meta` jako tekstu,
+* ogarnia **opcjonalną okładkę** (z `public/` lub estetyczny placeholder),
+* ujednolica pobieranie meta (bez kombinacji).
+
+Skopiuj **Prompt 1**, poczekaj na plan, zaakceptuj i wklej **Prompt 2**.
+
+---
+
+## Prompt 1 — PLAN (bez zmian w kodzie)
+
+> **Cel:** Napraw blog w Next.js tak, aby meta były z **YAML front-matter**, a okładka była **opcjonalna** (plik w `public/` albo placeholder).
+> **Co zmienić (plan, bez modyfikacji):**
+>
+> 1. MDX: użyj `remark-frontmatter` + `remark-mdx-frontmatter` (z opcją `name: "meta"`) w konfiguracji `next-mdx`, obok `remark-gfm`, `rehype-slug`, `rehype-autolink-headings`.
+> 2. Pliki `.mdx`: na górze **front-matter**:
+>
+>    ```
+>    ---
+>    title: "...", description: "...", date: "YYYY-MM-DD", tags: ["..."], cover: "/blog/cover.jpg", draft: false
+>    ---
+>    ```
+>
+>    (Usuń `export const meta` z treści, żeby nie renderował się jako tekst).
+> 3. Indeks/lista: w utilu (`lib/posts.ts`) pobieraj **meta** przez dynamiczny import modułu MDX (`const { meta } = await import(...)`) i sortuj po dacie; pomijaj `draft: true`.
+> 4. Strona wpisu (`app/blog/[slug]/page.tsx`): importuj `default` (komponent posta) i `meta`; w `generateStaticParams()` wylistuj slugi z `content/blog/`.
+> 5. `generateMetadata(...)`: ustaw `title/description` z `meta` (OG/Twitter dorobimy później).
+> 6. Okładka: jeśli `meta.cover` istnieje (plik w `public/blog/...`), renderuj przez `next/image`; jeśli **brak** – pokaż **placeholder** (`aspect-[16/9]` + gradient + napis „Brak okładki”).
+> 7. Styl treści: kontener `prose` (Tailwind Typography).
+> 8. Zostaw UI/układ bez zmian; build musi przejść.
+>    **Wynik:** wypisz listę paczek/plików do zmiany i zapytaj o akceptację planu. **Nie modyfikuj kodu przed akceptacją.**
+
+---
+
+## Prompt 2 — EXECUTE (po akceptacji planu)
+
+> **Akceptuję plan.** Wdróż go dokładnie:
+> – Dodaj `remark-frontmatter` i `remark-mdx-frontmatter (name: "meta")` do konfiguracji MDX w Next.
+> – Przerób przykładowy post na YAML front-matter (usuń `export const meta`).
+> – Zaktualizuj `lib/posts.ts` do pobierania `meta` przez import modułu MDX i sortowania po `date`; pomijaj `draft`.
+> – W `app/blog/[slug]/page.tsx` importuj `default` i `meta`; dodaj `generateStaticParams()` i `generateMetadata()` z tytułem/opisem z `meta`.
+> – Renderuj okładkę: jeśli `meta.cover` (plik w `public/blog/...`) → `<Image ...>`; w przeciwnym razie placeholder (`div` z `aspect-[16/9] bg-gradient-to-br from-slate-100 to-slate-200 ...`).
+> – Opakuj treść w `prose` (Tailwind Typography).
+> – Uruchom `npm run dev` (podaj URL-e do `/blog` i `/blog/<slug>`), potem `npm run build` (wklej podsumowanie).
+> – Na końcu pokaż diff plików + krótką instrukcję „jak dodać nowy post” (front-matter, gdzie wgrać okładkę).
