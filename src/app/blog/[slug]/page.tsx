@@ -5,11 +5,13 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getBlogPost, getBlogPostSlugs } from "@/lib/posts";
+import { getBlogPost, getBlogPostSlugs, getBlogPostComponent } from "@/lib/posts";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
-import { MDXContent } from "@/components/mdx-content";
+import Image from 'next/image';
+import fs from 'fs';
+import path from 'path';
 
 interface BlogPostPageProps {
   params: {
@@ -25,7 +27,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getBlogPost(params.slug);
+  const post = await getBlogPost(params.slug);
 
   if (!post) {
     return {
@@ -47,12 +49,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-export default function BlogPost({ params }: BlogPostPageProps) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPost({ params }: BlogPostPageProps) {
+  const post = await getBlogPost(params.slug);
+  const PostComponent = await getBlogPostComponent(params.slug);
   
-  if (!post) {
+  if (!post || !PostComponent) {
     notFound();
   }
+
+  // Check if cover image exists
+  const coverImageExists = post.cover && fs.existsSync(path.join(process.cwd(), 'public', post.cover));
 
   return (
     <div className="min-h-screen bg-background">
@@ -100,19 +106,30 @@ export default function BlogPost({ params }: BlogPostPageProps) {
               )}
             </header>
             
-            {post.cover && (
-              <div className="w-full h-64 lg:h-96 bg-muted rounded-2xl overflow-hidden">
-                <img 
-                  src={post.cover} 
+            {/* Cover Image or Placeholder */}
+            <div className="w-full h-64 lg:h-96 rounded-2xl overflow-hidden">
+              {coverImageExists && post.cover ? (
+                <Image
+                  src={post.cover}
                   alt={post.title}
+                  width={800}
+                  height={400}
                   className="w-full h-full object-cover"
-                  data-testid="img-post-featured"
+                  data-testid="img-post-cover"
                 />
-              </div>
-            )}
+              ) : (
+                <div className="w-full h-full aspect-[16/9] bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-slate-400 dark:text-slate-600 text-lg font-medium">
+                      Brak okładki
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
             
-            <div className="prose prose-lg prose-green max-w-none" data-testid="content-post-body">
-              <MDXContent slug={params.slug} />
+            <div className="prose prose-lg max-w-none" data-testid="content-post-body">
+              <PostComponent />
             </div>
           </article>
         </div>

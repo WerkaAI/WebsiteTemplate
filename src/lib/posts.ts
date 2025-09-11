@@ -37,7 +37,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
           // Dynamic import of MDX file
           const mdxModule = await import(`../../../content/blog/${fileName}`) as MDXPost
           
-          const post = {
+          const post: BlogPost = {
             slug,
             title: mdxModule.meta.title || '',
             description: mdxModule.meta.description || '',
