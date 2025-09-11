@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import BlogListing from "@/components/blog-listing";
-import { getBlogPosts } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Blog - AutoŻaba | Zarządzanie personelem w sklepach Żabka',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default function BlogPage() {
-  const posts = getBlogPosts();
+export default async function BlogPage() {
+  const posts = await getAllPosts();
 
   return (
     <div className="min-h-screen bg-background">

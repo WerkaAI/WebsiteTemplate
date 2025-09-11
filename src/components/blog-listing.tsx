@@ -6,21 +6,21 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BlogPost } from "@/lib/posts";
+// No import needed
 import { Calendar, Clock, Search } from "lucide-react";
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 
 interface BlogListingProps {
-  posts: BlogPost[]
+  posts: Array<{ slug: string; meta: any }>
 }
 
 export default function BlogListing({ posts }: BlogListingProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.description.toLowerCase().includes(searchTerm.toLowerCase())
+    post.meta.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (post.meta.description && post.meta.description.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (
@@ -53,11 +53,11 @@ export default function BlogListing({ posts }: BlogListingProps) {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPosts.map((post) => (
           <Card key={post.slug} className="hover:shadow-lg transition-shadow" data-testid={`card-post-${post.slug}`}>
-            {post.cover && (
+            {post.meta.cover && (
               <div className="w-full h-48 bg-muted rounded-t-xl overflow-hidden">
                 <img 
-                  src={post.cover} 
-                  alt={post.title}
+                  src={post.meta.cover} 
+                  alt={post.meta.title}
                   className="w-full h-full object-cover"
                   data-testid={`img-post-${post.slug}`}
                 />
@@ -67,7 +67,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
               <div className="flex items-center text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4 mr-2" />
                 <span data-testid={`text-date-${post.slug}`}>
-                  {format(new Date(post.date), 'dd MMMM yyyy', { locale: pl })}
+                  {format(new Date(post.meta.date), 'dd MMMM yyyy', { locale: pl })}
                 </span>
                 <span className="mx-2">•</span>
                 <Clock className="w-4 h-4 mr-2" />
@@ -75,18 +75,18 @@ export default function BlogListing({ posts }: BlogListingProps) {
               </div>
               <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors" data-testid={`text-title-${post.slug}`}>
                 <Link href={`/blog/${post.slug}`}>
-                  {post.title}
+                  {post.meta.title}
                 </Link>
               </h3>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground" data-testid={`text-excerpt-${post.slug}`}>
-                {post.description}
+                {post.meta.description}
               </p>
               <div className="flex items-center justify-between">
-                {post.tags && post.tags.length > 0 && (
+                {post.meta.tags && post.meta.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
-                    {post.tags.slice(0, 2).map((tag: string) => (
+                    {post.meta.tags.slice(0, 2).map((tag: string) => (
                       <Badge key={tag} variant="secondary" data-testid={`badge-tag-${tag}`}>
                         {tag}
                       </Badge>

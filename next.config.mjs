@@ -7,6 +7,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 const withMDX = createMDX({
   options: {
+    providerImportSource: '../../mdx-components',
     remarkPlugins: [
       remarkGfm,
       remarkFrontmatter,
