@@ -68,7 +68,7 @@ export default async function Page({ params }: BlogPostPageProps) {
   };
 
   return (
-    <>
+    <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -111,6 +111,6 @@ export default async function Page({ params }: BlogPostPageProps) {
         <Post />
       </article>
       </main>
-    </>
+    </div>
   );
 }
