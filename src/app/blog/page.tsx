@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
+export default function BlogPage() {
+  const posts = getBlogPosts();
 
   return (
     <div className="min-h-screen bg-background">

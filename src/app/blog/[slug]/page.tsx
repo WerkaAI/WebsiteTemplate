@@ -26,8 +26,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+export function generateMetadata({ params }: BlogPostPageProps): Metadata {
+  const post = getBlogPost(params.slug);
 
   if (!post) {
     return {
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 }
 
 export default async function BlogPost({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug);
+  const post = getBlogPost(params.slug);
   const PostComponent = await getBlogPostComponent(params.slug);
   
   if (!post || !PostComponent) {

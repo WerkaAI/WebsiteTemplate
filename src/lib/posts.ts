@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
@@ -13,12 +14,12 @@ export interface BlogPost {
   draft?: boolean
 }
 
-export interface MDXPost extends BlogPost {
+export interface MDXPost {
   default: React.ComponentType
   meta: BlogPost
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export function getBlogPosts(): BlogPost[] {
   // Check if directory exists
   if (!fs.existsSync(postsDirectory)) {
     return []
@@ -26,34 +27,34 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
   const fileNames = fs.readdirSync(postsDirectory)
   
-  const allPostsData = await Promise.all(
-    fileNames
-      .filter(fileName => fileName.endsWith('.mdx'))
-      .map(async fileName => {
-        // Remove ".mdx" from file name to get slug
-        const slug = fileName.replace(/\.mdx$/, '')
+  const allPostsData = fileNames
+    .filter(fileName => fileName.endsWith('.mdx'))
+    .map(fileName => {
+      // Remove ".mdx" from file name to get slug
+      const slug = fileName.replace(/\.mdx$/, '')
 
-        try {
-          // Dynamic import of MDX file
-          const mdxModule = await import(`../../../content/blog/${fileName}`) as MDXPost
-          
-          const post: BlogPost = {
-            slug,
-            title: mdxModule.meta.title || '',
-            description: mdxModule.meta.description || '',
-            date: mdxModule.meta.date || '',
-            tags: mdxModule.meta.tags || [],
-            cover: mdxModule.meta.cover,
-            draft: mdxModule.meta.draft || false
-          }
-          
-          return post
-        } catch (error) {
-          console.warn(`Failed to import ${fileName}:`, error)
-          return null
+      try {
+        // Read file and parse frontmatter
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const matterResult = matter(fileContents)
+        
+        const post: BlogPost = {
+          slug,
+          title: matterResult.data.title || '',
+          description: matterResult.data.description || '',
+          date: matterResult.data.date || '',
+          tags: matterResult.data.tags || [],
+          cover: matterResult.data.cover,
+          draft: matterResult.data.draft || false
         }
-      })
-  )
+        
+        return post
+      } catch (error) {
+        console.warn(`Failed to parse ${fileName}:`, error)
+        return null
+      }
+    })
 
   // Filter out null results and draft posts, then sort by date
   return allPostsData
@@ -68,7 +69,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     })
 }
 
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+export function getBlogPost(slug: string): BlogPost | null {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`)
     
@@ -76,17 +77,18 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       return null
     }
 
-    // Dynamic import of MDX file
-    const mdxModule = await import(`../../../content/blog/${slug}.mdx`) as MDXPost
+    // Read file and parse frontmatter
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const matterResult = matter(fileContents)
     
     return {
       slug,
-      title: mdxModule.meta.title || '',
-      description: mdxModule.meta.description || '',
-      date: mdxModule.meta.date || '',
-      tags: mdxModule.meta.tags || [],
-      cover: mdxModule.meta.cover,
-      draft: mdxModule.meta.draft || false
+      title: matterResult.data.title || '',
+      description: matterResult.data.description || '',
+      date: matterResult.data.date || '',
+      tags: matterResult.data.tags || [],
+      cover: matterResult.data.cover,
+      draft: matterResult.data.draft || false
     }
   } catch (error) {
     console.error(`Error reading blog post ${slug}:`, error)
@@ -103,7 +105,7 @@ export async function getBlogPostComponent(slug: string): Promise<React.Componen
     }
 
     // Dynamic import of MDX file
-    const mdxModule = await import(`../../../content/blog/${slug}.mdx`) as MDXPost
+    const mdxModule = await import(`../../content/blog/${slug}.mdx`) as MDXPost
     
     return mdxModule.default
   } catch (error) {

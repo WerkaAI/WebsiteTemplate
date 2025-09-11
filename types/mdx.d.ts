@@ -7,5 +7,6 @@ declare module '*.mdx' {
     date: string
     tags?: string[]
     cover?: string
+    draft?: boolean
   }
 }
