@@ -126,6 +126,42 @@ export default {
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.4s ease-out",
       },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            // Brand colors dla prose
+            '--tw-prose-links': theme('colors.brand-green'),
+            '--tw-prose-headings': theme('colors.blackout'),
+            '--tw-prose-code': theme('colors.stone'),
+            '--tw-prose-pre-bg': theme('colors.muted.DEFAULT'),
+            '--tw-prose-invert-links': theme('colors.brand-green-secondary'),
+            
+            // Custom styling
+            code: {
+              backgroundColor: theme('colors.muted.DEFAULT'),
+              padding: '0.2rem 0.4rem',
+              borderRadius: '0.375rem',
+              fontWeight: '500',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            'h1, h2, h3, h4, h5, h6': {
+              scrollMarginTop: '7rem',
+              fontFamily: theme('fontFamily.sans'),
+            },
+            a: {
+              textUnderlineOffset: '4px',
+              '&:hover': {
+                color: theme('colors.brand-green-secondary'),
+              },
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
