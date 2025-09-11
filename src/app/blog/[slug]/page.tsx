@@ -28,7 +28,7 @@ export default async function Page({ params }: BlogPostPageProps) {
   const { Component: Post, meta } = mod;
 
   return (
-    <article className="prose mx-auto">
+    <article className="prose prose-slate max-w-none mx-auto prose-headings:font-semibold prose-a:underline-offset-4 hover:prose-a:text-emerald-700 prose-img:rounded-xl prose-pre:rounded-xl">
       {meta.cover
         ? <Image src={meta.cover} alt={meta.title} width={1280} height={720} className="rounded-xl" />
         : <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400">Brak okładki</div>}
