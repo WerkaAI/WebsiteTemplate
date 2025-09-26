@@ -22,7 +22,6 @@ export default function Navigation() {
     { id: "problem", label: "Problemy" },
     { id: "solution", label: "Rozwiązanie" },
     { id: "pricing", label: "Cennik" },
-    { id: "contact", label: "Kontakt" },
   ];
 
   return (
@@ -54,6 +53,11 @@ export default function Navigation() {
             <Link href="/blog">
               <Button variant="ghost" data-testid="link-nav-blog">
                 Blog
+              </Button>
+            </Link>
+            <Link href="/kontakt">
+              <Button variant="ghost" data-testid="link-nav-kontakt">
+                Kontakt
               </Button>
             </Link>
             <ThemeToggle />
@@ -98,6 +102,11 @@ export default function Navigation() {
                 <Link href="/blog">
                   <Button variant="ghost" className="justify-start text-lg" data-testid="link-mobile-blog">
                     Blog
+                  </Button>
+                </Link>
+                <Link href="/kontakt">
+                  <Button variant="ghost" className="justify-start text-lg" data-testid="link-mobile-kontakt">
+                    Kontakt
                   </Button>
                 </Link>
                 <div className="pt-2">
