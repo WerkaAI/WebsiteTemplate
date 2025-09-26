@@ -1,9 +1,11 @@
 import createMDX from '@next/mdx'
+import bundleAnalyzer from '@next/bundle-analyzer'
 import remarkGfm from 'remark-gfm'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 
 const withMDX = createMDX({
   options: {
@@ -15,7 +17,37 @@ const withMDX = createMDX({
     ],
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }]
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      [
+        rehypeSanitize,
+        {
+          ...defaultSchema,
+          attributes: {
+            ...defaultSchema.attributes,
+            // Allow common attributes on anchors and images inside MDX content
+            a: [
+              ...(defaultSchema.attributes?.a || []),
+              ['target'],
+              ['rel'],
+            ],
+            img: [
+              ...(defaultSchema.attributes?.img || []),
+              ['src'],
+              ['alt'],
+              ['loading'],
+              ['decoding'],
+            ],
+            code: [
+              ...(defaultSchema.attributes?.code || []),
+              ['className'],
+            ],
+            pre: [
+              ...(defaultSchema.attributes?.pre || []),
+              ['className'],
+            ],
+          },
+        },
+      ],
     ]
   }
 })
@@ -24,7 +56,62 @@ const withMDX = createMDX({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  pageExtensions: ['ts', 'tsx', 'mdx']
+  pageExtensions: ['ts', 'tsx', 'mdx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+  async rewrites() {
+    return [
+      // Serve dynamic OG image for existing references to /og-image.jpg
+      { source: '/og-image.jpg', destination: '/opengraph-image' },
+    ]
+  },
+  async headers() {
+    const isProd = process.env.NODE_ENV === 'production'
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Referrer-Policy', value: 'no-referrer-when-downgrade' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Permissions-Policy', value: 'geolocation=(), microphone=(), camera=()' },
+          ...(isProd
+            ? [
+                { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+                {
+                  key: 'Content-Security-Policy',
+                  value: [
+                    "default-src 'self'",
+                    "base-uri 'self'",
+                    "form-action 'self'",
+                    "frame-ancestors 'self'",
+                    // Allow YouTube embeds
+                    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+                    // Allow images from self and https (Unsplash, etc.) and data URIs
+                    "img-src 'self' https: data:",
+                    // Inline styles are common with CSS-in-JS and Tailwind preflight
+                    "style-src 'self' 'unsafe-inline'",
+                    // Next.js may use inline scripts; keep reasonably permissive while avoiding remote code
+                    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+                    // Fonts
+                    "font-src 'self' data:",
+                    // XHR/Web fetch
+                    "connect-src 'self'",
+                    'upgrade-insecure-requests',
+                  ].join('; '),
+                },
+              ]
+            : []),
+        ],
+      },
+    ]
+  },
 }
-
-export default withMDX(nextConfig)
+const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
+export default withBundleAnalyzer(withMDX(nextConfig))

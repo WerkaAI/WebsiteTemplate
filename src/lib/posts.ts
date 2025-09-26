@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
 
@@ -28,9 +29,16 @@ export async function getAllSlugs(): Promise<string[]> {
 export async function loadPost(slug: string) {
   try {
     const mod = await import(`../../content/blog/${slug}.mdx`)
+    let meta = (mod as any).meta || (mod as any).frontmatter || (mod as any).metadata
+    if (!meta) {
+      const fullPath = path.join(BLOG_DIR, `${slug}.mdx`)
+      const source = fs.readFileSync(fullPath, 'utf8')
+      const parsed = matter(source)
+      meta = parsed.data as any
+    }
     return { 
-      Component: mod.default, 
-      meta: mod.meta 
+      Component: (mod as any).default, 
+      meta 
     }
   } catch (error) {
     console.error(`Error loading post ${slug}:`, error)
@@ -45,7 +53,7 @@ export async function getAllPosts() {
   for (const slug of slugs) {
     try {
       const { meta } = await loadPost(slug)
-      if (!meta.draft) {
+      if (meta && !meta.draft) {
         posts.push({ slug, meta })
       }
     } catch (error) {

@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const mod = await loadPost(params.slug).catch(() => null);
   if (!mod) return {};
   const { title, description, date, cover, tags } = mod.meta ?? {};
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000';
   
   return { 
     title,
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description,
       type: 'article',
       publishedTime: date,
-      url: `/blog/${params.slug}`,
+      url: `${baseUrl}/blog/${params.slug}`,
       images: cover ? [cover] : ['/og-image.jpg'],
       tags
     },
@@ -54,6 +55,7 @@ export default async function Page({ params }: BlogPostPageProps) {
   const { Component: Post, meta } = mod;
 
   // JSON-LD structured data
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000';
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -64,7 +66,27 @@ export default async function Page({ params }: BlogPostPageProps) {
       "@type": "Organization", 
       "name": "AutoŻaba"
     },
-    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/blog/${params.slug}`
+    "url": `${baseUrl}/blog/${params.slug}`
+  };
+
+  // BreadcrumbList JSON-LD for SEO
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Blog",
+        "item": `${baseUrl}/blog`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": meta.title,
+        "item": `${baseUrl}/blog/${params.slug}`
+      }
+    ]
   };
 
   return (
@@ -73,12 +95,16 @@ export default async function Page({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <main className="container mx-auto max-w-3xl px-4 md:px-6 py-8 lg:py-12">
       {/* Nagłówek artykułu z metadanymi */}
       <div className="mb-8 space-y-4">
         {/* Placeholder okładki */}
         {meta.cover
-          ? <Image src={meta.cover} alt={meta.title} width={1280} height={720} className="rounded-xl aspect-[16/9] object-cover" />
+              ? <Image src={meta.cover} alt={meta.title} width={1280} height={720} priority className="rounded-xl aspect-[16/9] object-cover" />
           : <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400" aria-label="Brak okładki dla artykułu">
               <span className="text-sm">Brak okładki</span>
             </div>

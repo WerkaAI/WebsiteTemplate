@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, XCircle } from "lucide-react";
+import Image from 'next/image';
 
 export default function ProblemSection() {
   const problems = [
@@ -50,11 +51,13 @@ export default function ProblemSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {problems.map((problem) => (
             <Card key={problem.id} className="hover:calm-shadow-lg transition-shadow" data-testid={`card-problem-${problem.id}`}>
-              <div className="w-full h-48 bg-muted rounded-t-xl overflow-hidden">
-                <img 
-                  src={problem.image} 
+              <div className="relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+                <Image
+                  src={problem.image}
                   alt={problem.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   data-testid={`img-problem-${problem.id}`}
                 />
               </div>

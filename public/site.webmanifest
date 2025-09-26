@@ -1,0 +1,15 @@
+{
+  "name": "AutoŻaba",
+  "short_name": "AutoŻaba",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#16A34A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

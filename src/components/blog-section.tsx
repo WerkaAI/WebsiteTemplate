@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog-posts";
+import Image from 'next/image';
 
 export default function BlogSection() {
   // Get first 3 posts for preview
@@ -26,11 +27,13 @@ export default function BlogSection() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {featuredPosts.map((post) => (
             <Card key={post.slug} className="hover:calm-shadow-lg transition-shadow" data-testid={`card-blog-preview-${post.slug}`}>
-              <div className="w-full h-48 bg-muted rounded-t-xl overflow-hidden">
-                <img 
-                  src={post.image} 
+              <div className="relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+                <Image
+                  src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   data-testid={`img-blog-preview-${post.slug}`}
                 />
               </div>

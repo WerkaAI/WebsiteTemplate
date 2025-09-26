@@ -23,7 +23,7 @@ export default function HeroSection() {
               <Button 
                 size="lg" 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-4 calm-shadow transition-all duration-300 hover:scale-105"
-                onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
+                onClick={() => window.open('https://app.autozaba.pl/register', '_blank', 'noopener,noreferrer')}
                 data-testid="button-hero-register"
               >
                 Zacznij teraz →

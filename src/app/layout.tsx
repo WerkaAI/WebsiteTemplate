@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   }
 }
 
+metadata.icons = { icon: '/favicon.svg' }
+metadata.manifest = '/site.webmanifest'
+
 export default function RootLayout({
   children,
 }: {
@@ -26,8 +29,16 @@ export default function RootLayout({
   return (
     <html lang="pl" className="scroll-smooth">
       <body className={inter.className}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded"
+        >
+          Przejdź do treści
+        </a>
         <Providers>
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

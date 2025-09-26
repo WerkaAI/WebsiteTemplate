@@ -10,43 +10,43 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Clock, Headphones, Book, Video, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const ContactSchema = z.object({
+  name: z.string().min(2, "Podaj pełne imię i nazwisko"),
+  email: z.string().email("Podaj poprawny adres email"),
+  shops: z.string().min(1, "Wybierz liczbę sklepów"),
+  message: z.string().min(10, "Napisz kilka zdań, abyśmy mogli pomóc"),
+  privacy: z
+    .boolean()
+    .refine((v) => v === true, { message: "Musisz zaakceptować politykę prywatności" }),
+});
+
+type ContactForm = z.infer<typeof ContactSchema>;
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    shops: "",
-    message: "",
-    privacy: false
-  });
   const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.privacy) {
-      toast({
-        title: "Błąd",
-        description: "Musisz zaakceptować politykę prywatności",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    // Here you would normally send the form data to your backend
-    toast({
-      title: "Dziękujemy za wiadomość!",
-      description: "Skontaktujemy się w ciągu 2 godzin roboczych."
-    });
-    
-    // Reset form
-    setFormData({
+  const { register, handleSubmit, control, formState: { errors, isSubmitting }, reset } = useForm<ContactForm>({
+    resolver: zodResolver(ContactSchema),
+    defaultValues: {
       name: "",
       email: "",
       shops: "",
       message: "",
-      privacy: false
+      privacy: false,
+    }
+  })
+  const onSubmit = async (_data: ContactForm) => {
+    // Tu wyślesz dane na backend (fetch/POST)
+    await new Promise((r) => setTimeout(r, 400))
+    toast({
+      title: "Dziękujemy za wiadomość!",
+      description: "Skontaktujemy się w ciągu 2 godzin roboczych.",
     });
-  };
+    reset()
+  }
 
   const contactInfo = [
     {
@@ -142,7 +142,7 @@ export default function ContactSection() {
           {/* Contact Form */}
           <Card>
             <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
                 <div>
                   <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">
                     Imię i nazwisko
@@ -150,12 +150,17 @@ export default function ContactSection() {
                   <Input 
                     id="name"
                     type="text" 
-                    required 
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    {...register("name")}
                     className="mt-2"
                     data-testid="input-contact-name"
                   />
+                  {errors.name && (
+                    <p id="name-error" className="mt-2 text-sm text-red-600" role="alert">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
                 
                 <div>
@@ -165,29 +170,45 @@ export default function ContactSection() {
                   <Input 
                     id="email"
                     type="email" 
-                    required 
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    {...register("email")}
                     className="mt-2"
                     data-testid="input-contact-email"
                   />
+                  {errors.email && (
+                    <p id="email-error" className="mt-2 text-sm text-red-600" role="alert">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
                 
                 <div>
                   <Label htmlFor="shops" className="text-sm font-medium text-muted-foreground">
                     Liczba sklepów
                   </Label>
-                  <Select value={formData.shops} onValueChange={(value) => setFormData(prev => ({ ...prev, shops: value }))}>
-                    <SelectTrigger className="mt-2" data-testid="select-contact-shops">
-                      <SelectValue placeholder="Wybierz liczbę sklepów" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">1 sklep</SelectItem>
-                      <SelectItem value="2-3">2-3 sklepy</SelectItem>
-                      <SelectItem value="4-5">4-5 sklepów</SelectItem>
-                      <SelectItem value="5+">Więcej niż 5</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Controller
+                    control={control}
+                    name="shops"
+                    render={({ field }) => (
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger className="mt-2" data-testid="select-contact-shops" aria-invalid={!!errors.shops} aria-describedby={errors.shops ? "shops-error" : undefined}>
+                          <SelectValue placeholder="Wybierz liczbę sklepów" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1">1 sklep</SelectItem>
+                          <SelectItem value="2-3">2-3 sklepy</SelectItem>
+                          <SelectItem value="4-5">4-5 sklepów</SelectItem>
+                          <SelectItem value="5+">Więcej niż 5</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                  {errors.shops && (
+                    <p id="shops-error" className="mt-2 text-sm text-red-600" role="alert">
+                      {errors.shops.message}
+                    </p>
+                  )}
                 </div>
                 
                 <div>
@@ -198,32 +219,43 @@ export default function ContactSection() {
                     id="message"
                     rows={4} 
                     placeholder="Opisz swoją sytuację, problemy z grafkami lub pytania o AutoŻabę..."
-                    value={formData.message}
-                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    {...register("message")}
                     className="mt-2 resize-none"
                     data-testid="textarea-contact-message"
                   />
+                  {errors.message && (
+                    <p id="message-error" className="mt-2 text-sm text-red-600" role="alert">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Checkbox 
-                    id="privacy" 
-                    checked={formData.privacy}
-                    onCheckedChange={(checked) => setFormData(prev => ({ ...prev, privacy: !!checked }))}
-                    data-testid="checkbox-contact-privacy"
+                  <Controller
+                    control={control}
+                    name="privacy"
+                    render={({ field }) => (
+                      <Checkbox id="privacy" checked={field.value} onCheckedChange={(checked) => field.onChange(!!checked)} data-testid="checkbox-contact-privacy" />
+                    )}
                   />
                   <Label htmlFor="privacy" className="text-sm text-muted-foreground">
                     Zgadzam się na przetwarzanie danych osobowych zgodnie z{" "}
                     <a href="#" className="text-primary hover:underline">polityką prywatności</a>
                   </Label>
                 </div>
+                {errors.privacy && (
+                  <p className="-mt-2 text-sm text-red-600" role="alert">{errors.privacy.message}</p>
+                )}
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold disabled:opacity-60"
                   data-testid="button-contact-submit"
                 >
-                  Wyślij wiadomość
+                  {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
                 </Button>
                 
                 <p className="text-xs text-muted-foreground text-center" data-testid="text-contact-response-time">

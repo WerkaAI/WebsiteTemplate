@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+    <nav role="navigation" aria-label="Główna nawigacja" className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
       <div className="container-spacing">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -55,6 +56,7 @@ export default function Navigation() {
                 Blog
               </Button>
             </Link>
+            <ThemeToggle />
           </div>
           
           {/* CTA Button */}
@@ -71,8 +73,14 @@ export default function Navigation() {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
-                <Menu className="h-6 w-6" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                aria-label="Otwórz menu"
+                aria-expanded={isOpen}
+                data-testid="button-mobile-menu"
+              >
+                <Menu className="h-6 w-6" aria-hidden="true" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -92,6 +100,9 @@ export default function Navigation() {
                     Blog
                   </Button>
                 </Link>
+                <div className="pt-2">
+                  <ThemeToggle />
+                </div>
                 <Button 
                   className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6"
                   onClick={() => window.open('https://app.autozaba.pl', '_blank')}

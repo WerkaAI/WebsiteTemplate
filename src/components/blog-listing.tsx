@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from 'next/image';
 // No import needed
 import { Calendar, Clock, Search } from "lucide-react";
 import { format } from 'date-fns';
@@ -54,11 +55,13 @@ export default function BlogListing({ posts }: BlogListingProps) {
         {filteredPosts.map((post) => (
           <Card key={post.slug} className="hover:shadow-lg transition-shadow" data-testid={`card-post-${post.slug}`}>
             {post.meta.cover && (
-              <div className="w-full h-48 bg-muted rounded-t-xl overflow-hidden">
-                <img 
-                  src={post.meta.cover} 
+              <div className="relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+                <Image
+                  src={post.meta.cover}
                   alt={post.meta.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   data-testid={`img-post-${post.slug}`}
                 />
               </div>
