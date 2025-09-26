@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pl" className="scroll-smooth">
+    <html lang="pl" className="scroll-smooth" suppressHydrationWarning>
       <body className={inter.className}>
         <a
           href="#main-content"

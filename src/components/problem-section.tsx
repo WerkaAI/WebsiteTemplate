@@ -58,6 +58,7 @@ export default function ProblemSection() {
                   fill
                   className="object-cover"
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  priority={problem.id === 'schedule-chaos' || problem.id === 'legal-compliance'}
                   data-testid={`img-problem-${problem.id}`}
                 />
               </div>

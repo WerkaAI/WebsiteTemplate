@@ -146,7 +146,7 @@ export default function CalculatorSection() {
                   
                   <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
                     <div className="text-sm text-orange-700 mb-1">Ochrona przed karami PIP</div>
-                    <div className="text-2xl font-bold text-orange-800" data-testid="stat-penalty-avoided">
+                    <div className="text-2xl font-bold text-orange-800" data-testid="stat-penalty-avoided" suppressHydrationWarning>
                       {calculations.riskAvoided.toLocaleString()} zł
                     </div>
                     <div className="text-xs text-orange-600">
