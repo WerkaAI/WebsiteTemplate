@@ -57,6 +57,14 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
+  env: {
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: '1x00000000000000000000AA',
+    TURNSTILE_SECRET_KEY: '1x0000000000000000000000000000000AA',
+    RESEND_API_KEY: 're_test_key_placeholder',
+    TURNSTILE_BYPASS: 'true',
+    CONTACT_TO_EMAIL: 'kontakt@autozaba.pl',
+    CONTACT_FROM_EMAIL: 'AutoŻaba Formularz <no-reply@autozaba.pl>',
+  },
   images: {
     remotePatterns: [
       {
