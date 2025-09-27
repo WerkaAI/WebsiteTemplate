@@ -13,14 +13,16 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
 import Turnstile from "react-turnstile";
 
-// Form validation schema
+// Form validation schema - make token optional when CAPTCHA is not configured
 const contactFormSchema = z.object({
   name: z.string().trim().min(2, 'Imię musi mieć co najmniej 2 znaki').max(50, 'Imię jest za długie'),
   email: z.string().trim().email('Nieprawidłowy adres email').max(100, 'Email jest za długi'),
   phone: z.string().trim().max(20, 'Numer telefonu jest za długi').optional(),
   message: z.string().trim().min(10, 'Wiadomość musi mieć co najmniej 10 znaków').max(2000, 'Wiadomość jest za długa'),
   consent: z.boolean().refine(val => val === true, 'Musisz wyrazić zgodę na przetwarzanie danych'),
-  token: z.string().min(1, 'Błąd weryfikacji CAPTCHA'),
+  token: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY 
+    ? z.string().min(1, 'Błąd weryfikacji CAPTCHA')
+    : z.string().optional(),
   company: z.string().optional(), // Honeypot field
 });
 
@@ -38,7 +40,7 @@ export default function ContactForm() {
       phone: '',
       message: '',
       consent: false,
-      token: '',
+      token: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? '' : 'dev-bypass-token',
       company: '', // Honeypot
     },
   });
