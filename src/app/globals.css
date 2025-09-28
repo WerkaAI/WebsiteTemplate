@@ -265,6 +265,130 @@
   .dark .tinted-media::after {
     background: linear-gradient(150deg, rgba(16, 185, 129, 0.35) 0%, rgba(37, 99, 235, 0.15) 100%);
   }
+
+  .blog-prose :where(h2, h3, h4) {
+    scroll-margin-top: 6rem;
+  }
+
+  .blog-prose pre {
+    background-color: rgba(15, 23, 42, 0.95);
+    color: #f8fafc;
+    border: 1px solid rgba(248, 250, 252, 0.12);
+    border-radius: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 25px 60px -35px rgba(15, 23, 42, 0.9);
+  }
+
+  .dark .blog-prose pre {
+    background-color: rgba(15, 23, 42, 0.9);
+    color: #e2e8f0;
+  }
+
+  .blog-prose code {
+    border-radius: 0.45rem;
+    background-color: rgba(16, 185, 129, 0.12);
+    padding: 0.1rem 0.4rem;
+    font-size: 0.95em;
+    font-weight: 500;
+  }
+
+  .blog-prose :where(p, li) > code {
+    color: #047857;
+  }
+
+  .dark .blog-prose :where(p, li) > code {
+    color: #6ee7b7;
+  }
+
+  .blog-prose table {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-collapse: separate;
+  }
+
+  .blog-prose thead {
+    background-color: rgba(248, 250, 252, 0.92);
+  }
+
+  .dark .blog-prose thead {
+    background-color: rgba(15, 23, 42, 0.76);
+  }
+
+  .blog-prose th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #475569;
+  }
+
+  .dark .blog-prose th {
+    color: #e2e8f0;
+  }
+
+  .blog-prose td {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #334155;
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+  }
+
+  .dark .blog-prose td {
+    color: #e2e8f0;
+    border-color: rgba(148, 163, 184, 0.25);
+  }
+
+  .blog-prose hr {
+    margin: 3rem 0;
+    border-style: dashed;
+    border-color: rgba(148, 163, 184, 0.6);
+  }
+
+  .dark .blog-prose hr {
+    border-color: rgba(226, 232, 240, 0.2);
+  }
+
+  .blog-prose :where(ol, ul) {
+    display: grid;
+    row-gap: 0.5rem;
+  }
+
+  .blog-prose blockquote p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .dark .blog-prose blockquote p {
+    color: #e2e8f0;
+  }
+
+  .blog-callout {
+    margin: 2rem 0;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.12);
+    padding: 1.5rem;
+    color: #064e3b;
+  }
+
+  .dark .blog-callout {
+    color: #bbf7d0;
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.45);
+  }
+
+  .blog-callout strong {
+    color: #064e3b;
+  }
+
+  .dark .blog-callout strong {
+    color: #ecfdf5;
+  }
 }
 
 /* Calm & Control Animations - Journey from Chaos to Peace */

@@ -4,12 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Calendar, Clock } from "lucide-react";
 import Link from "next/link";
-import { blogPosts } from "@/data/blog-posts";
 import Image from 'next/image';
+import { getAllPosts } from "@/lib/posts";
+import { format } from "date-fns";
+import { pl } from "date-fns/locale";
 
-export default function BlogSection() {
-  // Get first 3 posts for preview
-  const featuredPosts = blogPosts.slice(0, 3);
+export default async function BlogSection() {
+  const posts = await getAllPosts();
+  const featuredPosts = posts.slice(0, 3);
 
   return (
   <section id="blog" className="section-padding bg-white dark:bg-background">
@@ -25,53 +27,76 @@ export default function BlogSection() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {featuredPosts.map((post) => (
+          {featuredPosts.length === 0 && (
+            <div className="col-span-full text-center text-muted-foreground">
+              Pierwsze artykuły są w drodze. Zajrzyj do nas wkrótce!
+            </div>
+          )}
+          {featuredPosts.map((post) => {
+            const { slug, meta } = post;
+            const cover = meta.cover as string | undefined;
+            const formattedDate = meta.date ? format(new Date(meta.date), "d MMMM yyyy", { locale: pl }) : null;
+            const tag = Array.isArray(meta.tags) && meta.tags.length > 0 ? meta.tags[0] : "Prawo pracy";
+            const readTime = meta.readTime ?? "~5 min czytania";
+
+            return (
             <Card 
-              key={post.slug} 
+              key={slug} 
               className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
-              data-testid={`card-blog-preview-${post.slug}`}
+              data-testid={`card-blog-preview-${slug}`}
             >
-              <div className="tinted-media w-full h-48 bg-muted rounded-t-xl overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  data-testid={`img-blog-preview-${post.slug}`}
-                />
+              <div className="tinted-media relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+                {cover ? (
+                  <Image
+                    src={cover}
+                    alt={meta.title}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    data-testid={`img-blog-preview-${slug}`}
+                  />
+                ) : (
+                  <div className="h-full w-full bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center text-sm font-medium text-slate-500 dark:text-slate-300">
+                    Brak okładki
+                  </div>
+                )}
               </div>
               <CardHeader className="space-y-3">
                 <div className="flex items-center text-sm text-muted-foreground">
                   <Calendar className="w-4 h-4 mr-2" />
-                  <span data-testid={`text-blog-date-${post.slug}`}>{post.date}</span>
+                  {formattedDate ? (
+                    <span data-testid={`text-blog-date-${slug}`}>{formattedDate}</span>
+                  ) : (
+                    <span data-testid={`text-blog-date-${slug}`}>Bez daty</span>
+                  )}
                   <span className="mx-2">•</span>
                   <Clock className="w-4 h-4 mr-2" />
-                  <span data-testid={`text-blog-read-time-${post.slug}`}>{post.readTime}</span>
+                  <span data-testid={`text-blog-read-time-${slug}`}>{readTime}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors" data-testid={`text-blog-title-${post.slug}`}>
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.title}
+                <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors" data-testid={`text-blog-title-${slug}`}>
+                  <Link href={`/blog/${slug}`}>
+                    {meta.title}
                   </Link>
                 </h3>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground copy-max" data-testid={`text-blog-excerpt-${post.slug}`}>
-                  {post.excerpt}
+                <p className="text-muted-foreground copy-max" data-testid={`text-blog-excerpt-${slug}`}>
+                  {meta.description ?? "Dowiedz się więcej o prawie pracy z AutoŻaba."}
                 </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="secondary" data-testid={`badge-blog-category-${post.slug}`}>
-                    {post.category}
+                  <Badge variant="secondary" className="dark:bg-slate-800 dark:text-slate-100" data-testid={`badge-blog-category-${slug}`}>
+                    {tag}
                   </Badge>
-                  <Link href={`/blog/${post.slug}`}>
-                    <Button variant="ghost" size="sm" data-testid={`button-blog-read-more-${post.slug}`}>
+                  <Link href={`/blog/${slug}`}>
+                    <Button variant="ghost" size="sm" data-testid={`button-blog-read-more-${slug}`}>
                       Czytaj więcej →
                     </Button>
                   </Link>
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
         
         <div className="text-center mb-12">
