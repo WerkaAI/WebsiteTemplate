@@ -53,7 +53,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-foreground text-white py-12">
+    <footer className="bg-muted text-foreground py-12 dark:bg-slate-950 dark:text-slate-100">
       <div className="container-spacing">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -63,10 +63,10 @@ export default function Footer() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold">Ż</span>
                 </div>
-                <span className="text-xl font-bold">AutoŻaba</span>
+                <span className="text-xl font-bold text-foreground">AutoŻaba</span>
               </div>
             </Link>
-            <p className="text-gray-400" data-testid="text-footer-description">
+            <p className="text-muted-foreground" data-testid="text-footer-description">
               Automatyczna tarcza prawna dla franczyzobiorców Żabki. 
               Zarządzaj zespołem, nie ryzykiem.
             </p>
@@ -75,30 +75,30 @@ export default function Footer() {
           {/* Footer Sections */}
           {footerSections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="space-y-4">
-              <h3 className="font-semibold" data-testid={`text-footer-section-${sectionIndex}`}>
+              <h3 className="font-semibold text-foreground" data-testid={`text-footer-section-${sectionIndex}`}>
                 {section.title}
               </h3>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-2 text-muted-foreground">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     {link.href.startsWith('#') ? (
                       <button
                         onClick={() => handleLinkClick(link.href)}
-                        className="hover:text-white transition-colors text-left"
+                        className="hover:text-foreground transition-colors text-left"
                         data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                       >
                         {link.label}
                       </button>
                     ) : link.href.startsWith('/') ? (
                       <Link href={link.href}>
-                        <span className="hover:text-white transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                        <span className="hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
                           {link.label}
                         </span>
                       </Link>
                     ) : (
                       <a 
                         href={link.href} 
-                        className="hover:text-white transition-colors"
+                        className="hover:text-foreground transition-colors"
                         data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                       >
                         {link.label}
@@ -111,9 +111,9 @@ export default function Footer() {
           ))}
         </div>
         
-        <hr className="border-gray-800 my-8" />
+        <hr className="border-border/60 dark:border-white/5 my-8" />
         
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
           <div data-testid="text-footer-copyright">
             © 2024 AutoŻaba. Wszystkie prawa zastrzeżone.
           </div>
@@ -122,7 +122,7 @@ export default function Footer() {
               <a 
                 key={index} 
                 href={link.href} 
-                className="hover:text-white transition-colors"
+                className="hover:text-foreground transition-colors"
                 data-testid={`link-footer-legal-${index}`}
               >
                 {link.label}
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
         
         {/* Final CTA Section */}
-        <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center mt-12 space-y-6">
+  <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center mt-12 space-y-6 shadow-lg">
           <h2 className="text-2xl lg:text-3xl font-bold" data-testid="text-footer-cta-title">
             Odzyskaj kontrolę nad swoim czasem
           </h2>

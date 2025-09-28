@@ -12,13 +12,13 @@ export default function BlogSection() {
   const featuredPosts = blogPosts.slice(0, 3);
 
   return (
-    <section id="blog" className="section-padding bg-white">
+  <section id="blog" className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-blog-section-title">
             Blog: <span className="text-primary">Prawo Pracy w Pigułce</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-blog-section-subtitle">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-blog-section-subtitle">
             Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. 
             Bez żargonu prawniczego, same konkretne wskazówki.
           </p>
@@ -26,8 +26,12 @@ export default function BlogSection() {
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {featuredPosts.map((post) => (
-            <Card key={post.slug} className="hover:calm-shadow-lg transition-shadow" data-testid={`card-blog-preview-${post.slug}`}>
-              <div className="relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+            <Card 
+              key={post.slug} 
+              className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
+              data-testid={`card-blog-preview-${post.slug}`}
+            >
+              <div className="tinted-media w-full h-48 bg-muted rounded-t-xl overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -52,7 +56,7 @@ export default function BlogSection() {
                 </h3>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground" data-testid={`text-blog-excerpt-${post.slug}`}>
+                <p className="text-muted-foreground copy-max" data-testid={`text-blog-excerpt-${post.slug}`}>
                   {post.excerpt}
                 </p>
                 <div className="flex items-center justify-between">
@@ -83,7 +87,7 @@ export default function BlogSection() {
           <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-newsletter-section-title">
             Bądź na bieżąco z prawem pracy
           </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto" data-testid="text-newsletter-section-description">
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto copy-max" data-testid="text-newsletter-section-description">
             Otrzymuj najnowsze artykuły o Kodeksie Pracy, praktyczne checklisty i ostrzeżenia 
             o zmianach w prawie. Bez spamu, tylko wartościowe treści.
           </p>

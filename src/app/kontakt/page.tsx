@@ -51,14 +51,14 @@ export default function ContactPage() {
     <>
       <Navigation />
       
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-muted dark:bg-slate-950">
         {/* Header */}
-        <section className="bg-white border-b">
+        <section className="bg-white dark:bg-slate-950 border-b border-border/60 dark:border-white/5">
           <div className="container-spacing py-12">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center space-x-4 mb-6">
                 <Link href="/">
-                  <Button variant="ghost" size="sm" data-testid="button-back-home">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground" data-testid="button-back-home">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Powrót do strony głównej
                   </Button>
@@ -79,12 +79,12 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Info Cards */}
-        <section className="py-12">
+  <section className="py-12">
           <div className="container-spacing">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {contactInfo.map((info, index) => (
-                  <Card key={index} className="text-center hover:calm-shadow-lg transition-shadow" data-testid={`card-contact-info-${index}`}>
+                  <Card key={index} className="text-center hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900 border border-border/60 dark:border-white/10" data-testid={`card-contact-info-${index}`}>
                     <CardContent className="p-6">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <info.icon className="w-6 h-6 text-primary" />
@@ -106,7 +106,7 @@ export default function ContactPage() {
               {/* Main Contact Section */}
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 {/* Contact Form */}
-                <Card className="calm-shadow-lg">
+                <Card className="calm-shadow-lg bg-card dark:bg-slate-900 border border-border/60 dark:border-white/10">
                   <CardHeader>
                     <CardTitle className="text-2xl text-foreground" data-testid="text-form-title">
                       Wyślij nam wiadomość
@@ -122,7 +122,7 @@ export default function ContactPage() {
 
                 {/* Additional Information */}
                 <div className="space-y-8">
-                  <Card>
+                  <Card className="bg-card dark:bg-slate-900 border border-border/60 dark:border-white/10">
                     <CardHeader>
                       <CardTitle className="text-xl text-foreground" data-testid="text-why-contact-title">
                         Dlaczego warto się skontaktować?
@@ -153,7 +153,7 @@ export default function ContactPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-primary/5 border-primary/20">
+                  <Card className="bg-primary/5 dark:bg-primary/15 border-primary/20 dark:border-primary/40">
                     <CardContent className="p-6">
                       <div className="text-center space-y-4">
                         <h3 className="text-lg font-semibold text-foreground" data-testid="text-urgent-title">

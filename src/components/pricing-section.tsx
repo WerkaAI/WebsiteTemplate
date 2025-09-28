@@ -54,7 +54,7 @@ export default function PricingSection() {
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-pricing-title">
             Prosta <span className="text-primary">cena</span>, wielka wartość
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="text-pricing-subtitle">
+          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-pricing-subtitle">
             149 zł za sklep, bez względu na liczbę pracowników
           </p>
         </div>
@@ -63,7 +63,11 @@ export default function PricingSection() {
           {plans.map((plan) => (
             <Card 
               key={plan.id} 
-              className={`relative ${plan.variant === 'default' ? 'bg-primary text-primary-foreground' : 'bg-white'}`}
+              className={`relative transition-shadow ${
+                plan.variant === 'default'
+                  ? 'bg-primary text-primary-foreground shadow-lg'
+                  : 'bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10'
+              }`}
               data-testid={`card-plan-${plan.id}`}
             >
               {plan.popular && (
@@ -118,7 +122,7 @@ export default function PricingSection() {
         </div>
         
         {/* Price comparison */}
-        <Card>
+  <Card className="dark:bg-slate-900/70 border border-border/70 dark:border-white/10">
           <CardContent className="p-8">
             <h3 className="text-xl font-semibold text-foreground mb-6 text-center" data-testid="text-comparison-title">
               Porównaj z konkurencją

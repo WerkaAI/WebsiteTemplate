@@ -90,7 +90,7 @@ export default async function Page({ params }: BlogPostPageProps) {
   };
 
   return (
-    <div>
+    <div className="bg-background dark:bg-slate-950 min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -99,19 +99,19 @@ export default async function Page({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <main className="container mx-auto max-w-3xl px-4 md:px-6 py-8 lg:py-12">
+  <main className="container mx-auto max-w-3xl px-4 md:px-6 py-8 lg:py-12">
       {/* Nagłówek artykułu z metadanymi */}
       <div className="mb-8 space-y-4">
         {/* Placeholder okładki */}
         {meta.cover
               ? <Image src={meta.cover} alt={meta.title} width={1280} height={720} priority className="rounded-xl aspect-[16/9] object-cover" />
-          : <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400" aria-label="Brak okładki dla artykułu">
+          : <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center text-slate-400 dark:text-slate-300" aria-label="Brak okładki dla artykułu">
               <span className="text-sm">Brak okładki</span>
             </div>
         }
         
         {/* Metadane artykułu */}
-        <div className="flex items-center text-sm text-muted-foreground">
+  <div className="flex items-center text-sm text-muted-foreground">
           <Calendar className="w-4 h-4 mr-2" />
           <span>
             {format(new Date(meta.date), 'dd MMMM yyyy', { locale: pl })}
@@ -125,7 +125,7 @@ export default async function Page({ params }: BlogPostPageProps) {
         {meta.tags && meta.tags.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {meta.tags.map((tag: string, index: number) => (
-              <Badge key={index} variant="secondary">
+              <Badge key={index} variant="secondary" className="dark:bg-slate-800 dark:text-slate-200">
                 {tag}
               </Badge>
             ))}
@@ -133,7 +133,7 @@ export default async function Page({ params }: BlogPostPageProps) {
         )}
       </div>
 
-      <article className="prose prose-slate max-w-none md:prose-lg lg:prose-xl prose-headings:font-semibold prose-headings:scroll-mt-28 prose-a:underline-offset-4 hover:prose-a:text-emerald-700 prose-img:rounded-xl prose-pre:rounded-xl">
+      <article className="prose prose-slate dark:prose-invert max-w-none md:prose-lg lg:prose-xl prose-headings:font-semibold prose-headings:scroll-mt-28 prose-a:underline-offset-4 hover:prose-a:text-emerald-700 dark:hover:prose-a:text-emerald-400 prose-img:rounded-xl prose-pre:rounded-xl">
         <Post />
       </article>
       </main>

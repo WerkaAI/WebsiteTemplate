@@ -23,12 +23,12 @@ export default function DemoSection() {
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-demo-title">
             Zobacz <span className="text-primary">jak to działa</span>
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="text-demo-subtitle">
+          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-demo-subtitle">
             2-minutowe demo pokazuje, jak stworzyć grafik zgodny z prawem
           </p>
         </div>
         
-        <Card className="relative bg-white rounded-2xl calm-shadow-lg overflow-hidden">
+  <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden">
           <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
             {!isPlaying ? (
               <div className="text-center space-y-4">

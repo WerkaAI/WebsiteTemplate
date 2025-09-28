@@ -25,7 +25,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav role="navigation" aria-label="Główna nawigacja" className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+  <nav role="navigation" aria-label="Główna nawigacja" className="bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-b border-border/70 dark:border-white/12 sticky top-0 z-50">
       <div className="container-spacing">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

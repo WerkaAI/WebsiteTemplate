@@ -31,23 +31,27 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="section-padding bg-white">
+  <section className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-testimonials-title">
             Odzyskali <span className="text-primary">spokój ducha</span>
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="text-testimonials-subtitle">
+          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-testimonials-subtitle">
             Prawdziwe historie franczyzobiorców, którzy odzyskali kontrolę
           </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="hover:calm-shadow-lg transition-shadow" data-testid={`card-testimonial-${testimonial.id}`}>
+            <Card 
+              key={testimonial.id} 
+              className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
+              data-testid={`card-testimonial-${testimonial.id}`}
+            >
               <CardContent className="p-8 space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="relative w-16 h-16 bg-muted rounded-full overflow-hidden">
+                  <div className="tinted-media w-16 h-16 bg-muted rounded-full overflow-hidden">
                     <Image
                       src={testimonial.avatar}
                       alt={testimonial.name}

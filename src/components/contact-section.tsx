@@ -53,19 +53,19 @@ export default function ContactSection() {
       icon: Mail,
       title: "Email",
       content: "autozaba@ainything.pl",
-      color: "primary"
+      iconColor: "text-primary"
     },
     {
       icon: Clock,
       title: "Godziny wsparcia",
       content: "Pon-Pt: 9:00-17:00",
-      color: "secondary"
+      iconColor: "text-secondary"
     },
     {
       icon: Headphones,
       title: "Wsparcie w języku",
       content: "Polskim, angielskim, ukraińskim",
-      color: "accent"
+      iconColor: "text-accent"
     }
   ];
 
@@ -82,7 +82,7 @@ export default function ContactSection() {
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-contact-title">
             Potrzebujesz <span className="text-primary">pomocy</span>?
           </h2>
-          <p className="text-xl text-muted-foreground" data-testid="text-contact-subtitle">
+          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-contact-subtitle">
             Jesteśmy tu, by odpowiedzieć na Twoje pytania i pomóc we wdrożeniu
           </p>
         </div>
@@ -100,8 +100,8 @@ export default function ContactSection() {
                   const Icon = info.icon;
                   return (
                     <div key={index} className="flex items-center space-x-4" data-testid={`contact-info-${index}`}>
-                      <div className={`w-10 h-10 bg-${info.color}/10 rounded-lg flex items-center justify-center`}>
-                        <Icon className={`w-5 h-5 text-${info.color}`} />
+                      <div className="tinted-media w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
+                        <Icon className={`w-5 h-5 ${info.iconColor}`} />
                       </div>
                       <div>
                         <div className="font-medium text-foreground">{info.title}</div>

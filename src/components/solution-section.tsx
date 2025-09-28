@@ -50,7 +50,7 @@ export default function SolutionSection() {
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-solution-title">
             Twoja <span className="text-primary">Automatyczna Tarcza Prawna</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-solution-subtitle">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-solution-subtitle">
             AutoŻaba to nie kolejne narzędzie HR. To system ochrony, który automatyzuje 
             najbardziej ryzykowne procesy i daje spokój ducha.
           </p>
@@ -62,9 +62,9 @@ export default function SolutionSection() {
           <div className="space-y-6">
             <div className="text-center">
               <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-before-title">Bez AutoŻaby</h3>
-              <div className="bg-red-50 border border-red-200 rounded-2xl p-8 space-y-4">
+              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/40 rounded-2xl p-8 space-y-4">
                 {beforeAfter.before.map((item, index) => (
-                  <div key={index} className="flex items-center text-red-700" data-testid={`before-item-${index}`}>
+                  <div key={index} className="flex items-center text-red-700 dark:text-red-200" data-testid={`before-item-${index}`}>
                     <XCircle className="w-5 h-5 mr-3" />
                     <span>{item}</span>
                   </div>
@@ -77,9 +77,9 @@ export default function SolutionSection() {
           <div className="space-y-6">
             <div className="text-center">
               <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-after-title">Z AutoŻabą</h3>
-              <div className="bg-green-50 border border-green-200 rounded-2xl p-8 space-y-4">
+              <div className="bg-green-50 dark:bg-emerald-900/20 border border-green-200 dark:border-emerald-500/40 rounded-2xl p-8 space-y-4">
                 {beforeAfter.after.map((item, index) => (
-                  <div key={index} className="flex items-center text-green-700" data-testid={`after-item-${index}`}>
+                  <div key={index} className="flex items-center text-green-700 dark:text-emerald-200" data-testid={`after-item-${index}`}>
                     <CheckCircle className="w-5 h-5 mr-3" />
                     <span>{item}</span>
                   </div>
@@ -94,7 +94,11 @@ export default function SolutionSection() {
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
-              <Card key={feature.id} className="bg-white hover:calm-shadow-lg transition-shadow" data-testid={`card-feature-${feature.id}`}>
+              <Card 
+                key={feature.id} 
+                className="bg-card dark:bg-slate-900/70 hover:calm-shadow-lg transition-shadow border border-border/70 dark:border-white/10"
+                data-testid={`card-feature-${feature.id}`}
+              >
                 <CardContent className="p-8 space-y-6">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                     <Icon className="w-6 h-6 text-primary" />
@@ -108,7 +112,7 @@ export default function SolutionSection() {
                     </p>
                     
                     {feature.savings && (
-                      <div className="bg-muted rounded-lg p-4">
+                      <div className="bg-muted dark:bg-slate-800/60 rounded-lg p-4">
                         <div className="text-sm text-muted-foreground mb-2">Oszczędność czasu:</div>
                         <div className="text-2xl font-bold text-primary" data-testid={`stat-savings-${feature.id}`}>
                           {feature.savings}
@@ -117,7 +121,7 @@ export default function SolutionSection() {
                     )}
                     
                     {feature.protection && (
-                      <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
+                      <div className="bg-accent/10 dark:bg-accent/20 border border-accent/20 dark:border-accent/30 rounded-lg p-4">
                         <div className="text-sm text-accent font-medium" data-testid={`stat-protection-${feature.id}`}>
                           <AlertTriangle className="w-4 h-4 mr-2 inline" />
                           {feature.protection}

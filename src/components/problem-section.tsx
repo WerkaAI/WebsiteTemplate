@@ -36,13 +36,13 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section id="problem" className="section-padding bg-white">
+  <section id="problem" className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-problem-title">
             Wiemy, <span className="text-primary">przez co przechodzisz</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-problem-subtitle">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-problem-subtitle">
             16 godzin pracy dziennie, chaos w grafikach i ciągły strach przed kontrolą PIP. 
             Nie jesteś sam z tymi problemami.
           </p>
@@ -50,8 +50,12 @@ export default function ProblemSection() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {problems.map((problem) => (
-            <Card key={problem.id} className="hover:calm-shadow-lg transition-shadow" data-testid={`card-problem-${problem.id}`}>
-              <div className="relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
+            <Card 
+              key={problem.id} 
+              className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
+              data-testid={`card-problem-${problem.id}`}
+            >
+              <div className="tinted-media w-full h-48 bg-muted rounded-t-xl overflow-hidden">
                 <Image
                   src={problem.image}
                   alt={problem.title}
