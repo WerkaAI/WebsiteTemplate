@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -9,6 +9,25 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScrollState = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setIsScrolled(scrollTop > 12);
+      if (docHeight <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+      setScrollProgress(Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)));
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollState);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -25,7 +44,21 @@ export default function Navigation() {
   ];
 
   return (
-  <nav role="navigation" aria-label="Główna nawigacja" className="bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-b border-border/70 dark:border-white/12 sticky top-0 z-50">
+  <nav
+    role="navigation"
+    aria-label="Główna nawigacja"
+    className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${
+      isScrolled
+        ? "bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-[0_12px_35px_-18px_rgba(15,23,42,0.55)] border-border/70 dark:border-white/12"
+        : "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-transparent"
+    }`}
+    data-nav-state={isScrolled ? "scrolled" : "top"}
+  >
+      <span
+        aria-hidden="true"
+        className="absolute left-0 right-0 top-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out"
+        style={{ transform: `scaleX(${scrollProgress / 100 || 0})` }}
+      />
       <div className="container-spacing">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

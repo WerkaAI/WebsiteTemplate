@@ -58,6 +58,12 @@
   --shadow-2xl: 0px 25px 50px -12px hsl(0, 0%, 0%, 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+  --motion-duration-short: 220ms;
+  --motion-duration-medium: 360ms;
+  --motion-duration-long: 520ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.24, 0.7, 0.38, 1);
+  --motion-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .dark {
@@ -182,6 +188,119 @@
     animation: gentleFloat 3s ease-in-out infinite;
   }
 
+  body.reveal-ready [data-animate] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.985);
+    transition: opacity var(--motion-duration-medium) var(--motion-ease-out), transform var(--motion-duration-medium) var(--motion-ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  body.reveal-ready [data-animate][data-animate="rise"] {
+    transform: translate3d(0, 24px, 0) scale(0.97);
+  }
+
+  body.reveal-ready [data-animate][data-animate="scale"] {
+    transform: scale(0.92);
+  }
+
+  body.reveal-ready [data-animate][data-animate="headline"] {
+    transform: translate3d(0, 38px, 0);
+    letter-spacing: -0.015em;
+    transition-duration: var(--motion-duration-long);
+  }
+
+  body.reveal-ready [data-animate][data-animate="slide-left"] {
+    transform: translate3d(48px, 0, 0);
+  }
+
+  body.reveal-ready [data-animate][data-animate="slide-right"] {
+    transform: translate3d(-48px, 0, 0);
+  }
+
+  body.reveal-ready [data-animate].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body.reveal-ready [data-animate] {
+      opacity: 1;
+      transform: none !important;
+      transition: none;
+    }
+  }
+
+  .hero-orb {
+    animation: heroOrbDrift 14s ease-in-out infinite;
+  }
+
+  .hero-orb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), transparent 65%);
+    opacity: 0;
+    animation: heroOrbShimmer 12s ease-in-out infinite;
+  }
+
+  .badge-pulse {
+    animation: badgePulse 6s ease-in-out infinite;
+  }
+
+  .motion-ease-out {
+    transition-timing-function: var(--motion-ease-out);
+  }
+
+  .motion-ease-in-out {
+    transition-timing-function: var(--motion-ease-in-out);
+  }
+
+  @keyframes heroOrbDrift {
+    0% {
+      transform: translate3d(-2%, 0, 0) scale(0.92);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translate3d(3%, -3%, 0) scale(1.05);
+      opacity: 0.45;
+    }
+    100% {
+      transform: translate3d(-2%, 0, 0) scale(0.92);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes heroOrbShimmer {
+    0%, 20% {
+      opacity: 0;
+    }
+    45% {
+      opacity: 0.18;
+    }
+    60% {
+      opacity: 0.26;
+    }
+    80%, 100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes badgePulse {
+    0% {
+      transform: translateY(0) scale(1);
+      filter: drop-shadow(0 0 0 rgba(251, 191, 36, 0.45));
+    }
+    50% {
+      transform: translateY(-2px) scale(1.02);
+      filter: drop-shadow(0 6px 14px rgba(251, 191, 36, 0.4));
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      filter: drop-shadow(0 0 0 rgba(251, 191, 36, 0.45));
+    }
+  }
+
   .cta-glow {
     position: relative;
     display: inline-flex;
@@ -264,6 +383,129 @@
 
   .dark .tinted-media::after {
     background: linear-gradient(150deg, rgba(16, 185, 129, 0.35) 0%, rgba(37, 99, 235, 0.15) 100%);
+  }
+
+  .problem-wave {
+    position: absolute;
+    inset: -12rem 0 auto;
+    height: clamp(18rem, 25vw, 24rem);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .problem-wave__layer {
+    position: absolute;
+    width: 220%;
+    height: 100%;
+    left: -10%;
+    bottom: -4rem;
+    animation: problemWaveDrift 22s linear infinite;
+    opacity: 0.55;
+    filter: blur(0.5px);
+  }
+
+  .problem-wave__layer--back {
+    opacity: 0.35;
+    animation-duration: 28s;
+    transform-origin: center;
+  }
+
+  .problem-wave__layer--front {
+    animation-duration: 18s;
+    opacity: 0.7;
+    mix-blend-mode: screen;
+  }
+
+  .dark .problem-wave__layer--front {
+    mix-blend-mode: overlay;
+    opacity: 0.55;
+  }
+
+  @keyframes problemWaveDrift {
+    0% {
+      transform: translate3d(-12%, 0, 0) scaleX(1);
+    }
+    50% {
+      transform: translate3d(-24%, 4px, 0) scaleX(1.02);
+    }
+    100% {
+      transform: translate3d(-48%, 0, 0) scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .problem-wave__layer {
+      animation: none;
+    }
+  }
+
+  .feature-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--radius) * 1.35);
+    transition: transform 0.6s var(--motion-ease-out), box-shadow 0.6s var(--motion-ease-out), border-color 0.6s var(--motion-ease-out), background-color 0.6s var(--motion-ease-out);
+    will-change: transform;
+  }
+
+  .feature-card:hover,
+  .feature-card:focus-within {
+    transform: translateY(-12px);
+    box-shadow: 0 26px 45px -32px rgba(9, 9, 9, 0.45);
+    border-color: rgba(22, 163, 74, 0.35);
+  }
+
+  .dark .feature-card:hover,
+  .dark .feature-card:focus-within {
+    box-shadow: 0 28px 54px -36px rgba(12, 95, 78, 0.6);
+  }
+
+  .feature-card__icon {
+    transition: transform 0.6s var(--motion-ease-out), box-shadow 0.6s var(--motion-ease-out);
+    will-change: transform;
+  }
+
+  .feature-card:hover .feature-card__icon,
+  .feature-card:focus-within .feature-card__icon {
+    transform: translateY(-6px) rotate(8deg);
+    box-shadow: 0 16px 32px -18px rgba(22, 163, 74, 0.3);
+  }
+
+  .feature-card__halo {
+    position: absolute;
+    inset: auto -38% -60% -38%;
+    height: 65%;
+    background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.28) 0%, rgba(59, 130, 246, 0.0) 68%);
+    opacity: 0;
+    transition: opacity 0.8s var(--motion-ease-out);
+    pointer-events: none;
+  }
+
+  .feature-card:hover .feature-card__halo,
+  .feature-card:focus-within .feature-card__halo {
+    opacity: 0.85;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card,
+    .feature-card:hover,
+    .feature-card:focus-within {
+      transform: none !important;
+      box-shadow: none;
+    }
+
+    .feature-card__icon,
+    .feature-card:hover .feature-card__icon,
+    .feature-card:focus-within .feature-card__icon {
+      transform: none !important;
+      box-shadow: none;
+    }
+
+    .feature-card__halo,
+    .feature-card:hover .feature-card__halo,
+    .feature-card:focus-within .feature-card__halo {
+      opacity: 0.45;
+    }
   }
 
   .blog-prose :where(h2, h3, h4) {

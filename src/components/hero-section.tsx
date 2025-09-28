@@ -1,10 +1,95 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle2, Play, ShieldCheck, Award, Clock3, ArrowRight, AlertTriangle, ClipboardList, FileWarning, Users, CalendarClock } from "lucide-react";
 
 export default function HeroSection() {
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const orbRef = useRef<HTMLDivElement | null>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(true);
+  const [activeHighlight, setActiveHighlight] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    const board = boardRef.current;
+    const orb = orbRef.current;
+    if (!board || prefersReducedMotion) {
+      if (board) {
+        board.style.transform = "";
+        board.style.boxShadow = "";
+      }
+      if (orb) {
+        orb.style.transform = "";
+      }
+      return;
+    }
+
+    const baseTransform = board.style.transform;
+    const computedStyles = getComputedStyle(board);
+    const baseShadow = computedStyles.boxShadow;
+    const baseOrbTransform = orb?.style.transform ?? "";
+    let frame: number | null = null;
+
+    const setTilt = (rotateX: number, rotateY: number) => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        board.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(0)`;
+        board.style.boxShadow = `0 35px 70px -40px rgba(16, 185, 129, 0.55)`;
+        if (orb) {
+          const orbX = (rotateY / 12) * 30;
+          const orbY = (rotateX / 12) * -30;
+          orb.style.transform = `translate3d(${orbX.toFixed(2)}px, ${orbY.toFixed(2)}px, 0) scale(1.05)`;
+        }
+      });
+    };
+
+    const resetTilt = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        board.style.transform = baseTransform;
+        board.style.boxShadow = baseShadow;
+        if (orb) {
+          orb.style.transform = baseOrbTransform;
+        }
+      });
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = board.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const offsetY = event.clientY - rect.top;
+      const rotateX = ((offsetY - rect.height / 2) / rect.height) * -9;
+      const rotateY = ((offsetX - rect.width / 2) / rect.width) * 11;
+      setTilt(rotateX, rotateY);
+    };
+
+    board.addEventListener("pointermove", handlePointerMove);
+    board.addEventListener("pointerleave", resetTilt);
+    board.addEventListener("pointerdown", resetTilt);
+
+    return () => {
+      board.removeEventListener("pointermove", handlePointerMove);
+      board.removeEventListener("pointerleave", resetTilt);
+      board.removeEventListener("pointerdown", resetTilt);
+      if (frame) cancelAnimationFrame(frame);
+      board.style.transform = baseTransform;
+      board.style.boxShadow = baseShadow;
+      if (orb) {
+        orb.style.transform = baseOrbTransform;
+      }
+    };
+  }, [prefersReducedMotion]);
+
   const heroHighlights = [
     {
       icon: CheckCircle2,
@@ -80,22 +165,51 @@ export default function HeroSection() {
     }
   ];
 
+  const highlightCount = heroHighlights.length;
+
+  useEffect(() => {
+    if (prefersReducedMotion || highlightCount <= 1) {
+      setActiveHighlight(0);
+      return;
+    }
+    const interval = window.setInterval(() => {
+      setActiveHighlight((current) => (current + 1) % highlightCount);
+    }, 3600);
+    return () => window.clearInterval(interval);
+  }, [prefersReducedMotion, highlightCount]);
+
   return (
     <section className="hero-gradient section-padding">
       <div className="container-spacing">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 fade-in-up">
+          <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="heading-display font-bold text-foreground" data-testid="text-hero-title">
+              <h1
+                className="heading-display font-bold text-foreground"
+                data-animate="headline"
+                data-animate-once
+                data-testid="text-hero-title"
+              >
                 Odzyskaj <span className="text-primary">swój czas</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed copy-max" data-testid="text-hero-subtitle">
+              <p
+                className="text-xl text-muted-foreground leading-relaxed copy-max"
+                data-animate="rise"
+                data-animate-delay="120"
+                data-animate-once
+                data-testid="text-hero-subtitle"
+              >
                 Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twoja automatyczna tarcza prawna, 
                 która chroni przed karami PIP i daje spokój ducha.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div
+              className="flex flex-col sm:flex-row gap-4"
+              data-animate="rise"
+              data-animate-delay="200"
+              data-animate-once
+            >
               <span className="cta-glow">
                 <Button 
                   size="lg" 
@@ -125,29 +239,81 @@ export default function HeroSection() {
               </Link>
             </div>
             
-            <div className="rounded-3xl border border-white/30 dark:border-white/10 bg-white/15 dark:bg-white/5 backdrop-blur-md shadow-[0_25px_60px_-35px_rgba(15,23,42,0.6)] p-6 sm:p-7 flex flex-col gap-5" data-testid="hero-trust-strip">
+            <div
+              className="rounded-3xl border border-white/30 dark:border-white/10 bg-white/15 dark:bg-white/5 backdrop-blur-md shadow-[0_25px_60px_-35px_rgba(15,23,42,0.6)] p-6 sm:p-7 flex flex-col gap-5"
+              data-animate="rise"
+              data-animate-delay="260"
+              data-animate-once
+              data-testid="hero-trust-strip"
+            >
               <p className="text-xs uppercase tracking-[0.35em] text-emerald-900/70 dark:text-emerald-200/70">Dlaczego AutoŻaba?</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {heroHighlights.map(({ icon: Icon, label, caption }, index) => (
-                  <div key={label} className="group rounded-2xl border border-white/30 dark:border-white/10 bg-white/40 dark:bg-white/5 px-4 py-3 flex items-start gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/60" data-testid={`hero-highlight-${index}`}>
-                    <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-200 flex items-center justify-center shadow-inner">
-                      <Icon className="h-5 w-5" />
+              {prefersReducedMotion ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {heroHighlights.map(({ icon: Icon, label, caption }, index) => (
+                    <div
+                      key={label}
+                      className="group rounded-2xl border border-white/30 dark:border-white/10 bg-white/40 dark:bg-white/5 px-4 py-3 flex items-start gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/60 hover:bg-white/60"
+                      data-testid={`hero-highlight-${index}`}
+                    >
+                      <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-200 flex items-center justify-center shadow-inner">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-foreground">{label}</div>
+                        <p className="text-xs text-muted-foreground/80">{caption}</p>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">{label}</div>
-                      <p className="text-xs text-muted-foreground/80">{caption}</p>
+                  ))}
+                </div>
+              ) : (
+                <div className="relative" aria-live="polite">
+                  <div className="overflow-hidden rounded-2xl">
+                    <div className="relative flex" style={{ transform: `translateX(-${activeHighlight * 100}%)`, transition: "transform 600ms var(--motion-ease-out)" }}>
+                      {heroHighlights.map(({ icon: Icon, label, caption }, index) => (
+                        <div
+                          key={label}
+                          className="min-w-full px-4 py-3 flex items-start gap-3 bg-white/40 dark:bg-white/5 border border-white/30 dark:border-white/10 rounded-2xl"
+                          data-testid={`hero-highlight-${index}`}
+                        >
+                          <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-200 flex items-center justify-center shadow-inner">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-semibold text-foreground">{label}</div>
+                            <p className="text-xs text-muted-foreground/80">{caption}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
-              </div>
+                  <div className="mt-3 flex items-center gap-2">
+                    {heroHighlights.map((highlight, index) => (
+                      <button
+                        key={highlight.label}
+                        onClick={() => setActiveHighlight(index)}
+                        className={`h-[6px] w-6 rounded-full transition-all duration-300 ${
+                          index === activeHighlight ? "bg-emerald-400/90" : "bg-emerald-400/20 hover:bg-emerald-400/40"
+                        }`}
+                        aria-label={`Pokaż wyróżnienie ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           
           <div className="relative">
             <div className="relative isolate">
-              <div className="absolute inset-0 mx-auto h-[420px] w-[420px] rounded-full bg-emerald-500/20 blur-3xl opacity-30" aria-hidden="true" />
-              <div className="relative rounded-[32px] border border-white/40 dark:border-white/10 bg-gradient-to-br from-emerald-400/15 via-slate-900/70 to-slate-950/80 px-8 py-10 shadow-[0_35px_55px_-30px_rgba(0,0,0,0.55)] backdrop-blur-xl">
-                <div className="absolute -top-5 left-8 rounded-full bg-amber-500 text-amber-50 px-5 py-2 text-sm font-semibold shadow-lg" data-testid="stress-indicator">
+              <div ref={orbRef} className="absolute inset-0 mx-auto h-[420px] w-[420px] rounded-full bg-emerald-500/20 blur-3xl opacity-30 hero-orb" aria-hidden="true" />
+              <div
+                ref={boardRef}
+                data-animate="scale"
+                data-animate-delay="120"
+                data-animate-once
+                className="relative rounded-[32px] border border-white/40 dark:border-white/10 bg-gradient-to-br from-emerald-400/15 via-slate-900/70 to-slate-950/80 px-8 py-10 shadow-[0_35px_55px_-30px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-transform duration-500 ease-out will-change-transform"
+              >
+                <div className="absolute -top-5 left-8 rounded-full bg-amber-500 text-amber-50 px-5 py-2 text-sm font-semibold shadow-lg badge-pulse" data-testid="stress-indicator">
                   📣 Kontrola PIP za 2 dni!
                 </div>
                 <div className="space-y-6">
@@ -173,12 +339,6 @@ export default function HeroSection() {
                         <p className="text-[11px] leading-snug opacity-90">{issue}</p>
                       </div>
                     ))}
-                  </div>
-                </div>
-
-                <div className="absolute -right-9 top-1/2 hidden translate-y-[-50%] lg:flex">
-                  <div className="h-20 w-20 rounded-full bg-emerald-500 text-emerald-950 flex items-center justify-center shadow-[0_20px_45px_-25px_rgba(16,185,129,0.8)]">
-                    <ArrowRight className="h-8 w-8" />
                   </div>
                 </div>
               </div>

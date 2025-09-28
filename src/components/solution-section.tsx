@@ -46,7 +46,7 @@ export default function SolutionSection() {
   return (
     <section id="solution" className="section-padding bg-muted">
       <div className="container-spacing">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-solution-title">
             Twoja <span className="text-primary">Automatyczna Tarcza Prawna</span>
           </h2>
@@ -57,51 +57,94 @@ export default function SolutionSection() {
         </div>
         
         {/* Before/After Comparison */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
-          {/* Before */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-before-title">Bez AutoŻaby</h3>
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/40 rounded-2xl p-8 space-y-4">
+        <div className="relative mb-20 grid gap-12 lg:grid-cols-2">
+          <div
+            className="group relative"
+            data-animate="slide-left"
+            data-animate-delay="60"
+            data-animate-once
+          >
+            <div
+              className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-br from-red-100/60 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-80 dark:from-red-900/40"
+              aria-hidden="true"
+            />
+            <div className="relative space-y-6 text-center">
+              <h3
+                className="text-2xl font-semibold text-foreground"
+                data-testid="text-before-title"
+              >
+                Bez AutoŻaby
+              </h3>
+              <div className="rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
                 {beforeAfter.before.map((item, index) => (
-                  <div key={index} className="flex items-center text-red-700 dark:text-red-200" data-testid={`before-item-${index}`}>
-                    <XCircle className="w-5 h-5 mr-3" />
+                  <div
+                    key={index}
+                    className="flex items-center justify-center gap-3 text-red-700 dark:text-red-200"
+                    data-testid={`before-item-${index}`}
+                  >
+                    <XCircle className="h-5 w-5" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          
-          {/* After */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-after-title">Z AutoŻabą</h3>
-              <div className="bg-green-50 dark:bg-emerald-900/20 border border-green-200 dark:border-emerald-500/40 rounded-2xl p-8 space-y-4">
+
+          <div
+            className="group relative"
+            data-animate="slide-right"
+            data-animate-delay="140"
+            data-animate-once
+          >
+            <div
+              className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-bl from-emerald-100/70 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-85 dark:from-emerald-900/35"
+              aria-hidden="true"
+            />
+            <div className="relative space-y-6 text-center">
+              <h3
+                className="text-2xl font-semibold text-foreground"
+                data-testid="text-after-title"
+              >
+                Z AutoŻabą
+              </h3>
+              <div className="rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
                 {beforeAfter.after.map((item, index) => (
-                  <div key={index} className="flex items-center text-green-700 dark:text-emerald-200" data-testid={`after-item-${index}`}>
-                    <CheckCircle className="w-5 h-5 mr-3" />
+                  <div
+                    key={index}
+                    className="flex items-center justify-center gap-3 text-green-700 dark:text-emerald-200"
+                    data-testid={`after-item-${index}`}
+                  >
+                    <CheckCircle className="h-5 w-5" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+
+          <div
+            className="pointer-events-none absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-border to-transparent lg:block"
+            aria-hidden="true"
+          />
         </div>
         
         {/* Feature Showcase */}
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card 
-                key={feature.id} 
-                className="bg-card dark:bg-slate-900/70 hover:calm-shadow-lg transition-shadow border border-border/70 dark:border-white/10"
+              <Card
+                key={feature.id}
+                data-animate="rise"
+                data-animate-delay={`${index * 120}`}
+                data-animate-once
+                className="feature-card border border-border/60 bg-card/95 transition-colors duration-500 dark:border-white/10 dark:bg-slate-900/70"
                 data-testid={`card-feature-${feature.id}`}
               >
-                <CardContent className="p-8 space-y-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-primary" />
+                <div className="feature-card__halo" aria-hidden="true" />
+                <CardContent className="relative p-8 space-y-6">
+                  <div className="feature-card__icon flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-6 w-6" />
                   </div>
                   <div className="space-y-4">
                     <h3 className="text-xl font-semibold text-foreground" data-testid={`text-feature-title-${feature.id}`}>
@@ -112,8 +155,8 @@ export default function SolutionSection() {
                     </p>
                     
                     {feature.savings && (
-                      <div className="bg-muted dark:bg-slate-800/60 rounded-lg p-4">
-                        <div className="text-sm text-muted-foreground mb-2">Oszczędność czasu:</div>
+                      <div className="rounded-lg bg-muted/70 p-4 shadow-inner dark:bg-slate-800/60">
+                        <div className="mb-2 text-sm text-muted-foreground">Oszczędność czasu:</div>
                         <div className="text-2xl font-bold text-primary" data-testid={`stat-savings-${feature.id}`}>
                           {feature.savings}
                         </div>
@@ -121,9 +164,9 @@ export default function SolutionSection() {
                     )}
                     
                     {feature.protection && (
-                      <div className="bg-accent/10 dark:bg-accent/20 border border-accent/20 dark:border-accent/30 rounded-lg p-4">
-                        <div className="text-sm text-accent font-medium" data-testid={`stat-protection-${feature.id}`}>
-                          <AlertTriangle className="w-4 h-4 mr-2 inline" />
+                      <div className="rounded-lg border border-accent/30 bg-accent/10 p-4 dark:border-accent/40 dark:bg-accent/20">
+                        <div className="flex items-center gap-2 text-sm font-medium text-accent" data-testid={`stat-protection-${feature.id}`}>
+                          <AlertTriangle className="h-4 w-4" />
                           {feature.protection}
                         </div>
                       </div>
@@ -131,7 +174,7 @@ export default function SolutionSection() {
                     
                     {feature.benefit && (
                       <div className="flex items-center text-sm text-muted-foreground" data-testid={`stat-benefit-${feature.id}`}>
-                        <CheckCircle className="w-4 h-4 mr-2 text-secondary" />
+                        <CheckCircle className="mr-2 h-4 w-4 text-secondary" />
                         <span>{feature.benefit}</span>
                       </div>
                     )}

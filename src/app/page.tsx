@@ -10,6 +10,7 @@ const TestimonialsSection = dynamic(() => import("@/components/testimonials-sect
 const PricingSection = dynamic(() => import("@/components/pricing-section"))
 const BlogSection = dynamic(() => import("@/components/blog-section"))
 const ContactSection = dynamic(() => import("@/components/contact-section"))
+import InteractionLayer from "@/components/interaction-layer";
 import Footer from "@/components/footer";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,6 +40,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main>
+        <InteractionLayer />
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"

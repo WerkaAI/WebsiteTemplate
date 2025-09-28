@@ -16,7 +16,7 @@ export default async function BlogSection() {
   return (
   <section id="blog" className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-16" data-animate>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-blog-section-title">
             Blog: <span className="text-primary">Prawo Pracy w Pigułce</span>
           </h2>
@@ -26,13 +26,13 @@ export default async function BlogSection() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+  <div className="grid md:grid-cols-3 gap-8 mb-12">
           {featuredPosts.length === 0 && (
             <div className="col-span-full text-center text-muted-foreground">
               Pierwsze artykuły są w drodze. Zajrzyj do nas wkrótce!
             </div>
           )}
-          {featuredPosts.map((post) => {
+          {featuredPosts.map((post, index) => {
             const { slug, meta } = post;
             const cover = meta.cover as string | undefined;
             const formattedDate = meta.date ? format(new Date(meta.date), "d MMMM yyyy", { locale: pl }) : null;
@@ -42,6 +42,8 @@ export default async function BlogSection() {
             return (
             <Card 
               key={slug} 
+              data-animate="rise"
+              data-animate-delay={`${index * 120}`}
               className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
               data-testid={`card-blog-preview-${slug}`}
             >
@@ -99,7 +101,7 @@ export default async function BlogSection() {
           })}
         </div>
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12" data-animate>
           <Link href="/blog">
             <Button variant="outline" size="lg" data-testid="button-view-all-blog-posts">
               Zobacz wszystkie artykuły
@@ -108,7 +110,7 @@ export default async function BlogSection() {
         </div>
         
         {/* Newsletter signup */}
-        <div className="bg-muted rounded-2xl p-8 text-center">
+  <div className="bg-muted rounded-2xl p-8 text-center" data-animate="rise" data-animate-delay="120">
           <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-newsletter-section-title">
             Bądź na bieżąco z prawem pracy
           </h3>
