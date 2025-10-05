@@ -78,7 +78,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12">
+        <div className="text-center space-y-4 mb-12" data-animate data-animate-delay="40">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-contact-title">
             Potrzebujesz <span className="text-primary">pomocy</span>?
           </h2>
@@ -99,7 +99,13 @@ export default function ContactSection() {
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
-                    <div key={index} className="flex items-center space-x-4" data-testid={`contact-info-${index}`}>
+                    <div
+                      key={index}
+                      className="flex items-center space-x-4"
+                      data-animate="slide-left"
+                      data-animate-delay={`${index * 80}`}
+                      data-testid={`contact-info-${index}`}
+                    >
                       <div className="tinted-media w-12 h-12 rounded-xl flex items-center justify-center bg-muted">
                         <Icon className={`w-5 h-5 ${info.iconColor}`} />
                       </div>
@@ -114,7 +120,7 @@ export default function ContactSection() {
             </div>
             
             {/* Quick help */}
-            <Card>
+            <Card data-animate="rise" data-animate-delay="180">
               <CardContent className="p-6 space-y-4">
                 <h4 className="font-semibold text-foreground" data-testid="text-quick-help-title">
                   Szybka pomoc
@@ -127,6 +133,8 @@ export default function ContactSection() {
                         key={index} 
                         href={item.href} 
                         className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                        data-animate="slide-right"
+                        data-animate-delay={`${120 + index * 60}`}
                         data-testid={`quick-help-${index}`}
                       >
                         <Icon className="w-4 h-4 mr-2" />
@@ -140,10 +148,10 @@ export default function ContactSection() {
           </div>
           
           {/* Contact Form */}
-          <Card>
-            <CardContent className="p-8">
+            <Card data-animate="rise" data-animate-delay="220">
+              <CardContent className="p-8">
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
-                <div>
+                <div data-animate="rise" data-animate-delay="40">
                   <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">
                     Imię i nazwisko
                   </Label>
@@ -163,7 +171,7 @@ export default function ContactSection() {
                   )}
                 </div>
                 
-                <div>
+                <div data-animate="rise" data-animate-delay="80">
                   <Label htmlFor="email" className="text-sm font-medium text-muted-foreground">
                     Email
                   </Label>
@@ -183,7 +191,7 @@ export default function ContactSection() {
                   )}
                 </div>
                 
-                <div>
+                <div data-animate="rise" data-animate-delay="120">
                   <Label htmlFor="shops" className="text-sm font-medium text-muted-foreground">
                     Liczba sklepów
                   </Label>
@@ -211,7 +219,7 @@ export default function ContactSection() {
                   )}
                 </div>
                 
-                <div>
+                <div data-animate="rise" data-animate-delay="160">
                   <Label htmlFor="message" className="text-sm font-medium text-muted-foreground">
                     Czym możemy pomóc?
                   </Label>
@@ -232,7 +240,7 @@ export default function ContactSection() {
                   )}
                 </div>
                 
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3" data-animate="rise" data-animate-delay="200">
                   <Controller
                     control={control}
                     name="privacy"
@@ -252,7 +260,7 @@ export default function ContactSection() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold disabled:opacity-60"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold disabled:opacity-60 button-border-animated"
                   data-testid="button-contact-submit"
                 >
                   {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}

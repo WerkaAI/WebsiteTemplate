@@ -1,12 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { useSpringNumber } from "@/hooks/use-spring-number";
+
+const currencyFormatter = new Intl.NumberFormat("pl-PL", {
+  style: "currency",
+  currency: "PLN",
+  maximumFractionDigits: 0,
+});
 
 export default function CalculatorSection() {
+  const shopsFieldId = useId();
+  const hoursFieldId = useId();
+  const pipFieldId = useId();
+
   const [shops, setShops] = useState(1);
   const [hoursPerWeek, setHoursPerWeek] = useState(8);
   const [hadPIPControl, setHadPIPControl] = useState(false);
@@ -47,6 +59,18 @@ export default function CalculatorSection() {
     });
   }, [shops, hoursPerWeek, hadPIPControl]);
 
+  const timeSavedSpring = useSpringNumber(calculations.timeSaved);
+  const weekendsSavedSpring = useSpringNumber(calculations.weekendsSaved);
+  const riskAvoidedSpring = useSpringNumber(calculations.riskAvoided, {
+    formatter: (val) => currencyFormatter.format(Math.round(val)),
+  });
+  const autozabaCostSpring = useSpringNumber(calculations.autozabaCost, {
+    formatter: (val) => Math.round(val).toLocaleString("pl-PL"),
+  });
+  const monthlyBenefitSpring = useSpringNumber(Math.max(calculations.monthlyBenefit, 0), {
+    formatter: (val) => currencyFormatter.format(Math.round(val)),
+  });
+
   return (
   <section className="section-padding bg-white dark:bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,53 +90,67 @@ export default function CalculatorSection() {
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold text-foreground" data-testid="text-calculator-inputs-title">Twoja sytuacja</h3>
                 
-                <div className="space-y-4">
-                  <div>
-                    <Label className="text-sm font-medium text-muted-foreground">
-                      Liczba sklepów
-                    </Label>
-                    <Input 
-                      type="number" 
-                      value={shops} 
-                      onChange={(e) => setShops(Math.max(1, Math.min(5, parseInt(e.target.value) || 1)))}
-                      min="1" 
+                <div className="space-y-5">
+                  <div className="floating-field" data-animate="rise">
+                    <Input
+                      id={shopsFieldId}
+                      type="number"
+                      value={shops}
+                      placeholder=" "
+                      onChange={(e) =>
+                        setShops(Math.max(1, Math.min(5, parseInt(e.target.value, 10) || 1)))
+                      }
+                      min="1"
                       max="5"
-                      className="mt-2"
+                      className="floating-input peer"
                       data-testid="input-calculator-shops"
                     />
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Większość franczyzobiorców ma 1-2 sklepy
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <Label className="text-sm font-medium text-muted-foreground">
-                      Godzin tygodniowo spędzasz na grafikach i papierkach
+                    <Label
+                      htmlFor={shopsFieldId}
+                      className="floating-label"
+                    >
+                      Liczba sklepów
                     </Label>
-                    <Input 
-                      type="number" 
-                      value={hoursPerWeek} 
-                      onChange={(e) => setHoursPerWeek(Math.max(1, Math.min(30, parseInt(e.target.value) || 8)))}
-                      min="1" 
+                    <p className="floating-hint">Większość franczyzobiorców ma 1-2 sklepy</p>
+                  </div>
+
+                  <div className="floating-field" data-animate="rise" data-animate-delay="80">
+                    <Input
+                      id={hoursFieldId}
+                      type="number"
+                      value={hoursPerWeek}
+                      placeholder=" "
+                      onChange={(e) =>
+                        setHoursPerWeek(Math.max(1, Math.min(30, parseInt(e.target.value, 10) || 8)))
+                      }
+                      min="1"
                       max="30"
-                      className="mt-2"
+                      className="floating-input peer"
                       data-testid="input-calculator-hours"
                     />
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Średnio franczyzobiorcy spędzają 8-12h tygodniowo
-                    </p>
+                    <Label htmlFor={hoursFieldId} className="floating-label">
+                      Godzin tygodniowo spędzasz na grafikach i papierkach
+                    </Label>
+                    <p className="floating-hint">Średnio franczyzobiorcy spędzają 8-12h tygodniowo</p>
                   </div>
-                  
-                  <div className="flex items-center space-x-3">
+
+                  <div
+                    className="flex items-start gap-3 rounded-xl border border-border/70 bg-muted/40 dark:bg-slate-900/60 px-4 py-3"
+                    data-animate="rise"
+                    data-animate-delay="140"
+                  >
                     <input
                       type="checkbox"
-                      id="pip-control"
+                      id={pipFieldId}
                       checked={hadPIPControl}
                       onChange={(e) => setHadPIPControl(e.target.checked)}
-                      className="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
+                      className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
                       data-testid="checkbox-pip-control"
                     />
-                    <Label htmlFor="pip-control" className="text-sm font-medium text-muted-foreground cursor-pointer">
+                    <Label
+                      htmlFor={pipFieldId}
+                      className="text-sm font-medium text-muted-foreground cursor-pointer leading-tight"
+                    >
                       Miałeś już kontrolę PIP w ciągu ostatnich 2 lat?
                     </Label>
                   </div>
@@ -124,53 +162,80 @@ export default function CalculatorSection() {
                 <h3 className="text-xl font-semibold text-foreground" data-testid="text-calculator-results-title">Co zyskujesz</h3>
                 
                 <div className="space-y-4">
-                  <div className="bg-green-50 dark:bg-emerald-500/15 border border-green-200 dark:border-emerald-500/40 rounded-lg p-4">
-                    <div className="text-sm text-green-700 dark:text-emerald-200 mb-1">Odzyskany czas miesięcznie</div>
-                    <div className="text-2xl font-bold text-green-800 dark:text-emerald-100" data-testid="stat-time-saved">
-                      {calculations.timeSaved} godzin
+                  <div
+                    className="metric-card metric-card--time"
+                    data-animate="rise"
+                    data-animate-delay="60"
+                  >
+                    <div className="metric-card__label">Odzyskany czas miesięcznie</div>
+                    <div className="metric-card__value" data-testid="stat-time-saved">
+                      {timeSavedSpring.formatted} godzin
                     </div>
-                    <div className="text-xs text-green-600 dark:text-emerald-200/80">
-                      Czas dla rodziny i odpoczynku
+                    <div className="metric-card__hint">Czas dla rodziny i odpoczynku</div>
+                  </div>
+
+                  <div
+                    className="metric-card metric-card--weekends"
+                    data-animate="rise"
+                    data-animate-delay="120"
+                  >
+                    <div className="metric-card__label">Wolne weekendy rocznie</div>
+                    <div className="metric-card__value" data-testid="stat-weekends-saved">
+                      +{weekendsSavedSpring.formatted} weekendów
+                    </div>
+                    <div className="metric-card__hint">Bez myślenia o grafikach</div>
+                  </div>
+
+                  <div
+                    className="metric-card metric-card--risk"
+                    data-animate="rise"
+                    data-animate-delay="180"
+                  >
+                    <div className="metric-card__label">Ochrona przed karami PIP</div>
+                    <div
+                      className="metric-card__value"
+                      data-testid="stat-penalty-avoided"
+                      suppressHydrationWarning
+                    >
+                      {riskAvoidedSpring.formatted}
+                    </div>
+                    <div className="metric-card__hint">
+                      {hadPIPControl
+                        ? "Zwiększone ryzyko powtórnej kontroli"
+                        : "Maksymalna kara za naruszenia"}
                     </div>
                   </div>
-                  
-                  <div className="bg-blue-50 dark:bg-sky-500/15 border border-blue-200 dark:border-sky-500/40 rounded-lg p-4">
-                    <div className="text-sm text-blue-700 dark:text-sky-200 mb-1">Wolne weekendy rocznie</div>
-                    <div className="text-2xl font-bold text-blue-800 dark:text-sky-100" data-testid="stat-weekends-saved">
-                      +{calculations.weekendsSaved} weekendów
+
+                  <div
+                    className="metric-card metric-card--investment"
+                    data-animate="rise"
+                    data-animate-delay="240"
+                  >
+                    <div className="metric-card__label">Inwestycja w AutoŻabę</div>
+                    <div className="metric-card__value" data-testid="stat-autozaba-cost">
+                      {autozabaCostSpring.formatted} zł/msc
                     </div>
-                    <div className="text-xs text-blue-600 dark:text-sky-200/80">
-                      Bez myślenia o grafikach
-                    </div>
-                  </div>
-                  
-                  <div className="bg-orange-50 dark:bg-amber-500/15 border border-orange-200 dark:border-amber-500/40 rounded-lg p-4">
-                    <div className="text-sm text-orange-700 dark:text-amber-200 mb-1">Ochrona przed karami PIP</div>
-                    <div className="text-2xl font-bold text-orange-800 dark:text-amber-100" data-testid="stat-penalty-avoided" suppressHydrationWarning>
-                      {calculations.riskAvoided.toLocaleString()} zł
-                    </div>
-                    <div className="text-xs text-orange-600 dark:text-amber-200/80">
-                      {hadPIPControl ? "Zwiększone ryzyko powtórnej kontroli" : "Maksymalna kara za naruszenia"}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-primary/10 dark:bg-primary/25 border border-primary/20 dark:border-primary/40 rounded-lg p-4">
-                    <div className="text-sm text-primary dark:text-primary/80 mb-1">Inwestycja w AutoŻabę</div>
-                    <div className="text-2xl font-bold text-primary dark:text-primary-foreground" data-testid="stat-autozaba-cost">
-                      {calculations.autozabaCost} zł/msc
-                    </div>
-                    <div className="text-xs text-primary dark:text-primary/70">
+                    <div className="metric-card__hint">
                       Nieograniczona liczba pracowników
                     </div>
                   </div>
-                  
+
                   {calculations.monthlyBenefit > 0 && (
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-emerald-500/15 dark:via-transparent dark:to-sky-500/15 border border-green-200 dark:border-emerald-500/40 rounded-lg p-4">
-                      <div className="text-sm text-green-700 dark:text-emerald-200 mb-1 font-semibold">Spokój ducha</div>
-                      <div className="text-lg font-bold text-green-800 dark:text-emerald-100" data-testid="stat-peace-of-mind">
+                    <div
+                      className="metric-card metric-card--peace"
+                      data-animate="rise"
+                      data-animate-delay="300"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="metric-card__label font-semibold">Spokój ducha</span>
+                        <Badge className="badge-pulse bg-white/20 text-white border-white/30">
+                          {monthlyBenefitSpring.formatted.replace("zł", "zł / msc")}
+                        </Badge>
+                      </div>
+                      <div className="metric-card__value" data-testid="stat-peace-of-mind">
                         Bezcenny
                       </div>
-                      <div className="text-xs text-green-600 dark:text-emerald-200/80">
+                      <div className="metric-card__hint">
                         100% zgodność z prawem, zero stresu
                       </div>
                     </div>

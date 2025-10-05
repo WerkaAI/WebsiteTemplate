@@ -60,23 +60,25 @@ export default function PricingSection() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {plans.map((plan) => (
+          {plans.map((plan, index) => (
             <Card 
               key={plan.id} 
-              className={`relative transition-shadow ${
+              data-animate="scale"
+              data-animate-delay={`${index * 120}`}
+              className={`relative transition-shadow pricing-card ${
                 plan.variant === 'default'
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10'
+                  ? 'pricing-card--featured'
+                  : 'pricing-card--standard'
               }`}
               data-testid={`card-plan-${plan.id}`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground px-4 py-2 rounded-lg text-sm font-medium">
+                <div className="pricing-card__badge" data-testid={`badge-plan-${plan.id}`}>
                   Najpopularniejszy
                 </div>
               )}
               
-              <CardHeader className="space-y-2 pb-6">
+              <CardHeader className="space-y-2 pb-6 pt-2">
                 <h3 className="text-2xl font-bold" data-testid={`text-plan-name-${plan.id}`}>
                   {plan.name}
                 </h3>
@@ -100,10 +102,8 @@ export default function PricingSection() {
                 
                 <Button 
                   variant={plan.variant}
-                  className={`w-full py-3 font-semibold ${
-                    plan.variant === 'default' 
-                      ? 'bg-white text-primary hover:bg-gray-100' 
-                      : 'hover:bg-muted'
+                  className={`w-full py-3 font-semibold pricing-card__button ${
+                    plan.variant === 'default' ? 'pricing-card__button--featured' : ''
                   }`}
                   onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
                   data-testid={`button-plan-${plan.id}`}
@@ -122,35 +122,53 @@ export default function PricingSection() {
         </div>
         
         {/* Price comparison */}
-  <Card className="dark:bg-slate-900/70 border border-border/70 dark:border-white/10">
+  <Card
+          className="dark:bg-slate-900/70 border border-border/70 dark:border-white/10 pricing-comparison"
+          data-animate="rise"
+          data-animate-delay="180"
+        >
           <CardContent className="p-8">
             <h3 className="text-xl font-semibold text-foreground mb-6 text-center" data-testid="text-comparison-title">
               Porównaj z konkurencją
             </h3>
             
-            <div className="grid md:grid-cols-3 gap-6 text-sm">
-              {comparison.map((item, index) => (
-                <div key={index} className="space-y-2 text-center" data-testid={`comparison-item-${index}`}>
-                  <div className={`font-medium ${
-                    item.highlight ? 'text-primary' : 
-                    item.warning ? 'text-accent' : 'text-muted-foreground'
-                  }`} data-testid={`comparison-label-${index}`}>
-                    {item.label}
+            <div className="grid gap-6 text-sm md:grid-cols-3 lg:gap-8">
+              {comparison.map((item, index) => {
+                const toneClasses = item.highlight
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : item.warning
+                    ? "border-accent/35 bg-accent/10 text-accent"
+                    : "border-border/60 bg-white/80 text-muted-foreground dark:bg-slate-900/60 dark:border-white/10 dark:text-foreground";
+                const priceClasses = item.highlight
+                  ? "text-primary"
+                  : item.warning
+                    ? "text-accent"
+                    : "text-foreground";
+
+                return (
+                  <div
+                    key={index}
+                    className={`flex h-full flex-col items-center gap-2 rounded-2xl border px-5 py-6 text-center shadow-[0_18px_40px_-30px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 ${toneClasses}`}
+                    data-testid={`comparison-item-${index}`}
+                  >
+                    <div
+                      className="text-xs font-semibold uppercase tracking-[0.28em] opacity-80"
+                      data-testid={`comparison-label-${index}`}
+                    >
+                      {item.label}
+                    </div>
+                    <div
+                      className={`text-3xl font-bold ${priceClasses}`}
+                      data-testid={`comparison-price-${index}`}
+                    >
+                      {item.price}
+                    </div>
+                    <div className="text-sm opacity-85" data-testid={`comparison-note-${index}`}>
+                      {item.note}
+                    </div>
                   </div>
-                  <div className={`text-2xl font-bold ${
-                    item.highlight ? 'text-primary' : 
-                    item.warning ? 'text-accent' : 'text-foreground'
-                  }`} data-testid={`comparison-price-${index}`}>
-                    {item.price}
-                  </div>
-                  <div className={`${
-                    item.highlight ? 'text-primary' : 
-                    item.warning ? 'text-accent' : 'text-muted-foreground'
-                  }`} data-testid={`comparison-note-${index}`}>
-                    {item.note}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </CardContent>
         </Card>

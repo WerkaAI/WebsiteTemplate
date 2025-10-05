@@ -1,6 +1,10 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
-import Image from 'next/image';
+import { Button } from "@/components/ui/button";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { useCarousel } from "@/hooks/use-carousel";
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -30,6 +34,11 @@ export default function TestimonialsSection() {
     }
   ];
 
+  const { index, containerRef, next, prev, goTo, pause, resume } = useCarousel({
+    size: testimonials.length,
+    interval: 6500,
+  });
+
   return (
   <section className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
@@ -41,48 +50,115 @@ export default function TestimonialsSection() {
             Prawdziwe historie franczyzobiorców, którzy odzyskali kontrolę
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <Card 
-              key={testimonial.id} 
-              className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
-              data-testid={`card-testimonial-${testimonial.id}`}
+
+        <div
+          className="testimonials-carousel-wrapper"
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="Historie klientów AutoŻaby"
+        >
+          <div
+            className="testimonials-carousel"
+            ref={containerRef}
+            onMouseEnter={pause}
+            onMouseLeave={resume}
+            onFocus={pause}
+            onBlur={resume}
+          >
+            <div
+              className="testimonials-track"
+              style={{ transform: `translate3d(-${index * 100}%, 0, 0)` }}
             >
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="tinted-media w-16 h-16 bg-muted rounded-full overflow-hidden">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                      data-testid={`img-avatar-${testimonial.id}`}
-                    />
+              {testimonials.map((testimonial, slideIndex) => {
+                const isActive = slideIndex === index;
+                return (
+                  <div
+                    key={testimonial.id}
+                    className="testimonials-slide"
+                    aria-hidden={!isActive}
+                    data-testid={`card-testimonial-${testimonial.id}`}
+                  >
+                    <Card
+                      className="testimonials-card"
+                      style={{
+                        transform: `scale(${isActive ? 1 : 0.94})`,
+                        opacity: isActive ? 1 : 0.6,
+                      }}
+                    >
+                      <CardContent className="p-8 space-y-6">
+                        <div className="flex items-center space-x-4">
+                          <div className="tinted-media w-16 h-16 bg-muted rounded-full overflow-hidden">
+                            <Image
+                              src={testimonial.avatar}
+                              alt={testimonial.name}
+                              fill
+                              className="object-cover"
+                              sizes="64px"
+                              data-testid={`img-avatar-${testimonial.id}`}
+                            />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-foreground" data-testid={`text-name-${testimonial.id}`}>
+                              {testimonial.name}
+                            </div>
+                            <div className="text-sm text-muted-foreground" data-testid={`text-location-${testimonial.id}`}>
+                              {testimonial.location}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex text-yellow-400" data-testid={`rating-${testimonial.id}`}>
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="w-5 h-5 fill-current" />
+                          ))}
+                        </div>
+
+                        <blockquote className="text-muted-foreground italic" data-testid={`text-quote-${testimonial.id}`}>
+                          &quot;{testimonial.quote}&quot;
+                        </blockquote>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground" data-testid={`text-name-${testimonial.id}`}>
-                      {testimonial.name}
-                    </div>
-                    <div className="text-sm text-muted-foreground" data-testid={`text-location-${testimonial.id}`}>
-                      {testimonial.location}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex text-yellow-400" data-testid={`rating-${testimonial.id}`}>
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                
-                <blockquote className="text-muted-foreground italic" data-testid={`text-quote-${testimonial.id}`}>
-                  &quot;{testimonial.quote}&quot;
-                </blockquote>
-              </CardContent>
-            </Card>
-          ))}
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="testimonials-controls" aria-label="Sterowanie karuzelą opinii">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={prev}
+              aria-label="Poprzednia opinia"
+              className="testimonials-control"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <div className="testimonials-dots" role="tablist">
+              {testimonials.map((testimonial, dotIndex) => (
+                <button
+                  key={testimonial.id}
+                  type="button"
+                  className={`testimonials-dot ${dotIndex === index ? "testimonials-dot--active" : ""}`}
+                  onClick={() => goTo(dotIndex)}
+                  aria-label={`Pokaż opinię ${testimonial.name}`}
+                  aria-selected={dotIndex === index}
+                  role="tab"
+                />
+              ))}
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={next}
+              aria-label="Następna opinia"
+              className="testimonials-control"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

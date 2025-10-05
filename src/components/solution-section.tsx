@@ -4,18 +4,16 @@ import { CheckCircle, XCircle, Calendar, Shield, Smartphone, AlertTriangle } fro
 export default function SolutionSection() {
   const beforeAfter = {
     before: [
-      "3 godziny na każdy grafik",
-      "Ryzyko kary 30 000 zł za błędy", 
-      "Chaos w komunikacji (SMS, WhatsApp)",
-      "Papierkowa robota do 2 w nocy",
-      "Stres i wypalenie zawodowe"
+      "3h na każdy grafik",
+      "Ryzyko kar do 30k zł", 
+      "Chaos w SMS-ach",
+      "Papiery do 2 w nocy"
     ],
     after: [
-      "15 minut na grafik - automatycznie",
-      "100% zgodność z Kodeksem Pracy",
-      "Wszystko w jednej aplikacji", 
-      "Weekendy dla Ciebie i rodziny",
-      "Spokój ducha i kontrola"
+      "15 min - automatycznie",
+      "100% zgodność prawna",
+      "Wszystko w 1 app", 
+      "Weekendy dla rodziny"
     ]
   };
 
@@ -76,16 +74,18 @@ export default function SolutionSection() {
                 Bez AutoŻaby
               </h3>
               <div className="rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
-                {beforeAfter.before.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center gap-3 text-red-700 dark:text-red-200"
-                    data-testid={`before-item-${index}`}
-                  >
-                    <XCircle className="h-5 w-5" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+                <ul className="space-y-3">
+                  {beforeAfter.before.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-red-700 dark:text-red-200"
+                      data-testid={`before-item-${index}`}
+                    >
+                      <XCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                      <span className="text-left">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -108,16 +108,18 @@ export default function SolutionSection() {
                 Z AutoŻabą
               </h3>
               <div className="rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
-                {beforeAfter.after.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center gap-3 text-green-700 dark:text-emerald-200"
-                    data-testid={`after-item-${index}`}
-                  >
-                    <CheckCircle className="h-5 w-5" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+                <ul className="space-y-3">
+                  {beforeAfter.after.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-green-700 dark:text-emerald-200"
+                      data-testid={`after-item-${index}`}
+                    >
+                      <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                      <span className="text-left">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

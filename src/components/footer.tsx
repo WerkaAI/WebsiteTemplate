@@ -84,21 +84,21 @@ export default function Footer() {
                     {link.href.startsWith('#') ? (
                       <button
                         onClick={() => handleLinkClick(link.href)}
-                        className="hover:text-foreground transition-colors text-left"
+                        className="footer-link hover:text-foreground transition-colors text-left"
                         data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                       >
                         {link.label}
                       </button>
                     ) : link.href.startsWith('/') ? (
                       <Link href={link.href}>
-                        <span className="hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                        <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
                           {link.label}
                         </span>
                       </Link>
                     ) : (
                       <a 
                         href={link.href} 
-                        className="hover:text-foreground transition-colors"
+                        className="footer-link hover:text-foreground transition-colors"
                         data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                       >
                         {link.label}
@@ -122,7 +122,7 @@ export default function Footer() {
               <a 
                 key={index} 
                 href={link.href} 
-                className="hover:text-foreground transition-colors"
+                className="footer-link hover:text-foreground transition-colors"
                 data-testid={`link-footer-legal-${index}`}
               >
                 {link.label}

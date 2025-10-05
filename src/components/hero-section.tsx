@@ -4,25 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle2, Play, ShieldCheck, Award, Clock3, ArrowRight, AlertTriangle, ClipboardList, FileWarning, Users, CalendarClock } from "lucide-react";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 export default function HeroSection() {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const orbRef = useRef<HTMLDivElement | null>(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const [activeHighlight, setActiveHighlight] = useState(0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
-    updatePreference();
-    mediaQuery.addEventListener("change", updatePreference);
-    return () => mediaQuery.removeEventListener("change", updatePreference);
-  }, []);
 
   useEffect(() => {
     const board = boardRef.current;
     const orb = orbRef.current;
+
     if (!board || prefersReducedMotion) {
       if (board) {
         board.style.transform = "";
@@ -35,53 +28,119 @@ export default function HeroSection() {
     }
 
     const baseTransform = board.style.transform;
-    const computedStyles = getComputedStyle(board);
-    const baseShadow = computedStyles.boxShadow;
+    const { boxShadow: baseShadow } = getComputedStyle(board);
     const baseOrbTransform = orb?.style.transform ?? "";
-    let frame: number | null = null;
-
-    const setTilt = (rotateX: number, rotateY: number) => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        board.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(0)`;
-        board.style.boxShadow = `0 35px 70px -40px rgba(16, 185, 129, 0.55)`;
-        if (orb) {
-          const orbX = (rotateY / 12) * 30;
-          const orbY = (rotateX / 12) * -30;
-          orb.style.transform = `translate3d(${orbX.toFixed(2)}px, ${orbY.toFixed(2)}px, 0) scale(1.05)`;
-        }
-      });
+    const pointerState = {
+      targetX: 0,
+      targetY: 0,
+      currentX: 0,
+      currentY: 0,
     };
 
-    const resetTilt = () => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
+  let glowTarget = 0;
+  let glowCurrent = 0;
+    let rafId: number | null = null;
+    let animating = false;
+
+    const renderCard = (rotateX: number, rotateY: number, glowValue: number) => {
+      board.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(0)`;
+
+      const clampedGlow = Math.min(1, Math.max(0, glowValue));
+      const softenedGlow = clampedGlow ** 1.4;
+      const glowOpacity = 0.16 + softenedGlow * 0.28;
+      board.style.boxShadow = softenedGlow > 0.02 ? `0 35px 70px -40px rgba(16, 185, 129, ${glowOpacity.toFixed(3)})` : baseShadow;
+
+      if (orb) {
+        const orbX = (rotateY / 12) * 30;
+        const orbY = (rotateX / 12) * -30;
+        const orbScale = 1 + softenedGlow * 0.04;
+        orb.style.transform = `translate3d(${orbX.toFixed(2)}px, ${orbY.toFixed(2)}px, 0) scale(${orbScale.toFixed(3)})`;
+      }
+    };
+
+    const applyFrame = () => {
+      const pointerStiffness = 0.24;
+      const glowStiffness = 0.08;
+      const pointerThreshold = 0.0085;
+      const glowThreshold = 0.01;
+
+      pointerState.currentX += (pointerState.targetX - pointerState.currentX) * pointerStiffness;
+      pointerState.currentY += (pointerState.targetY - pointerState.currentY) * pointerStiffness;
+      glowCurrent += (glowTarget - glowCurrent) * glowStiffness;
+
+      const deltaX = Math.abs(pointerState.targetX - pointerState.currentX);
+      const deltaY = Math.abs(pointerState.targetY - pointerState.currentY);
+      const deltaGlow = Math.abs(glowTarget - glowCurrent);
+      const isSettling = deltaX < pointerThreshold && deltaY < pointerThreshold && deltaGlow < glowThreshold;
+
+      if (isSettling && glowTarget === 0) {
         board.style.transform = baseTransform;
         board.style.boxShadow = baseShadow;
         if (orb) {
           orb.style.transform = baseOrbTransform;
         }
-      });
+        animating = false;
+        rafId = null;
+        return;
+      }
+
+      renderCard(pointerState.currentX, pointerState.currentY, glowCurrent);
+
+      if (!isSettling || glowTarget !== 0) {
+        rafId = requestAnimationFrame(applyFrame);
+      } else {
+        animating = false;
+        rafId = null;
+      }
+    };
+
+    const ensureAnimation = () => {
+      if (animating) {
+        return;
+      }
+      animating = true;
+      pointerState.currentX = pointerState.targetX;
+      pointerState.currentY = pointerState.targetY;
+      rafId = requestAnimationFrame(applyFrame);
     };
 
     const handlePointerMove = (event: PointerEvent) => {
       const rect = board.getBoundingClientRect();
       const offsetX = event.clientX - rect.left;
       const offsetY = event.clientY - rect.top;
-      const rotateX = ((offsetY - rect.height / 2) / rect.height) * -9;
-      const rotateY = ((offsetX - rect.width / 2) / rect.width) * 11;
-      setTilt(rotateX, rotateY);
+      pointerState.targetX = ((offsetY - rect.height / 2) / rect.height) * -9;
+      pointerState.targetY = ((offsetX - rect.width / 2) / rect.width) * 11;
+      pointerState.currentX = pointerState.targetX;
+      pointerState.currentY = pointerState.targetY;
+      glowCurrent = Math.max(glowCurrent, 0.35);
+      glowTarget = 1;
+      renderCard(pointerState.currentX, pointerState.currentY, glowCurrent);
+      ensureAnimation();
+    };
+
+    const resetTilt = () => {
+      pointerState.targetX = 0;
+      pointerState.targetY = 0;
+      glowTarget = 0;
+      ensureAnimation();
     };
 
     board.addEventListener("pointermove", handlePointerMove);
+    board.addEventListener("pointerenter", ensureAnimation);
     board.addEventListener("pointerleave", resetTilt);
     board.addEventListener("pointerdown", resetTilt);
 
     return () => {
       board.removeEventListener("pointermove", handlePointerMove);
+      board.removeEventListener("pointerenter", ensureAnimation);
       board.removeEventListener("pointerleave", resetTilt);
       board.removeEventListener("pointerdown", resetTilt);
-      if (frame) cancelAnimationFrame(frame);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+      animating = false;
+      pointerState.targetX = 0;
+      pointerState.targetY = 0;
       board.style.transform = baseTransform;
       board.style.boxShadow = baseShadow;
       if (orb) {

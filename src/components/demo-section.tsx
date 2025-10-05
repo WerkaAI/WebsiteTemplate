@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
 
 export default function DemoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const rafRef = useRef<number>();
 
   const videoSteps = [
     { time: "0:00", label: "Problem" },
@@ -16,8 +19,54 @@ export default function DemoSection() {
     { time: "2:00", label: "Rezultat" }
   ];
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const updateProgress = () => {
+      const node = sectionRef.current;
+      if (!node) return;
+
+      const rect = node.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const total = rect.height + viewportHeight * 0.35;
+      const distance = viewportHeight - rect.top;
+      const ratio = Math.min(1, Math.max(0, distance / total));
+
+      setProgress((prev) => {
+        if (Math.abs(prev - ratio) < 0.01) {
+          return prev;
+        }
+        return ratio;
+      });
+    };
+
+    const handleScroll = () => {
+      if (rafRef.current) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+      rafRef.current = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      if (rafRef.current) {
+        window.cancelAnimationFrame(rafRef.current);
+      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  const activeStep = useMemo(() => {
+    const maxIndex = videoSteps.length - 1;
+    return Math.min(maxIndex, Math.round(progress * maxIndex));
+  }, [progress, videoSteps.length]);
+
   return (
-    <section id="demo" className="section-padding bg-muted">
+    <section id="demo" ref={sectionRef} className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-demo-title">
@@ -27,12 +76,38 @@ export default function DemoSection() {
             2-minutowe demo pokazuje, jak stworzyć grafik zgodny z prawem
           </p>
         </div>
+
+        <div className="space-y-4 mb-6" aria-hidden="true">
+          <div className="demo-progress">
+            <div
+              className="demo-progress__bar"
+              style={{ transform: `scaleX(${Math.max(progress, 0.03)})` }}
+            />
+          </div>
+          <div className="demo-steps">
+            {videoSteps.map((step, index) => {
+              const isActive = index === activeStep;
+              const isComplete = index < activeStep;
+              return (
+                <div
+                  key={step.time}
+                  className={`demo-step ${isActive ? "demo-step--active" : ""} ${
+                    isComplete ? "demo-step--complete" : ""
+                  }`}
+                >
+                  <span className="demo-step__time">{step.time}</span>
+                  <span className="demo-step__label">{step.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         
-  <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden">
-          <div className="aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+  <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden" data-animate="rise">
+          <div className="group aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden">
             {!isPlaying ? (
-              <div className="text-center space-y-4">
-                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+              <div className="text-center space-y-5">
+                <div className="demo-preview">
                   <Play className="w-8 h-8 text-white ml-1" />
                 </div>
                 <div className="text-white">
@@ -43,9 +118,9 @@ export default function DemoSection() {
                     Zobacz, jak AutoŻaba tworzy grafik zgodny z Kodeksem Pracy
                   </p>
                 </div>
-                <Button 
+                <Button
                   onClick={() => setIsPlaying(true)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 cta-glow"
                   data-testid="button-play-demo"
                 >
                   <Play className="w-4 h-4 mr-2" />

@@ -16,7 +16,7 @@ export default async function BlogSection() {
   return (
   <section id="blog" className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
-        <div className="text-center space-y-4 mb-16" data-animate>
+        <div className="text-center space-y-4 mb-16" data-animate data-animate-delay="40">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-blog-section-title">
             Blog: <span className="text-primary">Prawo Pracy w Pigułce</span>
           </h2>
@@ -43,8 +43,8 @@ export default async function BlogSection() {
             <Card 
               key={slug} 
               data-animate="rise"
-              data-animate-delay={`${index * 120}`}
-              className="hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
+              data-animate-delay={`${index * 90}`}
+              className="group blog-card hover:calm-shadow-lg transition-shadow bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10"
               data-testid={`card-blog-preview-${slug}`}
             >
               <div className="tinted-media relative w-full h-48 bg-muted rounded-t-xl overflow-hidden">
@@ -53,7 +53,7 @@ export default async function BlogSection() {
                     src={cover}
                     alt={meta.title}
                     fill
-                    className="object-cover"
+                    className="object-cover blog-card__image"
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     data-testid={`img-blog-preview-${slug}`}
                   />
@@ -86,7 +86,7 @@ export default async function BlogSection() {
                   {meta.description ?? "Dowiedz się więcej o prawie pracy z AutoŻaba."}
                 </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="secondary" className="dark:bg-slate-800 dark:text-slate-100" data-testid={`badge-blog-category-${slug}`}>
+                  <Badge variant="secondary" className="dark:bg-slate-800 dark:text-slate-100 badge-shimmer" data-testid={`badge-blog-category-${slug}`}>
                     {tag}
                   </Badge>
                   <Link href={`/blog/${slug}`}>
@@ -101,7 +101,7 @@ export default async function BlogSection() {
           })}
         </div>
         
-        <div className="text-center mb-12" data-animate>
+        <div className="text-center mb-12" data-animate data-animate-delay="180">
           <Link href="/blog">
             <Button variant="outline" size="lg" data-testid="button-view-all-blog-posts">
               Zobacz wszystkie artykuły
@@ -110,7 +110,7 @@ export default async function BlogSection() {
         </div>
         
         {/* Newsletter signup */}
-  <div className="bg-muted rounded-2xl p-8 text-center" data-animate="rise" data-animate-delay="120">
+  <div className="bg-muted rounded-2xl p-8 text-center" data-animate="rise" data-animate-delay="240">
           <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-newsletter-section-title">
             Bądź na bieżąco z prawem pracy
           </h3>

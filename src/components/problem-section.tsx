@@ -3,12 +3,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, XCircle } from "lucide-react";
 import Image from "next/image";
-import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 const numberFormatter = new Intl.NumberFormat("pl-PL", {
   maximumFractionDigits: 0,
@@ -25,37 +21,6 @@ interface CountUpProps {
 }
 
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-
-function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const updatePreference = (event?: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event ? event.matches : mediaQuery.matches);
-    };
-
-    updatePreference();
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", updatePreference);
-    } else {
-      mediaQuery.addListener(updatePreference);
-    }
-
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", updatePreference);
-      } else {
-        mediaQuery.removeListener(updatePreference);
-      }
-    };
-  }, []);
-
-  return prefersReducedMotion;
-}
 
 function CountUp({
   value,

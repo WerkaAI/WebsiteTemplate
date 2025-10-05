@@ -1,16 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const router = useRouter();
+  const pathname = usePathname();
+  const isLanding = pathname === "/";
+  const isBlogRoute = pathname.startsWith("/blog");
+  const isContactRoute = pathname.startsWith("/kontakt");
+  const showScrollProgress = isLanding;
 
   useEffect(() => {
     const updateScrollState = () => {
@@ -29,15 +37,47 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", updateScrollState);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigateToSection = useCallback(
+    (sectionId: string) => {
+      const element = isLanding ? document.getElementById(sectionId) : null;
+
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const target = `/#${sectionId}`;
+      router.push(target);
+    },
+    [isLanding, router]
+  );
+
+  useEffect(() => {
     setIsOpen(false);
-  };
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isLanding) {
+      return;
+    }
+
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) {
+      return;
+    }
+
+    const element = document.getElementById(hash);
+    if (!element) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [isLanding]);
 
   const navItems = [
+    { id: "hero", label: "Start" },
     { id: "problem", label: "Problemy" },
     { id: "solution", label: "Rozwiązanie" },
     { id: "pricing", label: "Cennik" },
@@ -56,7 +96,10 @@ export default function Navigation() {
   >
       <span
         aria-hidden="true"
-        className="absolute left-0 right-0 top-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out"
+        className={cn(
+          "absolute left-0 right-0 top-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out",
+          !showScrollProgress && "opacity-0"
+        )}
         style={{ transform: `scaleX(${scrollProgress / 100 || 0})` }}
       />
       <div className="container-spacing">
@@ -73,37 +116,59 @@ export default function Navigation() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                data-testid={`link-nav-${item.id}`}
+            <div className="flex items-center gap-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigateToSection(item.id);
+                  }}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  data-testid={`link-nav-${item.id}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <span className="hidden lg:block h-5 w-px bg-border/60" aria-hidden="true" />
+            <div className="flex items-center gap-4">
+              <Link
+                href="/blog"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  isBlogRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                )}
+                data-testid="link-nav-blog"
               >
-                {item.label}
-              </button>
-            ))}
-            <Link href="/blog">
-              <Button variant="ghost" data-testid="link-nav-blog">
                 Blog
-              </Button>
-            </Link>
-            <Link href="/kontakt">
-              <Button variant="ghost" data-testid="link-nav-kontakt">
+              </Link>
+              <Link
+                href="/kontakt"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  isContactRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                )}
+                data-testid="link-nav-kontakt"
+              >
                 Kontakt
-              </Button>
-            </Link>
-            <ThemeToggle />
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
           
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button 
+              asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90" 
-              onClick={() => window.open('https://app.autozaba.pl', '_blank')}
               data-testid="button-login-desktop"
             >
-              Zaloguj się do systemu
+              <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
+                Zaloguj się do systemu
+              </Link>
             </Button>
           </div>
           
@@ -125,32 +190,49 @@ export default function Navigation() {
                 {navItems.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      navigateToSection(item.id);
+                    }}
                     className="text-lg text-muted-foreground hover:text-foreground transition-colors text-left"
                     data-testid={`link-mobile-${item.id}`}
                   >
                     {item.label}
                   </button>
                 ))}
-                <Link href="/blog">
-                  <Button variant="ghost" className="justify-start text-lg" data-testid="link-mobile-blog">
-                    Blog
-                  </Button>
+                <Link
+                  href="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-lg font-medium transition-colors",
+                    isBlogRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  )}
+                  data-testid="link-mobile-blog"
+                >
+                  Blog
                 </Link>
-                <Link href="/kontakt">
-                  <Button variant="ghost" className="justify-start text-lg" data-testid="link-mobile-kontakt">
-                    Kontakt
-                  </Button>
+                <Link
+                  href="/kontakt"
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-lg font-medium transition-colors",
+                    isContactRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  )}
+                  data-testid="link-mobile-kontakt"
+                >
+                  Kontakt
                 </Link>
                 <div className="pt-2">
                   <ThemeToggle />
                 </div>
                 <Button 
+                  asChild
                   className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6"
-                  onClick={() => window.open('https://app.autozaba.pl', '_blank')}
                   data-testid="button-login-mobile"
                 >
-                  Zaloguj się do systemu
+                  <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
+                    Zaloguj się do systemu
+                  </Link>
                 </Button>
               </div>
             </SheetContent>
