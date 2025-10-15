@@ -7,6 +7,107 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 
+const allowGenericClassName = (entries = []) => {
+  const filtered = []
+
+  for (const entry of entries) {
+    if (!entry) continue
+    const name = typeof entry === 'string' ? entry : entry[0]
+    if (name && name !== 'className') {
+      filtered.push(entry)
+    }
+  }
+
+  filtered.push('className')
+  return filtered
+}
+
+const rehypeMdxJsxToElements = () => (tree) => {
+  const convertNode = (node) => {
+    if (!node || typeof node !== 'object') return
+
+    if (
+      (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') &&
+      typeof node.name === 'string' &&
+      /^[a-z]/.test(node.name)
+    ) {
+      const properties = {}
+
+      if (Array.isArray(node.attributes)) {
+        for (const attribute of node.attributes) {
+          if (!attribute || typeof attribute !== 'object') continue
+          if (attribute.type === 'mdxJsxAttribute' && typeof attribute.name === 'string') {
+            if (attribute.value === null || attribute.value === undefined) {
+              properties[attribute.name] = true
+            } else if (typeof attribute.value === 'string') {
+              properties[attribute.name] = attribute.value
+            } else if (typeof attribute.value === 'object' && 'value' in attribute.value && typeof attribute.value.value === 'string') {
+              properties[attribute.name] = attribute.value.value
+            }
+          }
+        }
+      }
+
+      node.type = 'element'
+      node.tagName = node.name
+      node.properties = properties
+      delete node.name
+      delete node.attributes
+    }
+
+    if (Array.isArray(node.children)) {
+      for (const child of node.children) {
+        convertNode(child)
+      }
+    }
+  }
+
+  convertNode(tree)
+}
+
+const clonedSchema = structuredClone(defaultSchema)
+
+const mdxSanitizeSchema = {
+  ...clonedSchema,
+  tagNames: Array.from(
+    new Set([...(clonedSchema.tagNames || []), 'section', 'div', 'span', 'article'])
+  ),
+  attributes: {
+    ...clonedSchema.attributes,
+    '*': [
+      ...(clonedSchema.attributes?.['*'] || []),
+      'className',
+    ],
+    // Allow common attributes on anchors and images inside MDX content
+    a: [
+      ...(clonedSchema.attributes?.a || []),
+      ['target'],
+      ['rel'],
+      ['className'],
+    ],
+    img: [
+      ...(clonedSchema.attributes?.img || []),
+      ['src'],
+      ['alt'],
+      ['loading'],
+      ['decoding'],
+      ['className'],
+    ],
+    code: [
+      ...(clonedSchema.attributes?.code || []),
+      ['className'],
+    ],
+    pre: [
+      ...(clonedSchema.attributes?.pre || []),
+      ['className'],
+    ],
+    section: allowGenericClassName(clonedSchema.attributes?.section),
+    ul: allowGenericClassName(clonedSchema.attributes?.ul),
+    ol: allowGenericClassName(clonedSchema.attributes?.ol),
+    li: allowGenericClassName(clonedSchema.attributes?.li),
+  },
+}
+
 const withMDX = createMDX({
   options: {
     providerImportSource: '../../mdx-components',
@@ -18,36 +119,8 @@ const withMDX = createMDX({
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      [
-        rehypeSanitize,
-        {
-          ...defaultSchema,
-          attributes: {
-            ...defaultSchema.attributes,
-            // Allow common attributes on anchors and images inside MDX content
-            a: [
-              ...(defaultSchema.attributes?.a || []),
-              ['target'],
-              ['rel'],
-            ],
-            img: [
-              ...(defaultSchema.attributes?.img || []),
-              ['src'],
-              ['alt'],
-              ['loading'],
-              ['decoding'],
-            ],
-            code: [
-              ...(defaultSchema.attributes?.code || []),
-              ['className'],
-            ],
-            pre: [
-              ...(defaultSchema.attributes?.pre || []),
-              ['className'],
-            ],
-          },
-        },
-      ],
+      rehypeMdxJsxToElements,
+      [rehypeSanitize, mdxSanitizeSchema],
     ]
   }
 })

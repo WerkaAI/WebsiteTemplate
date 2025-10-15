@@ -111,7 +111,7 @@ export default function DemoSection() {
                   <Play className="w-8 h-8 text-white ml-1" />
                 </div>
                 <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2" data-testid="text-demo-video-title">
+                  <h3 className="text-xl font-semibold mb-2 text-white" data-testid="text-demo-video-title">
                     Od chaosu do kontroli w 15 minut
                   </h3>
                   <p className="text-white/80" data-testid="text-demo-video-description">

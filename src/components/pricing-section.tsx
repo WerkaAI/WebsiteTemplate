@@ -67,7 +67,7 @@ export default function PricingSection() {
               data-animate-delay={`${index * 120}`}
               className={`relative transition-shadow pricing-card ${
                 plan.variant === 'default'
-                  ? 'pricing-card--featured'
+                  ? 'pricing-card--featured text-white'
                   : 'pricing-card--standard'
               }`}
               data-testid={`card-plan-${plan.id}`}
@@ -84,7 +84,7 @@ export default function PricingSection() {
                 </h3>
                 <div className="text-4xl font-bold" data-testid={`text-plan-price-${plan.id}`}>
                   {plan.price}
-                  <span className={`text-lg font-normal ${plan.variant === 'default' ? 'opacity-80' : 'text-muted-foreground'}`}>
+                  <span className={`text-lg font-normal ${plan.variant === 'default' ? 'text-white/80' : 'text-muted-foreground'}`}>
                     {plan.period}
                   </span>
                 </div>
@@ -112,7 +112,7 @@ export default function PricingSection() {
                 </Button>
                 
                 {plan.disclaimer && (
-                  <div className="text-center text-sm opacity-80" data-testid={`text-disclaimer-${plan.id}`}>
+                  <div className={`text-center text-sm opacity-80 ${plan.variant === 'default' ? 'text-white/80' : ''}`} data-testid={`text-disclaimer-${plan.id}`}>
                     {plan.disclaimer}
                   </div>
                 )}

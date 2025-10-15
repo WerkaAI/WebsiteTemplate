@@ -76,7 +76,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
                 <Clock className="w-4 h-4 mr-2" />
                 <span data-testid={`text-read-time-${post.slug}`}>~5 min czytania</span>
               </div>
-              <h3 className="text-xl font-semibold text-foreground hover:text-primary transition-colors" data-testid={`text-title-${post.slug}`}>
+              <h3 className="text-xl font-semibold text-foreground" data-testid={`text-title-${post.slug}`}>
                 <Link href={`/blog/${post.slug}`}>
                   {post.meta.title}
                 </Link>

@@ -228,7 +228,7 @@ export default function CalculatorSection() {
                     >
                       <div className="flex items-center justify-between">
                         <span className="metric-card__label font-semibold">Spokój ducha</span>
-                        <Badge className="badge-pulse bg-white/20 text-white border-white/30">
+                        <Badge className="badge-pulse bg-white text-black dark:bg-white/20 dark:text-white border-white/60 dark:border-white/30">
                           {monthlyBenefitSpring.formatted.replace("zł", "zł / msc")}
                         </Badge>
                       </div>

@@ -9,6 +9,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
+      storageKey="autozaba-theme"
       enableSystem={false}
       disableTransitionOnChange
     >

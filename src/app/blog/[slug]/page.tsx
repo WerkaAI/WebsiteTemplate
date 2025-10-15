@@ -114,12 +114,12 @@ export default async function Page({ params }: BlogPostPageProps) {
   <main className="container mx-auto max-w-5xl px-4 md:px-6 py-8 lg:py-12 flex-1 w-full space-y-10">
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/" className="inline-flex items-center gap-1 hover:text-primary transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1">
             <ArrowLeft className="h-4 w-4" />
             Strona główna
           </Link>
           <span className="text-muted-foreground">/</span>
-          <Link href="/blog" className="hover:text-primary transition-colors">
+          <Link href="/blog">
             Blog
           </Link>
         </div>
@@ -190,7 +190,7 @@ export default async function Page({ params }: BlogPostPageProps) {
       </div>
 
       <div id="treść-artykułu" className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
-  <article className="blog-prose prose prose-slate dark:prose-invert max-w-none md:prose-lg lg:prose-xl prose-headings:font-semibold prose-headings:scroll-mt-32 prose-a:underline-offset-4 hover:prose-a:text-emerald-700 dark:hover:prose-a:text-emerald-400 prose-img:rounded-2xl prose-pre:rounded-2xl prose-blockquote:border-l-4 prose-blockquote:border-emerald-400/70 prose-blockquote:bg-emerald-500/5 prose-blockquote:py-1 prose-blockquote:px-6 prose-blockquote:rounded-xl prose-code:text-emerald-600 dark:prose-code:text-emerald-300">
+  <article className="blog-prose prose prose-slate dark:prose-invert max-w-none md:prose-lg lg:prose-xl prose-headings:font-semibold prose-headings:scroll-mt-32 prose-a:no-underline prose-a:text-primary prose-a:font-semibold dark:prose-a:text-emerald-200 prose-img:rounded-2xl prose-pre:rounded-2xl prose-blockquote:border-l-4 prose-blockquote:border-emerald-400/70 prose-blockquote:bg-emerald-500/5 prose-blockquote:py-1 prose-blockquote:px-6 prose-blockquote:rounded-xl prose-code:text-emerald-600 dark:prose-code:text-emerald-300">
           <Post />
         </article>
 

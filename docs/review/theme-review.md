@@ -85,6 +85,17 @@ Severity legend: Critical = blocks readability/compliance, Major = noticeable UX
 - Verify footer CTA pair in light mode: outline button border should be visible, hover/focus states must maintain ≥3:1 contrast against background.
 - Smoke-test key forms (contact, newsletter) to ensure focus ring styling remains intact after color token adjustments.
 
+## Remediation progress (15.10.2025)
+- Updated `.pricing-card--featured` to override local foreground tokens, guaranteeing white body copy and supporting text on the highlighted plan in light mode while keeping dark-mode tokens intact.
+- Forced the demo preview headline (“Od chaosu do kontroli w 15 minut”) to `text-white` so the video teaser remains readable regardless of parent card styling.
+- Restyled the “Spokój ducha” metric badge with a solid white chip and black text in light mode (`dark:` fallbacks preserved) to deliver AA contrast, and aligned the card copy with pure black text.
+- Boosted the hero board label (“Obecny grafik”) to `text-white/90` for stronger readability against the emerald gradient background.
+- Locked the footer CTA headline to `text-white`, making the “Odzyskaj kontrolę nad swoim czasem” message unmistakable on light backgrounds.
+- Added a dark-mode override so the “Spokój ducha” metric text flips back to near-white while light mode keeps high-contrast black copy.
+- Rebuilt the blog experience: removed link underlines/hover color shifts, introduced structured hero/grid/timeline components, and rewrote the opening article to read like a polished copy deck.
+- Configured `ThemeProvider` with a dedicated storage key while keeping `defaultTheme="dark"` so the dark palette loads first and persists between visits.
+- Extended the MDX sanitize schema to allow `div`/`section` wrappers and `className` attributes so the redesigned blog layout renders instead of being stripped out.
+
 ## Audit summary – Dark theme (15.10.2025)
 - Target surface: default “dark” theme (`ThemeProvider` sets `defaultTheme="dark"`) applied across landing page sections in `src/app/page.tsx` and shared UI primitives.
 - Palette review: `.dark` tokens in `globals.css` swap backgrounds to deep slate hues while keeping `--primary`/`--secondary` at low lightness values; buttons, inline links, and focus rings inherit those tints.

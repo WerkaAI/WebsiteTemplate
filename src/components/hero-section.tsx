@@ -378,7 +378,7 @@ export default function HeroSection() {
                 <div className="space-y-6">
                   <header className="flex items-start justify-between">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-emerald-200/70">Obecny grafik</p>
+                      <p className="text-xs uppercase tracking-[0.4em] text-white/90 dark:text-emerald-200/80">Obecny grafik</p>
                       <h3 className="text-2xl font-semibold text-white" data-testid="text-schedule-title">Grudzień, tydzień 49</h3>
                     </div>
                     <div className="rounded-full bg-white/10 px-4 py-2 text-xs text-white/80 flex items-center gap-2">

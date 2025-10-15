@@ -133,7 +133,7 @@ export default function Footer() {
         
         {/* Final CTA Section */}
   <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center mt-12 space-y-6 shadow-lg">
-          <h2 className="text-2xl lg:text-3xl font-bold" data-testid="text-footer-cta-title">
+          <h2 className="text-2xl lg:text-3xl font-bold text-white" data-testid="text-footer-cta-title">
             Odzyskaj kontrolę nad swoim czasem
           </h2>
           <p className="text-lg opacity-90 max-w-2xl mx-auto" data-testid="text-footer-cta-description">
