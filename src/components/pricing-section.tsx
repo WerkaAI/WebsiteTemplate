@@ -135,35 +135,35 @@ export default function PricingSection() {
             <div className="grid gap-6 text-sm md:grid-cols-3 lg:gap-8">
               {comparison.map((item, index) => {
                 const toneClasses = item.highlight
-                  ? "border-primary/40 bg-primary/10 text-primary"
+                  ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-300/40 dark:bg-emerald-500/15 dark:text-emerald-200"
                   : item.warning
-                    ? "border-accent/35 bg-accent/10 text-accent"
-                    : "border-border/60 bg-white/80 text-muted-foreground dark:bg-slate-900/60 dark:border-white/10 dark:text-foreground";
+                    ? "border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-300/40 dark:bg-orange-500/15 dark:text-orange-200"
+                    : "border-border/70 bg-white/95 text-muted-foreground dark:bg-slate-900/70 dark:border-white/12 dark:text-foreground";
                 const priceClasses = item.highlight
-                  ? "text-primary"
+                  ? "text-emerald-600 dark:text-emerald-200"
                   : item.warning
-                    ? "text-accent"
+                    ? "text-orange-600 dark:text-orange-200"
                     : "text-foreground";
 
                 return (
                   <div
                     key={index}
-                    className={`flex h-full flex-col items-center gap-2 rounded-2xl border px-5 py-6 text-center shadow-[0_18px_40px_-30px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 ${toneClasses}`}
+                    className={`flex h-full flex-col items-center gap-4 rounded-2xl border px-6 py-8 text-center backdrop-blur-md shadow-[0_18px_44px_-30px_rgba(15,23,42,0.55)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_24px_52px_-26px_rgba(15,23,42,0.65)] ${toneClasses}`}
                     data-testid={`comparison-item-${index}`}
                   >
                     <div
-                      className="text-xs font-semibold uppercase tracking-[0.28em] opacity-80"
+                      className="text-xs font-semibold uppercase tracking-[0.28em] opacity-90"
                       data-testid={`comparison-label-${index}`}
                     >
                       {item.label}
                     </div>
                     <div
-                      className={`text-3xl font-bold ${priceClasses}`}
+                      className={`text-3xl font-bold drop-shadow-[0_8px_16px_rgba(0,0,0,0.28)] ${priceClasses}`}
                       data-testid={`comparison-price-${index}`}
                     >
                       {item.price}
                     </div>
-                    <div className="text-sm opacity-85" data-testid={`comparison-note-${index}`}>
+                    <div className="text-sm opacity-90" data-testid={`comparison-note-${index}`}>
                       {item.note}
                     </div>
                   </div>

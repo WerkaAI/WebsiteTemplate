@@ -705,24 +705,33 @@
   .pricing-comparison {
     position: relative;
     overflow: hidden;
+    isolation: isolate;
   }
 
   .pricing-comparison::before {
     content: "";
     position: absolute;
-    top: calc(50% - 3px);
-    left: 8%;
-    right: 8%;
-    height: 6px;
+    inset: 12% 6%;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(22, 163, 74, 0.2), rgba(59, 130, 246, 0.35));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 620ms var(--motion-ease-out);
+    background:
+      radial-gradient(ellipse at 18% 50%, rgba(59, 130, 246, 0.16), rgba(59, 130, 246, 0) 62%),
+      radial-gradient(ellipse at 50% 45%, rgba(22, 163, 74, 0.24), rgba(22, 163, 74, 0) 60%),
+      radial-gradient(ellipse at 82% 52%, rgba(253, 126, 20, 0.2), rgba(253, 126, 20, 0) 64%);
+    filter: blur(28px);
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(1.02);
+    transition: opacity 520ms var(--motion-ease-out), transform 520ms var(--motion-ease-out);
+    z-index: 0;
   }
 
   .pricing-comparison.is-visible::before {
-    transform: scaleX(1);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .pricing-comparison > * {
+    position: relative;
+    z-index: 1;
   }
 
   .blog-card {
