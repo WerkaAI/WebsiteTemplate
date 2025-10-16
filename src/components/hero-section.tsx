@@ -238,7 +238,7 @@ export default function HeroSection() {
   }, [prefersReducedMotion, highlightCount]);
 
   return (
-    <section className="hero-gradient section-padding">
+    <section id="hero" className="hero-gradient section-padding">
       <div className="container-spacing">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -264,15 +264,15 @@ export default function HeroSection() {
             </div>
             
             <div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col items-start sm:flex-row sm:items-center gap-4"
               data-animate="rise"
               data-animate-delay="200"
               data-animate-once
             >
               <span className="cta-glow">
                 <Button 
-                  size="lg" 
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-4 calm-shadow transition-all duration-300"
+                  size="touch" 
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-9 calm-shadow transition-all duration-300"
                   onClick={() => window.open('https://app.autozaba.pl/register', '_blank', 'noopener,noreferrer')}
                   data-testid="button-hero-register"
                 >
@@ -281,8 +281,8 @@ export default function HeroSection() {
               </span>
               <Button 
                 variant="outline" 
-                size="lg" 
-                className="text-lg px-8 py-4 transition-transform duration-300 hover:-translate-y-0.5"
+                size="touch" 
+                className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-primary border-white/70 hover:bg-white/90 dark:bg-white/10 dark:text-white dark:border-white/30"
                 onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-hero-demo"
               >
@@ -299,7 +299,7 @@ export default function HeroSection() {
             </div>
             
             <div
-              className="rounded-3xl border border-white/30 dark:border-white/10 bg-white/15 dark:bg-white/5 backdrop-blur-md shadow-[0_25px_60px_-35px_rgba(15,23,42,0.6)] p-6 sm:p-7 flex flex-col gap-5"
+              className="rounded-3xl border border-white/30 dark:border-white/10 bg-white/15 dark:bg-white/5 backdrop-blur-md shadow-[0_25px_60px_-35px_rgba(15,23,42,0.6)] p-5 sm:p-7 flex flex-col gap-5 w-full max-w-[340px] sm:max-w-md mx-auto sm:mx-0"
               data-animate="rise"
               data-animate-delay="260"
               data-animate-once
@@ -350,7 +350,8 @@ export default function HeroSection() {
                       <button
                         key={highlight.label}
                         onClick={() => setActiveHighlight(index)}
-                        className={`h-[6px] w-6 rounded-full transition-all duration-300 ${
+                        aria-pressed={index === activeHighlight}
+                        className={`h-2.5 w-8 rounded-full transition-all duration-300 ${
                           index === activeHighlight ? "bg-emerald-400/90" : "bg-emerald-400/20 hover:bg-emerald-400/40"
                         }`}
                         aria-label={`Pokaż wyróżnienie ${index + 1}`}
@@ -362,15 +363,19 @@ export default function HeroSection() {
             </div>
           </div>
           
-          <div className="relative">
-            <div className="relative isolate">
-              <div ref={orbRef} className="absolute inset-0 mx-auto h-[420px] w-[420px] rounded-full bg-emerald-500/20 blur-3xl opacity-30 hero-orb" aria-hidden="true" />
+          <div className="relative hidden md:block">
+            <div className="relative isolate mx-auto w-full max-w-[420px] overflow-hidden rounded-[36px]">
+              <div
+                ref={orbRef}
+                className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[420px] rounded-full bg-emerald-500/20 blur-3xl opacity-30 hero-orb"
+                aria-hidden="true"
+              />
               <div
                 ref={boardRef}
                 data-animate="scale"
                 data-animate-delay="120"
                 data-animate-once
-                className="relative rounded-[32px] border border-white/40 dark:border-white/10 bg-gradient-to-br from-emerald-400/15 via-slate-900/70 to-slate-950/80 px-8 py-10 shadow-[0_35px_55px_-30px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-transform duration-500 ease-out will-change-transform"
+                className="relative w-full rounded-[32px] border border-white/40 dark:border-white/10 bg-gradient-to-br from-emerald-400/15 via-slate-900/70 to-slate-950/80 px-6 py-10 shadow-[0_35px_55px_-30px_rgba(0,0,0,0.55)] backdrop-blur-xl transition-transform duration-500 ease-out will-change-transform sm:px-8"
               >
                 <div className="absolute -top-5 left-8 rounded-full bg-amber-500 text-amber-50 px-5 py-2 text-sm font-semibold shadow-lg badge-pulse" data-testid="stress-indicator">
                   📣 Kontrola PIP za 2 dni!
@@ -401,6 +406,25 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="md:hidden">
+            <div className="rounded-3xl border border-emerald-200/60 bg-emerald-50/90 dark:bg-emerald-500/10 dark:border-emerald-400/25 p-5 space-y-4 shadow-[0_18px_48px_-28px_rgba(16,185,129,0.45)] w-full max-w-[340px] mx-auto">
+              <p className="text-sm uppercase tracking-[0.35em] text-emerald-900/70 dark:text-emerald-100/75">AutoŻaba w skrócie</p>
+              <ul className="space-y-3 text-sm text-emerald-900/90 dark:text-emerald-100">
+                <li className="flex items-start gap-3">
+                  <Shield className="h-5 w-5" />
+                  <span>Automatyczna tarcza prawna – grafiki zgodne z Kodeksem Pracy.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock3 className="h-5 w-5" />
+                  <span>Odzyskaj do 26 godzin miesięcznie bez chaosu w grafikach.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Users className="h-5 w-5" />
+                  <span>Zespół zgłasza dostępność w aplikacji – Ty masz pełną kontrolę.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

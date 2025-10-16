@@ -163,6 +163,7 @@ export default function Navigation() {
           <div className="hidden md:block">
             <Button 
               asChild
+              size="touch"
               className="bg-primary text-primary-foreground hover:bg-primary/90" 
               data-testid="button-login-desktop"
             >
@@ -177,7 +178,7 @@ export default function Navigation() {
             <SheetTrigger asChild className="md:hidden">
               <Button 
                 variant="ghost" 
-                size="icon" 
+                size="touchIcon" 
                 aria-label="Otwórz menu"
                 aria-expanded={isOpen}
                 data-testid="button-mobile-menu"
@@ -227,6 +228,7 @@ export default function Navigation() {
                 </div>
                 <Button 
                   asChild
+                  size="touch"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6"
                   data-testid="button-login-mobile"
                 >

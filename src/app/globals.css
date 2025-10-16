@@ -191,6 +191,25 @@
   body.reveal-ready [data-animate] {
     opacity: 0;
     transform: translate3d(0, 18px, 0) scale(0.985);
+  
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  details summary span[aria-hidden="true"]::before {
+    content: "+";
+    display: inline-block;
+    transition: transform 150ms ease;
+  }
+
+  details[open] summary span[aria-hidden="true"]::before {
+    content: "-";
+  }
     transition: opacity var(--motion-duration-medium) var(--motion-ease-out), transform var(--motion-duration-medium) var(--motion-ease-out);
     transition-delay: var(--reveal-delay, 0ms);
   }
@@ -583,8 +602,8 @@
   }
 
   .testimonials-control {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .testimonials-dots {

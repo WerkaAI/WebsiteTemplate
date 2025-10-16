@@ -259,8 +259,9 @@ export default function ContactSection() {
                 
                 <Button 
                   type="submit" 
+                  size="touch"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 font-semibold disabled:opacity-60 button-border-animated"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold disabled:opacity-60 button-border-animated"
                   data-testid="button-contact-submit"
                 >
                   {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}

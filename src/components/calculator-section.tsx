@@ -246,8 +246,8 @@ export default function CalculatorSection() {
             
             <div className="text-center pt-6 border-t border-border">
               <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg calm-shadow transition-all duration-300 hover:scale-105"
+                size="touch" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 text-lg calm-shadow transition-all duration-300 hover:scale-105"
                 onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
                 data-testid="button-calculator-register"
               >

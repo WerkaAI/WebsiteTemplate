@@ -12,7 +12,8 @@ export function ThemeToggle() {
   return (
     <Button
       variant="ghost"
-      size="icon"
+      size="touchIcon"
+      className="md:h-10 md:w-10"
       aria-label={isDark ? "Przełącz na jasny motyw" : "Przełącz na ciemny motyw"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       data-testid="button-theme-toggle"

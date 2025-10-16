@@ -128,7 +128,7 @@ export default function TestimonialsSection() {
             <Button
               type="button"
               variant="outline"
-              size="icon"
+              size="touchIcon"
               onClick={prev}
               aria-label="Poprzednia opinia"
               className="testimonials-control"
@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
             <Button
               type="button"
               variant="outline"
-              size="icon"
+              size="touchIcon"
               onClick={next}
               aria-label="Następna opinia"
               className="testimonials-control"

@@ -55,8 +55,7 @@ export default function ShareButtons({ title, slug, className }: ShareButtonsPro
       <div className="flex flex-wrap gap-2">
         <Button
           variant="outline"
-          size="icon"
-          className="w-10 h-10"
+          size="touchIcon"
           onClick={handleCopy}
           type="button"
           aria-label="Kopiuj link"
@@ -65,8 +64,7 @@ export default function ShareButtons({ title, slug, className }: ShareButtonsPro
         </Button>
         <Button
           variant="outline"
-          size="icon"
-          className="w-10 h-10"
+          size="touchIcon"
           asChild
           aria-label="Udostępnij na LinkedIn"
         >
@@ -80,8 +78,7 @@ export default function ShareButtons({ title, slug, className }: ShareButtonsPro
         </Button>
         <Button
           variant="outline"
-          size="icon"
-          className="w-10 h-10"
+          size="touchIcon"
           asChild
           aria-label="Udostępnij na X (Twitter)"
         >
@@ -95,8 +92,7 @@ export default function ShareButtons({ title, slug, className }: ShareButtonsPro
         </Button>
         <Button
           variant="outline"
-          size="icon"
-          className="w-10 h-10"
+          size="touchIcon"
           asChild
           aria-label="Udostępnij e-mailem"
         >

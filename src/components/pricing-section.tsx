@@ -102,7 +102,8 @@ export default function PricingSection() {
                 
                 <Button 
                   variant={plan.variant}
-                  className={`w-full py-3 font-semibold pricing-card__button ${
+                  size="touch"
+                  className={`w-full font-semibold pricing-card__button ${
                     plan.variant === 'default' ? 'pricing-card__button--featured' : ''
                   }`}
                   onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}

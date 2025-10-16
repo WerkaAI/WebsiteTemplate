@@ -84,7 +84,7 @@ export default function DemoSection() {
               style={{ transform: `scaleX(${Math.max(progress, 0.03)})` }}
             />
           </div>
-          <div className="demo-steps">
+          <div className="demo-steps sm:grid-cols-5">
             {videoSteps.map((step, index) => {
               const isActive = index === activeStep;
               const isComplete = index < activeStep;
@@ -106,19 +106,20 @@ export default function DemoSection() {
   <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden" data-animate="rise">
           <div className="group aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden">
             {!isPlaying ? (
-              <div className="text-center space-y-5">
+              <div className="text-center space-y-5 px-6">
                 <div className="demo-preview">
                   <Play className="w-8 h-8 text-white ml-1" />
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-semibold mb-2 text-white" data-testid="text-demo-video-title">
+                <div className="text-white space-y-2 max-w-xs sm:max-w-sm mx-auto text-balance">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white" data-testid="text-demo-video-title">
                     Od chaosu do kontroli w 15 minut
                   </h3>
-                  <p className="text-white/80" data-testid="text-demo-video-description">
+                  <p className="text-sm sm:text-base text-white/80" data-testid="text-demo-video-description">
                     Zobacz, jak AutoŻaba tworzy grafik zgodny z Kodeksem Pracy
                   </p>
                 </div>
                 <Button
+                  size="touch"
                   onClick={() => setIsPlaying(true)}
                   className="bg-primary text-primary-foreground hover:bg-primary/90 cta-glow"
                   data-testid="button-play-demo"
@@ -145,7 +146,7 @@ export default function DemoSection() {
           
           {/* Video progress indicators */}
           {!isPlaying && (
-            <div className="absolute bottom-4 left-4 right-4">
+            <div className="absolute bottom-4 left-4 right-4 hidden sm:block">
               <div className="flex flex-wrap gap-2 text-xs text-white/80">
                 {videoSteps.map((step, index) => (
                   <span 
@@ -161,13 +162,26 @@ export default function DemoSection() {
           )}
         </Card>
         
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 space-y-4">
           <p className="text-muted-foreground mb-4" data-testid="text-demo-cta">
             Przekonaj się, jak łatwo można odzyskać kontrolę nad czasem
           </p>
+          {!isPlaying && (
+            <div className="flex flex-wrap justify-center gap-2 text-xs text-muted-foreground sm:hidden">
+              {videoSteps.map((step, index) => (
+                <span
+                  key={index}
+                  className={`px-2 py-1 rounded-full border ${index === activeStep ? "border-emerald-400 text-emerald-600" : "border-border text-muted-foreground"}`}
+                  data-testid={`video-step-mobile-${index}`}
+                >
+                  {step.time} {step.label}
+                </span>
+              ))}
+            </div>
+          )}
           <Button 
             variant="outline" 
-            size="lg"
+            size="touch"
             onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
             data-testid="button-demo-trial"
           >

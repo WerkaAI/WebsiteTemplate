@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const footerSections = [
@@ -54,10 +55,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-muted text-foreground py-12 dark:bg-slate-950 dark:text-slate-100">
-      <div className="container-spacing">
-        <div className="grid md:grid-cols-4 gap-8">
+      <div className="container-spacing space-y-12">
+        <div className="grid gap-10 md:grid-cols-5">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="space-y-4 md:col-span-2">
             <Link href="/">
               <div className="flex items-center space-x-2" data-testid="link-footer-logo">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
@@ -67,57 +68,97 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground" data-testid="text-footer-description">
-              Automatyczna tarcza prawna dla franczyzobiorców Żabki. 
-              Zarządzaj zespołem, nie ryzykiem.
+              Automatyczna tarcza prawna dla franczyzobiorców Żabki. Zarządzaj zespołem, nie ryzykiem.
             </p>
           </div>
-          
-          {/* Footer Sections */}
-          {footerSections.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="space-y-4">
-              <h3 className="font-semibold text-foreground" data-testid={`text-footer-section-${sectionIndex}`}>
-                {section.title}
-              </h3>
-              <ul className="space-y-2 text-muted-foreground">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    {link.href.startsWith('#') ? (
-                      <button
-                        onClick={() => handleLinkClick(link.href)}
-                        className="footer-link hover:text-foreground transition-colors text-left"
-                        data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
-                      >
-                        {link.label}
-                      </button>
-                    ) : link.href.startsWith('/') ? (
-                      <Link href={link.href}>
-                        <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+
+          {/* Desktop footer columns */}
+          <div className="hidden md:grid md:col-span-3 grid-cols-3 gap-8">
+            {footerSections.map((section, sectionIndex) => (
+              <div key={sectionIndex} className="space-y-4">
+                <h3 className="font-semibold text-foreground" data-testid={`text-footer-section-${sectionIndex}`}>
+                  {section.title}
+                </h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      {link.href.startsWith('#') ? (
+                        <button
+                          onClick={() => handleLinkClick(link.href)}
+                          className="footer-link hover:text-foreground transition-colors text-left"
+                          data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                        >
                           {link.label}
-                        </span>
-                      </Link>
-                    ) : (
-                      <a 
-                        href={link.href} 
-                        className="footer-link hover:text-foreground transition-colors"
-                        data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
-                      >
-                        {link.label}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        
-        <hr className="border-border/60 dark:border-white/5 my-8" />
-        
-        <div className="flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
-          <div data-testid="text-footer-copyright">
-            © 2024 AutoŻaba. Wszystkie prawa zastrzeżone.
+                        </button>
+                      ) : link.href.startsWith('/') ? (
+                        <Link href={link.href}>
+                          <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                            {link.label}
+                          </span>
+                        </Link>
+                      ) : (
+                        <a 
+                          href={link.href} 
+                          className="footer-link hover:text-foreground transition-colors"
+                          data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+
+          {/* Mobile accordions */}
+          <div className="md:hidden space-y-4">
+            {footerSections.map((section, sectionIndex) => (
+              <details key={sectionIndex} className="rounded-xl border border-border/60 bg-white/40 dark:bg-white/5 dark:border-white/12 p-4" data-testid={`text-footer-section-${sectionIndex}`}>
+                <summary className="flex items-center justify-between font-semibold text-foreground">
+                  {section.title}
+                  <span className="text-lg" aria-hidden="true">+</span>
+                </summary>
+                <ul className="mt-3 space-y-2 text-muted-foreground">
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      {link.href.startsWith('#') ? (
+                        <button
+                          onClick={() => handleLinkClick(link.href)}
+                          className="footer-link hover:text-foreground transition-colors text-left"
+                          data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                        >
+                          {link.label}
+                        </button>
+                      ) : link.href.startsWith('/') ? (
+                        <Link href={link.href}>
+                          <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                            {link.label}
+                          </span>
+                        </Link>
+                      ) : (
+                        <a 
+                          href={link.href} 
+                          className="footer-link hover:text-foreground transition-colors"
+                          data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <hr className="border-border/60 dark:border-white/5" />
+
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-muted-foreground text-sm">
+          <div data-testid="text-footer-copyright">© 2024 AutoŻaba. Wszystkie prawa zastrzeżone.</div>
+          <div className="flex flex-wrap gap-4">
             {legalLinks.map((link, index) => (
               <a 
                 key={index} 
@@ -130,9 +171,9 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        
+
         {/* Final CTA Section */}
-  <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center mt-12 space-y-6 shadow-lg">
+        <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center space-y-6 shadow-lg">
           <h2 className="text-2xl lg:text-3xl font-bold text-white" data-testid="text-footer-cta-title">
             Odzyskaj kontrolę nad swoim czasem
           </h2>
@@ -142,23 +183,26 @@ export default function Footer() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <button 
+            <Button
+              size="touch"
+              className="bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg"
               onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
-              className="bg-white text-primary px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
               data-testid="button-footer-trial"
             >
               Rozpocznij 14-dniowy trial
-            </button>
-            <button 
+            </Button>
+            <Button
+              size="touch"
+              variant="outline"
+              className="border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg"
               onClick={() => scrollToSection('contact')}
-              className="border border-white/20 text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-colors font-medium"
               data-testid="button-footer-demo"
             >
               Umów prezentację
-            </button>
+            </Button>
           </div>
           
-          <div className="flex items-center justify-center space-x-8 text-sm opacity-80">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm opacity-80">
             <div className="flex items-center" data-testid="feature-footer-compliance">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
