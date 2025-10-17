@@ -51,7 +51,7 @@ export default function ContactPage() {
     <>
       <Navigation />
       
-      <main className="min-h-screen bg-muted dark:bg-slate-950">
+      <div className="min-h-screen bg-muted dark:bg-slate-950">
         {/* Header */}
         <section className="bg-white dark:bg-slate-950 border-b border-border/60 dark:border-white/5">
           <div className="container-spacing py-12">
@@ -89,9 +89,9 @@ export default function ContactPage() {
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                         <info.icon className="w-6 h-6 text-primary" />
                       </div>
-                      <h3 className="font-semibold text-foreground mb-2" data-testid={`text-contact-info-title-${index}`}>
+                      <p className="font-semibold text-foreground mb-2" data-testid={`text-contact-info-title-${index}`}>
                         {info.title}
-                      </h3>
+                      </p>
                       <p className="text-lg font-medium text-foreground mb-1" data-testid={`text-contact-info-content-${index}`}>
                         {info.content}
                       </p>
@@ -132,21 +132,21 @@ export default function ContactPage() {
                       <div className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <h4 className="font-medium text-foreground">Bezpłatna konsultacja</h4>
+                          <p className="font-medium text-foreground">Bezpłatna konsultacja</p>
                           <p className="text-sm text-muted-foreground">Przeanalizujemy Twoją sytuację i pokażemy, jak AutoŻaba może Ci pomóc.</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <h4 className="font-medium text-foreground">Dopasowane rozwiązanie</h4>
+                          <p className="font-medium text-foreground">Dopasowane rozwiązanie</p>
                           <p className="text-sm text-muted-foreground">Każda franczyza jest inna - dostosujemy AutoŻabę do Twoich potrzeb.</p>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <h4 className="font-medium text-foreground">Wsparcie wdrożenia</h4>
+                          <p className="font-medium text-foreground">Wsparcie wdrożenia</p>
                           <p className="text-sm text-muted-foreground">Pomożemy Ci sprawnie przejść na automatyczne zarządzanie zespołem.</p>
                         </div>
                       </div>
@@ -156,9 +156,9 @@ export default function ContactPage() {
                   <Card className="bg-primary/5 dark:bg-primary/15 border-primary/20 dark:border-primary/40">
                     <CardContent className="p-6">
                       <div className="text-center space-y-4">
-                        <h3 className="text-lg font-semibold text-foreground" data-testid="text-urgent-title">
+                        <p className="text-lg font-semibold text-foreground" data-testid="text-urgent-title">
                           Potrzebujesz pilnej pomocy?
-                        </h3>
+                        </p>
                         <p className="text-sm text-muted-foreground">
                           Masz kontrolę PIP jutro? Skontaktuj się z nami telefonicznie - pomożemy natychmiast.
                         </p>
@@ -178,7 +178,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
 
       <Footer />
     </>

@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { animate } from "framer-motion";
-import type { SpringOptions } from "framer-motion";
 import { usePrefersReducedMotion } from "./use-prefers-reduced-motion";
 
 export interface UseSpringNumberOptions {
-  /** Additional spring configuration passed to framer-motion. */
-  config?: SpringOptions;
+  /** Length of the animation in milliseconds. */
+  duration?: number;
   /** Custom formatter for the animated value. */
   formatter?: (value: number) => string;
   /** Number of decimal places to keep when no formatter is supplied. */
@@ -14,23 +12,24 @@ export interface UseSpringNumberOptions {
   disabled?: boolean;
 }
 
-const DEFAULT_CONFIG: SpringOptions = {
-  stiffness: 180,
-  damping: 24,
-  mass: 0.8,
-};
+const DEFAULT_DURATION = 640;
 
 const DEFAULT_PRECISION = 0;
 
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
 export function useSpringNumber(target: number, options: UseSpringNumberOptions = {}) {
   const prefersReducedMotion = usePrefersReducedMotion();
-  const { config, formatter, precision = DEFAULT_PRECISION, disabled } = options;
+  const { duration = DEFAULT_DURATION, formatter, precision = DEFAULT_PRECISION, disabled } = options;
   const [value, setValue] = useState(target);
   const motionValueRef = useRef(target);
-  const animationRef = useRef<ReturnType<typeof animate> | null>(null);
+  const animationRef = useRef<number | null>(null);
 
   const stopAnimation = useCallback(() => {
-    animationRef.current?.stop();
+    if (animationRef.current !== null) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
     animationRef.current = null;
   }, []);
 
@@ -48,20 +47,38 @@ export function useSpringNumber(target: number, options: UseSpringNumberOptions 
 
     stopAnimation();
 
-    const resolvedConfig: SpringOptions = {
-      ...DEFAULT_CONFIG,
-      ...config,
+    if (motionValueRef.current === target) {
+      return;
+    }
+
+    const startValue = motionValueRef.current;
+    const changeInValue = target - startValue;
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = duration <= 0 ? 1 : Math.min(1, elapsed / duration);
+      const easedProgress = easeOutCubic(progress);
+      const nextValue = startValue + changeInValue * easedProgress;
+
+      motionValueRef.current = nextValue;
+      setValue(nextValue);
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(tick);
+      } else {
+        animationRef.current = null;
+        motionValueRef.current = target;
+        setValue(target);
+      }
     };
 
-    animationRef.current = animate(motionValueRef.current, target, {
-      ...resolvedConfig,
-      onUpdate: (next) => setValue(next),
-    });
+    animationRef.current = requestAnimationFrame(tick);
 
     return () => {
       stopAnimation();
     };
-  }, [config, disabled, prefersReducedMotion, stopAnimation, target]);
+  }, [disabled, duration, prefersReducedMotion, stopAnimation, target]);
 
   useEffect(() => () => stopAnimation(), [stopAnimation]);
 

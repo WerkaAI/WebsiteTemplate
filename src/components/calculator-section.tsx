@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,41 +23,28 @@ export default function CalculatorSection() {
   const [hoursPerWeek, setHoursPerWeek] = useState(8);
   const [hadPIPControl, setHadPIPControl] = useState(false);
   
-  const [calculations, setCalculations] = useState({
-    timeSaved: 26,
-    weekendsSaved: 6,
-    riskAvoided: 30000,
-    autozabaCost: 149,
-    monthlyBenefit: 2549
-  });
-
-  useEffect(() => {
-    // Calculate actual benefits for franchise owners
+  const calculations = useMemo(() => {
     const monthlyHours = hoursPerWeek * 4.33; // Average weeks per month
     const timeSavedPerShop = monthlyHours * 0.75; // 75% time reduction with AutoŻaba
     const totalTimeSaved = Math.round(timeSavedPerShop * shops);
-    
-    // Weekends saved per year (approximately 1 weekend every 2 months per shop)
+
     const weekendsSaved = Math.round(shops * 6);
-    
-    // Risk avoided - increases with more shops
+
     const riskAvoided = hadPIPControl ? 30000 * shops : 30000;
-    
-    // Monthly cost
+
     const monthlyCost = 149 * shops;
-    
-    // Monthly benefit calculation (time value + risk mitigation)
-    const monthlyRiskValue = riskAvoided / 12; // Spread risk over a year
+
+    const monthlyRiskValue = riskAvoided / 12;
     const monthlyBenefit = Math.round(monthlyRiskValue - monthlyCost);
-    
-    setCalculations({
+
+    return {
       timeSaved: totalTimeSaved,
-      weekendsSaved: weekendsSaved,
-      riskAvoided: riskAvoided,
+      weekendsSaved,
+      riskAvoided,
       autozabaCost: monthlyCost,
-      monthlyBenefit: monthlyBenefit
-    });
-  }, [shops, hoursPerWeek, hadPIPControl]);
+      monthlyBenefit,
+    };
+  }, [hadPIPControl, hoursPerWeek, shops]);
 
   const timeSavedSpring = useSpringNumber(calculations.timeSaved);
   const weekendsSavedSpring = useSpringNumber(calculations.weekendsSaved);
@@ -76,7 +63,7 @@ export default function CalculatorSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-calculator-title">
-            Sprawdź, ile <span className="text-primary">zaoszczędzisz</span>
+            Sprawdź, ile <span className="text-primary dark:text-primary-foreground">zaoszczędzisz</span>
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-calculator-subtitle">
             Kalkulator uwzględnia oszczędność czasu, uniknięte kary i spokój ducha
@@ -84,8 +71,8 @@ export default function CalculatorSection() {
         </div>
         
         <Card className="calm-shadow-lg">
-          <CardContent className="p-8 space-y-8">
-            <div className="grid md:grid-cols-2 gap-8">
+          <CardContent className="p-6 sm:p-8 space-y-8">
+            <div className="grid gap-8 md:grid-cols-2">
               {/* Inputs */}
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold text-foreground" data-testid="text-calculator-inputs-title">Twoja sytuacja</h3>

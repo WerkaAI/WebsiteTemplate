@@ -108,6 +108,27 @@ const mdxSanitizeSchema = {
   },
 }
 
+const buildContentSecurityPolicy = (includeUpgradeInsecureRequests = true) => {
+  const directives = [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'self'",
+    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+    "img-src 'self' https: data:",
+    "style-src 'self' 'unsafe-inline'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    "font-src 'self' data:",
+    "connect-src 'self'",
+  ]
+
+  if (includeUpgradeInsecureRequests) {
+    directives.push('upgrade-insecure-requests')
+  }
+
+  return directives.join('; ')
+}
+
 const withMDX = createMDX({
   options: {
     providerImportSource: '../../mdx-components',
@@ -154,6 +175,19 @@ const nextConfig = {
   },
   async headers() {
     const isProd = process.env.NODE_ENV === 'production'
+    const disableStrictSecurityHeaders = process.env.NEXT_DISABLE_STRICT_SECURITY_HEADERS === '1'
+    const securityHeaders = !isProd
+      ? []
+      : [
+          ...(disableStrictSecurityHeaders
+            ? []
+            : [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }]),
+          {
+            key: 'Content-Security-Policy',
+            value: buildContentSecurityPolicy(!disableStrictSecurityHeaders),
+          },
+        ]
+
     return [
       {
         source: '/:path*',
@@ -162,33 +196,7 @@ const nextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Permissions-Policy', value: 'geolocation=(), microphone=(), camera=()' },
-          ...(isProd
-            ? [
-                { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-                {
-                  key: 'Content-Security-Policy',
-                  value: [
-                    "default-src 'self'",
-                    "base-uri 'self'",
-                    "form-action 'self'",
-                    "frame-ancestors 'self'",
-                    // Allow YouTube embeds
-                    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
-                    // Allow images from self and https (Unsplash, etc.) and data URIs
-                    "img-src 'self' https: data:",
-                    // Inline styles are common with CSS-in-JS and Tailwind preflight
-                    "style-src 'self' 'unsafe-inline'",
-                    // Next.js may use inline scripts; keep reasonably permissive while avoiding remote code
-                    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-                    // Fonts
-                    "font-src 'self' data:",
-                    // XHR/Web fetch
-                    "connect-src 'self'",
-                    'upgrade-insecure-requests',
-                  ].join('; '),
-                },
-              ]
-            : []),
+          ...securityHeaders,
         ],
       },
     ]

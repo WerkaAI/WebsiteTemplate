@@ -42,9 +42,9 @@ export default function TestimonialsSection() {
   return (
   <section className="section-padding bg-white dark:bg-background">
       <div className="container-spacing">
-        <div className="text-center space-y-4 mb-16">
+  <div className="text-center space-y-4 mb-14 sm:mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-testimonials-title">
-            Odzyskali <span className="text-primary">spokój ducha</span>
+      Odzyskali <span className="text-primary dark:text-primary-foreground">spokój ducha</span>
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-testimonials-subtitle">
             Prawdziwe historie franczyzobiorców, którzy odzyskali kontrolę
@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
                         opacity: isActive ? 1 : 0.6,
                       }}
                     >
-                      <CardContent className="p-8 space-y-6">
+                      <CardContent className="p-6 sm:p-8 space-y-5">
                         <div className="flex items-center space-x-4">
                           <div className="tinted-media w-16 h-16 bg-muted rounded-full overflow-hidden">
                             <Image

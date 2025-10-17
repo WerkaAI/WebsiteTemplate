@@ -73,8 +73,8 @@
   --card-foreground: hsl(210, 40%, 97%);
   --popover: hsl(210, 25%, 6%);
   --popover-foreground: hsl(210, 40%, 97%);
-  --primary: hsl(146, 64%, 48%);
-  --primary-foreground: hsl(162, 100%, 8%);
+  --primary: #0f6b37;
+  --primary-foreground: #ecfdf5;
   --secondary: hsl(154, 58%, 52%);
   --secondary-foreground: hsl(162, 100%, 8%);
   --muted: hsl(210, 25%, 14%);
@@ -85,7 +85,7 @@
   --destructive-foreground: hsl(210, 40%, 4%);
   --border: hsl(210, 22%, 24%);
   --input: hsl(210, 22%, 24%);
-  --ring: hsla(166, 100%, 78%, 0.95);
+  --ring: hsla(158, 100%, 78%, 0.95);
 }
 
 @layer base {
@@ -486,7 +486,7 @@
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(71, 85, 105, 0.9);
+    color: rgba(15, 23, 42, 0.85);
   }
 
   .demo-step__label {
@@ -502,7 +502,7 @@
   }
 
   .demo-step--active .demo-step__time {
-    color: rgba(22, 163, 74, 0.85);
+    color: var(--primary);
   }
 
   .demo-step--complete {
@@ -516,7 +516,11 @@
   }
 
   .dark .demo-step__time {
-    color: rgba(148, 163, 184, 0.75);
+    color: rgba(226, 232, 240, 0.85);
+  }
+
+  .dark .demo-step--active .demo-step__time {
+    color: var(--primary-foreground);
   }
 
   .demo-preview {
@@ -814,12 +818,13 @@
   .floating-field {
     position: relative;
     display: block;
+    padding-top: 0.35rem;
   }
 
   .floating-input {
-    height: 3.25rem;
-    padding-top: 1.25rem;
-    padding-bottom: 0.75rem;
+    height: 3.6rem;
+    padding-top: 1.9rem;
+    padding-bottom: 0.95rem;
     transition: border-color var(--motion-duration-short) var(--motion-ease-out),
       box-shadow var(--motion-duration-short) var(--motion-ease-out);
   }
@@ -827,10 +832,12 @@
   .floating-label {
     position: absolute;
     left: 0.85rem;
-    top: 1.05rem;
+    top: 1.45rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--muted-foreground);
+    padding: 0 0.35rem;
+    background: color-mix(in srgb, var(--background) 88%, transparent);
     pointer-events: none;
     transform-origin: left center;
     transition: transform var(--motion-duration-short) var(--motion-ease-out),
@@ -841,10 +848,10 @@
 
   .floating-input:focus + .floating-label,
   .floating-input:not(:placeholder-shown) + .floating-label {
-    top: 0.4rem;
-    font-size: 0.7rem;
+    top: -0.25rem;
+    font-size: 0.68rem;
     color: var(--primary);
-    transform: translateY(-0.2rem);
+    transform: translateY(-0.05rem);
   }
 
   .floating-input:focus + .floating-label {

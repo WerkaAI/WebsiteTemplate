@@ -24,9 +24,9 @@ export default async function BlogPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="section-padding">
+      <div className="section-padding">
         <BlogListing posts={posts} />
-      </main>
+      </div>
       <Footer />
     </div>
   );

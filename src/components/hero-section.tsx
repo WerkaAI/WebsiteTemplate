@@ -249,7 +249,7 @@ export default function HeroSection() {
                 data-animate-once
                 data-testid="text-hero-title"
               >
-                Odzyskaj <span className="text-primary">swój czas</span>
+                Odzyskaj <span className="text-primary dark:text-primary-foreground">swój czas</span>
               </h1>
               <p
                 className="text-xl text-muted-foreground leading-relaxed copy-max"
@@ -264,15 +264,15 @@ export default function HeroSection() {
             </div>
             
             <div
-              className="flex flex-col items-start sm:flex-row sm:items-center gap-4"
+              className="flex flex-col items-stretch text-center sm:text-left sm:flex-row sm:items-center sm:justify-start gap-4"
               data-animate="rise"
               data-animate-delay="200"
               data-animate-once
             >
-              <span className="cta-glow">
+              <span className="cta-glow w-full sm:w-auto">
                 <Button 
                   size="touch" 
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-9 calm-shadow transition-all duration-300"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-9 calm-shadow transition-all duration-300 w-full sm:w-auto justify-center"
                   onClick={() => window.open('https://app.autozaba.pl/register', '_blank', 'noopener,noreferrer')}
                   data-testid="button-hero-register"
                 >
@@ -282,7 +282,7 @@ export default function HeroSection() {
               <Button 
                 variant="outline" 
                 size="touch" 
-                className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-primary border-white/70 hover:bg-white/90 dark:bg-white/10 dark:text-white dark:border-white/30"
+                className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-primary border-white/70 hover:bg-white/90 dark:bg-white/10 dark:text-white dark:border-white/30 w-full sm:w-auto justify-center"
                 onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-hero-demo"
               >
@@ -292,7 +292,7 @@ export default function HeroSection() {
             </div>
 
             <div className="text-sm text-muted-foreground copy-max">
-              <Link href="#contact" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+              <Link href="#contact" className="inline-flex items-center gap-2 text-primary dark:text-primary-foreground hover:text-primary/80 dark:hover:text-primary-foreground/80 transition-colors">
                 <ShieldCheck className="w-4 h-4" />
                 Dowiedz się, jak wygląda wdrożenie AutoŻaby
               </Link>

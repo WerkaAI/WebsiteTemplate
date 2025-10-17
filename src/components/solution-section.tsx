@@ -44,9 +44,9 @@ export default function SolutionSection() {
   return (
     <section id="solution" className="section-padding bg-muted">
       <div className="container-spacing">
-        <div className="text-center space-y-4 mb-16" data-animate>
+        <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-solution-title">
-            Twoja <span className="text-primary">Automatyczna Tarcza Prawna</span>
+      Twoja <span className="text-primary dark:text-primary-foreground">Automatyczna Tarcza Prawna</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-solution-subtitle">
             AutoŻaba to nie kolejne narzędzie HR. To system ochrony, który automatyzuje 
@@ -55,7 +55,7 @@ export default function SolutionSection() {
         </div>
         
         {/* Before/After Comparison */}
-        <div className="relative mb-20 grid gap-12 lg:grid-cols-2">
+  <div className="relative grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 mb-14 lg:mb-20">
           <div
             className="group relative"
             data-animate="slide-left"
@@ -66,14 +66,14 @@ export default function SolutionSection() {
               className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-br from-red-100/60 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-80 dark:from-red-900/40"
               aria-hidden="true"
             />
-            <div className="relative space-y-6 text-center">
+            <div className="relative space-y-5 text-center">
               <h3
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-before-title"
               >
                 Bez AutoŻaby
               </h3>
-              <div className="rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
+              <div className="rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
                 <ul className="space-y-3">
                   {beforeAfter.before.map((item, index) => (
                     <li
@@ -100,14 +100,14 @@ export default function SolutionSection() {
               className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-bl from-emerald-100/70 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-85 dark:from-emerald-900/35"
               aria-hidden="true"
             />
-            <div className="relative space-y-6 text-center">
+            <div className="relative space-y-5 text-center">
               <h3
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-after-title"
               >
                 Z AutoŻabą
               </h3>
-              <div className="rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
+              <div className="rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
                 <ul className="space-y-3">
                   {beforeAfter.after.map((item, index) => (
                     <li
@@ -131,7 +131,7 @@ export default function SolutionSection() {
         </div>
         
         {/* Feature Showcase */}
-        <div className="grid md:grid-cols-3 gap-8">
+  <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -144,7 +144,7 @@ export default function SolutionSection() {
                 data-testid={`card-feature-${feature.id}`}
               >
                 <div className="feature-card__halo" aria-hidden="true" />
-                <CardContent className="relative p-8 space-y-6">
+                <CardContent className="relative p-6 sm:p-8 space-y-5">
                   <div className="feature-card__icon flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
@@ -152,7 +152,7 @@ export default function SolutionSection() {
                     <h3 className="text-xl font-semibold text-foreground" data-testid={`text-feature-title-${feature.id}`}>
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground" data-testid={`text-feature-description-${feature.id}`}>
+                    <p className="text-base leading-relaxed text-muted-foreground" data-testid={`text-feature-description-${feature.id}`}>
                       {feature.description}
                     </p>
                     

@@ -50,16 +50,16 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12">
+  <div className="text-center space-y-4 mb-10 sm:mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-pricing-title">
-            Prosta <span className="text-primary">cena</span>, wielka wartość
+            Prosta <span className="text-primary dark:text-primary-foreground">cena</span>, wielka wartość
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-pricing-subtitle">
             149 zł za sklep, bez względu na liczbę pracowników
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+  <div className="grid gap-6 md:grid-cols-2 md:gap-8 mb-10 sm:mb-12">
           {plans.map((plan, index) => (
             <Card 
               key={plan.id} 
@@ -90,8 +90,8 @@ export default function PricingSection() {
                 </div>
               </CardHeader>
               
-              <CardContent className="space-y-6">
-                <ul className="space-y-3">
+              <CardContent className="p-6 sm:p-8 space-y-6">
+                <ul className="space-y-3 text-sm sm:text-base">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-center" data-testid={`feature-${plan.id}-${index}`}>
                       <CheckCircle className="w-5 h-5 mr-3" />
@@ -123,17 +123,17 @@ export default function PricingSection() {
         </div>
         
         {/* Price comparison */}
-  <Card
+        <Card
           className="dark:bg-slate-900/70 border border-border/70 dark:border-white/10 pricing-comparison"
           data-animate="rise"
           data-animate-delay="180"
         >
-          <CardContent className="p-8">
+          <CardContent className="p-6 sm:p-8">
             <h3 className="text-xl font-semibold text-foreground mb-6 text-center" data-testid="text-comparison-title">
               Porównaj z konkurencją
             </h3>
             
-            <div className="grid gap-6 text-sm md:grid-cols-3 lg:gap-8">
+            <div className="grid gap-5 text-sm md:grid-cols-3 md:gap-6 lg:gap-8">
               {comparison.map((item, index) => {
                 const toneClasses = item.highlight
                   ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-300/40 dark:bg-emerald-500/15 dark:text-emerald-200"

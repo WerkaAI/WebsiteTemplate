@@ -28,7 +28,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
     <div className="container-spacing">
       <div className="text-center space-y-4 mb-16">
         <h1 className="text-4xl lg:text-5xl font-bold text-foreground" data-testid="text-blog-title">
-          Blog: <span className="text-primary">Prawo Pracy w Pigułce</span>
+          Blog: <span className="text-primary dark:text-primary-foreground">Prawo Pracy w Pigułce</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-blog-description">
           Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. 
@@ -76,11 +76,11 @@ export default function BlogListing({ posts }: BlogListingProps) {
                 <Clock className="w-4 h-4 mr-2" />
                 <span data-testid={`text-read-time-${post.slug}`}>~5 min czytania</span>
               </div>
-              <h3 className="text-xl font-semibold text-foreground" data-testid={`text-title-${post.slug}`}>
+              <h2 className="text-xl font-semibold text-foreground" data-testid={`text-title-${post.slug}`}>
                 <Link href={`/blog/${post.slug}`}>
                   {post.meta.title}
                 </Link>
-              </h3>
+              </h2>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground" data-testid={`text-excerpt-${post.slug}`}>

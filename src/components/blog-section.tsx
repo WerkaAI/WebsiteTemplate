@@ -18,7 +18,7 @@ export default async function BlogSection() {
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-16" data-animate data-animate-delay="40">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-blog-section-title">
-            Blog: <span className="text-primary">Prawo Pracy w Pigułce</span>
+      Blog: <span className="text-primary dark:text-primary-foreground">Prawo Pracy w Pigułce</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-blog-section-subtitle">
             Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. 

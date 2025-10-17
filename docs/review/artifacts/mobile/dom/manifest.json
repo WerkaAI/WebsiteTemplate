@@ -1,0 +1,78 @@
+{
+  "baseUrl": "http://localhost:3001/",
+  "generatedAt": "2025-10-16T15:18:34.695Z",
+  "routes": [
+    {
+      "route": "/",
+      "name": "home",
+      "viewport": "360x740",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\home-360x740.html"
+    },
+    {
+      "route": "/",
+      "name": "home",
+      "viewport": "414x896",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\home-414x896.html"
+    },
+    {
+      "route": "/",
+      "name": "home",
+      "viewport": "768x1024",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\home-768x1024.html"
+    },
+    {
+      "route": "/blog",
+      "name": "blog",
+      "viewport": "360x740",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-360x740.html"
+    },
+    {
+      "route": "/blog",
+      "name": "blog",
+      "viewport": "414x896",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-414x896.html"
+    },
+    {
+      "route": "/blog",
+      "name": "blog",
+      "viewport": "768x1024",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-768x1024.html"
+    },
+    {
+      "route": "/blog/2025-08-21-witaj-autozaba",
+      "name": "blog-post",
+      "viewport": "360x740",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-post-360x740.html"
+    },
+    {
+      "route": "/blog/2025-08-21-witaj-autozaba",
+      "name": "blog-post",
+      "viewport": "414x896",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-post-414x896.html"
+    },
+    {
+      "route": "/blog/2025-08-21-witaj-autozaba",
+      "name": "blog-post",
+      "viewport": "768x1024",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\blog-post-768x1024.html"
+    },
+    {
+      "route": "/kontakt",
+      "name": "kontakt",
+      "viewport": "360x740",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\kontakt-360x740.html"
+    },
+    {
+      "route": "/kontakt",
+      "name": "kontakt",
+      "viewport": "414x896",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\kontakt-414x896.html"
+    },
+    {
+      "route": "/kontakt",
+      "name": "kontakt",
+      "viewport": "768x1024",
+      "file": "docs\\review\\artifacts\\mobile\\dom\\kontakt-768x1024.html"
+    }
+  ]
+}

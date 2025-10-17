@@ -78,16 +78,16 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12" data-animate data-animate-delay="40">
+  <div className="text-center space-y-4 mb-10 sm:mb-12" data-animate data-animate-delay="40">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-contact-title">
-            Potrzebujesz <span className="text-primary">pomocy</span>?
+            Potrzebujesz <span className="text-primary dark:text-primary-foreground">pomocy</span>?
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-contact-subtitle">
             Jesteśmy tu, by odpowiedzieć na Twoje pytania i pomóc we wdrożeniu
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12">
+  <div className="grid gap-10 md:grid-cols-2 md:gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -121,7 +121,7 @@ export default function ContactSection() {
             
             {/* Quick help */}
             <Card data-animate="rise" data-animate-delay="180">
-              <CardContent className="p-6 space-y-4">
+              <CardContent className="p-5 sm:p-6 space-y-4">
                 <h4 className="font-semibold text-foreground" data-testid="text-quick-help-title">
                   Szybka pomoc
                 </h4>
@@ -132,7 +132,7 @@ export default function ContactSection() {
                       <a 
                         key={index} 
                         href={item.href} 
-                        className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                        className="flex items-center text-primary dark:text-primary-foreground hover:text-primary/80 dark:hover:text-primary-foreground/80 transition-colors"
                         data-animate="slide-right"
                         data-animate-delay={`${120 + index * 60}`}
                         data-testid={`quick-help-${index}`}
@@ -149,7 +149,7 @@ export default function ContactSection() {
           
           {/* Contact Form */}
             <Card data-animate="rise" data-animate-delay="220">
-              <CardContent className="p-8">
+              <CardContent className="p-6 sm:p-8">
               <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
                 <div data-animate="rise" data-animate-delay="40">
                   <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">
@@ -192,7 +192,11 @@ export default function ContactSection() {
                 </div>
                 
                 <div data-animate="rise" data-animate-delay="120">
-                  <Label htmlFor="shops" className="text-sm font-medium text-muted-foreground">
+                  <Label
+                    id="contact-shops-label"
+                    htmlFor="contact-shops"
+                    className="text-sm font-medium text-muted-foreground"
+                  >
                     Liczba sklepów
                   </Label>
                   <Controller
@@ -200,7 +204,14 @@ export default function ContactSection() {
                     name="shops"
                     render={({ field }) => (
                       <Select value={field.value} onValueChange={field.onChange}>
-                        <SelectTrigger className="mt-2" data-testid="select-contact-shops" aria-invalid={!!errors.shops} aria-describedby={errors.shops ? "shops-error" : undefined}>
+                        <SelectTrigger
+                          id="contact-shops"
+                          aria-labelledby="contact-shops-label"
+                          className="mt-2"
+                          data-testid="select-contact-shops"
+                          aria-invalid={!!errors.shops}
+                          aria-describedby={errors.shops ? "shops-error" : undefined}
+                        >
                           <SelectValue placeholder="Wybierz liczbę sklepów" />
                         </SelectTrigger>
                         <SelectContent>
@@ -250,7 +261,7 @@ export default function ContactSection() {
                   />
                   <Label htmlFor="privacy" className="text-sm text-muted-foreground">
                     Zgadzam się na przetwarzanie danych osobowych zgodnie z{" "}
-                    <a href="#" className="text-primary hover:underline">polityką prywatności</a>
+                    <a href="#" className="text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80">polityką prywatności</a>
                   </Label>
                 </div>
                 {errors.privacy && (

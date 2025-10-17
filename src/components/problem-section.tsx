@@ -1,118 +1,16 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, XCircle } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useId, useRef, useState } from "react";
-import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 const numberFormatter = new Intl.NumberFormat("pl-PL", {
   maximumFractionDigits: 0,
 });
 
-type CountUpFormatter = (value: number) => string;
-
-interface CountUpProps {
-  value: number;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  formatter?: CountUpFormatter;
-}
-
-const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-
-function CountUp({
-  value,
-  duration = 1600,
-  prefix = "",
-  suffix = "",
-  formatter = (current) => numberFormatter.format(Math.round(current)),
-}: CountUpProps) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const frameRef = useRef<number>();
-  const startRef = useRef<number | null>(null);
-  const hasAnimatedRef = useRef(false);
-  const [displayValue, setDisplayValue] = useState(0);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion || typeof window === "undefined") {
-      setDisplayValue(value);
-      return;
-    }
-
-    setDisplayValue(0);
-    hasAnimatedRef.current = false;
-  }, [prefersReducedMotion, value]);
-
-  useEffect(() => {
-    if (prefersReducedMotion || typeof window === "undefined") {
-      return;
-    }
-
-    const node = nodeRef.current;
-    if (!node) return;
-
-    const animate = (timestamp: number) => {
-      if (startRef.current === null) {
-        startRef.current = timestamp;
-      }
-
-      const elapsed = timestamp - startRef.current;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutCubic(progress);
-
-      setDisplayValue(Math.round(value * easedProgress));
-
-      if (progress < 1) {
-        frameRef.current = window.requestAnimationFrame(animate);
-      } else {
-        setDisplayValue(value);
-      }
-    };
-
-    if (typeof IntersectionObserver === "undefined") {
-      setDisplayValue(value);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!hasAnimatedRef.current && entry.isIntersecting) {
-            hasAnimatedRef.current = true;
-            startRef.current = null;
-            frameRef.current = window.requestAnimationFrame(animate);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.45, rootMargin: "0px 0px -12% 0px" }
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-      if (frameRef.current) {
-        window.cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, [duration, prefersReducedMotion, value]);
-
-  return (
-    <span ref={nodeRef}>
-      {prefix}
-      {formatter(displayValue)}
-      {suffix}
-    </span>
-  );
-}
+const formatNumber = (value: number) => numberFormatter.format(value);
 
 export default function ProblemSection() {
-  const waveGradientPrimaryId = useId();
-  const waveGradientSecondaryId = useId();
+  const waveGradientPrimaryId = "problem-wave-primary";
+  const waveGradientSecondaryId = "problem-wave-secondary";
 
   const problems = [
     {
@@ -199,9 +97,9 @@ export default function ProblemSection() {
       </div>
 
       <div className="container-spacing relative z-10">
-        <div className="text-center space-y-4 mb-16" data-animate>
+  <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-problem-title">
-            Wiemy, <span className="text-primary">przez co przechodzisz</span>
+      Wiemy, <span className="text-primary dark:text-primary-foreground">przez co przechodzisz</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-problem-subtitle">
             16 godzin pracy dziennie, chaos w grafikach i ciągły strach przed kontrolą PIP.
@@ -209,7 +107,7 @@ export default function ProblemSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {problems.map((problem, index) => (
             <Card
               key={problem.id}
@@ -229,18 +127,18 @@ export default function ProblemSection() {
                   data-testid={`img-problem-${problem.id}`}
                 />
               </div>
-              <CardContent className="p-8 space-y-6">
+              <CardContent className="p-6 sm:p-8 space-y-6">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-foreground" data-testid={`text-title-${problem.id}`}>
                     {problem.title}
                   </h3>
-                  <p className="text-muted-foreground" data-testid={`text-description-${problem.id}`}>
+                  <p className="text-base leading-relaxed text-muted-foreground" data-testid={`text-description-${problem.id}`}>
                     {problem.description}
                   </p>
 
                   {problem.risk && (
                     <div
-                      className="rounded-xl border border-accent/20 bg-accent/10 p-5 shadow-[0_12px_30px_-24px_rgba(253,126,20,0.65)]"
+                      className="rounded-xl border border-accent/20 bg-accent/10 p-4 sm:p-5 shadow-[0_12px_30px_-24px_rgba(253,126,20,0.65)]"
                       data-testid={`risk-warning-${problem.id}`}
                       data-animate="rise"
                       data-animate-once
@@ -248,12 +146,13 @@ export default function ProblemSection() {
                     >
                       <div className="flex items-start gap-3 text-accent">
                         <AlertTriangle className="mt-0.5 h-5 w-5" />
-                        <div className="space-y-1">
+                        <div className="flex flex-col gap-1">
                           <span className="text-xs font-semibold uppercase tracking-wide text-accent/80">
                             {problem.risk.label}
                           </span>
                           <span className="text-2xl font-semibold">
-                            <CountUp value={problem.risk.amount} suffix={problem.risk.suffix} formatter={(val) => numberFormatter.format(val)} />
+                            {formatNumber(problem.risk.amount)}
+                            {problem.risk.suffix}
                           </span>
                         </div>
                       </div>
@@ -276,25 +175,21 @@ export default function ProblemSection() {
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-muted-foreground">{problem.timeBreakdown.shop.label}</span>
                         <span className="font-medium" data-testid="stat-shop-hours">
-                          <CountUp value={problem.timeBreakdown.shop.value} suffix="h/msc" formatter={(val) => numberFormatter.format(val)} />
+                          {formatNumber(problem.timeBreakdown.shop.value)}h/msc
                         </span>
                       </div>
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-muted-foreground">{problem.timeBreakdown.paperwork.label}</span>
                         <span className="font-medium" data-testid="stat-paperwork-hours">
-                          <CountUp
-                            prefix={problem.timeBreakdown.paperwork.prefix}
-                            value={problem.timeBreakdown.paperwork.value}
-                            suffix="h/msc"
-                            formatter={(val) => numberFormatter.format(val)}
-                          />
+                          {problem.timeBreakdown.paperwork.prefix}
+                          {formatNumber(problem.timeBreakdown.paperwork.value)}h/msc
                         </span>
                       </div>
                       <hr className="border-border" />
                       <div className="flex items-center justify-between font-semibold text-accent">
                         <span>{problem.timeBreakdown.total.label}</span>
                         <span data-testid="stat-total-hours">
-                          <CountUp value={problem.timeBreakdown.total.value} suffix="h/msc" formatter={(val) => numberFormatter.format(val)} />
+                          {formatNumber(problem.timeBreakdown.total.value)}h/msc
                         </span>
                       </div>
                     </div>

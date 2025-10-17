@@ -33,36 +33,38 @@ Operationalizes the mobile evaluation using GPT-5 Codex with the Vibe Coding met
 
 ## Tooling Strategy (GPT-5-Codex)
 - **Blueprint synopsis**: author a concise architectural brief per route (layout zones, priority content, critical interactions) stored in `docs/review/artifacts/mobile/<route>-blueprint.md`; this becomes the priming artifact for every Codex session.
-- **Responsive DOM snapshots**: use `npm run dev -- --turbo` in controlled session to gather HTML dumps via `node scripts/capture-dom.mjs` (to be created if missing). Script should visit routes with `puppeteer`, set viewport sizes, and save sanitized HTML/CSS extracts for Codex analysis.
-- **CSS token extraction**: run static analysis with a custom script (`scripts/dump-tailwind-theme.mjs`) to list typography, spacing, color, and radius tokens for quick comparison.
-- **Component mapping**: leverage `ts-node` or `tsx` to parse `src/components` and produce a list of props/responsive classes (e.g., using `@typescript-eslint/typescript-estree`).
-- **Accessibility linting**: execute `npx @axe-core/cli http://localhost:3000 --viewport-width 360 --viewport-height 740` for baseline issues; Codex reviews the results.
+- **Responsive DOM snapshots**: run `node scripts/capture-dom.mjs` to gather HTML dumps. The script will auto-start a local Next dev server if the target `REVIEW_BASE_URL` (default `http://localhost:3000`) is unavailable; override host/port via env vars and set `REVIEW_AUTO_START=0` to opt out. Each pass visits scoped routes with Puppeteer, enforces preset mobile viewports, and stores sanitized HTML in `docs/review/artifacts/mobile/dom/`.
+- **CSS token extraction**: run static analysis with `npx tsx scripts/dump-tailwind-theme.ts` to list typography, spacing, color, and radius tokens for quick comparison.
+- **Component mapping**: leverage `npx tsx scripts/map-components.ts` to parse `src/components` and produce a list of props/responsive classes pulled from `className` and `data-testid` attributes.
+- **Accessibility linting**: run `node scripts/run-axe.mjs` (honours `REVIEW_BASE_URL`, auto-starts the dev server, and saves JSON reports under `docs/review/artifacts/mobile/axe/`). The script wraps `@axe-core/cli` with the default 360×740 viewport and exits non-zero when violations are detected so Codex can triage.
+
+## Status Overview (2025-10-17)
+- ✅ DOM snapshots current for 360×740, 414×896, and 768×1024 viewports (`docs/review/artifacts/mobile/dom/*`).
+- ✅ Route blueprints published for home, blog index, blog post, and contact flows (`docs/review/artifacts/mobile/*-blueprint.md`).
+- ✅ Component inventory extracted (`docs/review/artifacts/mobile/component-map.json`) and Tailwind tokens captured (`docs/review/artifacts/mobile/tokens.json`).
+- ✅ Latest accessibility sweep via `scripts/run-axe.mjs` returns zero violations across audited routes (`docs/review/artifacts/mobile/axe/`).
+- ✅ Findings tracker updated to show resolved accessibility defects (`docs/review/mobile-findings.csv`).
+- ✅ Lighthouse mobile performance audit captured from the post-fix production build (performance 0.83; FCP 2.0 s, LCP 3.8 s, TBT 0 ms) with reports in `docs/review/artifacts/mobile/lighthouse-mobile-2025-10-18-report.report.{html,json}`.
+- ⏳ Stakeholder sign-off package (memo + recommended PR tasks) still to assemble.
 
 ## Review Workflow
-1. **Preparation**
-  - Ensure dependencies installed (`npm install`).
-  - Run Tailwind build once (`npm run build:css` if available) to catch compilation errors.
-  - Generate latest DOM and token dumps using the scripts above; store outputs under `docs/review/artifacts/mobile/`.
-2. **Blueprint Pass (Architectural Priming)**
-  - Draft or refresh the route blueprint synopsis; include layout intent, hierarchy, and Calm Control cues.
-  - Validate blueprint against design references; adjust until stakeholders agree this is the structural source of truth.
-3. **Heuristic Pass (Automated Support)**
-  - Feed Codex the blueprint, DOM snapshot, and token list for each route.
-  - Prompt Codex to flag layout anomalies, overflow risks, inconsistent spacing, and missing interactive affordances while honoring declared constraints.
-4. **Focused Manual Pass (Stylistic Injection)**
-  - Use browser dev tools in responsive mode; document observations textually (element selector, issue, rationale, suggested fix) referencing Calm Control vocabulary.
-  - Cross-check against blueprint and vibe principles (balance, contrast, mindful motion, clarity of CTA hierarchy).
-5. **Constraint Validation**
-  - Confirm Codex recommendations obey performance, accessibility, and interaction budgets; reject or revise suggestions that breach constraints.
-6. **Accessibility & Performance Checks**
-  - Run `npm run lint` and `npm run test -- --runInBand` to ensure regressions are not introduced by recommended fixes.
-  - Evaluate `axe` results, Lighthouse mobile metrics (run via `npx lighthouse http://localhost:3000 --preset perf --only-categories=accessibility,performance --screenEmulation.mobile true`).
-7. **Synthesis**
-  - Aggregate all findings into a structured table: route, issue, severity, recommendation, reference token, violated constraint.
-  - Prioritize by severity (blocking, high, medium, polish) and tag owners (component author, content, tooling).
-8. **Action Planning (Conceptual Scaffolding)**
-  - Create follow-up tasks or PR checklist items referencing the relevant files and tokens.
-  - Draft Codex-ready prompts for each high-priority issue (see templates below) describing which existing component patterns to replicate.
+1. **Preparation — Complete**
+  - Dependencies validated, build scripts green, DOM and token dumps captured in `docs/review/artifacts/mobile/`.
+2. **Blueprint Pass (Architectural Priming) — Complete**
+  - Route synopses refreshed and aligned to Calm Control intent (`*-blueprint.md`).
+3. **Heuristic Pass (Automated Support) — Complete**
+  - Codex runs consumed blueprint + DOM + tokens; anomalies triaged into findings, now resolved.
+4. **Focused Manual Pass (Stylistic Injection) — Complete**
+  - Manual audit notes distilled in `docs/review/artifacts/mobile/home-audit-2025-10-16.md` and fed into fixes.
+5. **Constraint Validation — Complete**
+  - Verified no regression against accessibility/performance budgets during remediation.
+6. **Accessibility & Performance Checks — Complete**
+  - `node scripts/run-axe.mjs` captured zero-violation reports.
+  - Production Lighthouse mobile snapshot refreshed post-optimizations (`docs/review/artifacts/mobile/lighthouse-mobile-2025-10-18-report.report.*`, performance 83) with supporting JSON/HTML artifacts.
+7. **Synthesis — Complete**
+  - Findings tracked in `docs/review/mobile-findings.csv` with resolved statuses.
+8. **Action Planning (Conceptual Scaffolding) — In Progress**
+  - Draft stakeholder summary and follow-up task list to unblock sign-off.
 
 ## Vibe Coding Session Cadence
 - **Phase 1: Blueprint validation** — establish or refresh the architectural brief and confirm constraints.
@@ -133,7 +135,5 @@ Operationalizes the mobile evaluation using GPT-5 Codex with the Vibe Coding met
 - **Tooling noise**: triage automated reports; focus on user-facing issues to avoid audit fatigue.
 
 ## Next Steps
-- Draft the DOM capture and token extraction scripts if they do not exist yet.
-- Create initial blueprint synopses for high-priority routes and store them alongside DOM/token artifacts.
-- Schedule Codex-assisted sessions per route, attaching blueprint, DOM, token, and constraint briefs.
-- Prepare template for documenting findings in CSV/MDX to maintain consistency across reviews.
+- Compile stakeholder-ready memo summarizing remediation outcomes, residual risks, and recommended follow-up work.
+- Translate remaining action-planning items into PR checklists or tickets aligned with Calm Control blueprints.

@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main>
+      <div>
         <InteractionLayer />
         {/* Organization JSON-LD */}
         <script
@@ -67,7 +67,7 @@ export default function Home() {
         <PricingSection />
         <BlogSection />
         <ContactSection />
-      </main>
+      </div>
       <Footer />
     </div>
   );

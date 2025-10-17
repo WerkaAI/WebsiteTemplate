@@ -22,3 +22,7 @@
 - [Resolved] Added `id="hero"` to the hero section and constrained the hero orb container (`max-w-[420px]`, mobile overflow guard) to prevent off-screen overflow while keeping the interaction layer intact.
 - [Resolved] Expanded the button system with `touch`/`touchIcon` sizes and updated navigation trigger, theme toggle, and testimonial carousel controls; CSS tap targets now render at 48px on mobile with responsive adjustments for larger viewports.
 - [Resolved] Elevated all primary CTAs (hero, demo, calculator, pricing, contact, footer, share actions) to the new touch sizes for consistent 48px targets and refreshed the footer CTA layout with `Button` primitives.
+- [Resolved] Tightened hero trust strip and mobile summary card to a 340px cap, aligning copy rhythm with Calm Control spacing.
+- [Resolved] Reduced padding and copy width in the problem and calculator sections for 360px viewports so cards no longer feel edge-to-edge; mobile readability now matches blueprint intent.
+- [Resolved] Smoothed solution, testimonial, and feature blocks with responsive padding/gap tweaks that hold the Calm Control breathing room on 360-400px devices.
+- [Resolved] Refined pricing and contact sections with responsive padding and tighter grid gaps so CTAs and form inputs stay comfortable on small screens without losing hierarchy.

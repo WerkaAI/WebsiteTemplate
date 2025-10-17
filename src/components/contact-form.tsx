@@ -99,12 +99,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-      {/* Honeypot field - hidden from users */}
+      {/* Honeypot field - stays out of the accessibility tree */}
       <input
-        type="text"
+        type="hidden"
         {...form.register('company')}
-        style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
-        tabIndex={-1}
         autoComplete="off"
       />
 
@@ -194,7 +192,7 @@ export default function ContactForm() {
         <div className="space-y-1">
           <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
             Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na zapytanie zgodnie z{' '}
-            <a href="/polityka-prywatnosci" className="text-primary hover:underline">
+            <a href="/polityka-prywatnosci" className="text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80">
               polityką prywatności
             </a>
             . <span className="text-red-500">*</span>

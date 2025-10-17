@@ -111,7 +111,7 @@ export default async function Page({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-  <main className="container mx-auto max-w-5xl px-4 md:px-6 py-8 lg:py-12 flex-1 w-full space-y-10">
+      <div className="container mx-auto max-w-5xl px-4 md:px-6 py-8 lg:py-12 flex-1 w-full space-y-10">
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Link href="/" className="inline-flex items-center gap-1">
@@ -141,7 +141,7 @@ export default async function Page({ params }: BlogPostPageProps) {
               </Badge>
             )}
             <div className="space-y-4 max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white">
                 {title}
               </h1>
               <p className="text-base md:text-lg text-slate-200/90">
@@ -211,7 +211,7 @@ export default async function Page({ params }: BlogPostPageProps) {
           </div>
         </aside>
       </div>
-    </main>
+      </div>
       <Footer />
     </div>
   );
