@@ -8,7 +8,7 @@ export default function Footer() {
     {
       title: "Produkt",
       links: [
-        { label: "Funkcje", href: "#solution" },
+        { label: "Funkcje", href: "/funkcje" },
         { label: "Cennik", href: "#pricing" },
         { label: "Demo", href: "#demo" },
         { label: "Integracje", href: "#" }
