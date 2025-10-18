@@ -9,18 +9,15 @@ export default function Footer() {
       title: "Produkt",
       links: [
         { label: "Funkcje", href: "/funkcje" },
-  { label: "Cennik", href: "/cennik" },
-        { label: "Demo", href: "#demo" },
-        { label: "Integracje", href: "#" }
+        { label: "Cennik", href: "/cennik" },
+        { label: "Demo", href: "#demo" }
       ]
     },
     {
       title: "Zasoby", 
       links: [
         { label: "Blog", href: "/blog" },
-        { label: "Centrum pomocy", href: "#" },
-        { label: "Przewodniki", href: "#" },
-        { label: "Webinary", href: "#" }
+        { label: "Przewodniki", href: "#" }
       ]
     },
     {
@@ -36,7 +33,6 @@ export default function Footer() {
       title: "Kontakt",
       links: [
         { label: "autozaba@ainything.pl", href: "mailto:autozaba@ainything.pl" },
-        { label: "Wsparcie", href: "#contact" },
         { label: "Partnerzy", href: "#" },
         { label: "Kariera", href: "#" }
       ]

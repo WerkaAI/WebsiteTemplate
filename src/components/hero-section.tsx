@@ -282,7 +282,7 @@ export default function HeroSection() {
               <Button 
                 variant="outline" 
                 size="touch" 
-                className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-primary border-white/70 hover:bg-white/90 dark:bg-white/10 dark:text-white dark:border-white/30 w-full sm:w-auto justify-center"
+                className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-primary border-white/70 hover:bg-white/90 hover:text-primary dark:bg-white/10 dark:text-white dark:border-white/30 dark:hover:text-white w-full sm:w-auto justify-center"
                 onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-hero-demo"
               >
@@ -364,7 +364,7 @@ export default function HeroSection() {
           </div>
           
           <div className="relative hidden md:block">
-            <div className="relative isolate mx-auto w-full max-w-[420px] overflow-hidden rounded-[36px]">
+            <div className="relative isolate mx-auto w-full max-w-[420px] overflow-visible rounded-[36px]">
               <div
                 ref={orbRef}
                 className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[420px] rounded-full bg-emerald-500/20 blur-3xl opacity-30 hero-orb"

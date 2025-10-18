@@ -255,7 +255,7 @@ export default function FunkcjePage() {
 
         <div className="container-spacing grid gap-10 text-primary-foreground lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-5">
-            <h2 className="text-3xl font-semibold sm:text-4xl">
+            <h2 className="text-3xl font-semibold sm:text-4xl text-white">
               Gotowy na spokojny grafik i kontrolę nad dokumentacją?
             </h2>
             <p className="text-lg opacity-90">
@@ -280,7 +280,7 @@ export default function FunkcjePage() {
           </div>
 
           <div className="rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
-            <h3 className="text-xl font-semibold">Najważniejsze korzyści w skrócie</h3>
+            <h3 className="text-xl font-semibold text-white">Najważniejsze korzyści w skrócie</h3>
             <ul className="mt-4 space-y-3 text-sm opacity-90">
               <li className="flex items-start gap-3">
                 <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-white/80" aria-hidden="true" />
