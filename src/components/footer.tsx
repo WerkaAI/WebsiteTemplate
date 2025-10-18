@@ -9,7 +9,7 @@ export default function Footer() {
       title: "Produkt",
       links: [
         { label: "Funkcje", href: "/funkcje" },
-        { label: "Cennik", href: "#pricing" },
+  { label: "Cennik", href: "/cennik" },
         { label: "Demo", href: "#demo" },
         { label: "Integracje", href: "#" }
       ]
@@ -35,7 +35,7 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { label: "Polityka prywatności", href: "#" },
+    { label: "Polityka prywatności", href: "/polityka-prywatnosci" },
     { label: "Regulamin", href: "#" },
     { label: "RODO", href: "#" }
   ];
@@ -160,14 +160,25 @@ export default function Footer() {
           <div data-testid="text-footer-copyright">© 2024 AutoŻaba. Wszystkie prawa zastrzeżone.</div>
           <div className="flex flex-wrap gap-4">
             {legalLinks.map((link, index) => (
-              <a 
-                key={index} 
-                href={link.href} 
-                className="footer-link hover:text-foreground transition-colors"
-                data-testid={`link-footer-legal-${index}`}
-              >
-                {link.label}
-              </a>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className="footer-link hover:text-foreground transition-colors"
+                  data-testid={`link-footer-legal-${index}`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="footer-link hover:text-foreground transition-colors"
+                  data-testid={`link-footer-legal-${index}`}
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
         </div>

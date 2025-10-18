@@ -7,26 +7,25 @@
 
 ## 2. Content Preparation
 - Draft structured outlines for each page, highlighting reusable sections (hero, social proof, CTA blocks, FAQ).
-- Canonical feature copy already lives in `src/data/features.ts` for the `Funkcje` page; mirror this approach for pricing tiers/add-ons for `Cennik`.
+- Canonical feature copy already lives in `src/data/features.ts` for the `Funkcje` page; pricing tiers (Free trial, Pierwszy sklep, Pełna automatyzacja), dodatki i FAQ opisano w module `src/data/pricing.ts` i są gotowe do ponownego użycia.
 - Normalize legal content into Markdown/MDX (maintain headings/anchors) for `Polityka prywatności`.
 - Translate or adapt copy to match the Polish locale used on the rest of the site.
 
 ## 3. Routing & File Structure
 - `src/app/funkcje/page.tsx` implemented with full layout, metadata, and reusable data hooks.
-- Add new routes for:
-	- `src/app/cennik/page.tsx`
-	- `src/app/polityka-prywatnosci/page.mdx` (or `.tsx` if component composition is required)
+- `src/app/cennik/page.tsx` zaimplementowana (hero, plany, dodatki, gwarancja, FAQ, CTA) i wykorzystuje dane z `src/data/pricing.ts`.
+- `src/app/polityka-prywatnosci/page.tsx` dodana — wykorzystuje layout z nawigacją i stopką, eksportuje metadane oraz renderuje pełną treść dokumentu w stylu `prose`.
 - Place the PDF asset at `public/regulamin-serwisu.pdf` and expose via download link/buttons.
 - Ensure all new pages export metadata (title, description, OpenGraph).
 
 ## 4. Layout & Components
 - Map required sections to existing components (hero, feature grid, pricing tables, accordions). Identify gaps needing new components and spec them in `docs/` before implementation.
-- Feature grids, benefits, and onboarding timeline already reuse data from `src/data/features.ts`; follow the same pattern for pricing tables and legal FAQs.
+- Feature grids, benefits, and onboarding timeline already reuse data from `src/data/features.ts`; pricing tables i FAQ korzystają teraz z `src/data/pricing.ts`, a layout `/cennik` został przeprojektowany (hero onboarding, 3 karty, moduły dodatków i CTA).
 - Prepare props/data typing updates for any shared components (e.g., pricing table) under `src/types`.
 - Validate Tailwind tokens support required styling; extend theme if needed in `tailwind.config.ts`.
 
 ## 5. Navigation & Cross-Linking
-- Primary navigation/header and footer already link to `/funkcje`; extend with `/cennik`, `/polityka-prywatnosci`, and the regulations PDF when ready.
+- Primary navigation/header i stopka linkują do `/funkcje`, `/cennik`; stopka uzupełniona o `/polityka-prywatnosci`, a link do regulaminu oraz plik RODO pozostają do wdrożenia wraz z publikacją PDF.
 - Add contextual CTAs across existing pages pointing to the new subpages (e.g., homepage banners linking to pricing).
 - Adjust sitemap generation and robots meta if automated to ensure the new URLs are indexable.
 
