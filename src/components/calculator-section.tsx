@@ -59,7 +59,7 @@ export default function CalculatorSection() {
   });
 
   return (
-  <section className="section-padding bg-white dark:bg-background">
+    <section className="section-padding bg-white dark:bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-calculator-title">
@@ -178,18 +178,44 @@ export default function CalculatorSection() {
                     data-animate="rise"
                     data-animate-delay="180"
                   >
-                    <div className="metric-card__label">Ochrona przed karami PIP</div>
                     <div
-                      className="metric-card__value"
-                      data-testid="stat-penalty-avoided"
-                      suppressHydrationWarning
+                      className="metric-card__swap"
+                      aria-live="polite"
+                      data-state={hadPIPControl ? "back" : "front"}
                     >
-                      {riskAvoidedSpring.formatted}
-                    </div>
-                    <div className="metric-card__hint">
-                      {hadPIPControl
-                        ? "Zwiększone ryzyko powtórnej kontroli"
-                        : "Maksymalna kara za naruszenia"}
+                      <div
+                        className="metric-card__panel"
+                        data-panel="front"
+                        data-active={(!hadPIPControl).toString()}
+                        aria-hidden={hadPIPControl}
+                      >
+                        <div className="metric-card__label">Ochrona przed karami PIP</div>
+                        <div
+                          className="metric-card__value"
+                          data-testid="stat-penalty-avoided"
+                          suppressHydrationWarning
+                        >
+                          {riskAvoidedSpring.formatted}
+                        </div>
+                        <div className="metric-card__hint">
+                          Maksymalna kara za naruszenia Kodeksu pracy to 30 000 zł.
+                        </div>
+                      </div>
+
+                      <div
+                        className="metric-card__panel"
+                        data-panel="back"
+                        data-active={hadPIPControl.toString()}
+                        aria-hidden={!hadPIPControl}
+                      >
+                        <div className="metric-card__label">Kontrola wraca częściej</div>
+                        <div className="metric-card__value" suppressHydrationWarning>
+                          {riskAvoidedSpring.formatted}
+                        </div>
+                        <div className="metric-card__hint">
+                          Jeśli PIP był u Ciebie w ciągu ostatnich 2 lat, szansa na powtórkę rośnie, a kara 30 000 zł nadal grozi.
+                        </div>
+                      </div>
                     </div>
                   </div>
 

@@ -21,23 +21,23 @@ export default function SolutionSection() {
     {
       id: "auto-schedule",
       icon: Calendar,
-      title: "Automatyczne grafiki",
-      description: "System sam tworzy grafiki uwzględniając dostępność pracowników i wszystkie przepisy Kodeksu Pracy.",
+      title: "Automatyczne harmonogramy",
+      description: "System układa grafiki za Ciebie, respektując przepisy Kodeksu pracy, które sam wybierzesz – od odpoczynku dobowego po limity nadgodzin.",
       savings: "2h 45min / grafik"
     },
     {
-      id: "legal-shield", 
-      icon: Shield,
-      title: "Tarcza Prawna §",
-      description: "Kontekstowe wskazówki prawne w każdym miejscu aplikacji. Żadnej pomyłki, żadnego ryzyka.",
-      protection: "Unikasz kar do 30 000 zł"
+      id: "time-tracking",
+      icon: Smartphone,
+      title: "Ewidencja czasu pracy",
+      description: "Pracownicy logują wejścia w aplikacji mobilnej, a ewidencja godzin i nadgodzin aktualizuje się sama.",
+      benefit: "Rozliczenia z telefonu i bez papierologii"
     },
     {
-      id: "mobile-access",
-      icon: Smartphone, 
-      title: "Dostęp mobilny",
-      description: "Pracownicy deklarują dostępność przez telefon. Ty masz wszystko pod kontrolą z każdego miejsca.",
-      benefit: "Nieograniczona liczba pracowników"
+      id: "legal-shield",
+      icon: Shield,
+      title: "Tarcza prawna",
+      description: "Konkretnie wskazuje, co poprawić, ostrzega przed błędami i przygotowuje na kontrolę PIP.",
+      protection: "Chronisz się przed karami do 30 000 zł"
     }
   ];
 
@@ -46,16 +46,16 @@ export default function SolutionSection() {
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-solution-title">
-      Twoja <span className="text-primary dark:text-primary-foreground">Automatyczna Tarcza Prawna</span>
+            Twoja <span className="text-primary dark:text-primary-foreground">Automatyczna Tarcza Prawna</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-solution-subtitle">
             AutoŻaba to nie kolejne narzędzie HR. To system ochrony, który automatyzuje 
             najbardziej ryzykowne procesy i daje spokój ducha.
           </p>
         </div>
-        
+
         {/* Before/After Comparison */}
-  <div className="relative grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 mb-14 lg:mb-20">
+        <div className="relative grid gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 mb-14 lg:mb-20">
           <div
             className="group relative"
             data-animate="slide-left"
@@ -129,9 +129,9 @@ export default function SolutionSection() {
             aria-hidden="true"
           />
         </div>
-        
+
         {/* Feature Showcase */}
-  <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -147,7 +147,7 @@ export default function SolutionSection() {
                 <CardContent className="relative p-6 sm:p-8 space-y-5">
                   <div className="feature-card__icon flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="h-6 w-6" />
-                  </div>
+            </div>
                   <div className="space-y-4">
                     <h3 className="text-xl font-semibold text-foreground" data-testid={`text-feature-title-${feature.id}`}>
                       {feature.title}
@@ -185,7 +185,7 @@ export default function SolutionSection() {
               </Card>
             );
           })}
-        </div>
+  </div>
       </div>
     </section>
   );
