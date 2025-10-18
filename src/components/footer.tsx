@@ -24,6 +24,15 @@ export default function Footer() {
       ]
     },
     {
+      title: "Pomoc",
+      links: [
+        { label: "Tutoriale", href: "/tutoriale" },
+        { label: "Wsparcie techniczne", href: "/kontakt" },
+        { label: "Najczęstsze pytania", href: "#" },
+        { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" }
+      ]
+    },
+    {
       title: "Kontakt",
       links: [
         { label: "autozaba@ainything.pl", href: "mailto:autozaba@ainything.pl" },

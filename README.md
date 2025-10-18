@@ -28,8 +28,9 @@ ANALYZE=true npm run build
 
 ## Content authoring
 - Blog posts live in `content/blog/*.mdx` with frontmatter (title, description, date, tags, cover, draft)
-- MDX headings are auto-linked; see `mdx-components.tsx`
-- Details: see `BLOG_SETUP.md`
+- Tutoriale produktu żyją w `content/tutorials/*.mdx`; wymagane pola frontmatteru opisuje `content/tutorials/README.md`
+- MDX headings są auto-linkowane; więcej w `mdx-components.tsx`
+- Dodatkowe szczegóły dla zespołu contentu: `BLOG_SETUP.md` i `docs/tutorials-page-plan.md`
 
 ## Images
 - Use `next/image`. Remote patterns allow `images.unsplash.com`.

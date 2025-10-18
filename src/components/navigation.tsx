@@ -19,6 +19,7 @@ export default function Navigation() {
   const isFunctionsRoute = pathname.startsWith("/funkcje");
   const isPricingRoute = pathname.startsWith("/cennik");
   const isBlogRoute = pathname.startsWith("/blog");
+  const isTutorialRoute = pathname.startsWith("/tutoriale");
   const isContactRoute = pathname.startsWith("/kontakt");
   const showScrollProgress = isLanding;
 
@@ -169,6 +170,17 @@ export default function Navigation() {
                 Blog
               </Link>
               <Link
+                href="/tutoriale"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  isTutorialRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                )}
+                data-testid="link-nav-tutoriale"
+              >
+                Tutoriale
+              </Link>
+              <Link
                 href="/kontakt"
                 onClick={() => setIsOpen(false)}
                 className={cn(
@@ -257,6 +269,17 @@ export default function Navigation() {
                   data-testid="link-mobile-blog"
                 >
                   Blog
+                </Link>
+                <Link
+                  href="/tutoriale"
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-lg font-medium transition-colors",
+                    isTutorialRoute ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  )}
+                  data-testid="link-mobile-tutoriale"
+                >
+                  Tutoriale
                 </Link>
                 <Link
                   href="/kontakt"

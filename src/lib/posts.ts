@@ -1,72 +1,71 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import { z } from 'zod'
+import {
+  getAllEntries,
+  getCollectionSlugs,
+  loadEntry,
+  type BaseMeta,
+  type CollectionEntry,
+} from '@/lib/mdx-collection'
 
-const BLOG_DIR = path.join(process.cwd(), 'content', 'blog')
+const BLOG_DIR = 'blog'
 
-// Legacy interface for compatibility
-export interface BlogPost {
+const BlogMetaSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  date: z.string(),
+  tags: z.array(z.string()).optional(),
+  cover: z.string().optional(),
+  draft: z.boolean().optional(),
+  readTime: z.string().optional(),
+})
+
+export type BlogMeta = z.infer<typeof BlogMetaSchema>
+
+// Legacy interface for compatibility with older imports
+export interface BlogPost extends BlogMeta {
   slug: string
-  title: string
-  description?: string
-  date: string
-  tags?: string[]
-  cover?: string
-  draft?: boolean
 }
 
 export async function getAllSlugs(): Promise<string[]> {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return []
-  }
-
-  const fileNames = fs.readdirSync(BLOG_DIR)
-  return fileNames
-    .filter(fileName => fileName.endsWith('.mdx'))
-    .map(fileName => fileName.replace(/\.mdx$/, ''))
+  return getCollectionSlugs(BLOG_DIR)
 }
 
 export async function loadPost(slug: string) {
-  try {
-    const mod = await import(`../../content/blog/${slug}.mdx`)
-    let meta = (mod as any).meta || (mod as any).frontmatter || (mod as any).metadata
-    if (!meta) {
-      const fullPath = path.join(BLOG_DIR, `${slug}.mdx`)
-      const source = fs.readFileSync(fullPath, 'utf8')
-      const parsed = matter(source)
-      meta = parsed.data as any
-    }
-    return { 
-      Component: (mod as any).default, 
-      meta 
-    }
-  } catch (error) {
-    console.error(`Error loading post ${slug}:`, error)
-    throw error
+  const { Component, meta } = await loadEntry<BlogMeta>(slug, {
+    dir: BLOG_DIR,
+    schema: BlogMetaSchema,
+    importModule: async currentSlug => {
+      try {
+        const mod = await import(`../../content/${BLOG_DIR}/${currentSlug}.mdx`)
+        return mod as Record<string, unknown>
+      } catch (error) {
+        console.warn(`MDX import fallback triggered for blog/${currentSlug}.mdx`, error)
+        return null
+      }
+    },
+  })
+
+  if (!Component) {
+    throw new Error(`Unable to resolve MDX component for blog/${slug}`)
+  }
+
+  return {
+    Component,
+    meta,
   }
 }
 
-export async function getAllPosts() {
-  const slugs = await getAllSlugs()
-  const posts = []
-  
-  for (const slug of slugs) {
-    try {
-      const { meta } = await loadPost(slug)
-      if (meta && !meta.draft) {
-        posts.push({ slug, meta })
+export async function getAllPosts(): Promise<Array<CollectionEntry<BlogMeta>>> {
+  return getAllEntries<BlogMeta>(BLOG_DIR, {
+    schema: BlogMetaSchema,
+    importModule: async currentSlug => {
+      try {
+        const mod = await import(`../../content/${BLOG_DIR}/${currentSlug}.mdx`)
+        return mod as Record<string, unknown>
+      } catch (error) {
+        console.warn(`MDX import fallback triggered for blog/${currentSlug}.mdx`, error)
+        return null
       }
-    } catch (error) {
-      console.warn(`Failed to load post ${slug}:`, error)
-    }
-  }
-  
-  // Sort by date (ISO format)
-  return posts.sort((a, b) => {
-    if (a.meta.date < b.meta.date) {
-      return 1
-    } else {
-      return -1
-    }
+    },
   })
 }

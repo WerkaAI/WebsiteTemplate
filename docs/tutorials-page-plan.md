@@ -73,3 +73,9 @@
 - Content pipeline: co najmniej jeden przykładowy tutorial MDX z poprawnym frontmatterem i renderowaniem.
 - Nawigacja i SEO działają zgodnie z opisem, meta dane widoczne w DevTools.
 - Dokumentacja repo uzupełniona, TODO oznaczone realnymi follow-upami.
+
+## 13. Status iteracji (2025-10-18)
+- Wdrożono infrastrukturę MDX (`mdx-collection`, `tutorials.ts`, przykładowy plik w `content/tutorials/`).
+- Strona listy (`/tutoriale`) i widok pojedynczego tutorialu działają, łącznie z metadanymi i breadcrumbs.
+- Nawigacja i stopka zawierają linki do tutoriali; blog ma cross-link sekcję.
+- Dodano podstawowe testy (`tutorials.test.ts`, `tutorial-grid.test.ts`) oraz stub `useAnalytics` z TODO na integrację.
