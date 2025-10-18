@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, Copy, Linkedin, Twitter, Mail } from "lucide-react";
@@ -11,20 +11,33 @@ interface ShareButtonsProps {
   className?: string;
 }
 
-function buildShareUrl(slug: string) {
-  if (typeof window !== "undefined" && window.location) {
+function getFallbackOrigin() {
+  const envOrigin = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (envOrigin && envOrigin.length > 0) {
+    return envOrigin.replace(/\/$/, "");
+  }
+  return "https://autozaba.pl";
+}
+
+function buildServerShareUrl(slug: string) {
+  return `${getFallbackOrigin()}/blog/${slug}`;
+}
+
+function buildClientShareUrl(slug: string) {
+  if (typeof window !== "undefined" && window.location?.origin) {
     return `${window.location.origin}/blog/${slug}`;
   }
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return `${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")}/blog/${slug}`;
-  }
-  return `https://autozaba.pl/blog/${slug}`;
+  return buildServerShareUrl(slug);
 }
 
 export default function ShareButtons({ title, slug, className }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState(() => buildServerShareUrl(slug));
 
-  const shareUrl = useMemo(() => buildShareUrl(slug), [slug]);
+  useEffect(() => {
+    const resolvedUrl = buildClientShareUrl(slug);
+    setShareUrl((current) => (current === resolvedUrl ? current : resolvedUrl));
+  }, [slug]);
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(title);
 

@@ -28,7 +28,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
     <div className="container-spacing">
       <div className="text-center space-y-4 mb-16">
         <h1 className="text-4xl lg:text-5xl font-bold text-foreground" data-testid="text-blog-title">
-          Blog: <span className="text-primary dark:text-primary-foreground">Prawo Pracy w Pigułce</span>
+          Blog: <span className="text-primary dark:text-emerald-300">Prawo Pracy w Pigułce</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-blog-description">
           Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. 

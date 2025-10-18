@@ -80,7 +80,7 @@ export default function ContactSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
   <div className="text-center space-y-4 mb-10 sm:mb-12" data-animate data-animate-delay="40">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-contact-title">
-            Potrzebujesz <span className="text-primary dark:text-primary-foreground">pomocy</span>?
+            Potrzebujesz <span className="text-primary dark:text-emerald-300">pomocy</span>?
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-contact-subtitle">
             Jesteśmy tu, by odpowiedzieć na Twoje pytania i pomóc we wdrożeniu
@@ -132,7 +132,7 @@ export default function ContactSection() {
                       <a 
                         key={index} 
                         href={item.href} 
-                        className="flex items-center text-primary dark:text-primary-foreground hover:text-primary/80 dark:hover:text-primary-foreground/80 transition-colors"
+                        className="flex items-center text-primary dark:text-emerald-300 hover:text-primary/80 dark:hover:text-emerald-200 transition-colors"
                         data-animate="slide-right"
                         data-animate-delay={`${120 + index * 60}`}
                         data-testid={`quick-help-${index}`}
@@ -261,7 +261,7 @@ export default function ContactSection() {
                   />
                   <Label htmlFor="privacy" className="text-sm text-muted-foreground">
                     Zgadzam się na przetwarzanie danych osobowych zgodnie z{" "}
-                    <a href="#" className="text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80">polityką prywatności</a>
+                      <a href="/polityka-prywatnosci" className="text-primary dark:text-emerald-300 underline hover:underline">polityką prywatności</a>
                   </Label>
                 </div>
                 {errors.privacy && (

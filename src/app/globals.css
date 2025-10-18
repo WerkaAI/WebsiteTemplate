@@ -23,8 +23,8 @@
   --secondary: #16A34A; /* Secondary green - gentle accents */
   --secondary-foreground: #FFFFFF;
   --muted: #F3F4F6; /* Soft backgrounds */
-  --muted-foreground: #313847; /* Stone - secondary text */
-  --accent: #FD7E14; /* Orange - warnings and legal only */
+  --muted-foreground: #1F2933; /* Deepened for WCAG contrast */
+  --accent: #C2410C; /* Darker orange for stronger contrast */
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
@@ -73,14 +73,14 @@
   --card-foreground: hsl(210, 40%, 97%);
   --popover: hsl(210, 25%, 6%);
   --popover-foreground: hsl(210, 40%, 97%);
-  --primary: #0f6b37;
-  --primary-foreground: #ecfdf5;
-  --secondary: hsl(154, 58%, 52%);
-  --secondary-foreground: hsl(162, 100%, 8%);
+  --primary: #34d399;
+  --primary-foreground: #022c1a;
+  --secondary: #22c55e;
+  --secondary-foreground: #022c1a;
   --muted: hsl(210, 25%, 14%);
-  --muted-foreground: hsl(215, 18%, 68%);
-  --accent: hsl(25, 95%, 52%);
-  --accent-foreground: hsl(210, 40%, 4%);
+  --muted-foreground: rgba(226, 232, 240, 0.88);
+  --accent: #fb923c;
+  --accent-foreground: hsl(210, 40%, 6%);
   --destructive: hsl(0, 84%, 55%);
   --destructive-foreground: hsl(210, 40%, 4%);
   --border: hsl(210, 22%, 24%);
@@ -520,7 +520,7 @@
   }
 
   .dark .demo-step--active .demo-step__time {
-    color: var(--primary-foreground);
+    color: rgba(240, 253, 250, 0.95);
   }
 
   .demo-preview {

@@ -35,9 +35,9 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { label: "Polityka prywatności", href: "/polityka-prywatnosci" },
-    { label: "Regulamin", href: "#" },
-    { label: "RODO", href: "#" }
+    { label: "Polityka prywatności", href: "/polityka-prywatnosci", type: "route" as const },
+    { label: "Regulamin", href: "/Regulamin_Serwisu_Autozaba.pdf", type: "asset" as const },
+    { label: "RODO", href: "#", type: "anchor" as const }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -159,17 +159,36 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-muted-foreground text-sm">
           <div data-testid="text-footer-copyright">© 2024 AutoŻaba. Wszystkie prawa zastrzeżone.</div>
           <div className="flex flex-wrap gap-4">
-            {legalLinks.map((link, index) => (
-              link.href.startsWith('/') ? (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className="footer-link hover:text-foreground transition-colors"
-                  data-testid={`link-footer-legal-${index}`}
-                >
-                  {link.label}
-                </Link>
-              ) : (
+            {legalLinks.map((link, index) => {
+              if (link.type === "route") {
+                return (
+                  <Link
+                    key={index}
+                    href={link.href}
+                    className="footer-link hover:text-foreground transition-colors"
+                    data-testid={`link-footer-legal-${index}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
+
+              if (link.type === "asset") {
+                return (
+                  <a
+                    key={index}
+                    href={link.href}
+                    className="footer-link hover:text-foreground transition-colors"
+                    target="_blank"
+                    rel="noreferrer"
+                    data-testid={`link-footer-legal-${index}`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
+              return (
                 <a
                   key={index}
                   href={link.href}
@@ -178,14 +197,14 @@ export default function Footer() {
                 >
                   {link.label}
                 </a>
-              )
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Final CTA Section */}
         <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center space-y-6 shadow-lg">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white" data-testid="text-footer-cta-title">
+          <h2 className="text-2xl lg:text-3xl font-bold text-primary-foreground" data-testid="text-footer-cta-title">
             Odzyskaj kontrolę nad swoim czasem
           </h2>
           <p className="text-lg opacity-90 max-w-2xl mx-auto" data-testid="text-footer-cta-description">
@@ -196,7 +215,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Button
               size="touch"
-              className="bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg"
+              className="bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg"
               onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
               data-testid="button-footer-trial"
             >
@@ -205,7 +224,7 @@ export default function Footer() {
             <Button
               size="touch"
               variant="outline"
-              className="border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg"
+              className="border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg"
               onClick={() => scrollToSection('contact')}
               data-testid="button-footer-demo"
             >

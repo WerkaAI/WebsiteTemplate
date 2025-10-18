@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
       <div className="container-spacing">
   <div className="text-center space-y-4 mb-14 sm:mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-testimonials-title">
-      Odzyskali <span className="text-primary dark:text-primary-foreground">spokój ducha</span>
+  Odzyskali <span className="text-primary dark:text-emerald-300">spokój ducha</span>
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-testimonials-subtitle">
             Prawdziwe historie franczyzobiorców, którzy odzyskali kontrolę

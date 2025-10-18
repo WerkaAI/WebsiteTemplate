@@ -99,7 +99,7 @@ export default function ProblemSection() {
       <div className="container-spacing relative z-10">
   <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-problem-title">
-      Wiemy, <span className="text-primary dark:text-primary-foreground">przez co przechodzisz</span>
+            Wiemy, <span className="text-primary dark:text-emerald-300">przez co przechodzisz</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-problem-subtitle">
             16 godzin pracy dziennie, chaos w grafikach i ciągły strach przed kontrolą PIP.

@@ -15,7 +15,7 @@
 - `src/app/funkcje/page.tsx` implemented with full layout, metadata, and reusable data hooks.
 - `src/app/cennik/page.tsx` zaimplementowana (hero, plany, dodatki, gwarancja, FAQ, CTA) i wykorzystuje dane z `src/data/pricing.ts`.
 - `src/app/polityka-prywatnosci/page.tsx` dodana — wykorzystuje layout z nawigacją i stopką, eksportuje metadane oraz renderuje pełną treść dokumentu w stylu `prose`.
-- Place the PDF asset at `public/regulamin-serwisu.pdf` and expose via download link/buttons.
+- Plik `public/Regulamin_Serwisu_Autozaba.pdf` dodany i podlinkowany w stopce jako zasób do pobrania.
 - Ensure all new pages export metadata (title, description, OpenGraph).
 
 ## 4. Layout & Components
@@ -25,7 +25,7 @@
 - Validate Tailwind tokens support required styling; extend theme if needed in `tailwind.config.ts`.
 
 ## 5. Navigation & Cross-Linking
-- Primary navigation/header i stopka linkują do `/funkcje`, `/cennik`; stopka uzupełniona o `/polityka-prywatnosci`, a link do regulaminu oraz plik RODO pozostają do wdrożenia wraz z publikacją PDF.
+- Primary navigation/header i stopka linkują do `/funkcje`, `/cennik`, `/polityka-prywatnosci`; stopka zawiera teraz odnośnik do `Regulamin_Serwisu_Autozaba.pdf`, a link RODO zostanie zaktualizowany po przygotowaniu materiału.
 - Add contextual CTAs across existing pages pointing to the new subpages (e.g., homepage banners linking to pricing).
 - Adjust sitemap generation and robots meta if automated to ensure the new URLs are indexable.
 

@@ -63,7 +63,7 @@ export default function CalculatorSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-calculator-title">
-            Sprawdź, ile <span className="text-primary dark:text-primary-foreground">zaoszczędzisz</span>
+            Sprawdź, ile <span className="text-primary dark:text-emerald-300">zaoszczędzisz</span>
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-calculator-subtitle">
             Kalkulator uwzględnia oszczędność czasu, uniknięte kary i spokój ducha

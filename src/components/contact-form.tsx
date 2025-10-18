@@ -192,7 +192,7 @@ export default function ContactForm() {
         <div className="space-y-1">
           <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
             Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na zapytanie zgodnie z{' '}
-            <a href="/polityka-prywatnosci" className="text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80">
+            <a href="/polityka-prywatnosci" className="text-primary dark:text-emerald-300 underline hover:underline">
               polityką prywatności
             </a>
             . <span className="text-red-500">*</span>

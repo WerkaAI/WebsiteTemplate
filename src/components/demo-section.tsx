@@ -70,7 +70,7 @@ export default function DemoSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-demo-title">
-            Zobacz <span className="text-primary dark:text-primary-foreground">jak to działa</span>
+            Zobacz <span className="text-primary dark:text-emerald-300">jak to działa</span>
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-demo-subtitle">
             2-minutowe demo pokazuje, jak stworzyć grafik zgodny z prawem

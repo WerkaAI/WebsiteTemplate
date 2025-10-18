@@ -249,7 +249,7 @@ export default function HeroSection() {
                 data-animate-once
                 data-testid="text-hero-title"
               >
-                Odzyskaj <span className="text-primary dark:text-primary-foreground">swój czas</span>
+                Odzyskaj <span className="text-primary dark:text-emerald-300">swój czas</span>
               </h1>
               <p
                 className="text-xl text-muted-foreground leading-relaxed copy-max"
@@ -292,7 +292,7 @@ export default function HeroSection() {
             </div>
 
             <div className="text-sm text-muted-foreground copy-max">
-              <Link href="#contact" className="inline-flex items-center gap-2 text-primary dark:text-primary-foreground hover:text-primary/80 dark:hover:text-primary-foreground/80 transition-colors">
+              <Link href="#contact" className="inline-flex items-center gap-2 text-primary dark:text-emerald-300 hover:text-primary/80 dark:hover:text-emerald-200 transition-colors">
                 <ShieldCheck className="w-4 h-4" />
                 Dowiedz się, jak wygląda wdrożenie AutoŻaby
               </Link>

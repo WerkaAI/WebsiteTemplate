@@ -14,8 +14,8 @@
       "orientationAngle": 0,
       "orientationType": "landscape-primary"
     },
-    "timestamp": "2025-10-17T11:40:27.975Z",
-    "url": "http://localhost:3001/blog/2025-08-21-witaj-autozaba",
+    "timestamp": "2025-10-18T15:56:22.529Z",
+    "url": "http://localhost:3000/blog/2025-08-21-witaj-autozaba",
     "toolOptions": {
       "reporter": "v1"
     },
@@ -936,7 +936,7 @@
               }
             ],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -988,7 +988,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -1014,7 +1014,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -1040,7 +1040,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -1071,6 +1071,35 @@
               [
                 "next-route-announcer",
                 "#__next-route-announcer__"
+              ]
+            ]
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-allowed-attr",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "ARIA attributes are used correctly for the defined role"
+              }
+            ],
+            "none": [
+              {
+                "id": "aria-unsupported-attr",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "ARIA attribute is supported"
+              }
+            ],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
               ]
             ]
           }
@@ -1209,7 +1238,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -1245,7 +1274,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -1263,7 +1292,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -1281,7 +1310,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -1304,6 +1333,27 @@
               [
                 "next-route-announcer",
                 "#__next-route-announcer__"
+              ]
+            ]
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-conditional-attr",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "ARIA attribute is allowed"
+              }
+            ],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
               ]
             ]
           }
@@ -1691,7 +1741,7 @@
               }
             ],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -1727,7 +1777,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -1745,7 +1795,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -1763,7 +1813,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -1786,6 +1836,27 @@
               [
                 "next-route-announcer",
                 "#__next-route-announcer__"
+              ]
+            ]
+          },
+          {
+            "any": [],
+            "all": [],
+            "none": [
+              {
+                "id": "aria-prohibited-attr",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "ARIA attribute is allowed"
+              }
+            ],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
               ]
             ]
           }
@@ -2116,7 +2187,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -2148,7 +2219,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -2180,7 +2251,7 @@
             ],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -2217,6 +2288,41 @@
               [
                 "next-route-announcer",
                 "#__next-route-announcer__"
+              ]
+            ]
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "ARIA attribute values are valid"
+              },
+              {
+                "id": "aria-errormessage",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-errormessage exists and references elements visible to screen readers that use a supported aria-errormessage technique"
+              },
+              {
+                "id": "aria-level",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-level values are valid"
+              }
+            ],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
               ]
             ]
           }
@@ -2285,7 +2391,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -2321,7 +2427,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -2339,7 +2445,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -2357,7 +2463,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -2380,6 +2486,27 @@
               [
                 "next-route-announcer",
                 "#__next-route-announcer__"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "aria-valid-attr",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "ARIA attribute name is valid"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
               ]
             ]
           }
@@ -2530,7 +2657,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -2602,7 +2729,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
               ".bg-white"
             ]
@@ -2620,9 +2747,30 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "aria-label",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "aria-label attribute exists and is not empty"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
+              ]
             ]
           }
         ]
@@ -2659,7 +2807,7 @@
                 "data": null,
                 "relatedNodes": [
                   {
-                    "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+                    "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
                     "target": [
                       ".text-4xl"
                     ]
@@ -2725,7 +2873,7 @@
                     ]
                   },
                   {
-                    "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+                    "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
                     "target": [
                       ".text-2xl"
                     ]
@@ -2781,16 +2929,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -2798,7 +2946,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-logo\"] > .w-8.h-8.rounded-lg > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-logo\"] > .w-8.h-8.rounded-lg > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -2831,16 +2979,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -2856,16 +3004,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3356,16 +3504,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c8ced8",
                   "bgColor": "#0b1224",
-                  "contrastRatio": 8.01,
+                  "contrastRatio": 11.78,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.01"
+                "message": "Element has sufficient color contrast of 11.78"
               }
             ],
             "all": [],
@@ -3406,22 +3554,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c8ced8",
                   "bgColor": "#0b1224",
-                  "contrastRatio": 8.01,
+                  "contrastRatio": 11.78,
                   "fontSize": "9.0pt (12px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.01"
+                "message": "Element has sufficient color contrast of 11.78"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<p class=\"mt-3 text-xs text-muted-foreground\">Link: http://localhost:3001/blog/2025-08-21-witaj-autozaba</p>",
+            "html": "<p class=\"mt-3 text-xs text-muted-foreground\">Link: http://localhost:3000/blog/2025-08-21-witaj-autozaba</p>",
             "target": [
               ".mt-3.text-xs.text-muted-foreground"
             ]
@@ -3431,16 +3579,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c8ced8",
                   "bgColor": "#0b1224",
-                  "contrastRatio": 8.01,
+                  "contrastRatio": 11.78,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.01"
+                "message": "Element has sufficient color contrast of 11.78"
               }
             ],
             "all": [],
@@ -3481,16 +3629,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -3506,16 +3654,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -3523,7 +3671,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.rounded-lg > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.rounded-lg > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -3556,16 +3704,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3656,16 +3804,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3681,22 +3829,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -3706,22 +3854,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -3731,16 +3879,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3748,7 +3896,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           },
           {
@@ -3756,22 +3904,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ffffff",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.6,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "18.0pt (24px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "3:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               ".text-2xl"
             ]
@@ -3781,16 +3929,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#d6eee2",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 5.4,
+                  "fgColor": "#073d27",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 6.4,
                   "fontSize": "13.5pt (18px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 5.4"
+                "message": "Element has sufficient color contrast of 6.4"
               }
             ],
             "all": [],
@@ -3806,22 +3954,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#0f6b37",
+                  "fgColor": "#022c1a",
                   "bgColor": "#ffffff",
-                  "contrastRatio": 6.6,
+                  "contrastRatio": 15.24,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 15.24"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
               ".bg-white"
             ]
@@ -3831,22 +3979,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ffffff",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.6,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
@@ -3856,16 +4004,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -3881,16 +4029,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -3906,16 +4054,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -3989,7 +4137,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
             "target": [
               ".text-4xl"
             ]
@@ -4187,7 +4335,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               ".text-2xl"
             ]
@@ -4293,7 +4441,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
             "target": [
               ".text-4xl"
             ]
@@ -4491,7 +4639,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               ".text-2xl"
             ]
@@ -4854,6 +5002,20 @@
           {
             "any": [
               {
+                "id": "link-in-text-block",
+                "data": null,
+                "relatedNodes": [
+                  {
+                    "html": "<div class=\"rounded-2xl border border-border/60 dark:border-white/10 bg-card/60 dark:bg-slate-900/70 p-5 shadow-sm\">",
+                    "target": [
+                      ".bg-card\\/60.dark\\:bg-slate-900\\/70.p-5:nth-child(2)"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Links can be distinguished from surrounding text in some way other than by color"
+              },
+              {
                 "id": "link-in-text-block-style",
                 "data": null,
                 "relatedNodes": [
@@ -5102,7 +5264,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -5128,7 +5290,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -5154,7 +5316,7 @@
               }
             ],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -5232,7 +5394,7 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -5258,7 +5420,7 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -5286,7 +5448,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           }
         ]
@@ -5616,7 +5778,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -5760,7 +5922,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
               ".bg-white"
             ]
@@ -5778,9 +5940,30 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "no-focusable-content",
+                "data": null,
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "Element does not have focusable descendants"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
+              ]
             ]
           }
         ]
@@ -5804,7 +5987,7 @@
                 "data": null,
                 "relatedNodes": [
                   {
-                    "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+                    "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
                     "target": [
                       ".text-4xl"
                     ]
@@ -5831,7 +6014,7 @@
       },
       {
         "id": "region",
-        "impact": null,
+        "impact": "moderate",
         "tags": [
           "cat.keyboard",
           "best-practice"
@@ -6077,7 +6260,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-logo\"] > .w-8.h-8.rounded-lg > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-logo\"] > .w-8.h-8.rounded-lg > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -6115,7 +6298,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ]
@@ -6415,7 +6598,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
             "target": [
               ".text-4xl"
             ]
@@ -6637,7 +6820,7 @@
             "impact": null,
             "html": "<circle cx=\"12\" cy=\"12\" r=\"10\"></circle>",
             "target": [
-              "circle[r=\"10\"]"
+              "circle[r=\"10\"][cx=\"12\"][cy=\"12\"]"
             ]
           },
           {
@@ -8355,7 +8538,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na LinkedIn\" href=\"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij na LinkedIn\"]"
             ]
@@ -8455,7 +8638,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij na X (Twitter)\" href=\"https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba&amp;text=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem\">",
             "target": [
               "a[aria-label=\"Udostępnij na X (Twitter)\"]"
             ]
@@ -8515,7 +8698,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3001%2Fblog%2F2025-08-21-witaj-autozaba\">",
+            "html": "<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-12 w-12\" aria-label=\"Udostępnij e-mailem\" href=\"mailto:?subject=Witaj%20w%20Auto%C5%BBaba%20-%20Rewolucja%20w%20zarz%C4%85dzaniu%20personelem&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2F2025-08-21-witaj-autozaba\">",
             "target": [
               "a[aria-label=\"Udostępnij e-mailem\"]"
             ]
@@ -8595,7 +8778,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<p class=\"mt-3 text-xs text-muted-foreground\">Link: http://localhost:3001/blog/2025-08-21-witaj-autozaba</p>",
+            "html": "<p class=\"mt-3 text-xs text-muted-foreground\">Link: http://localhost:3000/blog/2025-08-21-witaj-autozaba</p>",
             "target": [
               ".mt-3.text-xs.text-muted-foreground"
             ]
@@ -8837,7 +9020,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.rounded-lg > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.rounded-lg > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -9115,7 +9298,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -9135,7 +9318,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -9157,7 +9340,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           },
           {
@@ -9195,7 +9378,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               ".text-2xl"
             ]
@@ -9255,7 +9438,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
               ".bg-white"
             ]
@@ -9275,7 +9458,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
@@ -9602,6 +9785,259 @@
             "target": [
               "nextjs-portal"
             ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<div data-nextjs-toast=\"true\" class=\"nextjs-toast-errors-parent\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-parent"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<div data-nextjs-toast-wrapper=\"true\">",
+            "target": [
+              [
+                "nextjs-portal",
+                "div[data-nextjs-toast-wrapper=\"true\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<div class=\"nextjs-toast-errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors > svg[width=\"24\"][height=\"24\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<circle cx=\"12\" cy=\"12\" r=\"10\"></circle>",
+            "target": [
+              [
+                "nextjs-portal",
+                "circle[r=\"10\"][cx=\"12\"][cy=\"12\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"></line>",
+            "target": [
+              [
+                "nextjs-portal",
+                "line[y1=\"8\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"></line>",
+            "target": [
+              [
+                "nextjs-portal",
+                "line[y1=\"16\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<button data-nextjs-toast-errors-hide-button=\"true\" class=\"nextjs-toast-errors-hide-button\" type=\"button\" aria-label=\"Hide Errors\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">",
+            "target": [
+              [
+                "nextjs-portal",
+                ".nextjs-toast-errors-hide-button > svg[width=\"24\"][height=\"24\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<path d=\"M18 6L6 18\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>",
+            "target": [
+              [
+                "nextjs-portal",
+                "path[d=\"M18 6L6 18\"]"
+              ]
+            ]
+          },
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "All page content is contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": null,
+            "html": "<path d=\"M6 6L18 18\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>",
+            "target": [
+              [
+                "nextjs-portal",
+                "path[d=\"M6 6L18 18\"]"
+              ]
+            ]
           }
         ]
       },
@@ -9782,20 +10218,20 @@
                 "id": "aria-valid-attr-value",
                 "data": {
                   "messageKey": "controlsWithinPopup",
-                  "needsReview": "aria-controls=\"radix-:r3:\""
+                  "needsReview": "aria-controls=\"radix-:r0:\""
                 },
                 "relatedNodes": [],
                 "impact": "critical",
-                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"radix-:r3:\""
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"radix-:r0:\""
               }
             ],
             "none": [],
             "impact": "critical",
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r3:\" data-state=\"closed\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-12 w-12 md:hidden\" aria-label=\"Otwórz menu\" aria-expanded=\"false\" data-testid=\"button-mobile-menu\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"radix-:r0:\" data-state=\"closed\">",
             "target": [
               "button[aria-label=\"Otwórz menu\"]"
             ],
-            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"radix-:r3:\""
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"radix-:r0:\""
           }
         ]
       },
@@ -9880,7 +10316,7 @@
             "all": [],
             "none": [],
             "impact": "serious",
-            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
+            "html": "<h1 class=\"text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white\">Witaj w AutoŻaba - Rewolucja w zarządzaniu personelem</h1>",
             "target": [
               ".text-4xl"
             ],
@@ -10542,6 +10978,103 @@
         ]
       }
     ],
-    "violations": []
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=webdriverjs",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "fgColor": "#ffffff",
+                  "bgColor": "#ff5555",
+                  "contrastRatio": 3.14,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": null,
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<div data-nextjs-toast-wrapper=\"true\">",
+                    "target": [
+                      [
+                        "nextjs-portal",
+                        "div[data-nextjs-toast-wrapper=\"true\"]"
+                      ]
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element has insufficient color contrast of 3.14 (foreground color: #ffffff, background color: #ff5555, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span>1 error</span>",
+            "target": [
+              [
+                "nextjs-portal",
+                "span"
+              ]
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #ffffff, background color: #ff5555, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "tags": [
+          "cat.keyboard",
+          "best-practice"
+        ],
+        "description": "Ensure all page content is contained by landmarks",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=webdriverjs",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "region",
+                "data": {
+                  "isIframe": false
+                },
+                "relatedNodes": [],
+                "impact": "moderate",
+                "message": "Some page content is not contained by landmarks"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "moderate",
+            "html": "<span>1 error</span>",
+            "target": [
+              [
+                "nextjs-portal",
+                "span"
+              ]
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ]
   }
 ]

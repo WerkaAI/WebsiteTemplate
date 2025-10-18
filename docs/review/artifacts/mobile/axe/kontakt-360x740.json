@@ -14,8 +14,8 @@
       "orientationAngle": 0,
       "orientationType": "landscape-primary"
     },
-    "timestamp": "2025-10-17T11:40:33.980Z",
-    "url": "http://localhost:3001/kontakt",
+    "timestamp": "2025-10-18T15:56:28.051Z",
+    "url": "http://localhost:3000/kontakt",
     "toolOptions": {
       "reporter": "v1"
     },
@@ -2374,9 +2374,9 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
-              ".hover\\:bg-gray-100"
+              ".dark\\:text-primary-foreground"
             ]
           },
           {
@@ -2392,7 +2392,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
@@ -2437,7 +2437,7 @@
                     ]
                   },
                   {
-                    "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+                    "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
                     "target": [
                       "h2"
                     ]
@@ -2493,16 +2493,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -2510,7 +2510,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-logo\"] > .w-8.h-8.bg-primary > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-logo\"] > .w-8.h-8.bg-primary > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -2543,16 +2543,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -2593,16 +2593,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "15.0pt (20px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -2668,16 +2668,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -2743,16 +2743,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -2818,16 +2818,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -2893,16 +2893,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -2943,16 +2943,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -3168,24 +3168,24 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
+                  "fgColor": "#6ee7b7",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 16.94,
+                  "contrastRatio": 11.71,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 16.94"
+                "message": "Element has sufficient color contrast of 11.71"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80\">polityką prywatności</a>",
+            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-emerald-300 underline hover:underline\">polityką prywatności</a>",
             "target": [
-              ".dark\\:text-primary-foreground"
+              ".dark\\:text-emerald-300"
             ]
           },
           {
@@ -3193,16 +3193,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -3268,16 +3268,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -3318,16 +3318,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -3368,16 +3368,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c9cfd8",
                   "bgColor": "#0f172a",
-                  "contrastRatio": 7.67,
+                  "contrastRatio": 11.39,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 7.67"
+                "message": "Element has sufficient color contrast of 11.39"
               }
             ],
             "all": [],
@@ -3418,16 +3418,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3443,16 +3443,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -3468,16 +3468,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ecfdf5",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.27,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.27"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
@@ -3485,7 +3485,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.bg-primary > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.bg-primary > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -3518,16 +3518,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "12.0pt (16px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3618,16 +3618,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3643,22 +3643,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -3668,22 +3668,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -3693,16 +3693,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#9fabbc",
+                  "fgColor": "#c7cdd6",
                   "bgColor": "#020617",
-                  "contrastRatio": 8.67,
+                  "contrastRatio": 12.61,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 8.67"
+                "message": "Element has sufficient color contrast of 12.61"
               }
             ],
             "all": [],
@@ -3710,7 +3710,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           },
           {
@@ -3718,22 +3718,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ffffff",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.6,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "18.0pt (24px)",
                   "fontWeight": "bold",
                   "expectedContrastRatio": "3:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               "h2"
             ]
@@ -3743,16 +3743,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#d6eee2",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 5.4,
+                  "fgColor": "#073d27",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 6.4,
                   "fontSize": "13.5pt (18px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 5.4"
+                "message": "Element has sufficient color contrast of 6.4"
               }
             ],
             "all": [],
@@ -3768,24 +3768,24 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#0f6b37",
+                  "fgColor": "#022c1a",
                   "bgColor": "#ffffff",
-                  "contrastRatio": 6.6,
+                  "contrastRatio": 15.24,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 15.24"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
-              ".hover\\:bg-gray-100"
+              ".dark\\:text-primary-foreground"
             ]
           },
           {
@@ -3793,22 +3793,22 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#ffffff",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 6.6,
+                  "fgColor": "#022c1a",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 7.92,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 6.6"
+                "message": "Element has sufficient color contrast of 7.92"
               }
             ],
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
@@ -3818,16 +3818,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -3843,16 +3843,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -3868,16 +3868,16 @@
               {
                 "id": "color-contrast",
                 "data": {
-                  "fgColor": "#c0e0cf",
-                  "bgColor": "#0f6b37",
-                  "contrastRatio": 4.65,
+                  "fgColor": "#0c4d33",
+                  "bgColor": "#34d399",
+                  "contrastRatio": 5.14,
                   "fontSize": "10.5pt (14px)",
                   "fontWeight": "normal",
                   "expectedContrastRatio": "4.5:1"
                 },
                 "relatedNodes": [],
                 "impact": "serious",
-                "message": "Element has sufficient color contrast of 4.65"
+                "message": "Element has sufficient color contrast of 5.14"
               }
             ],
             "all": [],
@@ -4075,7 +4075,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               "h2"
             ]
@@ -4257,7 +4257,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               "h2"
             ]
@@ -4857,9 +4857,9 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80\">polityką prywatności</a>",
+            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-emerald-300 underline hover:underline\">polityką prywatności</a>",
             "target": [
-              ".dark\\:text-primary-foreground"
+              ".dark\\:text-emerald-300"
             ]
           }
         ]
@@ -4984,9 +4984,9 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80\">polityką prywatności</a>",
+            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-emerald-300 underline hover:underline\">polityką prywatności</a>",
             "target": [
-              ".dark\\:text-primary-foreground"
+              ".dark\\:text-emerald-300"
             ]
           },
           {
@@ -5036,7 +5036,7 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -5062,7 +5062,7 @@
               }
             ],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -5090,7 +5090,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           }
         ]
@@ -5386,9 +5386,9 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
-              ".hover\\:bg-gray-100"
+              ".dark\\:text-primary-foreground"
             ]
           },
           {
@@ -5404,7 +5404,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
@@ -5677,7 +5677,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-logo\"] > .w-8.h-8.bg-primary > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-logo\"] > .w-8.h-8.bg-primary > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -7315,9 +7315,9 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-primary-foreground hover:underline dark:hover:text-primary-foreground/80\">polityką prywatności</a>",
+            "html": "<a href=\"/polityka-prywatnosci\" class=\"text-primary dark:text-emerald-300 underline hover:underline\">polityką prywatności</a>",
             "target": [
-              ".dark\\:text-primary-foreground"
+              ".dark\\:text-emerald-300"
             ]
           },
           {
@@ -8177,7 +8177,7 @@
             "impact": null,
             "html": "<span class=\"text-primary-foreground font-bold\">Ż</span>",
             "target": [
-              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.bg-primary > .text-primary-foreground.font-bold"
+              "div[data-testid=\"link-footer-logo\"] > .w-8.h-8.bg-primary > .font-bold.text-primary-foreground"
             ]
           },
           {
@@ -8455,7 +8455,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\">Polityka prywatności</a>",
+            "html": "<a class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-0\" href=\"/polityka-prywatnosci\">Polityka prywatności</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-0\"]"
             ]
@@ -8475,7 +8475,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
+            "html": "<a href=\"/Regulamin_Serwisu_Autozaba.pdf\" class=\"footer-link hover:text-foreground transition-colors\" target=\"_blank\" rel=\"noreferrer\" data-testid=\"link-footer-legal-1\">Regulamin</a>",
             "target": [
               "a[data-testid=\"link-footer-legal-1\"]"
             ]
@@ -8497,7 +8497,7 @@
             "impact": null,
             "html": "<a href=\"#\" class=\"footer-link hover:text-foreground transition-colors\" data-testid=\"link-footer-legal-2\">RODO</a>",
             "target": [
-              "a[data-testid=\"link-footer-legal-2\"]"
+              "a[href=\"#\"]"
             ]
           },
           {
@@ -8535,7 +8535,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-white\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
+            "html": "<h2 class=\"text-2xl lg:text-3xl font-bold text-primary-foreground\" data-testid=\"text-footer-cta-title\">Odzyskaj kontrolę nad swoim czasem</h2>",
             "target": [
               "h2"
             ]
@@ -8595,9 +8595,9 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-12 bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg\" data-testid=\"button-footer-trial\">",
             "target": [
-              ".hover\\:bg-gray-100"
+              ".dark\\:text-primary-foreground"
             ]
           },
           {
@@ -8615,7 +8615,7 @@
             "all": [],
             "none": [],
             "impact": null,
-            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-white hover:bg-white/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
+            "html": "<button class=\"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-12 px-6 border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg\" data-testid=\"button-footer-demo\">",
             "target": [
               ".border-white\\/20"
             ]
