@@ -16,8 +16,7 @@ export default function Footer() {
     {
       title: "Zasoby", 
       links: [
-        { label: "Blog", href: "/blog" },
-        { label: "Przewodniki", href: "#" }
+        { label: "Blog", href: "/blog" }
       ]
     },
     {
@@ -25,7 +24,6 @@ export default function Footer() {
       links: [
         { label: "Tutoriale", href: "/tutoriale" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
-        { label: "Najczęstsze pytania", href: "#" },
         { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" }
       ]
     },
@@ -33,8 +31,6 @@ export default function Footer() {
       title: "Kontakt",
       links: [
         { label: "autozaba@ainything.pl", href: "mailto:autozaba@ainything.pl" },
-        { label: "Partnerzy", href: "#" },
-        { label: "Kariera", href: "#" }
       ]
     }
   ];
@@ -221,7 +217,7 @@ export default function Footer() {
             <Button
               size="touch"
               className="bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg"
-              onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
+              onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
               data-testid="button-footer-trial"
             >
               Rozpocznij 14-dniowy trial
@@ -230,7 +226,7 @@ export default function Footer() {
               size="touch"
               variant="outline"
               className="border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => (window.location.href = '/kontakt')}
               data-testid="button-footer-demo"
             >
               Umów prezentację

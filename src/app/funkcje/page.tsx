@@ -52,8 +52,8 @@ export default function FunkcjePage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <span className="cta-glow">
-                <Link
-                  href="https://app.autozaba.pl/trial"
+                  <Link
+                    href="https://app.autozaba.pl/register"
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:bg-primary/90"
                 >
                   Rozpocznij 14-dniowy trial
@@ -263,7 +263,7 @@ export default function FunkcjePage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="https://app.autozaba.pl/trial"
+                href="https://app.autozaba.pl/register"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
               >
                 Rozpocznij 14-dniowy trial

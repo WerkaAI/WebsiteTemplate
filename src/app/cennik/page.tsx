@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
-import { addOns, guaranteePoints, pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
+import { guaranteePoints, pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -26,15 +26,33 @@ const guaranteeExtra = guaranteePoints.slice(2)
 const onboardingSteps = [
   {
     title: 'Diagnoza & plan (45 min)',
-    description: 'Rozmawiamy o Twojej sieci, importujemy przykładowy grafik i ustalamy KPI współpracy.'
+    description: 'Poznajemy Twoją sieć i przygotowujemy plan wdrożenia.'
   },
   {
-    title: 'Migracja i konfiguracja (3–5 dni)',
-    description: 'Wprowadzamy dane, ustawiamy szablony obsady oraz automatyczne powiadomienia zespołu.'
+    title: 'Migracja (3–5 dni)',
+    description: 'Importujemy dane, konfigurujemy grafik i powiadomienia.'
   },
   {
-    title: 'Go-live i wsparcie',
-    description: 'Szkolimy menedżerów, monitorujemy pierwsze tygodnie i wdrażamy raporty kontrolne.'
+    title: 'Start i opieka',
+    description: 'Szkolimy zespół i monitorujemy pierwsze tygodnie pracy.'
+  }
+]
+
+const costSummary = [
+  {
+    label: 'Abonament AutoŻaba',
+    value: '149 zł / sklep / miesiąc',
+    note: 'Stała cena niezależnie od liczby pracowników.'
+  },
+  {
+    label: 'Wdrożenie i szkolenie',
+    value: '0 zł',
+    note: 'Prowadzone przez zespół AutoŻaby w ramach abonamentu.'
+  },
+  {
+    label: 'Opłaty dodatkowe',
+    value: '0 zł',
+    note: 'Brak prowizji, opłat za pracownika czy ukrytych kosztów.'
   }
 ]
 
@@ -110,6 +128,7 @@ export default function PricingPage() {
   const heroPrimaryHref = trialPlan?.ctaHref ?? '/kontakt'
   const heroPrimaryLabel = trialPlan?.cta ?? 'Aktywuj darmowy trial'
   const heroSecondaryHref = featuredPlan?.ctaHref ?? '/kontakt'
+  const keyHighlights = valueHighlights.slice(0, 2)
 
   return (
     <div className="relative flex min-h-screen flex-col bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
@@ -131,7 +150,7 @@ export default function PricingPage() {
                 Dobierz plan AutoŻaby do tempa rozwoju Twojej sieci
               </h1>
               <p className="mt-6 text-lg text-slate-700 dark:text-slate-200">
-                Wszystkie opcje zawierają automatyczne grafiki, ewidencję czasu pracy, dokumenty zgodne z PIP i dedykowany onboarding. Różni je jedynie zakres wsparcia i skala operacji.
+                Każdy plan obejmuje automatyczne grafiki, ewidencję czasu pracy oraz dokumenty PIP. Różnice dotyczą poziomu wsparcia i raportowania.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 {heroPrimaryHref.startsWith('http') ? (
@@ -162,7 +181,7 @@ export default function PricingPage() {
                 </Link>
               </div>
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {valueHighlights.map((highlight) => (
+                {keyHighlights.map((highlight) => (
                   <div
                     key={highlight.title}
                     className="rounded-2xl border border-slate-200 bg-white/80 p-5 text-left shadow-sm dark:border-slate-800 dark:bg-slate-950/70"
@@ -181,7 +200,7 @@ export default function PricingPage() {
               <div className="relative z-10">
                 <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-100">Jak wygląda start współpracy</h2>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Onboarding trwa średnio 10–14 dni i prowadzimy go wspólnie z Twoim menedżerem lub koordynatorem sieci.
+                  Standardowe wdrożenie trwa 10–14 dni i odbywa się razem z Twoim menedżerem.
                 </p>
                 <ol className="mt-6 space-y-5 text-sm text-slate-700 dark:text-slate-200">
                   {onboardingSteps.map((step, index) => (
@@ -212,6 +231,29 @@ export default function PricingPage() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+            <div className="text-center">
+              <p className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:border-slate-800 dark:bg-slate-950/60 dark:text-emerald-200">
+                Koszty w skrócie
+              </p>
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900 dark:text-slate-50">Płacisz tylko za dostęp do systemu</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                Żadnych opłat wdrożeniowych ani limitów na pracownika. Koszty są jasne od pierwszego dnia.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              {costSummary.map((item) => (
+                <div key={item.label} className="rounded-2xl border border-slate-200 bg-white/80 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950/70">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">{item.label}</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">{item.value}</p>
+                  <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">{item.note}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="relative mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:border-slate-800 dark:bg-slate-900/70 dark:text-emerald-200">
@@ -231,69 +273,54 @@ export default function PricingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.65fr_1fr]">
-            <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm dark:border-slate-800 dark:bg-slate-900/75">
-              <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">Rozszerzenia dla wymagających zespołów</h2>
+        <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-3xl border border-emerald-200/40 bg-emerald-50/80 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/75">
+              <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">Wsparcie zespołu AutoŻaby</h2>
               <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Zbuduj zestaw usług dopasowany do Twoich procesów. Dodatki wdrażamy równolegle z abonamentem, aby od dnia startu wszystko działało bez tarć.
+                Dedykowany opiekun, prawnik pracy i support odpowiadają w dni robocze maksymalnie w ciągu 2 godzin.
               </p>
-              <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                {addOns.map((addon) => (
-                  <div key={addon.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950/70">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{addon.title}</h3>
-                      <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-200">
-                        {addon.price}
-                      </span>
-                    </div>
-                    <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{addon.description}</p>
-                  </div>
-                ))}
-              </div>
+              <ul className="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
+                  Szkolenie startowe dla menedżerów i zespołu.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
+                  Monitorowanie zgodności grafików i dokumentów.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
+                  Baza materiałów i gotowe szablony komunikacji.
+                </li>
+              </ul>
+              <Link
+                href="/kontakt"
+                className="mt-6 inline-flex items-center justify-center rounded-full border border-emerald-400/60 bg-transparent px-5 py-2 text-sm font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 dark:border-emerald-300/50 dark:text-emerald-200 dark:hover:border-emerald-200 dark:hover:text-emerald-100"
+              >
+                Porozmawiaj z opiekunem
+              </Link>
             </div>
-            <div className="flex flex-col gap-6">
-              <div className="rounded-3xl border border-emerald-200/40 bg-emerald-50/80 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/75">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/15 text-sm font-semibold text-emerald-600 dark:bg-emerald-400/15 dark:text-emerald-200">
-                    24/7
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-200">Wsparcie ekspertów AutoŻaby</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-300">Opiekun wdrożeniowy, prawnik pracy i zespół supportu.</p>
-                  </div>
-                </div>
-                <p className="mt-5 text-sm text-slate-600 dark:text-slate-300">
-                  Organizujemy warsztaty discovery, audyty PIP on-demand i projektujemy integracje z obecnymi systemami HR lub księgowymi.
-                </p>
-                <Link
-                  href="/kontakt"
-                  className="mt-6 inline-flex items-center justify-center rounded-full border border-emerald-400/60 bg-transparent px-5 py-2 text-sm font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 dark:border-emerald-300/50 dark:text-emerald-200 dark:hover:border-emerald-200 dark:hover:text-emerald-100"
-                >
-                  Umów warsztat discovery
-                </Link>
-              </div>
-              <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-                <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Gwarancja współpracy bez ryzyka</h2>
-                <ul className="mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-200">
-                  {guaranteeEmphasis.map((point) => (
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Gwarancja współpracy bez ryzyka</h2>
+              <ul className="mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-200">
+                {guaranteeEmphasis.map((point) => (
+                  <li key={point} className="flex items-start gap-3">
+                    <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 rounded-2xl border border-emerald-200/40 bg-emerald-50/60 p-5 dark:border-emerald-400/20 dark:bg-emerald-400/5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">Dodatkowo zapewniamy</p>
+                <ul className="mt-3 space-y-3 text-xs text-emerald-700 dark:text-emerald-100">
+                  {guaranteeExtra.map((point) => (
                     <li key={point} className="flex items-start gap-3">
-                      <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden />
+                      <span className="mt-1 inline-block h-2 w-2 flex-none rounded-full bg-emerald-400 dark:bg-emerald-300" aria-hidden />
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 rounded-2xl border border-emerald-200/40 bg-emerald-50/60 p-5 dark:border-emerald-400/20 dark:bg-emerald-400/5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">Dodatkowo zapewniamy</p>
-                  <ul className="mt-3 space-y-3 text-xs text-emerald-700 dark:text-emerald-100">
-                    {guaranteeExtra.map((point) => (
-                      <li key={point} className="flex items-start gap-3">
-                        <span className="mt-1 inline-block h-2 w-2 flex-none rounded-full bg-emerald-400 dark:bg-emerald-300" aria-hidden />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </div>
           </div>

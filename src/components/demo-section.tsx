@@ -13,10 +13,10 @@ export default function DemoSection() {
 
   const videoSteps = [
     { time: "0:00", label: "Problem" },
-    { time: "0:30", label: "Import danych" },
-    { time: "1:00", label: "Automatyczny grafik" },
-    { time: "1:30", label: "Kontrola prawna" },
-    { time: "2:00", label: "Rezultat" }
+    { time: "1:04", label: "Tarcza Prawna" },
+    { time: "1:10", label: "Inteligentny Grafik" },
+    { time: "1:16", label: "Ewidencja i Raporty" },
+    { time: "1:33", label: "Rezultat" }
   ];
 
   useEffect(() => {
@@ -182,7 +182,7 @@ export default function DemoSection() {
           <Button 
             variant="outline" 
             size="touch"
-            onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
+            onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
             data-testid="button-demo-trial"
           >
             Wypróbuj za darmo

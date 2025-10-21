@@ -70,13 +70,24 @@ const clonedSchema = structuredClone(defaultSchema)
 const mdxSanitizeSchema = {
   ...clonedSchema,
   tagNames: Array.from(
-    new Set([...(clonedSchema.tagNames || []), 'section', 'div', 'span', 'article'])
+    new Set([...(clonedSchema.tagNames || []), 'section', 'div', 'span', 'article', 'iframe'])
   ),
   attributes: {
     ...clonedSchema.attributes,
     '*': [
       ...(clonedSchema.attributes?.['*'] || []),
       'className',
+    ],
+    iframe: [
+      ...(clonedSchema.attributes?.iframe || []),
+      ['src'],
+      ['title'],
+      ['allow'],
+      ['allowFullScreen'],
+      ['referrerPolicy'],
+      ['width'],
+      ['height'],
+      ['loading'],
     ],
     // Allow common attributes on anchors and images inside MDX content
     a: [

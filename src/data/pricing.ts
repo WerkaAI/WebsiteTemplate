@@ -20,17 +20,15 @@ export const pricingPlans: PricingPlan[] = [
     title: 'Free trial',
     headline: '14 dni pełnych funkcji bez zobowiązań',
     priceMonthly: '0 zł / 14 dni',
-    description:
-      'Przetestuj wszystkie moduły AutoŻaby bez ryzyka: od automatycznych grafików po dokumenty PIP. Dedykowany konsultant pomoże Ci w imporcie danych i konfiguracji pierwszych procesów.',
-    bestFor: 'Testy i konfiguracja 1–3 sklepów',
+    description: 'Przetestuj AutoŻabę bez ryzyka — konfigurację przeprowadzisz z pomocą konsultanta.',
+    bestFor: '1–3 sklepy na starcie',
     highlights: [
-      'Pełen dostęp do grafików, ewidencji i dokumentów compliance',
-      'Import grafików z Excela oraz konfiguracja szablonów obsady',
-  'Warsztat wdrożeniowy 1:1 z konsultantem AutoŻaba',
-  'Czat z zespołem wsparcia w trakcie trialu (9:00–21:00)'
+      'Pełen dostęp do grafików, ewidencji i dokumentów',
+      'Import danych z Excela z pomocą konsultanta',
+      'Wsparcie czatowe 9:00–21:00 przez 14 dni'
     ],
     cta: 'Aktywuj darmowy trial',
-    ctaHref: 'https://app.autozaba.pl/trial',
+  ctaHref: 'https://app.autozaba.pl/register',
     badge: 'Najpierw sprawdź',
     isFeatured: false
   },
@@ -41,15 +39,12 @@ export const pricingPlans: PricingPlan[] = [
     priceMonthly: '449 zł / mies.',
     priceYearly: '399 zł / mies.',
     annualNote: 'Płatność roczna: oszczędzasz 600 zł',
-    description:
-      'Pakiet dla franczyzobiorców prowadzących jeden sklep Żabka. Automatyzuje grafik, pilnuje kodeksu pracy i porządkuje rozliczenia zespołu.',
-    bestFor: '1 lokalizacja | do 15 osób w zespole',
+    description: 'Automatyzuje grafik, dokumenty PIP i codzienne rozliczenia w jednym sklepie.',
+    bestFor: '1 lokalizacja | do 15 osób',
     highlights: [
-      'Automatyczne układanie grafików z kontrolą przepisów',
-      'Rejestracja czasu pracy i rozliczenia kasowe w jednym panelu',
-      'Powiadomienia SMS/e-mail dla całego zespołu',
-  'Biblioteka dokumentów PIP, RODO i BHP',
-  'Wsparcie onboardingowe 1:1 (2 spotkania)'
+      'Grafiki zgodne z kodeksem pracy w kilka minut',
+      'Ewidencja czasu pracy i rozliczenia kasowe w jednym miejscu',
+      'Onboarding 1:1 oraz biblioteka dokumentów PIP/BHP'
     ],
     cta: 'Porozmawiaj o wdrożeniu',
     ctaHref: '/kontakt',
@@ -63,15 +58,12 @@ export const pricingPlans: PricingPlan[] = [
     priceMonthly: '649 zł / mies.',
     priceYearly: '599 zł / mies.',
     annualNote: 'Płatność roczna: oszczędzasz 960 zł',
-    description:
-      'Najczęściej wybierany przez właścicieli kilku sklepów. Zapewnia centralne raportowanie, wsparcie prawne i integracje z systemami księgowymi.',
-    bestFor: '2–5 lokalizacji | do 50 osób w zespole',
+    description: 'Centralizuje raporty, grafik i wsparcie prawne dla kilku lokalizacji.',
+    bestFor: '2–5 lokalizacji | do 50 osób',
     highlights: [
-      'Wszystko z planu Pierwszy sklep + szablony obsady wielosklepowej',
-      'Panel multi-store z porównaniem KPI i planów obsad',
-      'Kwartalny audyt prawny i konsultacje compliance',
-  'Integracje z biurem rachunkowym (XLSX/CSV/REST API)',
-  'Priorytetowe wsparcie (SLA 4h) i hotline 24/7'
+      'Wspólne planowanie obsady dla wszystkich sklepów',
+      'Raporty multi-store i kwartalne konsultacje compliance',
+      'Integracje księgowe + priorytetowe wsparcie 24/7'
     ],
     cta: 'Zamów prezentację dla sieci',
     ctaHref: '/kontakt',

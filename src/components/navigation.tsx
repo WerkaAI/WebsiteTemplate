@@ -171,19 +171,31 @@ export default function Navigation() {
             </Button>
           </div>
 
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button
-                variant="ghost"
-                size="touchIcon"
-                aria-label="Otwórz menu"
-                aria-expanded={isOpen}
-                data-testid="button-mobile-menu"
-              >
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              </Button>
-            </SheetTrigger>
+          {/* Mobile Actions */}
+          <div className="flex items-center gap-3 md:hidden">
+            <Button
+              asChild
+              size="sm"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-4"
+              data-testid="button-login-mobile-inline"
+            >
+              <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
+                Zaloguj się do systemu
+              </Link>
+            </Button>
+
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="touchIcon"
+                  aria-label="Otwórz menu"
+                  aria-expanded={isOpen}
+                  data-testid="button-mobile-menu"
+                >
+                  <Menu className="h-6 w-6" aria-hidden="true" />
+                </Button>
+              </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-6 mt-8">
                 <Link
@@ -256,7 +268,8 @@ export default function Navigation() {
                 </Button>
               </div>
             </SheetContent>
-          </Sheet>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>

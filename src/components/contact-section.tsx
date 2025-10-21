@@ -70,8 +70,7 @@ export default function ContactSection() {
   ];
 
   const quickHelp = [
-    { icon: Book, label: "Centrum pomocy i FAQ", href: "#" },
-    { icon: Video, label: "Przewodniki wideo", href: "#" },
+    { icon: Video, label: "Przewodniki wideo", href: "/tutoriale" },
     { icon: Download, label: "Materiały do pobrania", href: "#" }
   ];
 

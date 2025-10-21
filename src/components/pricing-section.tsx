@@ -106,7 +106,13 @@ export default function PricingSection() {
                   className={`w-full font-semibold pricing-card__button ${
                     plan.variant === 'default' ? 'pricing-card__button--featured' : ''
                   }`}
-                  onClick={() => window.open('https://app.autozaba.pl/trial', '_blank')}
+                  onClick={() => {
+                    if (plan.variant === 'default') {
+                      window.location.href = '/cennik';
+                    } else {
+                      window.open('https://app.autozaba.pl/register', '_blank');
+                    }
+                  }}
                   data-testid={`button-plan-${plan.id}`}
                 >
                   {plan.cta}
