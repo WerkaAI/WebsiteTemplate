@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
@@ -62,9 +63,13 @@ export default function Footer() {
           <div className="space-y-4 md:col-span-2">
             <Link href="/">
               <div className="flex items-center space-x-2" data-testid="link-footer-logo">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">Ż</span>
-                </div>
+                <Image
+                  src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
+                  alt="AutoŻaba logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
                 <span className="text-xl font-bold text-foreground">AutoŻaba</span>
               </div>
             </Link>

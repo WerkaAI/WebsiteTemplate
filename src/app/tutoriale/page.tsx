@@ -42,20 +42,10 @@ export default async function TutorialsPage() {
           className="mx-auto max-w-5xl space-y-6 text-center"
           aria-labelledby="tutoriale-hero-heading"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
-            Akademia AutoŻaba
-          </p>
           <h1 id="tutoriale-hero-heading" className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
             Tutoriale krok po kroku
           </h1>
-          <p className="mx-auto max-w-3xl text-lg text-muted-foreground">
-            Znajdziesz tu instrukcje pokazujące, jak w praktyce korzystać z AutoŻaba. Materiały są przygotowane osobno dla
-            właścicieli i członków zespołu sklepu, tak aby każdy mógł szybko rozpocząć pracę w systemie.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button asChild size="lg">
-              <Link href="#lista-tutoriali">Przeglądaj tutoriale</Link>
-            </Button>
+          <div className="flex flex-wrap items-center justify-center">
             <Button asChild variant="outline" size="lg">
               <Link href="/kontakt">Umów onboarding z zespołem</Link>
             </Button>

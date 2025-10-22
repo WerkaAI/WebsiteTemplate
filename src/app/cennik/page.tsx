@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
-import { guaranteePoints, pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
+import { pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
 import { cn } from '@/lib/utils'
+import { MonitorPlay, UserPlus, CalendarCheck, Timer, ShieldCheck } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Cennik AutoŻaba — sprawne zarządzanie sklepami Żabka',
   description:
     'Wybierz plan AutoŻaba dopasowany do liczby sklepów i zespołu. Automatyczne grafiki, ewidencja czasu pracy, raporty PIP, wsparcie prawne i onboarding 1:1.',
   alternates: {
@@ -21,28 +21,56 @@ export const metadata: Metadata = {
   }
 }
 
-const guaranteeEmphasis = guaranteePoints.slice(0, 2)
-const guaranteeExtra = guaranteePoints.slice(2)
 const onboardingSteps = [
   {
-    title: 'Diagnoza & plan (45 min)',
-    description: 'Poznajemy Twoją sieć i przygotowujemy plan wdrożenia.'
+    title: 'Przedstawienie systemu (30 minut)',
+    description: 'Prezentacja na tablecie i telefonie w Twoim sklepie.'
   },
   {
-    title: 'Migracja (3–5 dni)',
-    description: 'Importujemy dane, konfigurujemy grafik i powiadomienia.'
+    title: 'Pomoc we wdrożeniu (tydzień)',
+    description: 'Uczymy Ciebie i pracowników korzystania z AutoŻaby.'
   },
   {
-    title: 'Start i opieka',
-    description: 'Szkolimy zespół i monitorujemy pierwsze tygodnie pracy.'
+    title: 'Twój pierwszy automatyczny grafik',
+    description: 'Pełne wsparcie zawsze, gdy go potrzebujesz.'
   }
 ]
+
+const onboardingMilestones = [
+  {
+    title: 'Demo i plan startowy',
+    description: 'Na żywo na tablecie i telefonie pokazujemy pełny przepływ oraz umawiamy kolejne kroki.'
+  },
+  {
+    title: 'Aktywacja kont i Starter Cards',
+    description: 'Zakładamy konta, przekazujemy instrukcje dla zespołu i zbieramy dostępności pracowników.'
+  },
+  {
+    title: 'Sesja online + check-iny',
+    description: 'Razem z naszym przedstawicielem opublikujesz swój pierwszy grafik na wideorozmowie (Google Meet).'
+  }
+]
+
+const onboardingKit = [
+  'Demo konto właściciela i pracownika z instrukcją krok po kroku',
+  'Karty Startowe z instrukcjami dla pracowników w 2 językach (PL/UA)',
+  'Pełna pomoc na każdym etapie wdrożenia AutoŻaby',
+  'Szybka linia kontaktu — odpowiedź doradcy w dni robocze do 2h'
+]
+
+const onboardingIcons = [MonitorPlay, UserPlus, CalendarCheck]
+const highlightIcons = [Timer, ShieldCheck]
 
 const costSummary = [
   {
     label: 'Abonament AutoŻaba',
-    value: '149 zł / sklep / miesiąc',
-    note: 'Stała cena niezależnie od liczby pracowników.'
+    value: 'Wkrótce',
+    note: 'Cennik publikujemy po zakończeniu programu Early Adopters.',
+    status: {
+      badge: 'Beta testy',
+      headline: 'Abonament w przygotowaniu',
+      description: 'Trwa program Early Adopters — zostaw kontakt, aby otrzymać ofertę jako pierwszy.'
+    }
   },
   {
     label: 'Wdrożenie i szkolenie',
@@ -61,7 +89,7 @@ type PlanCardProps = {
 }
 
 function PlanCard({ plan }: PlanCardProps) {
-  const isExternal = plan.ctaHref.startsWith('http')
+  const isExternal = !plan.disabled && plan.ctaHref.startsWith('http')
   const cardClasses = cn(
     'relative flex h-full flex-col rounded-3xl border p-8 backdrop-blur transition duration-300',
     plan.isFeatured
@@ -70,7 +98,7 @@ function PlanCard({ plan }: PlanCardProps) {
   )
 
   return (
-    <article className={cardClasses} aria-label={`Plan ${plan.title}`}>
+  <article className={cardClasses} aria-label={`Plan ${plan.title}`}>
       {plan.badge && (
         <span className="absolute -top-3 left-6 inline-flex rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-emerald-950 shadow-lg">
           {plan.badge}
@@ -101,7 +129,11 @@ function PlanCard({ plan }: PlanCardProps) {
           </li>
         ))}
       </ul>
-      {isExternal ? (
+      {plan.disabled ? (
+        <span className="mt-8 inline-flex items-center justify-center rounded-xl bg-slate-700/60 px-4 py-2 text-center text-sm font-semibold text-slate-200 opacity-70" aria-disabled>
+          {plan.cta}
+        </span>
+      ) : isExternal ? (
         <a
           href={plan.ctaHref}
           target="_blank"
@@ -117,6 +149,16 @@ function PlanCard({ plan }: PlanCardProps) {
         >
           {plan.cta}
         </Link>
+      )}
+
+      {plan.status && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 rounded-3xl bg-slate-950/70 px-6 text-center text-white backdrop-blur-sm">
+          <span className="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-emerald-100">
+            {plan.status.badge}
+          </span>
+          <p className="text-lg font-semibold">{plan.status.headline}</p>
+          <p className="text-sm text-white/80">{plan.status.description}</p>
+        </div>
       )}
     </article>
   )
@@ -181,51 +223,56 @@ export default function PricingPage() {
                 </Link>
               </div>
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {keyHighlights.map((highlight) => (
-                  <div
-                    key={highlight.title}
-                    className="rounded-2xl border border-slate-200 bg-white/80 p-5 text-left shadow-sm dark:border-slate-800 dark:bg-slate-950/70"
-                  >
-                    <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">
-                      {highlight.title}
-                    </p>
-                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{highlight.description}</p>
-                  </div>
-                ))}
+                {keyHighlights.map((highlight, index) => {
+                  const Icon = highlightIcons[index] ?? Timer
+                  return (
+                    <details
+                      key={highlight.title}
+                      className="group overflow-hidden rounded-3xl border border-emerald-200/50 bg-white/80 text-left shadow-sm transition dark:border-emerald-300/20 dark:bg-slate-950/70"
+                    >
+                      <summary className="flex cursor-pointer items-center justify-between gap-4 bg-white/70 px-6 py-4 text-sm font-semibold text-slate-900 transition hover:bg-white group-open:bg-emerald-500/10 group-open:text-emerald-600 dark:bg-slate-950/50 dark:text-slate-100 dark:hover:bg-slate-950/70 [&::-webkit-details-marker]:hidden">
+                        <span className="flex items-center gap-3">
+                          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500 group-open:bg-emerald-500/20 group-open:text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-200">
+                            <Icon className="h-5 w-5" aria-hidden />
+                          </span>
+                          {highlight.title}
+                        </span>
+                        <span className="text-lg font-semibold text-emerald-500 transition group-open:rotate-45 group-open:text-emerald-600">
+                          +
+                        </span>
+                      </summary>
+                      <div className="border-t border-emerald-200/40 px-6 pb-5 pt-4 text-sm text-slate-600 dark:border-emerald-300/20 dark:text-slate-300">
+                        {highlight.description}
+                      </div>
+                    </details>
+                  )
+                })}
               </div>
             </div>
             <aside className="relative overflow-hidden rounded-3xl border border-emerald-200/40 bg-emerald-50/70 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/80">
               <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl dark:bg-emerald-400/10" aria-hidden />
               <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-emerald-200/30 blur-3xl dark:bg-emerald-500/10" aria-hidden />
               <div className="relative z-10">
-                <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-100">Jak wygląda start współpracy</h2>
+                <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-100">AutoŻaba — start w 3 krokach</h2>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Standardowe wdrożenie trwa 10–14 dni i odbywa się razem z Twoim menedżerem.
+                  Na każdym etapie wspiera Cię dedykowany opiekun.
                 </p>
                 <ol className="mt-6 space-y-5 text-sm text-slate-700 dark:text-slate-200">
-                  {onboardingSteps.map((step, index) => (
-                    <li key={step.title} className="flex gap-4">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full border border-emerald-400/50 bg-emerald-500/10 text-sm font-semibold text-emerald-600 dark:border-emerald-300/50 dark:bg-emerald-400/10 dark:text-emerald-200">
-                        {index + 1}
-                      </span>
-                      <div>
-                        <p className="font-semibold text-slate-900 dark:text-slate-50">{step.title}</p>
-                        <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{step.description}</p>
-                      </div>
-                    </li>
-                  ))}
+                  {onboardingSteps.map((step, index) => {
+                    const Icon = onboardingIcons[index] ?? MonitorPlay
+                    return (
+                      <li key={step.title} className="flex items-start gap-4">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-400/40 bg-white text-emerald-600 shadow-sm dark:border-emerald-300/40 dark:bg-slate-950/40 dark:text-emerald-200">
+                          <Icon className="h-5 w-5" aria-hidden />
+                        </span>
+                        <div>
+                          <p className="font-semibold text-slate-900 dark:text-slate-50">{step.title}</p>
+                          <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{step.description}</p>
+                        </div>
+                      </li>
+                    )
+                  })}
                 </ol>
-                {featuredPlan && (
-                  <div className="mt-8 rounded-2xl border border-emerald-200/60 bg-white/80 p-6 shadow-sm dark:border-slate-800/80 dark:bg-slate-950/70">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-300">
-                      {featuredPlan.badge}
-                    </p>
-                    <p className="mt-3 text-base font-semibold text-slate-900 dark:text-slate-50">{featuredPlan.title}</p>
-                    <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{featuredPlan.headline}</p>
-                    <p className="mt-4 text-xl font-semibold text-emerald-600 dark:text-emerald-300">{featuredPlan.priceMonthly}</p>
-                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Wszystkie fundamenty AutoŻaby + priorytetowe wsparcie</p>
-                  </div>
-                )}
               </div>
             </aside>
           </div>
@@ -244,10 +291,22 @@ export default function PricingPage() {
             </div>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               {costSummary.map((item) => (
-                <div key={item.label} className="rounded-2xl border border-slate-200 bg-white/80 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950/70">
+                <div
+                  key={item.label}
+                  className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white/80 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950/70"
+                >
                   <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">{item.label}</p>
                   <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">{item.value}</p>
                   <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">{item.note}</p>
+                  {item.status && (
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-slate-950/75 px-4 text-center text-white backdrop-blur-sm">
+                      <span className="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-400/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100">
+                        {item.status.badge}
+                      </span>
+                      <p className="text-sm font-semibold">{item.status.headline}</p>
+                      <p className="text-xs text-white/80">{item.status.description}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -276,52 +335,41 @@ export default function PricingPage() {
         <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-3xl border border-emerald-200/40 bg-emerald-50/80 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/75">
-              <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">Wsparcie zespołu AutoŻaby</h2>
+              <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">Onboarding w 7 dni</h2>
               <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Dedykowany opiekun, prawnik pracy i support odpowiadają w dni robocze maksymalnie w ciągu 2 godzin.
+                Każdy etap prowadzimy razem z Tobą — od pierwszego demo po powtarzalne grafiki.
               </p>
               <ul className="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
-                  Szkolenie startowe dla menedżerów i zespołu.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
-                  Monitorowanie zgodności grafików i dokumentów.
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
-                  Baza materiałów i gotowe szablony komunikacji.
-                </li>
+                {onboardingMilestones.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
+                    <div>
+                      <p className="font-medium text-slate-900 dark:text-slate-100">{item.title}</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">{item.description}</p>
+                    </div>
+                  </li>
+                ))}
               </ul>
               <Link
                 href="/kontakt"
                 className="mt-6 inline-flex items-center justify-center rounded-full border border-emerald-400/60 bg-transparent px-5 py-2 text-sm font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 dark:border-emerald-300/50 dark:text-emerald-200 dark:hover:border-emerald-200 dark:hover:text-emerald-100"
               >
-                Porozmawiaj z opiekunem
+                Umów demo lub wizytę w sklepie
               </Link>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Gwarancja współpracy bez ryzyka</h2>
-              <ul className="mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-200">
-                {guaranteeEmphasis.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Co dostajesz na starcie</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                Wszystkie materiały i narzędzia, żeby zespół mógł zacząć pracować od razu.
+              </p>
+              <ul className="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-200">
+                {onboardingKit.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden />
-                    <span>{point}</span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 rounded-2xl border border-emerald-200/40 bg-emerald-50/60 p-5 dark:border-emerald-400/20 dark:bg-emerald-400/5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">Dodatkowo zapewniamy</p>
-                <ul className="mt-3 space-y-3 text-xs text-emerald-700 dark:text-emerald-100">
-                  {guaranteeExtra.map((point) => (
-                    <li key={point} className="flex items-start gap-3">
-                      <span className="mt-1 inline-block h-2 w-2 flex-none rounded-full bg-emerald-400 dark:bg-emerald-300" aria-hidden />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
         </section>
@@ -334,18 +382,26 @@ export default function PricingPage() {
               <h2 className="mt-4 text-3xl font-semibold text-slate-900 dark:text-slate-50">Najczęściej zadawane pytania</h2>
               <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
                 Jeśli nie widzisz odpowiedzi, napisz na{' '}
-                <a href="mailto:hello@autozaba.pl" className="text-emerald-600 underline underline-offset-2 dark:text-emerald-300">
-                  hello@autozaba.pl
+                <a href="mailto:kontakt@autozaba.pl" className="text-emerald-600 underline underline-offset-2 dark:text-emerald-300">
+                  kontakt@autozaba.pl
                 </a>{' '}
                 — odpowiemy w ciągu jednego dnia roboczego.
               </p>
             </div>
-            <div className="mt-10 space-y-6">
-              {pricingFaq.map((item) => (
-                <div key={item.question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950/60">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">{item.question}</h3>
-                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{item.answer}</p>
-                </div>
+            <div className="mt-10 space-y-4">
+              {pricingFaq.map((item, index) => (
+                <details
+                  key={item.question}
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition dark:border-slate-800 dark:bg-slate-950/60"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-base font-semibold text-slate-900 transition hover:bg-slate-100/70 group-open:bg-emerald-500/10 group-open:text-emerald-600 dark:text-slate-50 dark:hover:bg-slate-900/70 [&::-webkit-details-marker]:hidden">
+                    <span>{item.question}</span>
+                    <span className="text-lg font-semibold text-emerald-500 transition group-open:rotate-45 group-open:text-emerald-600">+</span>
+                  </summary>
+                  <div className="border-t border-slate-200 px-5 py-4 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300">
+                    {item.answer}
+                  </div>
+                </details>
               ))}
             </div>
           </div>

@@ -24,20 +24,25 @@ export default function PricingSection() {
     {
       id: "pro",
       name: "AutoŻaba Pro",
-      price: "149 zł", 
-      period: "/msc za sklep",
+      price: "Wkrótce",
+      period: "Cennik w przygotowaniu",
       features: [
         "Nieograniczona liczba pracowników",
         "Automatyczne grafiki zgodne z prawem",
         "Tarcza Prawna § - kontekstowa pomoc",
-        "Mobilny dostęp dla pracowników",
         "Priorytetowe wsparcie",
         "Eksporty dla PIP i księgowości"
       ],
-      cta: "Wybierz plan",
+      cta: "Plan w przygotowaniu",
       variant: "default" as const,
       popular: true,
-      disclaimer: "Anuluj w każdej chwili • Bez ukrytych kosztów"
+      disclaimer: "Aktualnie dostępny dla beta testerów",
+      disabled: true,
+      status: {
+        badge: "Beta testy",
+        headline: "Plan w przygotowaniu",
+        description: "Dołączymy kolejnych klientów po zakończeniu programu beta."
+      }
     }
   ];
 
@@ -105,8 +110,14 @@ export default function PricingSection() {
                   size="touch"
                   className={`w-full font-semibold pricing-card__button ${
                     plan.variant === 'default' ? 'pricing-card__button--featured' : ''
+                  } ${
+                    plan.disabled ? 'opacity-60 cursor-not-allowed' : ''
                   }`}
+                  disabled={plan.disabled}
                   onClick={() => {
+                    if (plan.disabled) {
+                      return;
+                    }
                     if (plan.variant === 'default') {
                       window.location.href = '/cennik';
                     } else {
@@ -124,6 +135,20 @@ export default function PricingSection() {
                   </div>
                 )}
               </CardContent>
+
+              {plan.status && (
+                <div className="absolute inset-0 z-10 rounded-lg bg-slate-950/70 backdrop-blur-sm flex flex-col items-center justify-center gap-3 px-6 text-center text-white">
+                  <Badge variant="outline" className="bg-emerald-400/10 border-emerald-200/60 text-emerald-100 uppercase tracking-[0.28em]">
+                    {plan.status.badge}
+                  </Badge>
+                  <div className="text-xl font-semibold drop-shadow-sm">
+                    {plan.status.headline}
+                  </div>
+                  <p className="text-sm text-white/80 max-w-xs">
+                    {plan.status.description}
+                  </p>
+                </div>
+              )}
             </Card>
           ))}
         </div>

@@ -49,22 +49,6 @@ export default function BlogListing({ posts }: BlogListingProps) {
           />
         </div>
       </div>
-
-        <section className="mb-12 rounded-2xl border border-border/60 bg-muted/40 p-6 text-left">
-          <h2 className="text-2xl font-semibold text-foreground">Powiązane tutoriale</h2>
-          <p className="mt-2 text-muted-foreground">
-            Szukasz instrukcji krok po kroku? Sprawdź sekcję tutoriali, w której pokazujemy jak korzystać z AutoŻaba w praktycznych
-            scenariuszach sklepu.
-          </p>
-          <Link href="/tutoriale" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-            Przejdź do tutoriali →
-          </Link>
-          <p className="mt-2 text-xs text-muted-foreground">
-            {/* GPT-5 Directive: Zastąp sekcję dynamiczną listą powiązanych materiałów, gdy pojawią się dane metadanych. */}
-            TODO: W kolejnym etapie powiąż kategorie bloga z konkretnymi tutorialami.
-          </p>
-        </section>
-      
       {/* Blog Posts Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPosts.map((post) => (
@@ -121,6 +105,17 @@ export default function BlogListing({ posts }: BlogListingProps) {
           </Card>
         ))}
       </div>
+
+      <section className="mt-16 rounded-2xl border border-border/60 bg-muted/40 p-6 text-left">
+        <h2 className="text-2xl font-semibold text-foreground">Powiązane tutoriale</h2>
+        <p className="mt-2 text-muted-foreground">
+          Szukasz instrukcji krok po kroku? Sprawdź sekcję tutoriali, w której pokazujemy jak korzystać z AutoŻaby w praktycznych
+          scenariuszach sklepu.
+        </p>
+        <Link href="/tutoriale" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+          Przejdź do tutoriali →
+        </Link>
+      </section>
       
       {/* Newsletter Signup */}
       <div className="bg-muted rounded-2xl p-8 text-center mt-16">

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
@@ -87,9 +88,14 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2" data-testid="link-logo">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">Ż</span>
-              </div>
+              <Image
+                src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
+                alt="AutoŻaba logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+                priority
+              />
               <span className="text-xl font-bold text-foreground">AutoŻaba</span>
             </div>
           </Link>
@@ -166,7 +172,7 @@ export default function Navigation() {
               data-testid="button-login-desktop"
             >
               <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
-                Zaloguj się do systemu
+                Zaloguj
               </Link>
             </Button>
           </div>
@@ -176,11 +182,11 @@ export default function Navigation() {
             <Button
               asChild
               size="sm"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-4"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-3 min-w-[96px] justify-center flex-shrink-0 whitespace-nowrap"
               data-testid="button-login-mobile-inline"
             >
               <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
-                Zaloguj się do systemu
+                Zaloguj
               </Link>
             </Button>
 
@@ -196,7 +202,7 @@ export default function Navigation() {
                   <Menu className="h-6 w-6" aria-hidden="true" />
                 </Button>
               </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[280px] xs:w-[300px] sm:w-[360px]">
               <div className="flex flex-col space-y-6 mt-8">
                 <Link
                   href="/funkcje"
@@ -263,7 +269,7 @@ export default function Navigation() {
                   data-testid="button-login-mobile"
                 >
                   <Link href="https://app.autozaba.pl" target="_blank" rel="noreferrer">
-                    Zaloguj się do systemu
+                    Zaloguj
                   </Link>
                 </Button>
               </div>

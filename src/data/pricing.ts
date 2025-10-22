@@ -12,6 +12,12 @@ export type PricingPlan = {
   ctaHref: string
   badge?: string
   isFeatured?: boolean
+  disabled?: boolean
+  status?: {
+    badge: string
+    headline: string
+    description: string
+  }
 }
 
 export const pricingPlans: PricingPlan[] = [
@@ -28,7 +34,7 @@ export const pricingPlans: PricingPlan[] = [
       'Wsparcie czatowe 9:00–21:00 przez 14 dni'
     ],
     cta: 'Aktywuj darmowy trial',
-  ctaHref: 'https://app.autozaba.pl/register',
+    ctaHref: 'https://app.autozaba.pl/register',
     badge: 'Najpierw sprawdź',
     isFeatured: false
   },
@@ -36,9 +42,7 @@ export const pricingPlans: PricingPlan[] = [
     id: 'single-store',
     title: 'Pierwszy sklep',
     headline: 'Stała kontrola nad grafikiem i dokumentami',
-    priceMonthly: '449 zł / mies.',
-    priceYearly: '399 zł / mies.',
-    annualNote: 'Płatność roczna: oszczędzasz 600 zł',
+    priceMonthly: 'Wkrótce',
     description: 'Automatyzuje grafik, dokumenty PIP i codzienne rozliczenia w jednym sklepie.',
     bestFor: '1 lokalizacja | do 15 osób',
     highlights: [
@@ -46,18 +50,22 @@ export const pricingPlans: PricingPlan[] = [
       'Ewidencja czasu pracy i rozliczenia kasowe w jednym miejscu',
       'Onboarding 1:1 oraz biblioteka dokumentów PIP/BHP'
     ],
-    cta: 'Porozmawiaj o wdrożeniu',
+    cta: 'Plan w przygotowaniu',
     ctaHref: '/kontakt',
     badge: 'Najczęstszy wybór',
-    isFeatured: true
+    isFeatured: true,
+    disabled: true,
+    status: {
+      badge: 'Beta testy',
+      headline: 'Cennik w przygotowaniu',
+      description: 'Zapraszamy do programu Early Adopters — skontaktujemy się, gdy otworzymy sprzedaż.'
+    }
   },
   {
     id: 'multi-store',
     title: 'Pełna automatyzacja dla kilku sklepów',
     headline: 'Spójne operacje w 2–5 lokalizacjach',
-    priceMonthly: '649 zł / mies.',
-    priceYearly: '599 zł / mies.',
-    annualNote: 'Płatność roczna: oszczędzasz 960 zł',
+    priceMonthly: 'Wkrótce',
     description: 'Centralizuje raporty, grafik i wsparcie prawne dla kilku lokalizacji.',
     bestFor: '2–5 lokalizacji | do 50 osób',
     highlights: [
@@ -65,10 +73,16 @@ export const pricingPlans: PricingPlan[] = [
       'Raporty multi-store i kwartalne konsultacje compliance',
       'Integracje księgowe + priorytetowe wsparcie 24/7'
     ],
-    cta: 'Zamów prezentację dla sieci',
+    cta: 'Plan w przygotowaniu',
     ctaHref: '/kontakt',
     badge: 'Dla sieci',
-    isFeatured: false
+    isFeatured: false,
+    disabled: true,
+    status: {
+      badge: 'Beta testy',
+      headline: 'Oferta w przygotowaniu',
+      description: 'Skontaktuj się z nami, aby dołączyć do kolejki dla kilku lokalizacji.'
+    }
   }
 ]
 
@@ -126,11 +140,11 @@ export const pricingFaq: FAQItem[] = [
 export const valueHighlights: { title: string; description: string }[] = [
   {
     title: 'Oszczędność czasu',
-    description: 'Średnio 8-12 godzin tygodniowo odzyskanych przez właściciela dzięki automatycznym grafikom i gotowym raportom.'
+    description: 'Średnio 2–4 godziny odzyskane tygodniowo dzięki automatycznym grafikom i gotowym raportom.'
   },
   {
     title: 'Pełna zgodność prawna',
-    description: 'Silnik AutoŻaba blokuje naruszenia kodeksowe i generuje dokumentację zgodną z wymaganiami PIP.'
+    description: 'Silnik AutoŻaby generuje dokumentację zgodną z PIP i podpowiada przepisy, ale nie blokuje Twoich decyzji.'
   },
   {
     title: 'Wsparcie ekspertów',
@@ -140,6 +154,5 @@ export const valueHighlights: { title: string; description: string }[] = [
 
 export const guaranteePoints: string[] = [
   'Umowa miesięczna bez długoterminowych zobowiązań — możesz zrezygnować z miesięcznym wyprzedzeniem.',
-  'Jeśli po 90 dniach nie widzisz poprawy wskaźników operacyjnych, oddamy Ci koszt jednego miesiąca abonamentu.',
   'Wdrożenie z dedykowanym opiekunem zapewnia pełną migrację danych i przeszkolenie zespołu.'
 ]
