@@ -23,34 +23,34 @@ export default function ProblemSection() {
         amount: 30000,
         suffix: " zł",
       },
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      mascot: "/illustrations/problem-chaos.png",
+      accent: "from-emerald-500/35 via-emerald-400/15 to-transparent",
     },
     {
       id: "legal-compliance",
       title: "Strach przed PIP",
       description:
         '"Kodeks Pracy to dla mnie czarna magia. Nie wiem, czy ewidencja czasu pracy jest poprawna. Każda kontrola to łoteria."',
-      image:
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       legalIssues: [
         "11h odpoczynku między zmianami",
         "Różnice UoP vs umowa zlecenie",
         "Ewidencja czasu pracy (RCP)",
       ],
+      mascot: "/illustrations/problem-pip.png",
+      accent: "from-emerald-500/35 via-teal-400/20 to-transparent",
     },
     {
       id: "work-life-balance",
       title: "Brak czasu dla siebie",
       description:
         '"240 godzin miesięcznie w sklepie plus papierkowa robota w domu. Kiedy mam żyć?"',
-      image:
-        "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
       timeBreakdown: {
         shop: { label: "Praca w sklepie", value: 240 },
         paperwork: { label: "Grafiki i papiery", value: 40, prefix: "+" },
         total: { label: "Razem", value: 280 },
       },
+      mascot: "/illustrations/problem-time.png",
+      accent: "from-emerald-500/35 via-green-400/15 to-transparent",
     },
   ];
 
@@ -97,7 +97,7 @@ export default function ProblemSection() {
       </div>
 
       <div className="container-spacing relative z-10">
-  <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
+        <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-problem-title">
             Wiemy, <span className="text-primary dark:text-emerald-300">przez co przechodzisz</span>
           </h2>
@@ -107,7 +107,7 @@ export default function ProblemSection() {
           </p>
         </div>
 
-  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {problems.map((problem, index) => (
             <Card
               key={problem.id}
@@ -116,16 +116,23 @@ export default function ProblemSection() {
               className="hover:calm-shadow-lg transition-all duration-500 bg-card/95 dark:bg-slate-900/70 border border-border/70 dark:border-white/10 backdrop-blur-sm"
               data-testid={`card-problem-${problem.id}`}
             >
-              <div className="tinted-media w-full h-48 bg-muted rounded-t-xl overflow-hidden">
-                <Image
-                  src={problem.image}
-                  alt={problem.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  priority={problem.id === "schedule-chaos" || problem.id === "legal-compliance"}
-                  data-testid={`img-problem-${problem.id}`}
-                />
+              <div
+                className="relative mx-6 sm:mx-8 mt-4 h-40 rounded-3xl overflow-hidden bg-muted/60"
+                data-testid={`card-banner-${problem.id}`}
+              >
+                {problem.mascot && (
+                  <Image
+                    src={problem.mascot}
+                    alt=""
+                    fill
+                    className="object-contain object-bottom scale-95"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    priority={index === 0}
+                  />
+                )}
+                <div className={`absolute inset-0 bg-gradient-to-br ${problem.accent}`} />
+                <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.45)_0,_transparent_65%)]" />
+                <div className="absolute inset-0 opacity-10 mix-blend-soft-light bg-[radial-gradient(ellipse_at_bottom,_rgba(16,24,39,0.8)_0,_transparent_55%)]" />
               </div>
               <CardContent className="p-6 sm:p-8 space-y-6">
                 <div className="space-y-4">

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { useSpringNumber } from "@/hooks/use-spring-number";
 
 const currencyFormatter = new Intl.NumberFormat("pl-PL", {
@@ -257,18 +258,34 @@ export default function CalculatorSection() {
               </div>
             </div>
             
-            <div className="text-center pt-6 border-t border-border">
-              <Button 
-                size="touch" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 text-lg calm-shadow transition-all duration-300 hover:scale-105"
-                onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
-                data-testid="button-calculator-register"
-              >
-                Zacznij oszczędzać czas →
-              </Button>
-              <p className="text-sm text-muted-foreground mt-2" data-testid="text-calculator-disclaimer">
-                Tylko {calculations.autozabaCost} zł/msc • Nieograniczona liczba pracowników
-              </p>
+            <div className="pt-6 border-t border-border">
+              <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                <div className="flex flex-col items-center gap-2 md:items-start">
+                  <Button
+                    size="touch"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 text-lg calm-shadow transition-all duration-300 hover:scale-105"
+                    onClick={() => window.open("https://app.autozaba.pl/register", "_blank")}
+                    data-testid="button-calculator-register"
+                  >
+                    Zacznij oszczędzać czas →
+                  </Button>
+                  <p className="text-sm text-muted-foreground" data-testid="text-calculator-disclaimer">
+                    Tylko {calculations.autozabaCost} zł/msc • Nieograniczona liczba pracowników
+                  </p>
+                </div>
+                <div className="relative flex-shrink-0" aria-hidden>
+                  <div className="absolute inset-0 rounded-full bg-primary/30 blur-3xl" />
+                  <Image
+                    src="/illustrations/kalkulator-zaba.png"
+                    alt=""
+                    width={240}
+                    height={240}
+                    className="relative h-36 w-auto drop-shadow-[0_24px_45px_rgba(16,185,129,0.45)] md:h-40"
+                    sizes="(min-width: 768px) 200px, 45vw"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>

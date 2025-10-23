@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, XCircle, Calendar, Shield, Smartphone, AlertTriangle } from "lucide-react";
+import Image from "next/image";
 
 export default function SolutionSection() {
   const beforeAfter = {
@@ -66,26 +67,28 @@ export default function SolutionSection() {
               className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-br from-red-100/60 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-80 dark:from-red-900/40"
               aria-hidden="true"
             />
-            <div className="relative space-y-5 text-center">
+            <div className="relative flex h-full flex-col justify-between space-y-5 text-center">
               <h3
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-before-title"
               >
                 Bez AutoŻaby
               </h3>
-              <div className="rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
-                <ul className="space-y-3">
-                  {beforeAfter.before.map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-red-700 dark:text-red-200"
-                      data-testid={`before-item-${index}`}
-                    >
-                      <XCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                      <span className="text-left">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="h-full">
+                <div className="h-full rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
+                  <ul className="space-y-3">
+                    {beforeAfter.before.map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 text-red-700 dark:text-red-200"
+                        data-testid={`before-item-${index}`}
+                      >
+                        <XCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                        <span className="text-left">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -100,26 +103,42 @@ export default function SolutionSection() {
               className="pointer-events-none absolute -inset-x-6 -top-10 bottom-4 rounded-[2.5rem] bg-gradient-to-bl from-emerald-100/70 via-transparent to-transparent opacity-60 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-85 dark:from-emerald-900/35"
               aria-hidden="true"
             />
-            <div className="relative space-y-5 text-center">
+            <div className="relative flex h-full flex-col justify-between space-y-5 text-center">
               <h3
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-after-title"
               >
                 Z AutoŻabą
               </h3>
-              <div className="rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
-                <ul className="space-y-3">
-                  {beforeAfter.after.map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-green-700 dark:text-emerald-200"
-                      data-testid={`after-item-${index}`}
-                    >
-                      <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                      <span className="text-left">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="h-full">
+                <div className="h-full rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">
+                  <div className="flex h-full flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-center sm:gap-10 sm:text-left">
+                  <div className="relative flex-shrink-0" aria-hidden>
+                    <div className="absolute inset-0 rounded-full bg-emerald-200/35 blur-2xl" />
+                    <Image
+                      src="/illustrations/tarcza-prawna-zaba.png"
+                      alt=""
+                      width={220}
+                      height={220}
+                      className="relative h-40 w-auto drop-shadow-[0_24px_45px_rgba(5,150,105,0.45)]"
+                      sizes="(min-width: 1024px) 200px, 40vw"
+                      priority
+                    />
+                  </div>
+                    <ul className="space-y-3 text-left max-sm:w-full">
+                      {beforeAfter.after.map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-green-700 dark:text-emerald-200"
+                          data-testid={`after-item-${index}`}
+                        >
+                          <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                          <span className="text-left">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
