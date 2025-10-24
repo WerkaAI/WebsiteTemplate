@@ -1,70 +1,109 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { ComponentProps, useMemo, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
 import Turnstile from "react-turnstile";
 
-// Form validation schema - make token optional when CAPTCHA is not configured
-const contactFormSchema = z.object({
-  name: z.string().trim().min(2, 'Imię musi mieć co najmniej 2 znaki').max(50, 'Imię jest za długie'),
-  email: z.string().trim().email('Nieprawidłowy adres email').max(100, 'Email jest za długi'),
-  phone: z.string().trim().max(20, 'Numer telefonu jest za długi').optional(),
-  message: z.string().trim().min(10, 'Wiadomość musi mieć co najmniej 10 znaków').max(2000, 'Wiadomość jest za długa'),
-  consent: z.boolean().refine(val => val === true, 'Musisz wyrazić zgodę na przetwarzanie danych'),
-  token: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY 
-    ? z.string().min(1, 'Błąd weryfikacji CAPTCHA')
-    : z.string().optional(),
-  company: z.string().optional(), // Honeypot field
-});
+import {
+  ContactPayload,
+  SHOP_OPTIONS,
+  SHOP_OPTION_LABELS,
+  createContactSchema,
+} from "@/lib/validation/contact";
+import { cn } from "@/lib/utils";
 
-type ContactFormData = z.infer<typeof contactFormSchema>;
+interface ContactFormProps {
+  showPhone?: boolean;
+  showShops?: boolean;
+  requireShops?: boolean;
+  successToast?: {
+    title: string;
+    description?: string;
+  };
+  submitLabel?: string;
+  className?: string;
+  submitButtonClassName?: string;
+  submitButtonSize?: ComponentProps<typeof Button>["size"];
+}
 
-export default function ContactForm() {
+export default function ContactForm({
+  showPhone = true,
+  showShops = false,
+  requireShops = showShops,
+  successToast,
+  submitLabel = "Wyślij wiadomość",
+  className,
+  submitButtonClassName,
+  submitButtonSize,
+}: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const requiresToken = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
 
-  const form = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
+  const validationSchema = useMemo(
+    () =>
+      createContactSchema({
+        requireShops,
+        requireToken: requiresToken,
+      }),
+    [requireShops, requiresToken]
+  );
+
+  const defaultValues = useMemo<ContactPayload>(
+    () => ({
+      name: "",
+      email: "",
+      phone: "",
+      shops: undefined,
+      message: "",
       consent: false,
-      token: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? '' : 'dev-bypass-token',
-      company: '', // Honeypot
-    },
+      token: requiresToken ? "" : "dev-bypass-token",
+      company: "",
+    }),
+    [requiresToken]
+  );
+
+  const form = useForm<ContactPayload>({
+    resolver: zodResolver(validationSchema),
+    defaultValues,
   });
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: ContactPayload) => {
     setIsSubmitting(true);
-    
+    const { token, ...payload } = data;
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...payload, token }),
       });
 
       const result = await response.json();
 
       if (response.ok) {
         toast({
-          title: "Sukces!",
-          description: result.message || "Wiadomość została wysłana",
+          title: successToast?.title ?? "Sukces!",
+          description: successToast?.description ?? result.message ?? "Wiadomość została wysłana",
         });
-        form.reset();
+        form.reset(defaultValues);
       } else {
         toast({
           variant: "destructive",
@@ -85,11 +124,11 @@ export default function ContactForm() {
   };
 
   const handleTurnstileVerify = (token: string) => {
-    form.setValue('token', token);
+    form.setValue('token', token, { shouldValidate: true });
   };
 
   const handleTurnstileError = () => {
-    form.setValue('token', '');
+    form.setValue('token', undefined, { shouldValidate: true });
     toast({
       variant: "destructive",
       title: "Błąd weryfikacji",
@@ -98,7 +137,11 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      noValidate
+      className={cn("space-y-6", className)}
+    >
       {/* Honeypot field - stays out of the accessibility tree */}
       <input
         type="hidden"
@@ -145,22 +188,63 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Phone field */}
-      <div className="space-y-2">
-        <Label htmlFor="phone">Telefon (opcjonalnie)</Label>
-        <Input
-          id="phone"
-          type="tel"
-          {...form.register('phone')}
-          placeholder="+48 123 456 789"
-          data-testid="input-contact-phone"
-        />
-        {form.formState.errors.phone && (
-          <p className="text-sm text-red-500" data-testid="error-phone">
-            {form.formState.errors.phone.message}
-          </p>
-        )}
-      </div>
+      {showPhone && (
+        <div className="space-y-2">
+          <Label htmlFor="phone">Telefon (opcjonalnie)</Label>
+          <Input
+            id="phone"
+            type="tel"
+            {...form.register('phone')}
+            placeholder="+48 123 456 789"
+            data-testid="input-contact-phone"
+          />
+          {form.formState.errors.phone && (
+            <p className="text-sm text-red-500" data-testid="error-phone">
+              {form.formState.errors.phone.message}
+            </p>
+          )}
+        </div>
+      )}
+
+      {showShops && (
+        <div className="space-y-2">
+          <Label htmlFor="shops" id="contact-shops-label">
+            Liczba sklepów <span className="text-red-500">*</span>
+          </Label>
+          <Controller
+            control={form.control}
+            name="shops"
+            render={({ field }) => (
+              <Select
+                value={field.value ?? ""}
+                onValueChange={(value) => field.onChange(value)}
+              >
+                <SelectTrigger
+                  id="shops"
+                  aria-labelledby="contact-shops-label"
+                  aria-invalid={!!form.formState.errors.shops}
+                  aria-describedby={form.formState.errors.shops ? "shops-error" : undefined}
+                  data-testid="select-contact-shops"
+                >
+                  <SelectValue placeholder="Wybierz liczbę sklepów" />
+                </SelectTrigger>
+                <SelectContent>
+                  {SHOP_OPTIONS.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {SHOP_OPTION_LABELS[option]}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
+          {form.formState.errors.shops && (
+            <p className="text-sm text-red-500" id="shops-error" data-testid="error-shops">
+              {form.formState.errors.shops.message}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Message field */}
       <div className="space-y-2">
@@ -228,7 +312,8 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-primary hover:bg-primary/90"
+        size={submitButtonSize}
+        className={cn("w-full bg-primary hover:bg-primary/90", submitButtonClassName)}
         data-testid="button-submit-contact"
       >
         {isSubmitting ? (
@@ -239,7 +324,7 @@ export default function ContactForm() {
         ) : (
           <>
             <Send className="w-4 h-4 mr-2" />
-            Wyślij wiadomość
+            {submitLabel}
           </>
         )}
       </Button>

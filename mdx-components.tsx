@@ -1,4 +1,5 @@
 import React from 'react'
+import { ChecklistItem } from './src/components/mdx/checklist-item'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props
@@ -31,7 +32,7 @@ export function useMDXComponents(components: any) {
     a: (props: any) => <Anchor {...props} />,
     ul: (props: any) => <ul {...props} />,
     ol: (props: any) => <ol {...props} />,
-    li: (props: any) => <li {...props} />,
+  li: (props: any) => <ChecklistItem {...props} />,
     img: (props: any) => <Img {...props} />,
     pre: (props: any) => <pre {...props} />,
     code: (props: any) => <code {...props} />,

@@ -109,8 +109,12 @@ export default async function BlogSection() {
           </Link>
         </div>
         
-        {/* Newsletter signup */}
-  <div className="bg-muted rounded-2xl p-8 text-center" data-animate="rise" data-animate-delay="240">
+        {/* Newsletter signup (temporarily hidden until implementation is ready) */}
+        <div
+          className="hidden bg-muted rounded-2xl p-8 text-center"
+          data-animate="rise"
+          data-animate-delay="240"
+        >
           <h3 className="text-2xl font-semibold text-foreground mb-4" data-testid="text-newsletter-section-title">
             Bądź na bieżąco z prawem pracy
           </h3>

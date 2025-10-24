@@ -104,6 +104,13 @@ const mdxSanitizeSchema = {
       ['decoding'],
       ['className'],
     ],
+    input: [
+      ...(clonedSchema.attributes?.input || []),
+      ['type'],
+      ['checked'],
+      ['disabled'],
+      ['className'],
+    ],
     code: [
       ...(clonedSchema.attributes?.code || []),
       ['className'],

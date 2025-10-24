@@ -25,6 +25,7 @@ export default function Footer() {
       links: [
         { label: "Tutoriale", href: "/tutoriale" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
+        { label: "Formularz DSA", href: "https://forms.gle/1bwP5z2WFdsrkT55A" },
         { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" }
       ]
     },
@@ -64,11 +65,18 @@ export default function Footer() {
             <Link href="/">
               <div className="flex items-center space-x-2" data-testid="link-footer-logo">
                 <Image
+                  src="/illustrations/logo_xcolor64x64.png"
+                  alt="AutoŻaba logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 dark:hidden"
+                />
+                <Image
                   src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
                   alt="AutoŻaba logo"
                   width={32}
                   height={32}
-                  className="h-8 w-8"
+                  className="hidden h-8 w-8 dark:block"
                 />
                 <span className="text-xl font-bold text-foreground">AutoŻaba</span>
               </div>

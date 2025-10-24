@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useSpringNumber } from "@/hooks/use-spring-number";
 
@@ -50,12 +49,6 @@ export default function CalculatorSection() {
   const timeSavedSpring = useSpringNumber(calculations.timeSaved);
   const weekendsSavedSpring = useSpringNumber(calculations.weekendsSaved);
   const riskAvoidedSpring = useSpringNumber(calculations.riskAvoided, {
-    formatter: (val) => currencyFormatter.format(Math.round(val)),
-  });
-  const autozabaCostSpring = useSpringNumber(calculations.autozabaCost, {
-    formatter: (val) => Math.round(val).toLocaleString("pl-PL"),
-  });
-  const monthlyBenefitSpring = useSpringNumber(Math.max(calculations.monthlyBenefit, 0), {
     formatter: (val) => currencyFormatter.format(Math.round(val)),
   });
 
@@ -147,38 +140,26 @@ export default function CalculatorSection() {
               
               {/* Results */}
               <div className="space-y-6">
-                <h3 className="text-xl font-semibold text-foreground" data-testid="text-calculator-results-title">Co zyskujesz</h3>
-                
+                <h3 className="text-xl font-semibold text-foreground" data-testid="text-calculator-results-title">
+                  Co zyskujesz
+                </h3>
+
                 <div className="space-y-4">
-                  <div
-                    className="metric-card metric-card--time"
-                    data-animate="rise"
-                    data-animate-delay="60"
-                  >
+                  <div className="metric-card metric-card--time" data-animate="rise" data-animate-delay="60">
                     <div className="metric-card__label">Odzyskany czas miesięcznie</div>
                     <div className="metric-card__value" data-testid="stat-time-saved">
                       {timeSavedSpring.formatted} godzin
                     </div>
                     <div className="metric-card__hint">Czas dla rodziny i odpoczynku</div>
+                    <dl className="mt-4 grid grid-cols-2 gap-2 rounded-lg bg-primary/5 px-4 py-3 text-sm text-primary">
+                      <dt className="font-medium text-primary/80">Wolne weekendy</dt>
+                      <dd className="text-right font-semibold" data-testid="stat-weekends-saved">
+                        +{weekendsSavedSpring.formatted} / rok
+                      </dd>
+                    </dl>
                   </div>
 
-                  <div
-                    className="metric-card metric-card--weekends"
-                    data-animate="rise"
-                    data-animate-delay="120"
-                  >
-                    <div className="metric-card__label">Wolne weekendy rocznie</div>
-                    <div className="metric-card__value" data-testid="stat-weekends-saved">
-                      +{weekendsSavedSpring.formatted} weekendów
-                    </div>
-                    <div className="metric-card__hint">Bez myślenia o grafikach</div>
-                  </div>
-
-                  <div
-                    className="metric-card metric-card--risk"
-                    data-animate="rise"
-                    data-animate-delay="180"
-                  >
+                  <div className="metric-card metric-card--risk" data-animate="rise" data-animate-delay="120">
                     <div
                       className="metric-card__swap"
                       aria-live="polite"
@@ -220,40 +201,13 @@ export default function CalculatorSection() {
                     </div>
                   </div>
 
-                  <div
-                    className="metric-card metric-card--investment"
-                    data-animate="rise"
-                    data-animate-delay="240"
-                  >
-                    <div className="metric-card__label">Inwestycja w AutoŻabę</div>
+                  <div className="metric-card metric-card--investment" data-animate="rise" data-animate-delay="180">
+                    <div className="metric-card__label">AutoŻaba na teraz</div>
                     <div className="metric-card__value" data-testid="stat-autozaba-cost">
-                      {autozabaCostSpring.formatted} zł/msc
+                      Beta testy trwają
                     </div>
-                    <div className="metric-card__hint">
-                      Nieograniczona liczba pracowników
-                    </div>
+                    <div className="metric-card__hint">Dołącz i odbierz pierwszeństwo wdrożenia</div>
                   </div>
-
-                  {calculations.monthlyBenefit > 0 && (
-                    <div
-                      className="metric-card metric-card--peace"
-                      data-animate="rise"
-                      data-animate-delay="300"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="metric-card__label font-semibold">Spokój ducha</span>
-                        <Badge className="badge-pulse bg-white text-black dark:bg-white/20 dark:text-white border-white/60 dark:border-white/30">
-                          {monthlyBenefitSpring.formatted.replace("zł", "zł / msc")}
-                        </Badge>
-                      </div>
-                      <div className="metric-card__value" data-testid="stat-peace-of-mind">
-                        Bezcenny
-                      </div>
-                      <div className="metric-card__hint">
-                        100% zgodność z prawem, zero stresu
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

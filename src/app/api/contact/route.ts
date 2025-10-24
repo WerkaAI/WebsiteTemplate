@@ -1,22 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { z } from 'zod';
+import { ZodError } from 'zod';
+import { createContactSchema } from '@/lib/validation/contact';
 
 export const runtime = 'nodejs';
 
 // Simple in-memory rate limiting
 const rateLimit = new Map<string, { count: number; resetTime: number }>();
-
-// Contact form schema
-const contactSchema = z.object({
-  name: z.string().trim().min(2, 'Imię musi mieć co najmniej 2 znaki').max(50, 'Imię jest za długie'),
-  email: z.string().trim().email('Nieprawidłowy adres email').max(100, 'Email jest za długi'),
-  phone: z.string().trim().max(20, 'Numer telefonu jest za długi').optional(),
-  message: z.string().trim().min(10, 'Wiadomość musi mieć co najmniej 10 znaków').max(2000, 'Wiadomość jest za długa'),
-  consent: z.boolean().refine(val => val === true, 'Musisz wyrazić zgodę na przetwarzanie danych'),
-  token: z.string().min(1, 'Błąd weryfikacji CAPTCHA'),
-  company: z.string().optional(), // Honeypot field
-});
 
 async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   // Bypass in development mode
@@ -55,7 +45,7 @@ function checkRateLimit(ip: string): boolean {
   const maxRequests = 3;
 
   const record = rateLimit.get(ip);
-  
+
   if (!record || now > record.resetTime) {
     rateLimit.set(ip, { count: 1, resetTime: now + windowMs });
     return true;
@@ -73,24 +63,21 @@ export async function POST(request: NextRequest) {
   const headers = {
     'Cache-Control': 'no-store',
     'Content-Type': 'application/json',
-  };
+  } as const;
 
   try {
-    // Check content length (max ~10KB)
     const contentLength = request.headers.get('content-length');
-    if (contentLength && parseInt(contentLength) > 10240) {
+    if (contentLength && parseInt(contentLength, 10) > 10240) {
       return NextResponse.json(
         { error: 'Dane są za duże' },
         { status: 400, headers }
       );
     }
 
-    // Get client IP
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ||
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
                request.headers.get('x-real-ip') ||
                'unknown';
 
-    // Rate limiting check
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
         { error: 'Za dużo zgłoszeń. Spróbuj ponownie za 5 minut.' },
@@ -98,62 +85,72 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Parse JSON body
     const body = await request.json();
 
-    // Spam protection - honeypot check
-    if (body.company && body.company.trim() !== '') {
-      // Pretend success to fool bots
+    if (body.company && typeof body.company === 'string' && body.company.trim() !== '') {
       return NextResponse.json(
         { message: 'Wiadomość została wysłana' },
         { status: 200, headers }
       );
     }
 
-    // Validate input
+    const bypassTurnstile = process.env.NODE_ENV !== 'production' && process.env.TURNSTILE_BYPASS === 'true';
+    const hasTurnstileSecret = Boolean(process.env.TURNSTILE_SECRET_KEY);
+    const requiresTurnstile = hasTurnstileSecret && !bypassTurnstile;
+
+    const contactSchema = createContactSchema({ requireToken: requiresTurnstile });
     const validatedData = contactSchema.parse(body);
 
-    // Verify Turnstile token
-    const isValidToken = await verifyTurnstile(validatedData.token, ip);
-    if (!isValidToken) {
-      return NextResponse.json(
-        { error: 'Weryfikacja CAPTCHA nie powiodła się' },
-        { status: 403, headers }
-      );
+    if (requiresTurnstile) {
+      const token = validatedData.token;
+      const isValidToken = token ? await verifyTurnstile(token, ip) : false;
+      if (!isValidToken) {
+        return NextResponse.json(
+          { error: 'Weryfikacja CAPTCHA nie powiodła się' },
+          { status: 403, headers }
+        );
+      }
     }
 
-    // Check if Resend is configured
+    const { token: _token, company: _company, ...payload } = validatedData;
+
     if (!process.env.RESEND_API_KEY) {
-      // DRY RUN mode - log but don't send
       console.log('DRY RUN: Contact form submission:', {
-        name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone,
-        message: validatedData.message.substring(0, 100) + '...',
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        shops: payload.shops,
+        message: payload.message.substring(0, 100) + '...',
       });
-      
+
       return NextResponse.json(
         { message: 'Wiadomość została wysłana (tryb testowy)' },
         { status: 200, headers }
       );
     }
 
-    // Send email via Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
+
+    const phoneHtml = payload.phone ? `<p><strong>Telefon:</strong> ${payload.phone}</p>` : '';
+    const shopsHtml = payload.shops ? `<p><strong>Liczba sklepów:</strong> ${payload.shops}</p>` : '';
+    const phoneText = payload.phone ? `Telefon: ${payload.phone}\n` : '';
+    const shopsText = payload.shops ? `Liczba sklepów: ${payload.shops}\n` : '';
+    const formattedMessage = payload.message.replace(/\n/g, '<br>');
 
     const emailData = {
       from: process.env.CONTACT_FROM_EMAIL || 'Formularz <no-reply@autozaba.pl>',
       to: process.env.CONTACT_TO_EMAIL || 'kontakt@autozaba.pl',
-      reply_to: validatedData.email,
-      subject: `Nowe zgłoszenie z formularza: ${validatedData.name}`,
+      reply_to: payload.email,
+      subject: `Nowe zgłoszenie z formularza: ${payload.name}`,
       html: `
         <h2>Nowe zgłoszenie z formularza kontaktowego</h2>
-        <p><strong>Imię i nazwisko:</strong> ${validatedData.name}</p>
-        <p><strong>Email:</strong> ${validatedData.email}</p>
-        ${validatedData.phone ? `<p><strong>Telefon:</strong> ${validatedData.phone}</p>` : ''}
+        <p><strong>Imię i nazwisko:</strong> ${payload.name}</p>
+        <p><strong>Email:</strong> ${payload.email}</p>
+        ${phoneHtml}
+        ${shopsHtml}
         <p><strong>Wiadomość:</strong></p>
         <p style="padding: 10px; background: #f5f5f5; border-left: 4px solid #006625;">
-          ${validatedData.message.replace(/\n/g, '<br>')}
+          ${formattedMessage}
         </p>
         <hr>
         <p style="color: #666; font-size: 12px;">
@@ -164,11 +161,10 @@ export async function POST(request: NextRequest) {
       text: `
 Nowe zgłoszenie z formularza kontaktowego
 
-Imię i nazwisko: ${validatedData.name}
-Email: ${validatedData.email}
-${validatedData.phone ? `Telefon: ${validatedData.phone}\n` : ''}
-Wiadomość:
-${validatedData.message}
+Imię i nazwisko: ${payload.name}
+Email: ${payload.email}
+${phoneText}${shopsText}Wiadomość:
+${payload.message}
 
 ---
 Wysłano: ${new Date().toLocaleString('pl-PL')}
@@ -182,11 +178,10 @@ IP: ${ip}
       { message: 'Wiadomość została wysłana' },
       { status: 200, headers }
     );
-
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Contact form error:', error);
 
-    if (error instanceof z.ZodError) {
+    if (error instanceof ZodError) {
       return NextResponse.json(
         { error: 'Nieprawidłowe dane', details: error.errors },
         { status: 400, headers }

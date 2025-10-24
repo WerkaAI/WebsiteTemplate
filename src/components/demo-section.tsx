@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
@@ -10,6 +11,15 @@ export default function DemoSection() {
   const [progress, setProgress] = useState(0);
   const sectionRef = useRef<HTMLElement | null>(null);
   const rafRef = useRef<number>();
+
+  const handlePlay = () => setIsPlaying(true);
+  const handlePreviewKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (isPlaying) return;
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handlePlay();
+    }
+  };
 
   const videoSteps = [
     { time: "0:00", label: "Problem" },
@@ -104,7 +114,14 @@ export default function DemoSection() {
         </div>
         
   <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden" data-animate="rise">
-          <div className="group aspect-[4/3] sm:aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden">
+          <div
+            className="group aspect-[4/3] sm:aspect-video bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden"
+            role={!isPlaying ? "button" : undefined}
+            tabIndex={!isPlaying ? 0 : -1}
+            aria-label="Odtwórz demo AutoŻaby"
+            onClick={!isPlaying ? handlePlay : undefined}
+            onKeyDown={!isPlaying ? handlePreviewKeyDown : undefined}
+          >
             {!isPlaying ? (
               <div className="text-center space-y-5 px-6">
                 <div className="demo-preview">
@@ -120,7 +137,10 @@ export default function DemoSection() {
                 </div>
                 <Button
                   size="touch"
-                  onClick={() => setIsPlaying(true)}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handlePlay();
+                  }}
                   className="bg-primary text-primary-foreground hover:bg-primary/90 cta-glow"
                   data-testid="button-play-demo"
                 >
