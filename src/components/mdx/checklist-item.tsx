@@ -28,7 +28,6 @@ export function ChecklistItem(props: React.ComponentProps<'li'>) {
   const childArray = React.Children.toArray(children)
   const firstChild = childArray[0]
   const checkboxElement = getCheckboxElement(firstChild)
-  
   // Always call hooks at the top, before any early returns
   const initialChecked = checkboxElement ? Boolean(checkboxElement.props?.checked) : false
   const [checked, setChecked] = React.useState(initialChecked)

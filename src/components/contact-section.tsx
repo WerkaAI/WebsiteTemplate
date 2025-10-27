@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Clock, Headphones, Video, Download } from "lucide-react";
+import { Mail, Clock, Headphones, Video } from "lucide-react";
 import ContactForm from "@/components/contact-form";
 
 const contactInfo = [
@@ -27,7 +27,6 @@ const contactInfo = [
 
 const quickHelp = [
   { icon: Video, label: "Przewodniki wideo", href: "/tutoriale" },
-  { icon: Download, label: "Materiały do pobrania", href: "#" },
 ];
 
 export default function ContactSection() {

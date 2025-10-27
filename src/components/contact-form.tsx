@@ -52,8 +52,10 @@ export default function ContactForm({
   submitButtonSize,
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [shouldRenderTurnstile, setShouldRenderTurnstile] = useState(false);
   const { toast } = useToast();
-  const requiresToken = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const requiresToken = Boolean(turnstileSiteKey);
 
   const validationSchema = useMemo(
     () =>
@@ -136,9 +138,18 @@ export default function ContactForm({
     });
   };
 
+  const handleInteraction = () => {
+    if (requiresToken && !shouldRenderTurnstile) {
+      setShouldRenderTurnstile(true);
+    }
+  };
+
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
+      onFocusCapture={handleInteraction}
+      onMouseEnter={handleInteraction}
+      onTouchStart={handleInteraction}
       noValidate
       className={cn("space-y-6", className)}
     >
@@ -290,10 +301,10 @@ export default function ContactForm({
       </div>
 
       {/* Turnstile CAPTCHA */}
-      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+      {requiresToken && shouldRenderTurnstile && (
         <div className="space-y-2">
           <Turnstile
-            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+            sitekey={turnstileSiteKey!}
             onVerify={handleTurnstileVerify}
             onError={handleTurnstileError}
             theme="auto"

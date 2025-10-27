@@ -246,59 +246,6 @@ export default function FunkcjePage() {
           </ol>
         </div>
       </section>
-
-      <section className="section-padding bg-primary relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute -right-20 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-white/30 blur-3xl" />
-          <div className="absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-emerald-200/30 blur-3xl" />
-        </div>
-
-        <div className="container-spacing grid gap-10 text-primary-foreground lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-5">
-            <h2 className="text-3xl font-semibold sm:text-4xl text-white">
-              Gotowy na spokojny grafik i kontrolę nad dokumentacją?
-            </h2>
-            <p className="text-lg opacity-90">
-              Zespół AutoŻaba pomoże Ci przejść przez wdrożenie, a kontekstowa tarcza prawna będzie czuwać nad przepisami każdego dnia. Zacznij od darmowego trialu albo umów rozmowę z konsultantem.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="https://app.autozaba.pl/register"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
-              >
-                Rozpocznij 14-dniowy trial
-                <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center gap-2 rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Porozmawiaj z konsultantem
-                <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur">
-            <h3 className="text-xl font-semibold text-white">Najważniejsze korzyści w skrócie</h3>
-            <ul className="mt-4 space-y-3 text-sm opacity-90">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-white/80" aria-hidden="true" />
-                Automatyczne grafiki zgodne z prawem pracy.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-white/80" aria-hidden="true" />
-                Ewidencja czasu pracy, gotówki i dokumentów w jednym panelu.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-white/80" aria-hidden="true" />
-                Kontekstowa pomoc prawna i wsparcie zespołu 24/7.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   )

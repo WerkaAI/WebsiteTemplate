@@ -39,8 +39,7 @@ export default function Footer() {
 
   const legalLinks = [
     { label: "Polityka prywatności", href: "/polityka-prywatnosci", type: "route" as const },
-    { label: "Regulamin", href: "/Regulamin_Serwisu_Autozaba.pdf", type: "asset" as const },
-    { label: "RODO", href: "#", type: "anchor" as const }
+    { label: "Regulamin", href: "/Regulamin_Serwisu_Autozaba.pdf", type: "asset" as const }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -202,16 +201,7 @@ export default function Footer() {
                 );
               }
 
-              return (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="footer-link hover:text-foreground transition-colors"
-                  data-testid={`link-footer-legal-${index}`}
-                >
-                  {link.label}
-                </a>
-              );
+              return null;
             })}
           </div>
         </div>

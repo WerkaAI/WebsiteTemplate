@@ -48,7 +48,12 @@ export default function PricingSection() {
 
   const comparison = [
     { label: "Inne systemy HR", price: "299-599 zł/msc", note: "+ 20-50 zł za pracownika" },
-    { label: "AutoŻaba", price: "149 zł/msc", note: "0 zł za pracownika", highlight: true },
+    {
+      label: "AutoŻaba",
+      price: "Program beta w toku",
+      note: "Zapisz się, aby otrzymać priorytet wdrożenia",
+      highlight: true,
+    },
     { label: "Koszt braku systemu", price: "30 000 zł", note: "Maksymalna kara PIP", warning: true }
   ];
 
@@ -60,7 +65,7 @@ export default function PricingSection() {
             Prosta <span className="text-primary dark:text-emerald-300">cena</span>, wielka wartość
           </h2>
           <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-pricing-subtitle">
-            149 zł za sklep, bez względu na liczbę pracowników
+            Trwają beta testy – zgłoś się, by otrzymać priorytet wdrożenia
           </p>
         </div>
         

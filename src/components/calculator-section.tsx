@@ -224,7 +224,7 @@ export default function CalculatorSection() {
                     Zacznij oszczędzać czas →
                   </Button>
                   <p className="text-sm text-muted-foreground" data-testid="text-calculator-disclaimer">
-                    Tylko {calculations.autozabaCost} zł/msc • Nieograniczona liczba pracowników
+                    Trwają beta testy • Nieograniczona liczba pracowników
                   </p>
                 </div>
                 <div className="relative flex-shrink-0" aria-hidden>
