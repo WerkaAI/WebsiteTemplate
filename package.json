@@ -12,7 +12,8 @@
     "analyze": "ANALYZE=true next build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "security:inventory": "node scripts/security/collect-inventory.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

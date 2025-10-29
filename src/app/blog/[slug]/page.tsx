@@ -13,6 +13,7 @@ import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { getAllSlugs, loadPost } from '@/lib/posts';
 import ShareButtons from "@/components/blog/share-buttons";
+import { getCspNonce } from '@/lib/security/csp';
 
 interface BlogPostPageProps {
   params: {
@@ -65,6 +66,8 @@ export default async function Page({ params }: BlogPostPageProps) {
 
   const readLength = typeof readTime === 'string' && readTime.trim().length > 0 ? readTime : '~5 min czytania';
 
+  const nonce = getCspNonce();
+
   // JSON-LD structured data
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000';
   const jsonLd = {
@@ -104,10 +107,12 @@ export default async function Page({ params }: BlogPostPageProps) {
     <div className="bg-background dark:bg-slate-950 min-h-screen flex flex-col">
       <Navigation />
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />

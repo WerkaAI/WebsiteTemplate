@@ -39,7 +39,7 @@
 ## Control Library (Conceptual Scaffolding)
 - **Security Headers Module:** pattern-match existing Next.js header exports; add helper in `src/lib/security/headers.ts` returning typed policies.
 - **CSP Nonce Utility:** create `src/lib/security/csp.ts` providing nonce generation and middleware hook; ensure compatibility with MDX runtime.
-- **MDX Sanitizer:** integrate `rehype-sanitize` via configuration object stored in `src/lib/security/mdx-policy.ts`; enforce typed schema to prevent drift.
+- **MDX Sanitizer:** integrate `rehype-sanitize` via configuration object stored in `src/lib/security/mdx-policy.mjs`; enforce typed schema to prevent drift.
 - **Lint Guardrails:** extend ESLint config with custom rule (or plugin) disallowing `dangerouslySetInnerHTML` without documented exemption.
 
 ## Verification Loop

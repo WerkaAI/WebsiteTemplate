@@ -12,6 +12,7 @@ const BlogSection = dynamic(() => import("@/components/blog-section"))
 const ContactSection = dynamic(() => import("@/components/contact-section"))
 import InteractionLayer from "@/components/interaction-layer";
 import Footer from "@/components/footer";
+import { getCspNonce } from "@/lib/security/csp";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -36,6 +37,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Home() {
+  const nonce = getCspNonce();
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -43,6 +46,7 @@ export default function Home() {
         <InteractionLayer />
         {/* Organization JSON-LD */}
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

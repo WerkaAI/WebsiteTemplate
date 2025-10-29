@@ -88,6 +88,7 @@ export function TutorialGrid({ tutorials }: TutorialGridProps) {
               tags={tutorial.meta.tags}
               href={`/tutoriale/${tutorial.slug}`}
               publishDate={tutorial.meta.date}
+              cover={tutorial.meta.cover}
               onClick={() => track({ name: 'tutorial_card_clicked', payload: { slug: tutorial.slug } })}
             />
           ))}

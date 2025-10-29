@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, GraduationCap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
@@ -14,6 +15,7 @@ export interface TutorialCardProps {
   href: string
   className?: string
   publishDate?: string
+  cover?: string
   onClick?: () => void
 }
 
@@ -30,11 +32,34 @@ function formatDuration(minutes: number) {
 }
 
 export function TutorialCard(props: TutorialCardProps) {
-  const { title, description, persona, difficulty, durationMinutes, tags, href, className, publishDate, onClick } = props
+  const {
+    title,
+    description,
+    persona,
+    difficulty,
+    durationMinutes,
+    tags,
+    href,
+    className,
+    publishDate,
+    cover,
+    onClick,
+  } = props
   const personas = persona.slice(0, 3)
 
   return (
-    <Card className={cn('flex flex-col justify-between border-border/60 transition-colors hover:border-primary/60', className)}>
+    <Card className={cn('flex h-full flex-col overflow-hidden border-border/60 transition-colors hover:border-primary/60', className)}>
+      {cover && (
+        <div className="relative h-44 w-full overflow-hidden">
+          <Image
+            src={cover}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(min-width: 1280px) 400px, (min-width: 768px) 50vw, 100vw"
+          />
+        </div>
+      )}
       <CardHeader className="space-y-3">
         <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground uppercase tracking-wide">
           {publishDate && (
@@ -63,7 +88,7 @@ export function TutorialCard(props: TutorialCardProps) {
           {description}
         </p>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="flex flex-1 flex-col gap-4">
         <div className="flex flex-wrap gap-2">
           {personas.map(personaLabel => (
             <Badge key={personaLabel} variant="secondary" className="rounded-full bg-primary/10 text-primary">
@@ -79,7 +104,7 @@ export function TutorialCard(props: TutorialCardProps) {
           </div>
         )}
       </CardContent>
-      <CardFooter className="pt-0">
+      <CardFooter className="mt-auto pt-0">
         <Link
           href={href}
           className="text-sm font-semibold text-primary hover:text-primary/80"
