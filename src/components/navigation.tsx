@@ -78,7 +78,7 @@ export default function Navigation() {
       <span
         aria-hidden="true"
         className={cn(
-          "absolute left-0 right-0 top-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out",
+          "absolute left-0 right-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out",
           !showScrollProgress && "opacity-0"
         )}
         style={{ transform: `scaleX(${scrollProgress / 100 || 0})` }}
