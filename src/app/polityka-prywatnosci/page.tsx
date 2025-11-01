@@ -50,9 +50,9 @@ export default function PrivacyPolicyPage() {
                 <hr />
                 <h2 id="1-kim-jestesmy-i-kogo-dotyczy-ta-polityka">1. Kim jesteśmy i kogo dotyczy ta Polityka</h2>
                 <p>
-                  <strong>Administrator danych:</strong> <strong>[[pełna nazwa i forma prawna podmiotu prowadzącego AutoŻabę]]</strong> z siedzibą pod adresem <strong>[[adres spółki]]</strong>, wpisana do rejestru przedsiębiorców <strong>[[KRS]]</strong>, NIP: <strong>[[NIP]]</strong>, REGON: <strong>[[REGON]]</strong> (dalej: &quot;<strong>my</strong>&quot;, &quot;<strong>AutoŻaba</strong>&quot;, &quot;<strong>Administrator</strong>&quot;).
+                  <strong>Administrator danych:</strong> <strong>Dmytro Bliakharchuk CloudDevs</strong> (nazwa skrócona: <strong>CloudDevs</strong>), NIP: <strong>5243006270</strong>, REGON: <strong>528603362</strong> (dalej: &quot;<strong>my</strong>&quot;, &quot;<strong>AutoŻaba</strong>&quot;, &quot;<strong>Administrator</strong>&quot;).
                   <br />
-                  Kontakt w sprawach prywatności: <strong>autozaba@ainything.pl</strong>. Jeśli powołaliśmy inspektora ochrony danych (IOD), aktualne dane kontaktowe znajdziesz w zakładce <strong>Prywatność / RODO</strong> w aplikacji. W przeciwnym razie nie powołaliśmy IOD.
+                  Kontakt w sprawach prywatności: <strong>autozaba@ainything.pl</strong>. Nie powołaliśmy inspektora ochrony danych (IOD).
                 </p>
                 <p>
                   <strong>Zakres podmiotowy.</strong> Polityka dotyczy w szczególności:
@@ -160,32 +160,32 @@ export default function PrivacyPolicyPage() {
                 <h2 id="7-odbiorcy-danych">7. Odbiorcy danych</h2>
                 <p>Możemy udostępniać dane:</p>
                 <ul>
-                  <li>dostawcom usług IT (hosting/chmura, utrzymanie, bezpieczeństwo, monitorowanie, narzędzia analityczne, systemy mailingowe/powiadomień, narzędzia obsługi klienta);</li>
+                  <li>dostawcom usług IT: <strong>DigitalOcean</strong> (hosting/chmura), <strong>Google</strong> (infrastruktura e-mail);</li>
                   <li>księgowym i doradcom (prawnym/podatkowym) – w niezbędnym zakresie;</li>
-                  <li>operatorom płatności – gdy korzystasz z płatnych planów;</li>
+                  <li>operatorom płatności: <strong>Przelewy24</strong> – gdy korzystasz z płatnych planów;</li>
                   <li>naszym upoważnionym współpracownikom/osobom zatrudnionym – w oparciu o stosowne upoważnienia poufności;</li>
                   <li>organom publicznym – gdy wymagają tego przepisy;</li>
                   <li>w ramach relacji <strong>procesor–podprocesor</strong> (dla danych załogi klientów) – wyłącznie na podstawie poleceń administratora i odpowiednich umów.</li>
                 </ul>
                 <p>
-                  Aktualną listę kluczowych kategorii podmiotów przetwarzających możemy udostępnić na żądanie.
+                  Szczegółową listę podmiotów przetwarzających znajduje się w Załączniku B na końcu tego dokumentu.
                 </p>
                 <hr />
                 <h2 id="8-przekazywanie-danych-poza-eog">8. Przekazywanie danych poza EOG</h2>
                 <p>
-                  Jeśli nasi dostawcy mają siedziby poza EOG (np. w USA), przekazywanie odbywa się z zastosowaniem odpowiednich zabezpieczeń, w szczególności <strong>Standardowych Klauzul Umownych (SCC)</strong>, ewentualnie na podstawie decyzji stwierdzających odpowiedni stopień ochrony lub – w razie potrzeby – Twojej wyraźnej zgody. Kopię mechanizmów zabezpieczeń możesz uzyskać, kontaktując się z nami.
+                  Nasi główni dostawcy (DigitalOcean, Google) posiadają infrastrukturę w Unii Europejskiej i Stanach Zjednoczonych. W przypadku przekazywania danych poza EOG stosujemy odpowiednie zabezpieczenia, w szczególności <strong>Standardowe Klauzule Umowne (SCC)</strong> oraz opieramy się na decyzjach stwierdzających odpowiedni stopień ochrony. Kopię mechanizmów zabezpieczeń możesz uzyskać, kontaktując się z nami.
                 </p>
                 <hr />
                 <h2 id="9-okres-przechowywania">9. Okres przechowywania</h2>
                 <ul>
                   <li>
-                    <strong>Konto i rozliczenia klientów</strong> – przez czas trwania umowy, a następnie przez okres przedawnienia roszczeń oraz wymagany przepisami rachunkowymi/podatkowymi.
+                    <strong>Konto i rozliczenia klientów</strong> – przez czas trwania umowy, a następnie przez 6 lat (okres przedawnienia roszczeń) oraz 5 lat (wymagany przepisami rachunkowymi/podatkowymi).
                   </li>
                   <li>
-                    <strong>Komunikacja i wsparcie</strong> – przez czas niezbędny do obsługi sprawy; wybrane wątki mogą być przechowywane dłużej dla celów dowodowych (przedawnienie).
+                    <strong>Komunikacja i wsparcie</strong> – przez czas niezbędny do obsługi sprawy; wybrane wątki mogą być przechowywane dłużej dla celów dowodowych (do 6 lat – przedawnienie).
                   </li>
                   <li>
-                    <strong>Marketing/newsletter</strong> – do czasu wycofania zgody/sprzeciwu lub dezaktywacji adresu; podstawowe informacje o udzieleniu/wycofaniu zgody przechowujemy dla celów rozliczalności.
+                    <strong>Marketing/newsletter</strong> – do czasu wycofania zgody/sprzeciwu lub dezaktywacji adresu; podstawowe informacje o udzieleniu/wycofaniu zgody przechowujemy przez 3 lata dla celów rozliczalności.
                   </li>
                   <li>
                     <strong>Telemetria/logi bezpieczeństwa</strong> – co do zasady do 12 miesięcy, chyba że dłużej wymagają tego cele dowodowe/bezpieczeństwa.
@@ -203,7 +203,7 @@ export default function PrivacyPolicyPage() {
                   Masz prawo żądać: <strong>dostępu</strong> do danych, ich <strong>sprostowania</strong>, <strong>usunięcia</strong>, <strong>ograniczenia przetwarzania</strong>, <strong>przenoszenia</strong> danych oraz wnieść <strong>sprzeciw</strong> (w szczególności wobec marketingu bezpośredniego). Jeśli przetwarzanie opiera się na zgodzie – możesz ją <strong>cofnąć</strong> w dowolnym momencie.
                 </p>
                 <p>
-                  Przysługuje Ci także prawo skargi do Prezesa <strong>Urzędu Ochrony Danych Osobowych</strong> (uodo.gov.pl).
+                  Przysługuje Ci także prawo skargi do Prezesa <strong>Urzędu Ochrony Danych Osobowych</strong> (<a href="https://uodo.gov.pl" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">uodo.gov.pl</a>).
                 </p>
                 <p>
                   W celu realizacji praw skontaktuj się z nami: <strong>autozaba@ainything.pl</strong>. W niektórych przypadkach (gdy działamy jako procesor) możemy przekazać Twoje zgłoszenie właściwemu administratorowi (Twojemu pracodawcy/zleceniodawcy).
@@ -224,25 +224,29 @@ export default function PrivacyPolicyPage() {
                 <hr />
                 <h2 id="13-media-spolecznosciowe">13. Media społecznościowe</h2>
                 <p>
-                  Prowadzimy profile w wybranych mediach społecznościowych. Dane przetwarza także operator danego portalu – jako niezależny administrator – zgodnie z jego regulaminem i polityką prywatności. Gdy komentujesz/wiadomościujesz, widzimy dane ujawnione publicznie lub przekazane nam dobrowolnie.
+                  Możemy prowadzić profile w mediach społecznościowych (Facebook, LinkedIn, Instagram). Dane przetwarza także operator danego portalu – jako niezależny administrator – zgodnie z jego regulaminem i polityką prywatności. Gdy komentujesz/wiadomościujesz, widzimy dane ujawnione publicznie lub przekazane nam dobrowolnie.
                 </p>
                 <hr />
                 <h2 id="14-kontakt">14. Kontakt</h2>
                 <p>
-                  W sprawach ochrony prywatności: <strong>autozaba@ainything.pl</strong>.
+                  W sprawach ochrony prywatności, rezygnacji z usługi lub innych kwestii: <strong>autozaba@ainything.pl</strong>
                   <br />
-                  Adres rejestrowy i pozostałe dane formalne Administratora uzupełnij w sekcji 1 po podpisaniu dokumentu.
+                  Formularz wsparcia: <a href="https://autozaba.pl/kontakt" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/kontakt</a>
+                  <br />
+                  Cennik usług: <a href="https://autozaba.pl/cennik" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/cennik</a>
+                  <br />
+                  Formularz zgłoszeń DSA: <a href="https://forms.gle/c62oz5rdg9C8os3E6" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://forms.gle/c62oz5rdg9C8os3E6</a>
                 </p>
                 <hr />
                 <h2 id="15-zmiany-polityki">15. Zmiany Polityki</h2>
                 <p>
-                  Zastrzegamy możliwość aktualizacji Polityki – aktualna wersja jest zawsze dostępna w Serwisie i opatrzona datą. O istotnych zmianach poinformujemy w aplikacji lub e-mailem (jeśli to możliwe).
+                  Zastrzegamy możliwość aktualizacji Polityki – aktualna wersja jest zawsze dostępna pod adresem <a href="https://autozaba.pl/polityka-prywatnosci" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/polityka-prywatnosci</a> i opatrzona datą. O istotnych zmianach poinformujemy w aplikacji lub e-mailem (jeśli to możliwe).
                 </p>
                 <p>
-                  <strong>Data obowiązywania:</strong> 18.10.2025 r.
+                  <strong>Data obowiązywania:</strong> 01.10.2025 r.
                 </p>
                 <hr />
-                <h3 id="zalacznik-informacja-dla-klienta-umowa-powierzenia-skrot">Załącznik: Informacja dla klienta – umowa powierzenia (skrót)</h3>
+                <h3 id="zalacznik-a-informacja-dla-klienta-umowa-powierzenia-skrot">Załącznik A: Informacja dla klienta – umowa powierzenia (skrót)</h3>
                 <ol>
                   <li>Przetwarzamy dane załogi wyłącznie na udokumentowane polecenie klienta-administratora i w celu świadczenia usługi.</li>
                   <li>Zapewniamy poufność i odpowiednie środki bezpieczeństwa.</li>
@@ -251,6 +255,38 @@ export default function PrivacyPolicyPage() {
                   <li>Po zakończeniu świadczenia usługi – na polecenie administratora – usuwamy lub zwracamy dane oraz usuwamy istniejące kopie, chyba że przepisy wymagają ich dalszego przechowywania.</li>
                   <li>Udostępniamy administratorowi informacje niezbędne do wykazania zgodności oraz umożliwiamy audyty w uzgodnionym zakresie.</li>
                 </ol>
+                <hr />
+                <h3 id="zalacznik-b-podmioty-przetwarzajace">Załącznik B: Podmioty przetwarzające (podprocesory)</h3>
+                <p>Poniżej znajduje się lista kluczowych podmiotów przetwarzających dane w ramach świadczenia usługi AutoŻaba:</p>
+                <table className="min-w-full border-collapse border border-slate-300 dark:border-slate-700 mt-4">
+                  <thead>
+                    <tr className="bg-slate-100 dark:bg-slate-800">
+                      <th className="border border-slate-300 dark:border-slate-700 px-4 py-2 text-left">Kategoria</th>
+                      <th className="border border-slate-300 dark:border-slate-700 px-4 py-2 text-left">Dostawca</th>
+                      <th className="border border-slate-300 dark:border-slate-700 px-4 py-2 text-left">Cel przetwarzania</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Hosting/Chmura</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">DigitalOcean</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Infrastruktura serwerowa, hosting aplikacji i baz danych</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">E-mail</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Google (Gmail/Workspace)</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Wysyłka wiadomości e-mail (powiadomienia, komunikacja)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Płatności</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Przelewy24</td>
+                      <td className="border border-slate-300 dark:border-slate-700 px-4 py-2">Obsługa płatności za subskrypcje i usługi</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="mt-4">
+                  <strong>Uwaga:</strong> W miarę rozwoju usługi lista może ulec zmianie. Zawsze informujemy klientów biznesowych (w ramach umowy powierzenia) o planowanych zmianach dotyczących podprocesorów.
+                </p>
               </div>
             </div>
           </div>

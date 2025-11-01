@@ -152,8 +152,8 @@ export default function HeroSection() {
   const heroHighlights = [
     {
       icon: CheckCircle2,
-      label: "149 zł miesięcznie",
-      caption: "Stała cena za sklep"
+      label: "Program beta w toku",
+      caption: "Zapisz się na listę pierwszych wdrożeń"
     },
     {
       icon: Shield,

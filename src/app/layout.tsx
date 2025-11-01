@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'AutoŻaba',
     locale: 'pl_PL',
+    images: [
+      {
+        url: 'https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/start-w-autozaba.png',
+        width: 1200,
+        height: 630,
+        alt: 'AutoŻaba - Automatyczna Tarcza Prawna dla Żabka'
+      }
+    ]
   }
 }
 
