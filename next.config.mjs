@@ -83,6 +83,7 @@ const nextConfig = {
     TURNSTILE_BYPASS: 'true',
     CONTACT_TO_EMAIL: 'kontakt@autozaba.pl',
     CONTACT_FROM_EMAIL: 'AutoŻaba Formularz <no-reply@autozaba.pl>',
+    NEXT_PUBLIC_ENABLE_PWA: 'false',
   },
   images: {
     remotePatterns: [

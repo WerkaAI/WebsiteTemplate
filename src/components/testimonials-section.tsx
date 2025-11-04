@@ -9,27 +9,27 @@ import { useCarousel } from "@/hooks/use-carousel";
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      id: "michal-k",
-      name: "Michał K.",
-      location: "Żabka Wrocław, 8 pracowników",
+      id: "polina-m",
+      name: "Polina M.",
+      location: "Wrocław",
+      quote: "AutoŻabę włączyłam od pierwszego dnia prowadzenia sklepu i do dziś jestem zachwycona – wszystko działa pewnie i bez stresu.",
+  avatar: "/illustrations/testimonials/polina64.png",
+      rating: 5
+    },
+    {
+      id: "michal-p", 
+      name: "Michał P.",
+      location: "Warszawa",
       quote: "Pierwszy raz od 3 lat mogłem wziąć weekend bez myślenia o grafikach. AutoŻaba to była najlepsza inwestycja w mojej historii prowadzenia sklepu.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+  avatar: "/illustrations/testimonials/michal.png",
       rating: 5
     },
     {
-      id: "anna-t", 
-      name: "Anna T.",
-      location: "Żabka Kraków, 12 pracowników",
-      quote: "Kontrola PIP była tydzień temu. Zero uwag! Wszystkie dokumenty idealne. Wreszcie śpię spokojnie.",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
-      rating: 5
-    },
-    {
-      id: "piotr-l",
-      name: "Piotr L.", 
-      location: "Żabka Gdańsk, 6 pracowników",
+      id: "wiktor-w",
+      name: "Wiktor W.", 
+      location: "Gdańsk",
       quote: "Wcześniej to była loteria - czy grafik będzie zgodny z prawem. Teraz mam 100% pewność. To bezcenne uczucie.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+  avatar: "/illustrations/testimonials/wiktor64.png",
       rating: 5
     }
   ];

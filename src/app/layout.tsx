@@ -4,6 +4,7 @@ import './globals.css'
 import { Providers } from "@/components/providers"
 
 const inter = Inter({ subsets: ['latin'] })
+const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'),
@@ -27,7 +28,9 @@ export const metadata: Metadata = {
 }
 
 metadata.icons = { icon: '/illustrations/logo_xcolor64x64.png' }
-metadata.manifest = '/site.webmanifest'
+if (enablePwa) {
+  metadata.manifest = '/site.webmanifest' // Only expose manifest when PWA is explicitly enabled
+}
 
 export default function RootLayout({
   children,
