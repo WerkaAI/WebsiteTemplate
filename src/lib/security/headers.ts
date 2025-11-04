@@ -34,6 +34,7 @@ const YOUTUBE_DOMAINS = [
 const IMAGE_DOMAINS = [
   "https://images.unsplash.com",
   "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
+  "https://img.youtube.com",
 ] as const;
 
 const SCRIPT_DOMAINS = [
@@ -44,7 +45,6 @@ const CONNECT_DOMAINS = SCRIPT_DOMAINS;
 
 const PERMISSIONS_POLICY_VALUE = [
   "accelerometer=()",
-  "ambient-light-sensor=()",
   "autoplay=()",
   "camera=()",
   "display-capture=()",

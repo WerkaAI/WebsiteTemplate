@@ -24,13 +24,13 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email',
-      content: 'kontakt@autozaba.pl',
+      content: 'autozaba@ainything.pl',
       description: 'Odpowiadamy w ciągu 24 godzin',
     },
     {
       icon: Phone,
       title: 'Telefon',
-      content: '+48 123 456 789',
+      content: '+48 733 722 428',
       description: 'Pon-Pt 9:00-17:00',
     },
     {
@@ -164,7 +164,7 @@ export default function ContactPage() {
                         </p>
                         <Button 
                           className="bg-primary hover:bg-primary/90"
-                          onClick={() => window.open('tel:+48123456789', '_self')}
+                          onClick={() => window.open('tel:+48733722428', '_self')}
                           data-testid="button-call-urgent"
                         >
                           <Phone className="w-4 h-4 mr-2" />

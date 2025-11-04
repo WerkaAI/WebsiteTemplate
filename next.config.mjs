@@ -95,6 +95,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'autozaba-app-storage.fra1.cdn.digitaloceanspaces.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+      },
     ],
   },
   async rewrites() {
