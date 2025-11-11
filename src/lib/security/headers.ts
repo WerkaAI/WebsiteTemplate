@@ -80,7 +80,7 @@ export function createCspDirectives(options: CreateCspOptions): CspDirectives {
     "base-uri": ["'self'"],
     "frame-ancestors": ["'self'"],
     "form-action": ["'self'", "https://app.autozaba.pl"],
-    "frame-src": ["'self'", ...YOUTUBE_DOMAINS],
+    "frame-src": ["'self'", ...YOUTUBE_DOMAINS, "https://challenges.cloudflare.com"],
     "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
     "img-src": ["'self'", "data:", ...IMAGE_DOMAINS],
     "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],

@@ -138,18 +138,26 @@ export default function ContactForm({
     });
   };
 
-  const handleInteraction = () => {
-    if (requiresToken && !shouldRenderTurnstile) {
-      setShouldRenderTurnstile(true);
+  const handleConsentChange = (checked: boolean | "indeterminate") => {
+    const isChecked = checked === true;
+    form.setValue('consent', isChecked, { shouldValidate: true });
+
+    if (!requiresToken) {
+      return;
+    }
+
+    if (isChecked) {
+      if (!shouldRenderTurnstile) {
+        setShouldRenderTurnstile(true);
+      }
+    } else {
+      form.setValue('token', undefined, { shouldValidate: true });
     }
   };
 
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      onFocusCapture={handleInteraction}
-      onMouseEnter={handleInteraction}
-      onTouchStart={handleInteraction}
       noValidate
       className={cn("space-y-6", className)}
     >
@@ -281,7 +289,7 @@ export default function ContactForm({
         <Checkbox
           id="consent"
           checked={form.watch('consent')}
-          onCheckedChange={(checked) => form.setValue('consent', checked as boolean)}
+          onCheckedChange={handleConsentChange}
           data-testid="checkbox-consent"
         />
         <div className="space-y-1">
