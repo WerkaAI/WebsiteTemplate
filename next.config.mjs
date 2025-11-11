@@ -77,13 +77,10 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
   env: {
-    NEXT_PUBLIC_TURNSTILE_SITE_KEY: '1x00000000000000000000AA',
-    TURNSTILE_SECRET_KEY: '1x0000000000000000000000000000000AA',
-    RESEND_API_KEY: 're_test_key_placeholder',
-    TURNSTILE_BYPASS: 'true',
-    CONTACT_TO_EMAIL: 'kontakt@autozaba.pl',
-    CONTACT_FROM_EMAIL: 'AutoŻaba Formularz <no-reply@autozaba.pl>',
-    NEXT_PUBLIC_ENABLE_PWA: 'false',
+    CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || 'kontakt@autozaba.pl',
+    CONTACT_FROM_EMAIL:
+      process.env.CONTACT_FROM_EMAIL || 'AutoŻaba Formularz <no-reply@autozaba.pl>',
+    NEXT_PUBLIC_ENABLE_PWA: process.env.NEXT_PUBLIC_ENABLE_PWA || 'false',
   },
   images: {
     remotePatterns: [

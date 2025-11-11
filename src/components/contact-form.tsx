@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps, useMemo, useState } from "react";
+import { ComponentProps, useEffect, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -141,19 +141,33 @@ export default function ContactForm({
   const handleConsentChange = (checked: boolean | "indeterminate") => {
     const isChecked = checked === true;
     form.setValue('consent', isChecked, { shouldValidate: true });
+  };
 
+  const consentValue = form.watch('consent');
+
+  useEffect(() => {
     if (!requiresToken) {
+      if (shouldRenderTurnstile) {
+        setShouldRenderTurnstile(false);
+      }
       return;
     }
 
-    if (isChecked) {
+    if (consentValue) {
       if (!shouldRenderTurnstile) {
         setShouldRenderTurnstile(true);
       }
     } else {
-      form.setValue('token', undefined, { shouldValidate: true });
+      if (shouldRenderTurnstile) {
+        setShouldRenderTurnstile(false);
+      }
+
+      const currentToken = form.getValues('token');
+      if (currentToken) {
+        form.setValue('token', '', { shouldValidate: false });
+      }
     }
-  };
+  }, [consentValue, form, requiresToken, shouldRenderTurnstile]);
 
   return (
     <form
@@ -288,7 +302,7 @@ export default function ContactForm({
       <div className="flex items-start space-x-3">
         <Checkbox
           id="consent"
-          checked={form.watch('consent')}
+          checked={consentValue}
           onCheckedChange={handleConsentChange}
           data-testid="checkbox-consent"
         />
