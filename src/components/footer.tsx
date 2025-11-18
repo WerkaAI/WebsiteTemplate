@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { APP_URLS } from "@/lib/config";
 
 export default function Footer() {
   const footerSections = [
@@ -11,14 +12,12 @@ export default function Footer() {
       links: [
         { label: "Funkcje", href: "/funkcje" },
         { label: "Cennik", href: "/cennik" },
-        { label: "Demo", href: "#demo" }
-      ]
+        { label: "Demo", href: "#demo" },
+      ],
     },
     {
-      title: "Zasoby", 
-      links: [
-        { label: "Blog", href: "/blog" }
-      ]
+      title: "Zasoby",
+      links: [{ label: "Blog", href: "/blog" }],
     },
     {
       title: "Pomoc",
@@ -26,31 +25,42 @@ export default function Footer() {
         { label: "Tutoriale", href: "/tutoriale" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
         { label: "Formularz DSA", href: "https://forms.gle/1bwP5z2WFdsrkT55A" },
-        { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" }
-      ]
+        { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" },
+      ],
     },
     {
       title: "Kontakt",
       links: [
-        { label: "autozaba@ainything.pl", href: "mailto:autozaba@ainything.pl" },
-      ]
-    }
+        {
+          label: "autozaba@ainything.pl",
+          href: "mailto:autozaba@ainything.pl",
+        },
+      ],
+    },
   ];
 
   const legalLinks = [
-    { label: "Polityka prywatności", href: "/polityka-prywatnosci", type: "route" as const },
-    { label: "Regulamin", href: "/Regulamin_Serwisu_Autozaba.pdf", type: "asset" as const }
+    {
+      label: "Polityka prywatności",
+      href: "/polityka-prywatnosci",
+      type: "route" as const,
+    },
+    {
+      label: "Regulamin",
+      href: "/Regulamin_Serwisu_Autozaba.pdf",
+      type: "asset" as const,
+    },
   ];
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
+    const element = document.getElementById(sectionId.replace("#", ""));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handleLinkClick = (href: string) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       scrollToSection(href);
     }
   };
@@ -62,7 +72,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4 md:col-span-2">
             <Link href="/">
-              <div className="flex items-center space-x-2" data-testid="link-footer-logo">
+              <div
+                className="flex items-center space-x-2"
+                data-testid="link-footer-logo"
+              >
                 <Image
                   src="/illustrations/logo_xcolor64x64.png"
                   alt="AutoŻaba logo"
@@ -77,11 +90,17 @@ export default function Footer() {
                   height={32}
                   className="hidden h-8 w-8 dark:block"
                 />
-                <span className="text-xl font-bold text-foreground">AutoŻaba</span>
+                <span className="text-xl font-bold text-foreground">
+                  AutoŻaba
+                </span>
               </div>
             </Link>
-            <p className="text-muted-foreground" data-testid="text-footer-description">
-              Automatyczna tarcza prawna dla franczyzobiorców Żabki. Zarządzaj zespołem, nie ryzykiem.
+            <p
+              className="text-muted-foreground"
+              data-testid="text-footer-description"
+            >
+              Automatyczna tarcza prawna dla franczyzobiorców Żabki. Zarządzaj
+              zespołem, nie ryzykiem.
             </p>
           </div>
 
@@ -89,13 +108,16 @@ export default function Footer() {
           <div className="hidden md:grid md:col-span-3 grid-cols-3 gap-8">
             {footerSections.map((section, sectionIndex) => (
               <div key={sectionIndex} className="space-y-4">
-                <h3 className="font-semibold text-foreground" data-testid={`text-footer-section-${sectionIndex}`}>
+                <h3
+                  className="font-semibold text-foreground"
+                  data-testid={`text-footer-section-${sectionIndex}`}
+                >
                   {section.title}
                 </h3>
                 <ul className="space-y-2 text-muted-foreground">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      {link.href.startsWith('#') ? (
+                      {link.href.startsWith("#") ? (
                         <button
                           onClick={() => handleLinkClick(link.href)}
                           className="footer-link hover:text-foreground transition-colors text-left"
@@ -103,15 +125,18 @@ export default function Footer() {
                         >
                           {link.label}
                         </button>
-                      ) : link.href.startsWith('/') ? (
+                      ) : link.href.startsWith("/") ? (
                         <Link href={link.href}>
-                          <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                          <span
+                            className="footer-link hover:text-foreground transition-colors"
+                            data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                          >
                             {link.label}
                           </span>
                         </Link>
                       ) : (
-                        <a 
-                          href={link.href} 
+                        <a
+                          href={link.href}
                           className="footer-link hover:text-foreground transition-colors"
                           data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                         >
@@ -128,15 +153,21 @@ export default function Footer() {
           {/* Mobile accordions */}
           <div className="md:hidden space-y-4">
             {footerSections.map((section, sectionIndex) => (
-              <details key={sectionIndex} className="rounded-xl border border-border/60 bg-white/40 dark:bg-white/5 dark:border-white/12 p-4" data-testid={`text-footer-section-${sectionIndex}`}>
+              <details
+                key={sectionIndex}
+                className="rounded-xl border border-border/60 bg-white/40 dark:bg-white/5 dark:border-white/12 p-4"
+                data-testid={`text-footer-section-${sectionIndex}`}
+              >
                 <summary className="flex items-center justify-between font-semibold text-foreground">
                   {section.title}
-                  <span className="text-lg" aria-hidden="true">+</span>
+                  <span className="text-lg" aria-hidden="true">
+                    +
+                  </span>
                 </summary>
                 <ul className="mt-3 space-y-2 text-muted-foreground">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      {link.href.startsWith('#') ? (
+                      {link.href.startsWith("#") ? (
                         <button
                           onClick={() => handleLinkClick(link.href)}
                           className="footer-link hover:text-foreground transition-colors text-left"
@@ -144,15 +175,18 @@ export default function Footer() {
                         >
                           {link.label}
                         </button>
-                      ) : link.href.startsWith('/') ? (
+                      ) : link.href.startsWith("/") ? (
                         <Link href={link.href}>
-                          <span className="footer-link hover:text-foreground transition-colors" data-testid={`link-footer-${sectionIndex}-${linkIndex}`}>
+                          <span
+                            className="footer-link hover:text-foreground transition-colors"
+                            data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
+                          >
                             {link.label}
                           </span>
                         </Link>
                       ) : (
-                        <a 
-                          href={link.href} 
+                        <a
+                          href={link.href}
                           className="footer-link hover:text-foreground transition-colors"
                           data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                         >
@@ -170,7 +204,9 @@ export default function Footer() {
         <hr className="border-border/60 dark:border-white/5" />
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-muted-foreground text-sm">
-          <div data-testid="text-footer-copyright">© 2024 AutoŻaba. Wszystkie prawa zastrzeżone.</div>
+          <div data-testid="text-footer-copyright">
+            © 2024 AutoŻaba. Wszystkie prawa zastrzeżone.
+          </div>
           <div className="flex flex-wrap gap-4">
             {legalLinks.map((link, index) => {
               if (link.type === "route") {
@@ -208,19 +244,25 @@ export default function Footer() {
 
         {/* Final CTA Section */}
         <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center space-y-6 shadow-lg">
-          <h2 className="text-2xl lg:text-3xl font-bold text-primary-foreground" data-testid="text-footer-cta-title">
+          <h2
+            className="text-2xl lg:text-3xl font-bold text-primary-foreground"
+            data-testid="text-footer-cta-title"
+          >
             Odzyskaj kontrolę nad swoim czasem
           </h2>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto" data-testid="text-footer-cta-description">
-            Dołącz do franczyzobiorców, którzy już nie boją się kontroli PIP 
-            i mają czas dla rodziny. Zacznij 14-dniowy trial za darmo.
+          <p
+            className="text-lg opacity-90 max-w-2xl mx-auto"
+            data-testid="text-footer-cta-description"
+          >
+            Dołącz do franczyzobiorców, którzy już nie boją się kontroli PIP i
+            mają czas dla rodziny. Zacznij 14-dniowy trial za darmo.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Button
               size="touch"
               className="bg-white text-primary dark:text-primary-foreground px-6 hover:bg-gray-100 transition-colors font-semibold rounded-lg"
-              onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
+              onClick={() => window.open(APP_URLS.register, "_blank")}
               data-testid="button-footer-trial"
             >
               Rozpocznij 14-dniowy trial
@@ -229,29 +271,68 @@ export default function Footer() {
               size="touch"
               variant="outline"
               className="border border-white/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 transition-colors font-medium rounded-lg"
-              onClick={() => (window.location.href = '/kontakt')}
+              onClick={() => (window.location.href = "/kontakt")}
               data-testid="button-footer-demo"
             >
               Umów prezentację
             </Button>
           </div>
-          
+
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm opacity-80">
-            <div className="flex items-center" data-testid="feature-footer-compliance">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div
+              className="flex items-center"
+              data-testid="feature-footer-compliance"
+            >
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <span>100% zgodność z prawem</span>
             </div>
-            <div className="flex items-center" data-testid="feature-footer-support">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364" />
+            <div
+              className="flex items-center"
+              data-testid="feature-footer-support"
+            >
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364"
+                />
               </svg>
               <span>Wsparcie w języku polskim</span>
             </div>
-            <div className="flex items-center" data-testid="feature-footer-cancel">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <div
+              className="flex items-center"
+              data-testid="feature-footer-cancel"
+            >
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
               <span>Anuluj w każdej chwili</span>
             </div>

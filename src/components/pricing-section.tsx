@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
+import { APP_URLS } from "@/lib/config";
 
 export default function PricingSection() {
   const plans = [
@@ -14,12 +15,12 @@ export default function PricingSection() {
       period: "/2 tygodnie",
       features: [
         "Pełny dostęp do wszystkich funkcji",
-        "Do 10 pracowników", 
+        "Do 10 pracowników",
         "Wsparcie przez email",
-        "Bez zobowiązań"
+        "Bez zobowiązań",
       ],
       cta: "Rozpocznij trial",
-      variant: "outline" as const
+      variant: "outline" as const,
     },
     {
       id: "pro",
@@ -31,7 +32,7 @@ export default function PricingSection() {
         "Automatyczne grafiki zgodne z prawem",
         "Tarcza Prawna § - kontekstowa pomoc",
         "Priorytetowe wsparcie",
-        "Eksporty dla PIP i księgowości"
+        "Eksporty dla PIP i księgowości",
       ],
       cta: "Plan w przygotowaniu",
       variant: "default" as const,
@@ -41,101 +42,143 @@ export default function PricingSection() {
       status: {
         badge: "Beta testy",
         headline: "Plan w przygotowaniu",
-        description: "Dołączymy kolejnych klientów po zakończeniu programu beta."
-      }
-    }
+        description:
+          "Dołączymy kolejnych klientów po zakończeniu programu beta.",
+      },
+    },
   ];
 
   const comparison = [
-    { label: "Inne systemy HR", price: "299-599 zł/msc", note: "+ 20-50 zł za pracownika" },
+    {
+      label: "Inne systemy HR",
+      price: "299-599 zł/msc",
+      note: "+ 20-50 zł za pracownika",
+    },
     {
       label: "AutoŻaba",
       price: "Program beta w toku",
       note: "Zapisz się, aby otrzymać priorytet wdrożenia",
       highlight: true,
     },
-    { label: "Koszt braku systemu", price: "30 000 zł", note: "Maksymalna kara PIP", warning: true }
+    {
+      label: "Koszt braku systemu",
+      price: "30 000 zł",
+      note: "Maksymalna kara PIP",
+      warning: true,
+    },
   ];
 
   return (
     <section id="pricing" className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div className="text-center space-y-4 mb-10 sm:mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-pricing-title">
-            Prosta <span className="text-primary dark:text-emerald-300">cena</span>, wielka wartość
+        <div className="text-center space-y-4 mb-10 sm:mb-12">
+          <h2
+            className="text-3xl lg:text-4xl font-bold text-foreground"
+            data-testid="text-pricing-title"
+          >
+            Prosta{" "}
+            <span className="text-primary dark:text-emerald-300">cena</span>,
+            wielka wartość
           </h2>
-          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-pricing-subtitle">
+          <p
+            className="text-xl text-muted-foreground copy-max mx-auto"
+            data-testid="text-pricing-subtitle"
+          >
             Trwają beta testy – zgłoś się, by otrzymać priorytet wdrożenia
           </p>
         </div>
-        
-  <div className="grid gap-6 md:grid-cols-2 md:gap-8 mb-10 sm:mb-12">
+
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8 mb-10 sm:mb-12">
           {plans.map((plan, index) => (
-            <Card 
-              key={plan.id} 
+            <Card
+              key={plan.id}
               data-animate="scale"
               data-animate-delay={`${index * 120}`}
               className={`relative transition-shadow pricing-card ${
-                plan.variant === 'default'
-                  ? 'pricing-card--featured text-white'
-                  : 'pricing-card--standard'
+                plan.variant === "default"
+                  ? "pricing-card--featured text-white"
+                  : "pricing-card--standard"
               }`}
               data-testid={`card-plan-${plan.id}`}
             >
               {plan.popular && (
-                <div className="pricing-card__badge" data-testid={`badge-plan-${plan.id}`}>
+                <div
+                  className="pricing-card__badge"
+                  data-testid={`badge-plan-${plan.id}`}
+                >
                   Najpopularniejszy
                 </div>
               )}
-              
+
               <CardHeader className="space-y-2 pb-6 pt-2">
-                <h3 className="text-2xl font-bold" data-testid={`text-plan-name-${plan.id}`}>
+                <h3
+                  className="text-2xl font-bold"
+                  data-testid={`text-plan-name-${plan.id}`}
+                >
                   {plan.name}
                 </h3>
-                <div className="text-4xl font-bold" data-testid={`text-plan-price-${plan.id}`}>
+                <div
+                  className="text-4xl font-bold"
+                  data-testid={`text-plan-price-${plan.id}`}
+                >
                   {plan.price}
-                  <span className={`text-lg font-normal ${plan.variant === 'default' ? 'text-white/80' : 'text-muted-foreground'}`}>
+                  <span
+                    className={`text-lg font-normal ${
+                      plan.variant === "default"
+                        ? "text-white/80"
+                        : "text-muted-foreground"
+                    }`}
+                  >
                     {plan.period}
                   </span>
                 </div>
               </CardHeader>
-              
+
               <CardContent className="p-6 sm:p-8 space-y-6">
                 <ul className="space-y-3 text-sm sm:text-base">
                   {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-center" data-testid={`feature-${plan.id}-${index}`}>
+                    <li
+                      key={index}
+                      className="flex items-center"
+                      data-testid={`feature-${plan.id}-${index}`}
+                    >
                       <CheckCircle className="w-5 h-5 mr-3" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                
-                <Button 
+
+                <Button
                   variant={plan.variant}
                   size="touch"
                   className={`w-full font-semibold pricing-card__button ${
-                    plan.variant === 'default' ? 'pricing-card__button--featured' : ''
-                  } ${
-                    plan.disabled ? 'opacity-60 cursor-not-allowed' : ''
-                  }`}
+                    plan.variant === "default"
+                      ? "pricing-card__button--featured"
+                      : ""
+                  } ${plan.disabled ? "opacity-60 cursor-not-allowed" : ""}`}
                   disabled={plan.disabled}
                   onClick={() => {
                     if (plan.disabled) {
                       return;
                     }
-                    if (plan.variant === 'default') {
-                      window.location.href = '/cennik';
+                    if (plan.variant === "default") {
+                      window.location.href = "/cennik";
                     } else {
-                      window.open('https://app.autozaba.pl/register', '_blank');
+                      window.open(APP_URLS.register, "_blank");
                     }
                   }}
                   data-testid={`button-plan-${plan.id}`}
                 >
                   {plan.cta}
                 </Button>
-                
+
                 {plan.disclaimer && (
-                  <div className={`text-center text-sm opacity-80 ${plan.variant === 'default' ? 'text-white/80' : ''}`} data-testid={`text-disclaimer-${plan.id}`}>
+                  <div
+                    className={`text-center text-sm opacity-80 ${
+                      plan.variant === "default" ? "text-white/80" : ""
+                    }`}
+                    data-testid={`text-disclaimer-${plan.id}`}
+                  >
                     {plan.disclaimer}
                   </div>
                 )}
@@ -143,7 +186,10 @@ export default function PricingSection() {
 
               {plan.status && (
                 <div className="absolute inset-0 z-10 rounded-lg bg-slate-950/70 backdrop-blur-sm flex flex-col items-center justify-center gap-3 px-6 text-center text-white">
-                  <Badge variant="outline" className="bg-emerald-400/10 border-emerald-200/60 text-emerald-100 uppercase tracking-[0.28em]">
+                  <Badge
+                    variant="outline"
+                    className="bg-emerald-400/10 border-emerald-200/60 text-emerald-100 uppercase tracking-[0.28em]"
+                  >
                     {plan.status.badge}
                   </Badge>
                   <div className="text-xl font-semibold drop-shadow-sm">
@@ -157,7 +203,7 @@ export default function PricingSection() {
             </Card>
           ))}
         </div>
-        
+
         {/* Price comparison */}
         <Card
           className="dark:bg-slate-900/70 border border-border/70 dark:border-white/10 pricing-comparison"
@@ -165,22 +211,25 @@ export default function PricingSection() {
           data-animate-delay="180"
         >
           <CardContent className="p-6 sm:p-8">
-            <h3 className="text-xl font-semibold text-foreground mb-6 text-center" data-testid="text-comparison-title">
+            <h3
+              className="text-xl font-semibold text-foreground mb-6 text-center"
+              data-testid="text-comparison-title"
+            >
               Porównaj z konkurencją
             </h3>
-            
+
             <div className="grid gap-5 text-sm md:grid-cols-3 md:gap-6 lg:gap-8">
               {comparison.map((item, index) => {
                 const toneClasses = item.highlight
                   ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-300/40 dark:bg-emerald-500/15 dark:text-emerald-200"
                   : item.warning
-                    ? "border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-300/40 dark:bg-orange-500/15 dark:text-orange-200"
-                    : "border-border/70 bg-white/95 text-muted-foreground dark:bg-slate-900/70 dark:border-white/12 dark:text-foreground";
+                  ? "border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-300/40 dark:bg-orange-500/15 dark:text-orange-200"
+                  : "border-border/70 bg-white/95 text-muted-foreground dark:bg-slate-900/70 dark:border-white/12 dark:text-foreground";
                 const priceClasses = item.highlight
                   ? "text-emerald-600 dark:text-emerald-200"
                   : item.warning
-                    ? "text-orange-600 dark:text-orange-200"
-                    : "text-foreground";
+                  ? "text-orange-600 dark:text-orange-200"
+                  : "text-foreground";
 
                 return (
                   <div
@@ -200,7 +249,10 @@ export default function PricingSection() {
                     >
                       {item.price}
                     </div>
-                    <div className="text-sm opacity-90" data-testid={`comparison-note-${index}`}>
+                    <div
+                      className="text-sm opacity-90"
+                      data-testid={`comparison-note-${index}`}
+                    >
                       {item.note}
                     </div>
                   </div>
