@@ -5,6 +5,7 @@ import type { KeyboardEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
+import { APP_URLS } from "@/lib/config";
 
 export default function DemoSection() {
   const videoSteps = [
@@ -12,7 +13,7 @@ export default function DemoSection() {
     { time: "1:04", label: "Tarcza Prawna" },
     { time: "1:10", label: "Inteligentny Grafik" },
     { time: "1:16", label: "Ewidencja i Raporty" },
-    { time: "1:33", label: "Rezultat" }
+    { time: "1:33", label: "Rezultat" },
   ];
   const videoId = "HbdNWDznFYY";
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
@@ -30,10 +31,19 @@ export default function DemoSection() {
     <section id="demo" className="section-padding bg-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-demo-title">
-            Zobacz <span className="text-primary dark:text-emerald-300">jak to działa</span>
+          <h2
+            className="text-3xl lg:text-4xl font-bold text-foreground"
+            data-testid="text-demo-title"
+          >
+            Zobacz{" "}
+            <span className="text-primary dark:text-emerald-300">
+              jak to działa
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-demo-subtitle">
+          <p
+            className="text-xl text-muted-foreground copy-max mx-auto"
+            data-testid="text-demo-subtitle"
+          >
             2-minutowe demo pokazuje, jak stworzyć grafik zgodny z prawem
           </p>
         </div>
@@ -48,8 +58,11 @@ export default function DemoSection() {
             ))}
           </div>
         </div>
-        
-        <Card className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden" data-animate="rise">
+
+        <Card
+          className="relative bg-card dark:bg-slate-900/70 border border-border/70 dark:border-white/10 rounded-2xl calm-shadow-lg overflow-hidden"
+          data-animate="rise"
+        >
           {isPlaying ? (
             <div className="aspect-[4/3] sm:aspect-video w-full">
               <iframe
@@ -82,10 +95,16 @@ export default function DemoSection() {
                   <Play className="w-8 h-8 text-white ml-1 transition-transform group-hover:scale-110" />
                 </div>
                 <div className="text-white space-y-2 max-w-xs sm:max-w-sm mx-auto text-balance drop-shadow-md">
-                  <h3 className="text-lg sm:text-xl font-semibold" data-testid="text-demo-video-title">
+                  <h3
+                    className="text-lg sm:text-xl font-semibold"
+                    data-testid="text-demo-video-title"
+                  >
                     Od chaosu do kontroli w 15 minut
                   </h3>
-                  <p className="text-sm sm:text-base text-white/90" data-testid="text-demo-video-description">
+                  <p
+                    className="text-sm sm:text-base text-white/90"
+                    data-testid="text-demo-video-description"
+                  >
                     Zobacz, jak AutoŻaba tworzy grafik zgodny z Kodeksem Pracy
                   </p>
                 </div>
@@ -97,15 +116,15 @@ export default function DemoSection() {
             </button>
           )}
         </Card>
-        
+
         <div className="text-center mt-8 space-y-4">
           <p className="text-muted-foreground mb-4" data-testid="text-demo-cta">
             Przekonaj się, jak łatwo można odzyskać kontrolę nad czasem
           </p>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="touch"
-            onClick={() => window.open('https://app.autozaba.pl/register', '_blank')}
+            onClick={() => window.open(APP_URLS.register, "_blank")}
             data-testid="button-demo-trial"
           >
             Wypróbuj za darmo
