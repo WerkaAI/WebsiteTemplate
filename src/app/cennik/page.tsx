@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import Navigation from '@/components/layout/navigation'
+import Footer from '@/components/layout/footer'
 import { pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
 import { cn } from '@/lib/utils'
 import {

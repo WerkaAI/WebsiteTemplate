@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
-import BlogListing from "@/components/blog-listing";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
+import BlogListing from "@/components/features/blog/blog-listing";
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {

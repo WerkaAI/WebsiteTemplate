@@ -7,14 +7,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { pl } from 'date-fns/locale'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import Navigation from '@/components/layout/navigation'
+import Footer from '@/components/layout/footer'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { GraduationCap } from 'lucide-react'
 import { getAllTutorialSlugs, loadTutorial } from '@/lib/tutorials'
 import type { TutorialMeta } from '@/lib/tutorials'
-import { TutorialCard } from '@/components/content/tutorial-card'
+import { TutorialCard } from '@/components/features/tutorial/tutorial-card'
 import { getCspNonce } from '@/lib/security/csp'
 
 interface TutorialPageProps {
@@ -153,6 +153,7 @@ export default async function TutorialPage({ params }: TutorialPageProps) {
                 fill
                 priority
                 className="absolute inset-0 h-full w-full object-cover opacity-20 dark:opacity-60"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1024px"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-white/90 dark:from-slate-900/95 dark:via-slate-900/75 dark:to-slate-900/85" />
               <div className="relative z-10 space-y-6 p-8 text-center md:p-12">

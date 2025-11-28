@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { ArrowLeft, Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import ContactForm from '@/components/contact-form';
-import Navigation from '@/components/navigation';
-import Footer from '@/components/footer';
+import ContactForm from '@/components/features/contact/contact-form';
+import Navigation from '@/components/layout/navigation';
+import Footer from '@/components/layout/footer';
 import { useEffect } from 'react';
 
 export default function ContactPage() {

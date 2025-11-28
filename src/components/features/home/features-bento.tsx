@@ -103,7 +103,7 @@ export default function FeaturesBento() {
                     </div>
 
                     {/* Feature 4: Documents (Medium) */}
-                    <div className="rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="500">
+                    <div className="rounded-3xl glass-premium p-6 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="500">
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-6 dark:bg-amber-500/20 dark:text-amber-300">
                                 <FileCheck className="w-6 h-6" />

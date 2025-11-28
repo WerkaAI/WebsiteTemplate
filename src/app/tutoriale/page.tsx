@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import Navigation from '@/components/layout/navigation'
+import Footer from '@/components/layout/footer'
 import { Button } from '@/components/ui/button'
 import { getAllTutorials } from '@/lib/tutorials'
-import { TutorialGrid } from '@/components/content/tutorial-grid'
+import { TutorialGrid } from '@/components/features/tutorial/tutorial-grid'
 import { GraduationCap, ArrowRight, MessageSquare } from 'lucide-react'
 
 export const metadata: Metadata = {

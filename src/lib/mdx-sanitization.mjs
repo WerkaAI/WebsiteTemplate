@@ -56,6 +56,15 @@ export function rehypeMdxRestore() {
                 try {
                     const originalData = JSON.parse(node.properties["data-mdx-placeholder"]);
 
+                    // SECURITY: Strictly validate that we are restoring a custom component
+                    // and not an arbitrary HTML tag that could be dangerous (e.g. script, iframe, object).
+                    // We only allow PascalCase tags which represent React components.
+                    if (!/^[A-Z][a-zA-Z0-9]*$/.test(originalData.tagName)) {
+                        console.warn(`Blocked attempt to restore unsafe tag: ${originalData.tagName}`);
+                        delete node.properties["data-mdx-placeholder"];
+                        return;
+                    }
+
                     // Restore original tag and properties
                     node.tagName = originalData.tagName;
                     node.properties = originalData.properties;

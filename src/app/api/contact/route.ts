@@ -75,8 +75,8 @@ export async function POST(request: NextRequest) {
     }
 
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
+      request.headers.get('x-real-ip') ||
+      'unknown';
 
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
@@ -135,7 +135,15 @@ export async function POST(request: NextRequest) {
     const shopsHtml = payload.shops ? `<p><strong>Liczba sklepów:</strong> ${payload.shops}</p>` : '';
     const phoneText = payload.phone ? `Telefon: ${payload.phone}\n` : '';
     const shopsText = payload.shops ? `Liczba sklepów: ${payload.shops}\n` : '';
-    const formattedMessage = payload.message.replace(/\n/g, '<br>');
+    const escapeHtml = (text: string) =>
+      text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    const formattedMessage = escapeHtml(payload.message).replace(/\n/g, '<br>');
 
     const emailData = {
       from: process.env.CONTACT_FROM_EMAIL || 'Formularz <no-reply@autozaba.pl>',

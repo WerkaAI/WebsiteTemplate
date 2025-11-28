@@ -1,16 +1,16 @@
 import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
-import Navigation from "@/components/navigation";
-import HeroSection from "@/components/hero-section";
-import FeaturesBento from "@/components/features-bento";
-const CalculatorSection = dynamic(() => import("@/components/calculator-section"))
-const DemoSection = dynamic(() => import("@/components/demo-section"))
-const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"))
-const PricingSection = dynamic(() => import("@/components/pricing-section"))
-const BlogSection = dynamic(() => import("@/components/blog-section"))
-const ContactSection = dynamic(() => import("@/components/contact-section"))
-import InteractionLayer from "@/components/interaction-layer";
-import Footer from "@/components/footer";
+import Navigation from "@/components/layout/navigation";
+import HeroSection from "@/components/features/home/hero-section";
+import FeaturesBento from "@/components/features/home/features-bento";
+const CalculatorSection = dynamic(() => import("@/components/features/home/calculator-section"))
+const DemoSection = dynamic(() => import("@/components/features/home/demo-section"))
+const TestimonialsSection = dynamic(() => import("@/components/features/home/testimonials-section"))
+const PricingSection = dynamic(() => import("@/components/features/home/pricing-section"))
+const BlogSection = dynamic(() => import("@/components/features/home/blog-section").then(mod => mod.BlogSection))
+const ContactSection = dynamic(() => import("@/components/features/home/contact-section"))
+import InteractionLayer from "@/components/features/home/interaction-layer";
+import Footer from "@/components/layout/footer";
 import { getCspNonce } from "@/lib/security/csp";
 
 export async function generateMetadata(): Promise<Metadata> {

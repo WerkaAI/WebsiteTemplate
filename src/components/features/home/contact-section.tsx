@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Clock, Headphones, Video } from "lucide-react";
-import ContactForm from "@/components/contact-form";
+import ContactForm from "@/components/features/contact/contact-form";
 
 const contactInfo = [
   {

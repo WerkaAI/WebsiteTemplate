@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { TutorialGrid } from '@/components/content/tutorial-grid'
+import { TutorialGrid } from '@/components/features/tutorial/tutorial-grid'
 import type { TutorialMeta } from '@/lib/tutorials'
 
 const baseMeta: TutorialMeta = {

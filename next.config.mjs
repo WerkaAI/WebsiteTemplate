@@ -93,6 +93,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "mdx"],
+  poweredByHeader: false,
   env: {
     CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "kontakt@autozaba.pl",
     CONTACT_FROM_EMAIL:

@@ -130,8 +130,8 @@
   }
 
   .heading-display {
-    font-size: clamp(2.75rem, 6vw, 3.75rem);
-    line-height: 1.05;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
   }
 
@@ -412,6 +412,7 @@
     align-items: center;
     gap: 0.375rem;
     padding-bottom: 0.1rem;
+    @apply py-3 md:py-0;
   }
 
   .footer-link::after {
@@ -1242,6 +1243,20 @@
 
   .dark .blog-prose :where(p, li)>code {
     color: #6ee7b7;
+  }
+
+  .blog-prose img,
+  .prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+
+  .blog-prose iframe,
+  .prose iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 1rem;
   }
 
   .blog-prose table {

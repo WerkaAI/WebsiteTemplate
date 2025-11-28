@@ -15,6 +15,7 @@ import {
   Users,
   CalendarClock,
   ArrowRight,
+  ClipboardList,
 } from "lucide-react";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { APP_URLS } from "@/lib/config";
@@ -280,7 +281,7 @@ export default function HeroSection() {
         <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] dark:bg-blue-500/10" />
       </div>
 
-      <div className="container-spacing relative z-10">
+      <div className="container-spacing relative z-10 px-6 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-10">
             <div className="space-y-6">
@@ -461,4 +462,4 @@ export default function HeroSection() {
   );
 }
 
-import { ClipboardList } from "lucide-react";
+

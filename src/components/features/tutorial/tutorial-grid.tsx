@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { Input } from '@/components/ui/input'
-import { TutorialCard } from '@/components/content/tutorial-card'
+import { TutorialCard } from '@/components/features/tutorial/tutorial-card'
 import { useAnalytics } from '@/hooks/use-analytics'
 import type { TutorialMeta } from '@/lib/tutorials'
 import { Search, Filter, X } from 'lucide-react'
@@ -42,7 +42,7 @@ export function TutorialGrid({ tutorials }: TutorialGridProps) {
   }, [tutorials, searchTerm, selectedPersona])
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 md:space-y-10">
       {/* Control Bar */}
       <div className="sticky top-24 z-30 mx-auto max-w-4xl rounded-2xl glass-premium p-4 shadow-xl backdrop-blur-md transition-all">
         <div className="flex flex-col md:flex-row gap-4">
@@ -67,6 +67,7 @@ export function TutorialGrid({ tutorials }: TutorialGridProps) {
           <div className="relative md:w-64">
             <Filter className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <select
+              aria-label="Filtruj po roli"
               value={selectedPersona}
               onChange={event => setSelectedPersona(event.target.value)}
               className="h-11 w-full appearance-none rounded-md bg-white/50 dark:bg-slate-900/50 pl-10 pr-8 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all cursor-pointer hover:bg-white/80 dark:hover:bg-slate-900/80"

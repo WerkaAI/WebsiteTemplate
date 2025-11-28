@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
 import { APP_URLS } from "@/lib/config";
 
@@ -73,8 +73,8 @@ export default function Navigation() {
       role="navigation"
       aria-label="Główna nawigacja"
       className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${isScrolled
-          ? "bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-[0_12px_35px_-18px_rgba(15,23,42,0.55)] border-border/70 dark:border-white/12"
-          : "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-transparent"
+        ? "bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-[0_12px_35px_-18px_rgba(15,23,42,0.55)] border-border/70 dark:border-white/12"
+        : "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-transparent"
         }`}
       data-nav-state={isScrolled ? "scrolled" : "top"}
     >
@@ -228,7 +228,7 @@ export default function Navigation() {
                   aria-expanded={isOpen}
                   data-testid="button-mobile-menu"
                 >
-                  <Menu className="h-6 w-6" aria-hidden="true" />
+                  <Menu className="h-7 w-7" aria-hidden="true" />
                 </Button>
               </SheetTrigger>
               <SheetContent

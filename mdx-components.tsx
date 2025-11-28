@@ -1,14 +1,14 @@
 import React from 'react'
-import { ChecklistItem } from './src/components/mdx/checklist-item'
-import { BlogHero } from './src/components/blog/blog-hero'
-import { BlogSection } from './src/components/blog/blog-section'
-import { BlogChecklist } from './src/components/blog/blog-checklist'
-import { BlogCallout } from './src/components/blog/blog-callout'
-import { TLDR } from './src/components/blog/tldr'
-import { BlogGrid } from './src/components/blog/blog-grid'
-import { BlogGridCard } from './src/components/blog/blog-grid-card'
+import { ChecklistItem } from '@/components/mdx/checklist-item'
+import { BlogHero } from '@/components/features/blog/blog-hero'
+import { BlogSection } from '@/components/features/blog/blog-section'
+import { BlogChecklist } from '@/components/features/blog/blog-checklist'
+import { BlogCallout } from '@/components/features/blog/blog-callout'
+import { TLDR } from '@/components/features/blog/tldr'
+import { BlogGrid } from '@/components/features/blog/blog-grid'
+import { BlogGridCard } from '@/components/features/blog/blog-grid-card'
 
-import { TutorialStep } from './src/components/content/tutorial-step'
+import { TutorialStep } from '@/components/features/tutorial/tutorial-step'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props

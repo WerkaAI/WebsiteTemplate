@@ -3,8 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from "@/components/providers"
 import { JsonLd } from "@/components/seo/json-ld"
+import { getCspNonce } from "@/lib/security/csp"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
 const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/start-w-autozaba.png',
+        url: '/blog-illustrations/jak-wdrazamy.png',
         width: 1200,
         height: 630,
         alt: 'AutoŻaba - Cyfrowy Pomocnik dla Twojego Sklepu'
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
     description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
-    images: ['https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/start-w-autozaba.png'],
+    images: ['/blog-illustrations/jak-wdrazamy.png'],
   }
 }
 
@@ -48,6 +49,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const nonce = getCspNonce();
   return (
     <html lang="pl" className="scroll-smooth" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>

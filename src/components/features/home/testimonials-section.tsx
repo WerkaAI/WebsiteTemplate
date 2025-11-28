@@ -6,25 +6,25 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Marek",
+    name: "Michał",
     role: "Franczyzobiorca, Warszawa",
     content: "Wcześniej układanie grafiku zajmowało mi cały weekend. Teraz robię to w 15 minut przy kawie. AutoŻaba to gamechanger.",
     rating: 5,
-    avatar: "/avatars/marek.jpg" // Placeholder
+    avatar: "/illustrations/testimonials/michal.png"
   },
   {
-    name: "Anna",
+    name: "Polina",
     role: "Franczyzobiorca, Poznań",
     content: "Bałam się kontroli PIP, bo ciągle coś się zmieniało w przepisach. Teraz śpię spokojnie, bo system pilnuje wszystkiego za mnie.",
     rating: 5,
-    avatar: "/avatars/anna.jpg" // Placeholder
+    avatar: "/illustrations/testimonials/polina64.png"
   },
   {
-    name: "Piotr",
+    name: "Wiktor",
     role: "Franczyzobiorca, Gdańsk",
     content: "Pracownicy są zachwyceni aplikacją. Sami wpisują dyspozycyjność, widzą grafik w telefonie. Skończyły się telefony 'kiedy mam przyjść?'.",
     rating: 5,
-    avatar: "/avatars/piotr.jpg" // Placeholder
+    avatar: "/illustrations/testimonials/wiktor64.png"
   }
 ];
 
@@ -66,8 +66,14 @@ export default function TestimonialsSection() {
                   </p>
 
                   <div className="flex items-center gap-4 mt-auto pt-6 border-t border-border/50">
-                    <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-bold text-lg">
-                      {testimonial.name[0]}
+                    <div className="w-12 h-12 rounded-full overflow-hidden relative bg-emerald-100 dark:bg-emerald-900/50">
+                      <Image
+                        src={testimonial.avatar}
+                        alt={`Zdjęcie ${testimonial.name}`}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
                     </div>
                     <div>
                       <p className="font-bold text-foreground">{testimonial.name}</p>
