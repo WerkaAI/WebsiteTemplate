@@ -188,7 +188,10 @@ export default function CalculatorSection() {
                       Odzyskany czas miesięcznie
                     </div>
                     <div
-                      className="metric-card__value"
+                      className={`metric-card__value transition-colors duration-300 ${timeSavedSpring.isAnimating
+                          ? "text-emerald-600 dark:text-emerald-400"
+                          : "text-foreground"
+                        }`}
                       data-testid="stat-time-saved"
                     >
                       {timeSavedSpring.formatted} godzin
@@ -201,7 +204,10 @@ export default function CalculatorSection() {
                         Wolne weekendy
                       </dt>
                       <dd
-                        className="text-right font-semibold"
+                        className={`text-right font-semibold transition-colors duration-300 ${weekendsSavedSpring.isAnimating
+                            ? "text-emerald-700 dark:text-emerald-300"
+                            : ""
+                          }`}
                         data-testid="stat-weekends-saved"
                       >
                         +{weekendsSavedSpring.formatted} / rok
@@ -229,7 +235,10 @@ export default function CalculatorSection() {
                           Ochrona przed karami PIP
                         </div>
                         <div
-                          className="metric-card__value"
+                          className={`metric-card__value transition-colors duration-300 ${riskAvoidedSpring.isAnimating
+                              ? "text-amber-600 dark:text-amber-400"
+                              : "text-foreground"
+                            }`}
                           data-testid="stat-penalty-avoided"
                           suppressHydrationWarning
                         >
@@ -251,7 +260,10 @@ export default function CalculatorSection() {
                           Kontrola wraca częściej
                         </div>
                         <div
-                          className="metric-card__value"
+                          className={`metric-card__value transition-colors duration-300 ${riskAvoidedSpring.isAnimating
+                              ? "text-amber-600 dark:text-amber-400"
+                              : "text-foreground"
+                            }`}
                           suppressHydrationWarning
                         >
                           {riskAvoidedSpring.formatted}

@@ -94,11 +94,10 @@ export default function PricingSection() {
               key={plan.id}
               data-animate="scale"
               data-animate-delay={`${index * 120}`}
-              className={`relative transition-shadow pricing-card ${
-                plan.variant === "default"
-                  ? "pricing-card--featured text-white"
-                  : "pricing-card--standard"
-              }`}
+              className={`relative transition-shadow pricing-card ${plan.variant === "default"
+                ? "pricing-card--featured text-white"
+                : "glass-premium"
+                }`}
               data-testid={`card-plan-${plan.id}`}
             >
               {plan.popular && (
@@ -123,11 +122,10 @@ export default function PricingSection() {
                 >
                   {plan.price}
                   <span
-                    className={`text-lg font-normal ${
-                      plan.variant === "default"
-                        ? "text-white/80"
-                        : "text-muted-foreground"
-                    }`}
+                    className={`text-lg font-normal ${plan.variant === "default"
+                      ? "text-white/80"
+                      : "text-muted-foreground"
+                      }`}
                   >
                     {plan.period}
                   </span>
@@ -151,11 +149,10 @@ export default function PricingSection() {
                 <Button
                   variant={plan.variant}
                   size="touch"
-                  className={`w-full font-semibold pricing-card__button ${
-                    plan.variant === "default"
-                      ? "pricing-card__button--featured"
-                      : ""
-                  } ${plan.disabled ? "opacity-60 cursor-not-allowed" : ""}`}
+                  className={`w-full font-semibold pricing-card__button ${plan.variant === "default"
+                    ? "pricing-card__button--featured"
+                    : ""
+                    } ${plan.disabled ? "opacity-60 cursor-not-allowed" : ""}`}
                   disabled={plan.disabled}
                   onClick={() => {
                     if (plan.disabled) {
@@ -174,9 +171,8 @@ export default function PricingSection() {
 
                 {plan.disclaimer && (
                   <div
-                    className={`text-center text-sm opacity-80 ${
-                      plan.variant === "default" ? "text-white/80" : ""
-                    }`}
+                    className={`text-center text-sm opacity-80 ${plan.variant === "default" ? "text-white/80" : ""
+                      }`}
                     data-testid={`text-disclaimer-${plan.id}`}
                   >
                     {plan.disclaimer}
@@ -221,15 +217,15 @@ export default function PricingSection() {
             <div className="grid gap-5 text-sm md:grid-cols-3 md:gap-6 lg:gap-8">
               {comparison.map((item, index) => {
                 const toneClasses = item.highlight
-                  ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-300/40 dark:bg-emerald-500/15 dark:text-emerald-200"
+                  ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-300/40 dark:bg-emerald-500/15 dark:text-emerald-200 z-10 overflow-visible"
                   : item.warning
-                  ? "border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-300/40 dark:bg-orange-500/15 dark:text-orange-200"
-                  : "border-border/70 bg-white/95 text-muted-foreground dark:bg-slate-900/70 dark:border-white/12 dark:text-foreground";
+                    ? "border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-300/40 dark:bg-orange-500/15 dark:text-orange-200"
+                    : "border-border/70 bg-white/95 text-muted-foreground dark:bg-slate-900/70 dark:border-white/12 dark:text-foreground";
                 const priceClasses = item.highlight
                   ? "text-emerald-600 dark:text-emerald-200"
                   : item.warning
-                  ? "text-orange-600 dark:text-orange-200"
-                  : "text-foreground";
+                    ? "text-orange-600 dark:text-orange-200"
+                    : "text-foreground";
 
                 return (
                   <div
@@ -238,7 +234,7 @@ export default function PricingSection() {
                     data-testid={`comparison-item-${index}`}
                   >
                     <div
-                      className="text-xs font-semibold uppercase tracking-[0.28em] opacity-90"
+                      className="text-label opacity-90"
                       data-testid={`comparison-label-${index}`}
                     >
                       {item.label}

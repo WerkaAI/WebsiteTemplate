@@ -11,6 +11,10 @@ import {
   mdxSanitizeSchema,
   mdxUrlValidator,
 } from "./src/lib/security/mdx-policy.mjs";
+import {
+  rehypeMdxProtect,
+  rehypeMdxRestore,
+} from "./src/lib/mdx-sanitization.mjs";
 
 const rehypeMdxJsxToElements = () => (tree) => {
   const convertNode = (node) => {
@@ -20,7 +24,7 @@ const rehypeMdxJsxToElements = () => (tree) => {
       (node.type === "mdxJsxFlowElement" ||
         node.type === "mdxJsxTextElement") &&
       typeof node.name === "string" &&
-      /^[a-z]/.test(node.name)
+      /^[a-z]/i.test(node.name) // Changed to case-insensitive to catch all components
     ) {
       const properties = {};
 
@@ -76,7 +80,9 @@ const withMDX = createMDX({
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
       rehypeMdxJsxToElements,
+      rehypeMdxProtect,
       [rehypeSanitize, mdxSanitizeSchema],
+      rehypeMdxRestore,
       mdxUrlValidator,
     ],
   },

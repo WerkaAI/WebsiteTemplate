@@ -75,7 +75,7 @@ export default function ContactSection() {
             </div>
 
             {/* Quick help */}
-            <Card data-animate="rise" data-animate-delay="180">
+            <div className="glass-premium rounded-xl" data-animate="rise" data-animate-delay="180">
               <CardContent className="p-5 sm:p-6 space-y-4">
                 <h4 className="font-semibold text-foreground" data-testid="text-quick-help-title">
                   Szybka pomoc
@@ -99,11 +99,11 @@ export default function ContactSection() {
                   })}
                 </div>
               </CardContent>
-            </Card>
+            </div>
           </div>
 
           {/* Contact Form */}
-          <Card data-animate="rise" data-animate-delay="220">
+          <div className="glass-premium rounded-xl" data-animate="rise" data-animate-delay="220">
             <CardContent className="p-6 sm:p-8 space-y-6">
               <ContactForm
                 showPhone={false}
@@ -120,7 +120,7 @@ export default function ContactSection() {
                 Odpowiemy w ciągu 2 godzin roboczych
               </p>
             </CardContent>
-          </Card>
+          </div>
         </div>
       </div>
     </section>

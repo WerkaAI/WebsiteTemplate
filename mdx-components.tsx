@@ -1,5 +1,14 @@
 import React from 'react'
 import { ChecklistItem } from './src/components/mdx/checklist-item'
+import { BlogHero } from './src/components/blog/blog-hero'
+import { BlogSection } from './src/components/blog/blog-section'
+import { BlogChecklist } from './src/components/blog/blog-checklist'
+import { BlogCallout } from './src/components/blog/blog-callout'
+import { TLDR } from './src/components/blog/tldr'
+import { BlogGrid } from './src/components/blog/blog-grid'
+import { BlogGridCard } from './src/components/blog/blog-grid-card'
+
+import { TutorialStep } from './src/components/content/tutorial-step'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props
@@ -32,10 +41,18 @@ export function useMDXComponents(components: any) {
     a: (props: any) => <Anchor {...props} />,
     ul: (props: any) => <ul {...props} />,
     ol: (props: any) => <ol {...props} />,
-  li: (props: any) => <ChecklistItem {...props} />,
+    li: (props: any) => <ChecklistItem {...props} />,
     img: (props: any) => <Img {...props} />,
     pre: (props: any) => <pre {...props} />,
     code: (props: any) => <code {...props} />,
+    BlogHero,
+    BlogSection,
+    BlogChecklist,
+    BlogCallout,
+    TLDR,
+    BlogGrid,
+    BlogGridCard,
+    TutorialStep,
     ...components,
   };
 }

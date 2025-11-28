@@ -58,14 +58,5 @@ export async function loadPost(slug: string) {
 export async function getAllPosts(): Promise<Array<CollectionEntry<BlogMeta>>> {
   return getAllEntries<BlogMeta>(BLOG_DIR, {
     schema: BlogMetaSchema,
-    importModule: async currentSlug => {
-      try {
-        const mod = await import(`../../content/${BLOG_DIR}/${currentSlug}.mdx`)
-        return mod as Record<string, unknown>
-      } catch (error) {
-        console.warn(`MDX import fallback triggered for blog/${currentSlug}.mdx`, error)
-        return null
-      }
-    },
   })
 }

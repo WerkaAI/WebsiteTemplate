@@ -15,6 +15,8 @@ import { getAllSlugs, loadPost } from "@/lib/posts";
 import ShareButtons from "@/components/blog/share-buttons";
 import { getCspNonce } from "@/lib/security/csp";
 import { APP_URLS } from "@/lib/config";
+import { ReadingProgress } from "@/components/blog/reading-progress";
+import { TableOfContents } from "@/components/blog/table-of-contents";
 
 interface BlogPostPageProps {
   params: {
@@ -116,6 +118,7 @@ export default async function Page({ params }: BlogPostPageProps) {
 
   return (
     <div className="bg-background dark:bg-slate-950 min-h-screen flex flex-col">
+      <ReadingProgress />
       <Navigation />
       <script
         nonce={nonce}
@@ -226,6 +229,9 @@ export default async function Page({ params }: BlogPostPageProps) {
           </article>
 
           <aside className="lg:sticky lg:top-32 space-y-6">
+            <div className="hidden lg:block rounded-2xl border border-border/60 dark:border-white/10 bg-card/60 dark:bg-slate-900/70 p-5 shadow-sm">
+              <TableOfContents />
+            </div>
             <div className="rounded-2xl border border-border/60 dark:border-white/10 bg-card/60 dark:bg-slate-900/70 p-5 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Udostępnij artykuł

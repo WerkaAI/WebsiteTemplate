@@ -72,11 +72,10 @@ export default function Navigation() {
     <nav
       role="navigation"
       aria-label="Główna nawigacja"
-      className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${
-        isScrolled
+      className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${isScrolled
           ? "bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-[0_12px_35px_-18px_rgba(15,23,42,0.55)] border-border/70 dark:border-white/12"
           : "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-transparent"
-      }`}
+        }`}
       data-nav-state={isScrolled ? "scrolled" : "top"}
     >
       <span
@@ -97,7 +96,7 @@ export default function Navigation() {
             >
               <Image
                 src="/illustrations/logo_xcolor64x64.png"
-                alt="AutoŻaba logo"
+                alt="AutoŻaba - Cyfrowy Pomocnik Logo"
                 width={32}
                 height={32}
                 className="h-8 w-8 dark:hidden"
@@ -105,7 +104,7 @@ export default function Navigation() {
               />
               <Image
                 src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
-                alt="AutoŻaba logo"
+                alt="AutoŻaba - Cyfrowy Pomocnik Logo"
                 width={32}
                 height={32}
                 className="hidden h-8 w-8 dark:block"

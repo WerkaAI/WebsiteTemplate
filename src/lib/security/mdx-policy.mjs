@@ -150,8 +150,8 @@ function ensureRelIfTargetBlank(properties, context) {
   const tokens = Array.isArray(rel)
     ? rel.map(String)
     : typeof rel === "string"
-    ? rel.split(/\s+/)
-    : [];
+      ? rel.split(/\s+/)
+      : [];
 
   if (!tokens.includes("noopener") || !tokens.includes("noreferrer")) {
     throw new Error(`Links with target="_blank" must include rel="noopener noreferrer" (${context})`);

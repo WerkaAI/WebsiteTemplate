@@ -17,13 +17,13 @@ export interface LoadedEntry<TMeta extends BaseMeta> {
 interface LoadEntryOptions<TMeta extends BaseMeta> {
   schema?: ZodSchema<TMeta, ZodTypeDef, unknown>
   dir: string
-  importModule: (slug: string) => Promise<Record<string, unknown> | null>
+  importModule?: (slug: string) => Promise<Record<string, unknown> | null>
 }
 
 export interface GetAllEntriesOptions<TMeta extends BaseMeta> {
   schema?: ZodSchema<TMeta, ZodTypeDef, unknown>
   includeDrafts?: boolean
-  importModule: (slug: string) => Promise<Record<string, unknown> | null>
+  importModule?: (slug: string) => Promise<Record<string, unknown> | null>
 }
 
 const BaseMetaSchema = z.object({
@@ -84,7 +84,11 @@ export async function loadEntry<TMeta extends BaseMeta = BaseMeta>(
   options: LoadEntryOptions<TMeta>
 ): Promise<LoadedEntry<TMeta>> {
   const { schema, dir, importModule } = options
-  const mod = await importModule(slug)
+
+  let mod: Record<string, unknown> | null = null
+  if (importModule) {
+    mod = await importModule(slug)
+  }
 
   let meta: unknown = mod?.meta ?? mod?.frontmatter ?? mod?.metadata
   if (!meta) {

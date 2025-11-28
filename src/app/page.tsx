@@ -2,8 +2,7 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
-import ProblemSection from "@/components/problem-section";
-import SolutionSection from "@/components/solution-section";
+import FeaturesBento from "@/components/features-bento";
 const CalculatorSection = dynamic(() => import("@/components/calculator-section"))
 const DemoSection = dynamic(() => import("@/components/demo-section"))
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"))
@@ -16,21 +15,21 @@ import { getCspNonce } from "@/lib/security/csp";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'AutoŻaba - Automatyczna Tarcza Prawna dla Żabka',
-    description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twoja automatyczna tarcza prawna, która chroni przed karami PIP i daje spokój ducha.',
+    title: 'AutoŻaba - Twój Cyfrowy Pomocnik | Automatyzacja Sklepu i Tarcza Prawna',
+    description: 'AutoŻaba to Twój Cyfrowy Pomocnik w sklepie. Automatyzuje grafiki, chroni przed karami PIP (Tarcza Prawna) i pomaga w zarządzaniu Żabką.',
     alternates: {
       canonical: '/'
     },
     openGraph: {
-      title: 'AutoŻaba - Automatyczna Tarcza Prawna',
-      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twoja automatyczna tarcza prawna.',
+      title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
+      description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
       type: 'website',
       images: ['/og-image.jpg']
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'AutoŻaba - Automatyczna Tarcza Prawna',
-      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twoja automatyczna tarcza prawna.',
+      title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
+      description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
       images: ['/og-image.jpg']
     }
   }
@@ -44,32 +43,22 @@ export default function Home() {
       <Navigation />
       <div>
         <InteractionLayer />
-        {/* Organization JSON-LD */}
-        <script
-          nonce={nonce}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Autożaba",
-              "url": process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000',
-              "email": "autozaba@ainything.pl",
-              "logo": "/favicon.svg",
-              "sameAs": [
-                // Dodaj profile społecznościowe jeśli posiadasz
-              ]
-            })
-          }}
-        />
         <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
+
+        {/* Social Proof / Logos could go here if we had them */}
+
+        <FeaturesBento />
+
         <CalculatorSection />
+
         <DemoSection />
+
         <TestimonialsSection />
+
         <PricingSection />
+
         <BlogSection />
+
         <ContactSection />
       </div>
       <Footer />

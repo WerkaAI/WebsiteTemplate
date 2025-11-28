@@ -1,164 +1,83 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import Image from "next/image";
-import { useCarousel } from "@/hooks/use-carousel";
+
+const testimonials = [
+  {
+    name: "Marek",
+    role: "Franczyzobiorca, Warszawa",
+    content: "Wcześniej układanie grafiku zajmowało mi cały weekend. Teraz robię to w 15 minut przy kawie. AutoŻaba to gamechanger.",
+    rating: 5,
+    avatar: "/avatars/marek.jpg" // Placeholder
+  },
+  {
+    name: "Anna",
+    role: "Franczyzobiorca, Poznań",
+    content: "Bałam się kontroli PIP, bo ciągle coś się zmieniało w przepisach. Teraz śpię spokojnie, bo system pilnuje wszystkiego za mnie.",
+    rating: 5,
+    avatar: "/avatars/anna.jpg" // Placeholder
+  },
+  {
+    name: "Piotr",
+    role: "Franczyzobiorca, Gdańsk",
+    content: "Pracownicy są zachwyceni aplikacją. Sami wpisują dyspozycyjność, widzą grafik w telefonie. Skończyły się telefony 'kiedy mam przyjść?'.",
+    rating: 5,
+    avatar: "/avatars/piotr.jpg" // Placeholder
+  }
+];
 
 export default function TestimonialsSection() {
-  const testimonials = [
-    {
-      id: "polina-m",
-      name: "Polina M.",
-      location: "Wrocław",
-      quote: "AutoŻabę włączyłam od pierwszego dnia prowadzenia sklepu i do dziś jestem zachwycona – wszystko działa pewnie i bez stresu.",
-  avatar: "/illustrations/testimonials/polina64.png",
-      rating: 5
-    },
-    {
-      id: "michal-p", 
-      name: "Michał P.",
-      location: "Warszawa",
-      quote: "Pierwszy raz od 3 lat mogłem wziąć weekend bez myślenia o grafikach. AutoŻaba to była najlepsza inwestycja w mojej historii prowadzenia sklepu.",
-  avatar: "/illustrations/testimonials/michal.png",
-      rating: 5
-    },
-    {
-      id: "wiktor-w",
-      name: "Wiktor W.", 
-      location: "Gdańsk",
-      quote: "Wcześniej to była loteria - czy grafik będzie zgodny z prawem. Teraz mam 100% pewność. To bezcenne uczucie.",
-  avatar: "/illustrations/testimonials/wiktor64.png",
-      rating: 5
-    }
-  ];
-
-  const { index, containerRef, next, prev, goTo, pause, resume } = useCarousel({
-    size: testimonials.length,
-    interval: 6500,
-  });
-
   return (
-  <section className="section-padding bg-white dark:bg-background">
-      <div className="container-spacing">
-  <div className="text-center space-y-4 mb-14 sm:mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground" data-testid="text-testimonials-title">
-  Odzyskali <span className="text-primary dark:text-emerald-300">spokój ducha</span>
+    <section className="py-24 relative overflow-hidden">
+      <div className="container-spacing relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground" data-animate="rise">
+            Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">Franczyzobiorcy</span>
           </h2>
-          <p className="text-xl text-muted-foreground copy-max mx-auto" data-testid="text-testimonials-subtitle">
-            Prawdziwe historie franczyzobiorców, którzy odzyskali kontrolę
+          <p className="text-xl text-muted-foreground" data-animate="rise" data-animate-delay="100">
+            Dołącz do grona zadowolonych właścicieli sklepów Żabka.
           </p>
         </div>
 
-        <div
-          className="testimonials-carousel-wrapper"
-          role="group"
-          aria-roledescription="carousel"
-          aria-label="Historie klientów AutoŻaby"
-        >
-          <div
-            className="testimonials-carousel"
-            ref={containerRef}
-            onMouseEnter={pause}
-            onMouseLeave={resume}
-            onFocus={pause}
-            onBlur={resume}
-          >
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
             <div
-              className="testimonials-track"
-              style={{ transform: `translate3d(-${index * 100}%, 0, 0)` }}
+              key={index}
+              className="relative group"
+              data-animate="rise"
+              data-animate-delay={`${index * 100 + 200}`}
             >
-              {testimonials.map((testimonial, slideIndex) => {
-                const isActive = slideIndex === index;
-                return (
-                  <div
-                    key={testimonial.id}
-                    className="testimonials-slide"
-                    aria-hidden={!isActive}
-                    data-testid={`card-testimonial-${testimonial.id}`}
-                  >
-                    <Card
-                      className="testimonials-card"
-                      style={{
-                        transform: `scale(${isActive ? 1 : 0.94})`,
-                        opacity: isActive ? 1 : 0.6,
-                      }}
-                    >
-                      <CardContent className="p-6 sm:p-8 space-y-5">
-                        <div className="flex items-center space-x-4">
-                          <div className="tinted-media w-16 h-16 bg-muted rounded-full overflow-hidden">
-                            <Image
-                              src={testimonial.avatar}
-                              alt={testimonial.name}
-                              fill
-                              className="object-cover"
-                              sizes="64px"
-                              data-testid={`img-avatar-${testimonial.id}`}
-                            />
-                          </div>
-                          <div>
-                            <div className="font-semibold text-foreground" data-testid={`text-name-${testimonial.id}`}>
-                              {testimonial.name}
-                            </div>
-                            <div className="text-sm text-muted-foreground" data-testid={`text-location-${testimonial.id}`}>
-                              {testimonial.location}
-                            </div>
-                          </div>
-                        </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        <div className="flex text-yellow-400" data-testid={`rating-${testimonial.id}`}>
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-5 h-5 fill-current" />
-                          ))}
-                        </div>
+              <Card className="h-full glass-premium border-0 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <Quote className="w-10 h-10 text-emerald-500/20 mb-6" />
 
-                        <blockquote className="text-muted-foreground italic" data-testid={`text-quote-${testimonial.id}`}>
-                          &quot;{testimonial.quote}&quot;
-                        </blockquote>
-                      </CardContent>
-                    </Card>
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    ))}
                   </div>
-                );
-              })}
-            </div>
-          </div>
 
-          <div className="testimonials-controls" aria-label="Sterowanie karuzelą opinii">
-            <Button
-              type="button"
-              variant="outline"
-              size="touchIcon"
-              onClick={prev}
-              aria-label="Poprzednia opinia"
-              className="testimonials-control"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <div className="testimonials-dots" role="tablist">
-              {testimonials.map((testimonial, dotIndex) => (
-                <button
-                  key={testimonial.id}
-                  type="button"
-                  className={`testimonials-dot ${dotIndex === index ? "testimonials-dot--active" : ""}`}
-                  onClick={() => goTo(dotIndex)}
-                  aria-label={`Pokaż opinię ${testimonial.name}`}
-                  aria-selected={dotIndex === index}
-                  role="tab"
-                />
-              ))}
+                  <p className="text-lg text-foreground/90 mb-8 flex-1 leading-relaxed">
+                    &quot;{testimonial.content}&quot;
+                  </p>
+
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-border/50">
+                    <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-bold text-lg">
+                      {testimonial.name[0]}
+                    </div>
+                    <div>
+                      <p className="font-bold text-foreground">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              size="touchIcon"
-              onClick={next}
-              aria-label="Następna opinia"
-              className="testimonials-control"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

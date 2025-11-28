@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from "@/components/providers"
+import { JsonLd } from "@/components/seo/json-ld"
 
 const inter = Inter({ subsets: ['latin'] })
 const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
@@ -9,21 +10,31 @@ const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'),
   title: {
-    default: 'AutoŻaba - Automatyczna Tarcza Prawna dla Żabka',
-    template: '%s | AutoŻaba'
+    default: 'AutoŻaba - Twój Cyfrowy Pomocnik w Sklepie | Automatyzacja i Tarcza Prawna',
+    template: '%s | AutoŻaba - Cyfrowy Pomocnik'
   },
-  description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twoja automatyczna tarcza prawna, która chroni przed karami PIP i daje spokój ducha.',
+  description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój cyfrowy pomocnik, który automatyzuje grafiki, chroni przed karami PIP (Tarcza Prawna) i daje spokój ducha.',
+  keywords: ['Cyfrowy Pomocnik Żabki', 'Asystent Żabki', 'Automatyzacja Żabki', 'Tarcza Prawna Żabka', 'zarządzanie żabką', 'pomoc w żabce', 'grafiki żabka'],
+  authors: [{ name: 'AutoŻaba Team' }],
+  creator: 'AutoŻaba',
   openGraph: {
     siteName: 'AutoŻaba',
     locale: 'pl_PL',
+    type: 'website',
     images: [
       {
         url: 'https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/start-w-autozaba.png',
         width: 1200,
         height: 630,
-        alt: 'AutoŻaba - Automatyczna Tarcza Prawna dla Żabka'
+        alt: 'AutoŻaba - Cyfrowy Pomocnik dla Twojego Sklepu'
       }
     ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
+    description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
+    images: ['https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/start-w-autozaba.png'],
   }
 }
 
@@ -47,6 +58,7 @@ export default function RootLayout({
           Przejdź do treści
         </a>
         <Providers>
+          <JsonLd />
           <main id="main-content">
             {children}
           </main>

@@ -78,14 +78,14 @@ export default function Footer() {
               >
                 <Image
                   src="/illustrations/logo_xcolor64x64.png"
-                  alt="AutoŻaba logo"
+                  alt="AutoŻaba - Cyfrowy Pomocnik Logo"
                   width={32}
                   height={32}
                   className="h-8 w-8 dark:hidden"
                 />
                 <Image
                   src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
-                  alt="AutoŻaba logo"
+                  alt="AutoŻaba - Cyfrowy Pomocnik Logo"
                   width={32}
                   height={32}
                   className="hidden h-8 w-8 dark:block"
