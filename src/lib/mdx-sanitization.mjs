@@ -66,8 +66,20 @@ export function rehypeMdxRestore() {
                     }
 
                     // Restore original tag and properties
-                    node.tagName = originalData.tagName;
-                    node.properties = originalData.properties;
+                    if (originalData.properties && originalData.properties['data-mdx-attributes']) {
+                        // Restore as MDX JSX Component
+                        node.type = 'mdxJsxFlowElement';
+                        node.name = originalData.tagName;
+                        node.attributes = JSON.parse(originalData.properties['data-mdx-attributes']);
+
+                        // Remove HAST specific properties
+                        delete node.tagName;
+                        delete node.properties;
+                    } else {
+                        // Fallback: Restore as standard HAST element (for non-JSX or legacy)
+                        node.tagName = originalData.tagName;
+                        node.properties = originalData.properties;
+                    }
 
                     // Note: Children have been sanitized by this point
                 } catch (e) {

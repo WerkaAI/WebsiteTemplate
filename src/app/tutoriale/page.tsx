@@ -32,9 +32,12 @@ export const metadata: Metadata = {
   },
 }
 
+import { getCspNonce } from '@/lib/security/csp'
+
 export default async function TutorialsPage() {
   const tutorials = await getAllTutorials()
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'
+  const nonce = getCspNonce()
 
   const itemListJsonLd = {
     '@context': 'https://schema.org',
@@ -52,6 +55,7 @@ export default async function TutorialsPage() {
     <div className="min-h-screen bg-background">
       <script
         type="application/ld+json"
+        nonce={nonce}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <Navigation />

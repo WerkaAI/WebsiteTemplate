@@ -16,6 +16,7 @@ import { getAllTutorialSlugs, loadTutorial } from '@/lib/tutorials'
 import type { TutorialMeta } from '@/lib/tutorials'
 import { TutorialCard } from '@/components/features/tutorial/tutorial-card'
 import { getCspNonce } from '@/lib/security/csp'
+import { getMDXComponents } from '@/mdx-components'
 
 interface TutorialPageProps {
   params: {
@@ -158,7 +159,7 @@ export default async function TutorialPage({ params }: TutorialPageProps) {
               <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-white/90 dark:from-slate-900/95 dark:via-slate-900/75 dark:to-slate-900/85" />
               <div className="relative z-10 space-y-6 p-8 text-center md:p-12">
                 <div className="flex flex-wrap justify-center gap-3">
-                  {meta.persona.map(persona => (
+                  {(meta.persona || []).map(persona => (
                     <Badge
                       key={persona}
                       variant="secondary"
@@ -192,7 +193,7 @@ export default async function TutorialPage({ params }: TutorialPageProps) {
           ) : (
             <div className="space-y-6 rounded-3xl border border-border/50 bg-card/60 p-10 text-center">
               <div className="flex flex-wrap justify-center gap-3">
-                {meta.persona.map(persona => (
+                {(meta.persona || []).map(persona => (
                   <Badge key={persona} variant="secondary" className="rounded-full bg-primary/10 text-primary">
                     {persona}
                   </Badge>
@@ -235,7 +236,7 @@ export default async function TutorialPage({ params }: TutorialPageProps) {
           </div>
 
           <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-emerald-600 dark:prose-a:text-emerald-400 hover:prose-a:text-emerald-500 prose-img:rounded-2xl prose-img:shadow-md">
-            {TutorialContent ? <TutorialContent /> : null}
+            {TutorialContent ? <TutorialContent {...({ components: getMDXComponents({}) } as any)} /> : null}
           </div>
         </article>
 

@@ -1,6 +1,8 @@
 import React from 'react';
 
-export const JsonLd = () => {
+import { getCspNonce } from "@/lib/security/csp";
+
+export const JsonLd = ({ nonce }: { nonce?: string }) => {
     const organizationSchema = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -53,15 +55,21 @@ export const JsonLd = () => {
         <>
             <script
                 type="application/ld+json"
+                nonce={nonce}
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                suppressHydrationWarning
             />
             <script
                 type="application/ld+json"
+                nonce={nonce}
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+                suppressHydrationWarning
             />
             <script
                 type="application/ld+json"
+                nonce={nonce}
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+                suppressHydrationWarning
             />
         </>
     );

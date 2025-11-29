@@ -11,6 +11,7 @@ const baseMeta: TutorialMeta = {
   durationMinutes: 10,
   tags: ['start'],
   draft: false,
+  relatedTutorials: [],
 }
 
 const tutorials = [

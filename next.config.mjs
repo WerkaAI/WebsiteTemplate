@@ -6,6 +6,7 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSanitize from "rehype-sanitize";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import {
   mdxSanitizeSchema,
@@ -49,6 +50,8 @@ const rehypeMdxJsxToElements = () => (tree) => {
             }
           }
         }
+        // Preserve original attributes for restoration
+        properties['data-mdx-attributes'] = JSON.stringify(node.attributes);
       }
 
       node.type = "element";
@@ -70,7 +73,7 @@ const rehypeMdxJsxToElements = () => (tree) => {
 
 const withMDX = createMDX({
   options: {
-    providerImportSource: "../../mdx-components",
+    // providerImportSource: "@/mdx-components",
     remarkPlugins: [
       remarkGfm,
       remarkFrontmatter,
@@ -81,6 +84,7 @@ const withMDX = createMDX({
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
       rehypeMdxJsxToElements,
       rehypeMdxProtect,
+      [rehypePrettyCode, { theme: "github-dark" }],
       [rehypeSanitize, mdxSanitizeSchema],
       rehypeMdxRestore,
       mdxUrlValidator,

@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { useSpringNumber } from "@/hooks/use-spring-number";
 import { APP_URLS } from "@/lib/config";
+import { motion } from "framer-motion";
 
 const currencyFormatter = new Intl.NumberFormat("pl-PL", {
   style: "currency",
@@ -53,27 +54,57 @@ export default function CalculatorSection() {
     formatter: (val) => currencyFormatter.format(Math.round(val)),
   });
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <section className="section-padding bg-white dark:bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12">
-          <h2
+    <section className="section-padding bg-white dark:bg-background flex flex-col items-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <motion.div
+          className="text-center space-y-4 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.h2
             className="text-3xl lg:text-4xl font-bold text-foreground"
             data-testid="text-calculator-title"
+            variants={itemVariants}
           >
             Sprawdź, ile{" "}
             <span className="text-primary dark:text-emerald-300">
               zaoszczędzisz
             </span>
-          </h2>
-          <p
+          </motion.h2>
+          <motion.p
             className="text-xl text-muted-foreground copy-max mx-auto"
             data-testid="text-calculator-subtitle"
+            variants={itemVariants}
           >
             Kalkulator uwzględnia oszczędność czasu, uniknięte kary i spokój
             ducha
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <Card className="calm-shadow-lg">
           <CardContent className="p-6 sm:p-8 space-y-8">
@@ -87,8 +118,14 @@ export default function CalculatorSection() {
                   Twoja sytuacja
                 </h3>
 
-                <div className="space-y-5">
-                  <div className="floating-field" data-animate="rise">
+                <motion.div
+                  className="space-y-5"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={containerVariants}
+                >
+                  <motion.div className="floating-field" variants={itemVariants}>
                     <Input
                       id={shopsFieldId}
                       type="number"
@@ -113,12 +150,11 @@ export default function CalculatorSection() {
                     <p className="floating-hint">
                       Większość franczyzobiorców ma 1-2 sklepy
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div
+                  <motion.div
                     className="floating-field"
-                    data-animate="rise"
-                    data-animate-delay="80"
+                    variants={itemVariants}
                   >
                     <Input
                       id={hoursFieldId}
@@ -144,12 +180,11 @@ export default function CalculatorSection() {
                     <p className="floating-hint">
                       Średnio franczyzobiorcy spędzają 8-12h tygodniowo
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div
+                  <motion.div
                     className="flex items-start gap-3 rounded-xl border border-border/70 bg-muted/40 dark:bg-slate-900/60 px-4 py-3"
-                    data-animate="rise"
-                    data-animate-delay="140"
+                    variants={itemVariants}
                   >
                     <input
                       type="checkbox"
@@ -165,8 +200,8 @@ export default function CalculatorSection() {
                     >
                       Miałeś już kontrolę PIP w ciągu ostatnich 2 lat?
                     </Label>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
 
               {/* Results */}
@@ -178,19 +213,24 @@ export default function CalculatorSection() {
                   Co zyskujesz
                 </h3>
 
-                <div className="space-y-4">
-                  <div
+                <motion.div
+                  className="space-y-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={containerVariants}
+                >
+                  <motion.div
                     className="metric-card metric-card--time"
-                    data-animate="rise"
-                    data-animate-delay="60"
+                    variants={itemVariants}
                   >
                     <div className="metric-card__label">
                       Odzyskany czas miesięcznie
                     </div>
                     <div
                       className={`metric-card__value transition-colors duration-300 ${timeSavedSpring.isAnimating
-                          ? "text-emerald-600 dark:text-emerald-400"
-                          : "text-foreground"
+                        ? "text-emerald-600 dark:text-emerald-400"
+                        : "text-foreground"
                         }`}
                       data-testid="stat-time-saved"
                     >
@@ -205,20 +245,19 @@ export default function CalculatorSection() {
                       </dt>
                       <dd
                         className={`text-right font-semibold transition-colors duration-300 ${weekendsSavedSpring.isAnimating
-                            ? "text-emerald-700 dark:text-emerald-300"
-                            : ""
+                          ? "text-emerald-700 dark:text-emerald-300"
+                          : ""
                           }`}
                         data-testid="stat-weekends-saved"
                       >
                         +{weekendsSavedSpring.formatted} / rok
                       </dd>
                     </dl>
-                  </div>
+                  </motion.div>
 
-                  <div
+                  <motion.div
                     className="metric-card metric-card--risk"
-                    data-animate="rise"
-                    data-animate-delay="120"
+                    variants={itemVariants}
                   >
                     <div
                       className="metric-card__swap"
@@ -236,8 +275,8 @@ export default function CalculatorSection() {
                         </div>
                         <div
                           className={`metric-card__value transition-colors duration-300 ${riskAvoidedSpring.isAnimating
-                              ? "text-amber-600 dark:text-amber-400"
-                              : "text-foreground"
+                            ? "text-amber-600 dark:text-amber-400"
+                            : "text-foreground"
                             }`}
                           data-testid="stat-penalty-avoided"
                           suppressHydrationWarning
@@ -261,8 +300,8 @@ export default function CalculatorSection() {
                         </div>
                         <div
                           className={`metric-card__value transition-colors duration-300 ${riskAvoidedSpring.isAnimating
-                              ? "text-amber-600 dark:text-amber-400"
-                              : "text-foreground"
+                            ? "text-amber-600 dark:text-amber-400"
+                            : "text-foreground"
                             }`}
                           suppressHydrationWarning
                         >
@@ -274,12 +313,11 @@ export default function CalculatorSection() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div
+                  <motion.div
                     className="metric-card metric-card--investment"
-                    data-animate="rise"
-                    data-animate-delay="180"
+                    variants={itemVariants}
                   >
                     <div className="metric-card__label">AutoŻaba na teraz</div>
                     <div
@@ -291,8 +329,8 @@ export default function CalculatorSection() {
                     <div className="metric-card__hint">
                       Dołącz i odbierz pierwszeństwo wdrożenia
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
 

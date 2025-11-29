@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { APP_URLS } from "@/lib/config";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const footerSections = [
@@ -65,12 +66,40 @@ export default function Footer() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <footer className="bg-muted text-foreground py-12 dark:bg-slate-950 dark:text-slate-100">
       <div className="container-spacing space-y-12">
-        <div className="grid gap-10 md:grid-cols-5">
+        <motion.div
+          className="grid gap-10 md:grid-cols-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {/* Brand */}
-          <div className="space-y-4 md:col-span-2">
+          <motion.div className="space-y-4 md:col-span-2" variants={itemVariants}>
             <Link href="/">
               <div
                 className="flex items-center space-x-2"
@@ -102,12 +131,12 @@ export default function Footer() {
               Automatyczna tarcza prawna dla franczyzobiorców Żabki. Zarządzaj
               zespołem, nie ryzykiem.
             </p>
-          </div>
+          </motion.div>
 
           {/* Desktop footer columns */}
           <div className="hidden md:grid md:col-span-3 grid-cols-3 gap-8">
             {footerSections.map((section, sectionIndex) => (
-              <div key={sectionIndex} className="space-y-4">
+              <motion.div key={sectionIndex} className="space-y-4" variants={itemVariants}>
                 <h3
                   className="font-semibold text-foreground"
                   data-testid={`text-footer-section-${sectionIndex}`}
@@ -146,7 +175,7 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -199,7 +228,7 @@ export default function Footer() {
               </details>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <hr className="border-border/60 dark:border-white/5" />
 
@@ -243,7 +272,13 @@ export default function Footer() {
         </div>
 
         {/* Final CTA Section */}
-        <div className="bg-primary text-primary-foreground rounded-2xl p-8 text-center space-y-6 shadow-lg">
+        <motion.div
+          className="bg-primary text-primary-foreground rounded-2xl p-8 text-center space-y-6 shadow-lg"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2
             className="text-2xl lg:text-3xl font-bold text-primary-foreground"
             data-testid="text-footer-cta-title"
@@ -337,7 +372,7 @@ export default function Footer() {
               <span>Anuluj w każdej chwili</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

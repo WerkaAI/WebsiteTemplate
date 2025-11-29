@@ -10,144 +10,152 @@ tags: ["start", "pracownik", "dostepnosc"]
 draft: false
 ---
 
+<ProgressBar />
+
 ## Wprowadzenie
 
 Nowi pracownicy AutoŻaba zaczynają od jednego zadania: uruchomić konto i pokazać, kiedy mogą pracować. Ten tutorial prowadzi Cię dokładnie ścieżką z filmu instruktażowego. W jedną kawę zyskasz pewność, że login działa, profil wygląda profesjonalnie, a manager widzi Twoją dostępność.
 
-## Zobacz film krok po kroku
-
-<iframe
-	width="100%"
-	height="400"
-	src="https://www.youtube.com/embed/YVBRDd_ehZM"
-	title="AutoŻaba — pierwsze logowanie i dostępność"
-	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-	allowFullScreen
+<VideoPlayer 
+  src="https://www.youtube.com/embed/YVBRDd_ehZM" 
+  title="AutoŻaba — pierwsze logowanie i dostępność"
 />
 
-> **Pomysł na zrzut ekranu:** Ujęcie z telefonu i laptopa obok siebie z widocznym ekranem logowania.
+<Tip type="tip" title="Pomysł na start">
+  Otwórz ten poradnik na telefonie, a logowanie wykonuj na komputerze (lub odwrotnie). Dzięki temu będziesz mieć instrukcję zawsze pod ręką.
+</Tip>
+
+## Twoja lista zadań
+
+Śledź swoje postępy, zaznaczając kolejne kroki. Twój postęp zostanie zapamiętany!
+
+<InteractiveChecklist 
+  id="pierwsze-kroki-checklist"
+  items={[
+    "Zaloguj się danymi z Karty Startowej",
+    "Zaakceptuj regulamin",
+    "Ustaw język i dane profilu",
+    "Zmień hasło na własne",
+    "Ustaw dostępność w kalendarzu"
+  ]}
+/>
+
+---
 
 ### Krok 1. Przygotuj Kartę Startową
 
-1. Znajdź Kartę Startową, którą dostałeś od przełożonego.
-2. Zeskanuj kod QR telefonem lub wejdź na `app.autozaba.pl` w przeglądarce komputera (lub kliknij Zaloguj w prawym górnym rogu tej strony).
-3. Miej przy sobie tymczasowy login i hasło z karty.
+<TutorialStep stepNumber={1} title="Znajdź dane logowania">
+  1. Znajdź **Kartę Startową**, którą dostałeś od przełożonego.
+  2. Zeskanuj kod QR telefonem lub wejdź na `app.autozaba.pl` w przeglądarce.
+  3. Przygotuj **tymczasowy login i hasło** z karty.
+</TutorialStep>
 
-> **Dlaczego to ważne?** Po wprowadzeniu nowych danych tymczasowe hasło przestanie działać. Karta będzie potrzebna tylko teraz.
+<Tip type="warning" title="Ważne">
+  Po wprowadzeniu nowych danych tymczasowe hasło przestanie działać. Karta będzie potrzebna tylko ten jeden raz.
+</Tip>
 
 <figure className="my-6 flex flex-col items-center gap-3 text-center">
-	<a
-		href="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/kartapracownikaSTART.png"
-		target="_blank"
-		rel="noopener noreferrer"
-		className="block w-[260px] sm:w-[320px] md:w-[360px]"
-	>
-		<img
-			src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/kartapracownikaSTART.png"
-			alt="Przykładowa Karta Startowa AutoŻaby z loginem i tymczasowym hasłem."
-			loading="lazy"
-			className="w-full rounded-2xl border border-border/60 shadow-sm"
-		/>
-	</a>
+	<img
+		src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/kartapracownikaSTART.png"
+		alt="Przykładowa Karta Startowa AutoŻaby z loginem i tymczasowym hasłem."
+		loading="lazy"
+		className="w-full max-w-sm rounded-2xl border border-border/60 shadow-sm"
+	/>
 </figure>
 
 ### Krok 2. Pierwsze logowanie
 
-1. Przejdź na stronę logowania i wpisz tymczasowy login oraz hasło.
-2. Jeśli widzisz komunikat o nowych warunkach, zaakceptuj je, aby przejść dalej.
-3. Po zalogowaniu obejrzyj krótkie powitanie i przejdź do ustawień konta.
+<TutorialStep stepNumber={2} title="Zaloguj się do systemu">
+  1. Przejdź na stronę logowania.
+  2. Wpisz **tymczasowy login** oraz **hasło**.
+  3. Jeśli widzisz komunikat o nowych warunkach, zaakceptuj je, aby przejść dalej.
+</TutorialStep>
 
 <figure className="my-6 space-y-3">
-	<a
-		href="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/ustawienia-konta.png"
-		target="_blank"
-		rel="noopener noreferrer"
-	>
-		<img
-			src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/ustawienia-konta.png"
-			alt="Strona główna AutoŻaby po zalogowaniu ze strzałką wskazującą ikonę ustawień konta."
-			loading="lazy"
-			className="w-full rounded-2xl border border-border/60 shadow-sm"
-		/>
-	</a>
+	<img
+		src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/ustawienia-konta.png"
+		alt="Strona główna AutoŻaby po zalogowaniu ze strzałką wskazującą ikonę ustawień konta."
+		loading="lazy"
+		className="w-full rounded-2xl border border-border/60 shadow-sm"
+	/>
 	<figcaption className="text-sm text-muted-foreground">
 		Po zalogowaniu strzałka na ekranie głównym podpowiada, gdzie znaleźć ustawienia profilu.
 	</figcaption>
 </figure>
 
 ### Krok 3. Ustaw język i dane profilu
- 
-1. Kliknij ikonkę flagi w prawym górnym rogu.
-2. Wybierz preferowany język interfejsu: polski, angielski lub ukraiński.
-3. Kliknij swoją nazwę użytkownika i wejdź w **Moje konto → Profil**.
-4. Uzupełnij imię, nazwisko oraz nadaj przyjazną nazwę użytkownika.
-5. Zatwierdź przyciskiem **Aktualizuj profil**.
 
-> **Wskazówka UX:** Wybierz login, który łatwo podasz managerowi przez telefon. Unikaj cyfr i znaków specjalnych na końcu.
+<TutorialStep stepNumber={3} title="Spersonalizuj konto">
+  1. Kliknij ikonkę flagi w prawym górnym rogu i wybierz **język** (PL/EN/UA).
+  2. Kliknij swoją nazwę użytkownika i wejdź w **Moje konto → Profil**.
+  3. Uzupełnij **imię, nazwisko** oraz nadaj przyjazną **nazwę użytkownika**.
+  4. Zatwierdź przyciskiem **Aktualizuj profil**.
+</TutorialStep>
+
+<Tip type="info" title="Wskazówka UX">
+  Wybierz login, który łatwo podasz managerowi przez telefon. Unikaj skomplikowanych znaków.
+</Tip>
 
 <figure className="my-6 space-y-3">
-	<a
-		href="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/moj-profil.png"
-		target="_blank"
-		rel="noopener noreferrer"
-	>
-		<img
-			src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/moj-profil.png"
-			alt="Ekran edycji profilu pracownika w AutoŻabie z polami na imię, nazwisko i login."
-			loading="lazy"
-			className="w-full rounded-2xl border border-border/60 shadow-sm"
-		/>
-	</a>
-	<figcaption className="text-sm text-muted-foreground">
-		W zakładce „Mój profil” uzupełnij dane osobowe i ustaw własną nazwę użytkownika.
-	</figcaption>
+	<img
+		src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/moj-profil.png"
+		alt="Ekran edycji profilu pracownika w AutoŻabie z polami na imię, nazwisko i login."
+		loading="lazy"
+		className="w-full rounded-2xl border border-border/60 shadow-sm"
+	/>
 </figure>
 
 ### Krok 4. Nadaj własne hasło
 
-1. W polu "Aktualne hasło" przepisz dane z Karty Startowej.
-2. Poniżej ustaw nowe hasło: min. 8 znaków, jedna wielka litera, znak specjalny.
-3. Powtórz hasło w polu potwierdzenia i kliknij **Zmień hasło**.
-4. Zachowaj hasło w menedżerze lub zapisz je w bezpiecznym miejscu.
+<TutorialStep stepNumber={4} title="Zabezpiecz konto">
+  1. W polu "Aktualne hasło" wpisz dane z Karty Startowej.
+  2. Ustaw **nowe hasło**: min. 8 znaków, wielka litera, znak specjalny.
+  3. Kliknij **Zmień hasło**.
+</TutorialStep>
 
+### Krok 5. Ustaw dostępność
 
-### Krok 5. Ustaw dostępność i preferencje
-
-1. Kliknij logo AutoŻaby, aby wrócić na stronę główną.
-2. Wejdź do modułu **Dostępność i Preferencje** z kafelka lub bocznej nawigacji.
-3. Wybierz miesiąc i kolor pędzla określający rodzaj dyspozycyjności.
-4. Klikaj w pojedyncze dni, aby cyklicznie zmieniać status (Elastyczny, Rano, Popołudnie, Niedostępny).
-5. Aby zaznaczyć cały tydzień jednym kolorem, użyj pędzla i przeciągnij po kalendarzu.
-6. Dodaj ewentualną notatkę dla właściciela pod kalendarzem, np. "Studia weekendowe".
-7. Zapisz zmiany przyciskiem **Zapisz**.
+<TutorialStep stepNumber={5} title="Wypełnij grafik">
+  1. Wróć na stronę główną (kliknij logo).
+  2. Wejdź w **Dostępność i Preferencje**.
+  3. Wybierz **miesiąc** i **kolor pędzla** (np. Rano, Popołudnie).
+  4. Klikaj w dni lub przeciągnij, aby zaznaczyć wiele dni naraz.
+  5. Kliknij **Zapisz**.
+</TutorialStep>
 
 <figure className="my-6 space-y-3">
-	<a
-		href="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/dostepnosc.png"
-		target="_blank"
-		rel="noopener noreferrer"
-	>
-		<img
-			src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/dostepnosc.png"
-			alt="Kalendarz dostępności pracownika z zaznaczonymi kolorami zmian i polem notatki."
-			loading="lazy"
-			className="w-full rounded-2xl border border-border/60 shadow-sm"
-		/>
-	</a>
-	<figcaption className="text-sm text-muted-foreground">
-		Kalendarz dostępności pokazuje kolory zmian oraz miejsce na krótką notatkę dla właściciela.
-	</figcaption>
+	<img
+		src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landing-page/tutorial-pierwsze-kroki/dostepnosc.png"
+		alt="Kalendarz dostępności pracownika z zaznaczonymi kolorami zmian i polem notatki."
+		loading="lazy"
+		className="w-full rounded-2xl border border-border/60 shadow-sm"
+	/>
 </figure>
 
-## Mini checklista
+---
 
-- [ ] Logowanie działa na nowe hasło.
-- [ ] Profil ma poprawne imię, nazwisko i login.
-- [ ] Wybrany język interfejsu jest ustawiony.
-- [ ] Kalendarz dostępności pokazuje realne dni pracy.
-- [ ] Notatka informuje przełożonego o wyjątkach.
+## Podsumowanie
 
-### Następne kroki
+Gratulacje! Twoje konto jest gotowe do pracy. Manager widzi już Twoją dostępność i może planować grafik.
 
-- Sprawdź moduł powiadomień w aplikacji mobilnej, aby nie przegapić zmian grafiku.
-- Jeśli potrzebujesz pomocy, otwórz zakładkę **Wsparcie** lub napisz na `autozaba@ainything.pl`.
+### Co dalej?
+
+- Pobierz aplikację mobilną, aby otrzymywać powiadomienia o zmianach w grafiku.
+- Sprawdzaj regularnie swoje konto, aby być na bieżąco.
+
+<FAQAccordion 
+  items={[
+    {
+      question: "Co zrobić, jeśli zgubiłem Kartę Startową?",
+      answer: "Skontaktuj się ze swoim managerem. Może on wygenerować nową kartę lub zresetować Twoje hasło w panelu administratora."
+    },
+    {
+      question: "Czy mogę zmienić dostępność po zapisaniu?",
+      answer: "Tak, możesz edytować swoją dostępność w dowolnym momencie, dopóki grafik nie zostanie zamknięty przez managera."
+    },
+    {
+      question: "Gdzie znajdę pomoc techniczną?",
+      answer: "W razie problemów technicznych napisz na autozaba@ainything.pl lub skorzystaj z zakładki Wsparcie w aplikacji."
+    }
+  ]}
+/>

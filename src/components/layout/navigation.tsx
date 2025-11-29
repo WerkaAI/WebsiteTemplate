@@ -10,11 +10,11 @@ import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { cn } from "@/lib/utils";
 import { APP_URLS } from "@/lib/config";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
   const isLanding = pathname === "/";
   const isFunctionsRoute = pathname.startsWith("/funkcje");
@@ -24,19 +24,17 @@ export default function Navigation() {
   const isContactRoute = pathname.startsWith("/kontakt");
   const showScrollProgress = isLanding;
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     const updateScrollState = () => {
       const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
       setIsScrolled(scrollTop > 12);
-      if (docHeight <= 0) {
-        setScrollProgress(0);
-        return;
-      }
-      setScrollProgress(
-        Math.min(100, Math.max(0, (scrollTop / docHeight) * 100))
-      );
     };
 
     updateScrollState();
@@ -69,7 +67,10 @@ export default function Navigation() {
   }, [isLanding]);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       role="navigation"
       aria-label="Główna nawigacja"
       className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${isScrolled
@@ -78,13 +79,13 @@ export default function Navigation() {
         }`}
       data-nav-state={isScrolled ? "scrolled" : "top"}
     >
-      <span
+      <motion.span
         aria-hidden="true"
         className={cn(
-          "absolute left-0 right-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 transition-transform duration-300 motion-ease-out",
+          "absolute left-0 right-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600",
           !showScrollProgress && "opacity-0"
         )}
-        style={{ transform: `scaleX(${scrollProgress / 100 || 0})` }}
+        style={{ scaleX }}
       />
       <div className="container-spacing">
         <div className="flex justify-between items-center h-16">
@@ -324,6 +325,6 @@ export default function Navigation() {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

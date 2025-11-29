@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Shield,
@@ -14,20 +13,17 @@ import {
   FileWarning,
   Users,
   CalendarClock,
-  ArrowRight,
   ClipboardList,
 } from "lucide-react";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { APP_URLS } from "@/lib/config";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const orbRef = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const [activeHighlight, setActiveHighlight] = useState(0);
-
-  // ... (Keep existing animation logic for now, or simplify if needed. 
-  // For this rework, I'll keep the tilt effect but refine the visual container)
 
   useEffect(() => {
     const board = boardRef.current;
@@ -72,7 +68,6 @@ export default function HeroSection() {
       const softenedGlow = clampedGlow ** 1.4;
       const glowOpacity = 0.16 + softenedGlow * 0.28;
 
-      // Adjusted shadow for better depth in light mode
       board.style.boxShadow =
         softenedGlow > 0.02
           ? `0 35px 70px -40px rgba(16, 185, 129, ${glowOpacity.toFixed(3)})`
@@ -272,55 +267,88 @@ export default function HeroSection() {
     return () => window.clearInterval(interval);
   }, [prefersReducedMotion, highlightCount]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section id="hero" className="relative section-padding overflow-hidden">
       {/* Refined Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-emerald-50/50 via-white to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950" />
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-emerald-400/10 rounded-full blur-[120px] dark:bg-emerald-500/10" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] dark:bg-blue-500/10" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-emerald-400/10 rounded-full blur-[120px] dark:bg-emerald-500/10"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+          className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] dark:bg-blue-500/10"
+        />
       </div>
 
       <div className="container-spacing relative z-10 px-6 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-10">
+          <motion.div
+            className="space-y-10"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="space-y-6">
-              <div
+              <motion.div
                 className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200"
-                data-animate="rise"
+                variants={itemVariants}
               >
                 <ShieldCheck className="h-4 w-4" />
                 <span>Automatyczna Tarcza Prawna</span>
-              </div>
+              </motion.div>
 
-              <h1
+              <motion.h1
                 className="heading-display font-bold text-slate-900 dark:text-white"
-                data-animate="headline"
-                data-animate-once
+                variants={itemVariants}
                 data-testid="text-hero-title"
               >
                 Twój Cyfrowy{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-300">
                   Pomocnik
                 </span>
-              </h1>
-              <p
+              </motion.h1>
+              <motion.p
                 className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed copy-max"
-                data-animate="rise"
-                data-animate-delay="120"
-                data-animate-once
+                variants={itemVariants}
                 data-testid="text-hero-subtitle"
               >
                 Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent,
                 który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.
-              </p>
+              </motion.p>
             </div>
 
-            <div
+            <motion.div
               className="flex flex-col items-stretch text-center sm:text-left sm:flex-row sm:items-center sm:justify-start gap-4"
-              data-animate="rise"
-              data-animate-delay="200"
-              data-animate-once
+              variants={itemVariants}
             >
               <span className="cta-glow w-full sm:w-auto">
                 <Button
@@ -352,9 +380,12 @@ export default function HeroSection() {
                 <Play className="w-5 h-5 mr-2" />
                 Zobacz demo
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="pt-4 border-t border-slate-200 dark:border-white/10">
+            <motion.div
+              className="pt-4 border-t border-slate-200 dark:border-white/10"
+              variants={itemVariants}
+            >
               <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">
                 Zaufali nam franczyzobiorcy z całej Polski:
               </p>
@@ -369,11 +400,16 @@ export default function HeroSection() {
                   <span className="font-semibold text-slate-700 dark:text-slate-300">0 Mandatów</span>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           <div className="relative hidden md:block perspective-1000">
-            <div className="relative isolate mx-auto w-full max-w-[460px]">
+            <motion.div
+              className="relative isolate mx-auto w-full max-w-[460px]"
+              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               <div
                 ref={orbRef}
                 className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[460px] rounded-full bg-emerald-400/20 blur-[80px] opacity-60 hero-orb mix-blend-multiply dark:mix-blend-screen dark:bg-emerald-500/30"
@@ -382,14 +418,14 @@ export default function HeroSection() {
 
               <div
                 ref={boardRef}
-                data-animate="scale"
-                data-animate-delay="120"
-                data-animate-once
                 className="relative w-full"
               >
-                <div
+                <motion.div
                   className="absolute -top-6 -right-6 z-20 rounded-2xl bg-white dark:bg-slate-800 p-4 shadow-xl badge-pulse border border-slate-100 dark:border-slate-700"
                   data-testid="stress-indicator"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.5 }}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
@@ -400,7 +436,7 @@ export default function HeroSection() {
                       <p className="text-sm font-bold text-slate-900 dark:text-white">Kontrola PIP za 2 dni!</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 <div className="rounded-[32px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-2xl p-6 sm:p-8 transition-transform duration-500 ease-out will-change-transform">
                   <div className="space-y-6">
@@ -425,13 +461,13 @@ export default function HeroSection() {
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {chaoticWeek.map(
                         ({ day, person, issue, accent, icon: Icon }, index) => (
-                          <div
+                          <motion.div
                             key={day}
                             className={`rounded-xl p-3 text-xs leading-tight border ${accent} transition-all duration-300 hover:scale-105 hover:shadow-md cursor-default`}
                             data-testid={`schedule-tile-${index}`}
-                            data-animate="rise"
-                            data-animate-delay={`${index * 60 + 200}`}
-                            data-animate-once
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.8 + index * 0.1, duration: 0.3 }}
                           >
                             <div className="flex items-center justify-between mb-2 opacity-80">
                               <span className="font-semibold">{day}</span>
@@ -441,7 +477,7 @@ export default function HeroSection() {
                             <p className="text-[10px] opacity-90 font-medium">
                               {issue}
                             </p>
-                          </div>
+                          </motion.div>
                         )
                       )}
                     </div>
@@ -454,12 +490,10 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-

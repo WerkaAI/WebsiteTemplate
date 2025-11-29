@@ -59,8 +59,8 @@ export default function RootLayout({
         >
           Przejdź do treści
         </a>
-        <Providers>
-          <JsonLd />
+        <Providers nonce={nonce}>
+          <JsonLd nonce={nonce} />
           <main id="main-content">
             {children}
           </main>

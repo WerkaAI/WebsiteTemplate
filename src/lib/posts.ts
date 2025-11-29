@@ -1,25 +1,15 @@
-import { z } from 'zod'
 import {
   getAllEntries,
   getCollectionSlugs,
   loadEntry,
-  type BaseMeta,
   type CollectionEntry,
 } from '@/lib/mdx-collection'
+import { BlogPostSchema, type BlogPostFrontmatter } from '@/lib/mdx/schemas'
 
 const BLOG_DIR = 'blog'
 
-const BlogMetaSchema = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  date: z.string(),
-  tags: z.array(z.string()).optional(),
-  cover: z.string().optional(),
-  draft: z.boolean().optional(),
-  readTime: z.string().optional(),
-})
+export type BlogMeta = BlogPostFrontmatter
 
-export type BlogMeta = z.infer<typeof BlogMetaSchema>
 
 // Legacy interface for compatibility with older imports
 export interface BlogPost extends BlogMeta {
@@ -33,7 +23,7 @@ export async function getAllSlugs(): Promise<string[]> {
 export async function loadPost(slug: string) {
   const { Component, meta } = await loadEntry<BlogMeta>(slug, {
     dir: BLOG_DIR,
-    schema: BlogMetaSchema,
+    schema: BlogPostSchema,
     importModule: async currentSlug => {
       try {
         const mod = await import(`../../content/${BLOG_DIR}/${currentSlug}.mdx`)
@@ -57,6 +47,6 @@ export async function loadPost(slug: string) {
 
 export async function getAllPosts(): Promise<Array<CollectionEntry<BlogMeta>>> {
   return getAllEntries<BlogMeta>(BLOG_DIR, {
-    schema: BlogMetaSchema,
+    schema: BlogPostSchema,
   })
 }

@@ -11,27 +11,63 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function FeaturesBento() {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-24 relative overflow-hidden flex flex-col items-center">
             {/* Background Elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="container-spacing relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground" data-animate="rise">
+            <div className="container-spacing relative z-10 w-full">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={containerVariants}
+                >
+                    <motion.h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground" variants={itemVariants}>
                         Wszystko, czego potrzebujesz do <span className="text-emerald-600 dark:text-emerald-400">spokojnego snu</span>
-                    </h2>
-                    <p className="text-xl text-muted-foreground" data-animate="rise" data-animate-delay="100">
+                    </motion.h2>
+                    <motion.p className="text-xl text-muted-foreground" variants={itemVariants}>
                         Zastąp chaos w Excelu inteligentnym systemem, który dba o prawo pracy za Ciebie.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(280px,auto)]">
 
                     {/* Feature 1: Automation (Large) */}
-                    <div className="md:col-span-2 rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="200">
+                    <motion.div
+                        className="md:col-span-2 rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        whileHover={{ scale: 1.01, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+                    >
                         <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                             <BrainCircuit className="w-64 h-64" />
                         </div>
@@ -50,10 +86,17 @@ export default function FeaturesBento() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Feature 2: Legal Shield (Tall) */}
-                    <div className="md:row-span-2 rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="300">
+                    <motion.div
+                        className="md:row-span-2 rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        whileHover={{ scale: 1.01, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+                    >
                         <div className="absolute bottom-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                             <Shield className="w-48 h-48" />
                         </div>
@@ -84,10 +127,17 @@ export default function FeaturesBento() {
                                 <p className="text-sm text-blue-900 dark:text-blue-100 font-medium">Zero mandatów PIP u naszych klientów</p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Feature 3: Team App (Medium) */}
-                    <div className="rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="400">
+                    <motion.div
+                        className="rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+                    >
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-6 dark:bg-purple-500/20 dark:text-purple-300">
                                 <Users className="w-6 h-6" />
@@ -100,10 +150,17 @@ export default function FeaturesBento() {
                                 Zobacz więcej <ArrowRight className="w-4 h-4" />
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Feature 4: Documents (Medium) */}
-                    <div className="rounded-3xl glass-premium p-6 md:p-10 relative overflow-hidden group" data-animate="rise" data-animate-delay="500">
+                    <motion.div
+                        className="rounded-3xl glass-premium p-6 md:p-10 relative overflow-hidden group"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+                    >
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-6 dark:bg-amber-500/20 dark:text-amber-300">
                                 <FileCheck className="w-6 h-6" />
@@ -116,18 +173,24 @@ export default function FeaturesBento() {
                                 Zobacz przykłady <ArrowRight className="w-4 h-4" />
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
 
-                <div className="mt-16 text-center" data-animate="rise" data-animate-delay="600">
+                <motion.div
+                    className="mt-16 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                >
                     <Button size="lg" className="rounded-full px-8 h-12 text-base shadow-lg shadow-emerald-500/20" asChild>
                         <Link href="/funkcje">
                             Poznaj wszystkie funkcje
                             <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
                     </Button>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

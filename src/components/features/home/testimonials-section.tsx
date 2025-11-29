@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -29,29 +30,63 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="container-spacing relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground" data-animate="rise">
-            Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">Franczyzobiorcy</span>
-          </h2>
-          <p className="text-xl text-muted-foreground" data-animate="rise" data-animate-delay="100">
-            Dołącz do grona zadowolonych właścicieli sklepów Żabka.
-          </p>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
 
-        <div className="grid md:grid-cols-3 gap-8">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <section className="py-24 relative overflow-hidden flex flex-col items-center">
+      <div className="container-spacing relative z-10 w-full">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4 w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <motion.h2 className="text-3xl md:text-4xl font-bold text-foreground" variants={itemVariants}>
+            Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">Franczyzobiorcy</span>
+          </motion.h2>
+          <motion.p className="text-xl text-muted-foreground" variants={itemVariants}>
+            Dołącz do grona zadowolonych właścicieli sklepów Żabka.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+        >
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={index}
               className="relative group"
-              data-animate="rise"
-              data-animate-delay={`${index * 100 + 200}`}
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <Card className="h-full glass-premium border-0 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <Card className="h-full glass-premium border-0 relative overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <CardContent className="p-8 flex flex-col h-full">
                   <Quote className="w-10 h-10 text-emerald-500/20 mb-6" />
 
@@ -82,9 +117,9 @@ export default function TestimonialsSection() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

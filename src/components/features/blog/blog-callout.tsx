@@ -2,7 +2,7 @@ import React from "react";
 import { AlertCircle, Info, Lightbulb, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type CalloutType = "info" | "warning" | "tip" | "success";
+type CalloutType = "info" | "warning" | "tip" | "success" | "note";
 
 interface BlogCalloutProps {
     type?: CalloutType;
@@ -38,6 +38,13 @@ const styles = {
         icon: CheckCircle,
         iconColor: "text-green-500",
         titleColor: "text-green-700 dark:text-green-300",
+    },
+    note: {
+        border: "border-slate-500/20",
+        bg: "bg-slate-500/5",
+        icon: Info,
+        iconColor: "text-slate-500",
+        titleColor: "text-slate-700 dark:text-slate-300",
     },
 };
 

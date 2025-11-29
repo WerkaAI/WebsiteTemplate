@@ -9,6 +9,13 @@ import { BlogGrid } from '@/components/features/blog/blog-grid'
 import { BlogGridCard } from '@/components/features/blog/blog-grid-card'
 
 import { TutorialStep } from '@/components/features/tutorial/tutorial-step'
+import { InteractiveChecklist } from '@/components/mdx/interactive-checklist'
+import { ProgressBar } from '@/components/mdx/progress-bar'
+import { FAQAccordion } from '@/components/mdx/faq-accordion'
+import { Tip } from '@/components/mdx/tip'
+import { VideoPlayer } from '@/components/mdx/video-player'
+import { MDXTabs } from '@/components/mdx/tabs'
+import { Callout } from '@/components/mdx/callout'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props
@@ -53,6 +60,13 @@ export function useMDXComponents(components: any) {
     BlogGrid,
     BlogGridCard,
     TutorialStep,
+    InteractiveChecklist,
+    ProgressBar,
+    FAQAccordion,
+    Tip,
+    VideoPlayer,
+    Tabs: MDXTabs,
+    Callout,
     ...components,
   };
 }
