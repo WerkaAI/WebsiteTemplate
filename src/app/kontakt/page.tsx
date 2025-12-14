@@ -5,6 +5,7 @@ import { ArrowLeft, Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight } from
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ContactForm from '@/components/features/contact/contact-form';
+import { PolandMap } from '@/components/features/contact/poland-map';
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import { useEffect } from 'react';
@@ -46,11 +47,11 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24">
+      <section className="relative pt-12 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/10 blur-[120px] rounded-full" />
         </div>
@@ -182,20 +183,8 @@ export default function ContactPage() {
 
             {/* Map Visual */}
             <div className="rounded-3xl glass-premium p-1 overflow-hidden relative h-48 group">
-              <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                {/* Abstract Map Pattern */}
-                <div className="opacity-10 w-full h-full" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-4 h-4 bg-emerald-500 rounded-full animate-ping absolute inset-0" />
-                    <div className="w-4 h-4 bg-emerald-500 rounded-full relative z-10 border-2 border-white dark:border-slate-900" />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-0 right-0 text-center">
-                  <span className="text-xs font-semibold text-emerald-600 bg-white/80 dark:bg-slate-900/80 px-3 py-1 rounded-full backdrop-blur-sm">
-                    Obsługujemy całą Polskę
-                  </span>
-                </div>
+              <div className="absolute inset-0 bg-slate-100 dark:bg-slate-800">
+                <PolandMap />
               </div>
             </div>
 

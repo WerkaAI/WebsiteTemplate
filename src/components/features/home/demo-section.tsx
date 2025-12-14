@@ -26,7 +26,7 @@ export default function DemoSection() {
               Zobacz krótkie wideo i przekonaj się, jak prosta jest AutoŻaba.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-2 md:space-y-4">
               {[
                 "Logowanie i import pracowników",
                 "Definiowanie reguł i preferencji",
@@ -35,7 +35,7 @@ export default function DemoSection() {
               ].map((step, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm md:gap-4 md:p-4"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

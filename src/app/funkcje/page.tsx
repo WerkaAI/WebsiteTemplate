@@ -40,11 +40,11 @@ export const metadata: Metadata = {
 
 export default function FunkcjePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section className="relative pt-12 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-emerald-50/50 via-white to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950" />
@@ -361,49 +361,7 @@ export default function FunkcjePage() {
         </div>
       </section>
 
-      {/* --- CTA --- */}
-      <section className="section-padding overflow-hidden">
-        <div className="container-spacing">
-          <div className="relative rounded-[2.5rem] bg-slate-900 px-6 py-20 text-center shadow-2xl sm:px-16 overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.2),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.2),transparent_50%)]" />
 
-            <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-              <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                Gotowy na rewolucję w zarządzaniu?
-              </h2>
-              <p className="text-lg text-slate-300">
-                Dołącz do grona franczyzobiorców, którzy odzyskali kontrolę nad swoim czasem.
-                Przetestuj AutoŻabę przez 14 dni za darmo.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <Button
-                  size="lg"
-                  className="h-14 px-8 text-lg rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/25 w-full sm:w-auto"
-                  asChild
-                >
-                  <Link href="https://app.autozaba.pl/register">
-                    Rozpocznij trial
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-14 px-8 text-lg rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white w-full sm:w-auto"
-                  asChild
-                >
-                  <Link href="/kontakt">
-                    Porozmawiaj z nami
-                  </Link>
-                </Button>
-              </div>
-              <p className="text-sm text-slate-500 mt-6">
-                Bez konieczności podawania karty kredytowej. Anuluj w każdej chwili.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>

@@ -15,8 +15,8 @@ const testimonials = [
   },
   {
     name: "Polina",
-    role: "Franczyzobiorca, Poznań",
-    content: "Bałam się kontroli PIP, bo ciągle coś się zmieniało w przepisach. Teraz śpię spokojnie, bo system pilnuje wszystkiego za mnie.",
+    role: "Franczyzobiorca, Wrocław",
+    content: "Autożabę wdrożyłam od pierwszego dnia prowadzenia sklepu i do dziś jestem zachwycona - wszystko działa pewnie i bez stresu.",
     rating: 5,
     avatar: "/illustrations/testimonials/polina64.png"
   },

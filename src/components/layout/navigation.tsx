@@ -22,7 +22,7 @@ export default function Navigation() {
   const isBlogRoute = pathname.startsWith("/blog");
   const isTutorialRoute = pathname.startsWith("/tutoriale");
   const isContactRoute = pathname.startsWith("/kontakt");
-  const showScrollProgress = isLanding;
+  const showScrollProgress = true;
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {

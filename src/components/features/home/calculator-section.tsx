@@ -141,7 +141,7 @@ export default function CalculatorSection() {
                       }
                       min="1"
                       max="5"
-                      className="floating-input peer"
+                      className="floating-input peer h-14 text-base px-4"
                       data-testid="input-calculator-shops"
                     />
                     <Label htmlFor={shopsFieldId} className="floating-label">
@@ -171,7 +171,7 @@ export default function CalculatorSection() {
                       }
                       min="1"
                       max="30"
-                      className="floating-input peer"
+                      className="floating-input peer h-14 text-base px-4"
                       data-testid="input-calculator-hours"
                     />
                     <Label htmlFor={hoursFieldId} className="floating-label">

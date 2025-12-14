@@ -185,40 +185,7 @@ export default function BlogListing({ posts }: BlogListingProps) {
         </div>
       )}
 
-      {/* Newsletter Signup */}
-      <div className="relative mt-24 overflow-hidden rounded-3xl bg-white px-6 py-16 text-center shadow-2xl sm:px-16 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.15),transparent_50%)]" />
 
-        <div className="relative z-10 max-w-2xl mx-auto">
-          <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-emerald-100 text-emerald-600 mb-6 dark:bg-emerald-500/20 dark:text-emerald-400">
-            <Mail className="h-6 w-6" />
-          </div>
-
-          <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-            Bądź na bieżąco z prawem pracy
-          </h3>
-          <p className="text-slate-600 dark:text-slate-300 mb-8 text-lg">
-            Otrzymuj najnowsze artykuły o Kodeksie Pracy, praktyczne checklisty i ostrzeżenia
-            o zmianach w prawie. Bez spamu, tylko wartościowe treści.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Twój adres email"
-              className="h-12 bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 dark:bg-white/10 dark:border-white/20 dark:text-white dark:placeholder:text-white/50 dark:focus:bg-white/20 transition-all"
-            />
-            <Button className="h-12 px-8 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg shadow-emerald-500/25">
-              Zapisz się
-            </Button>
-          </div>
-
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-6">
-            Zapisując się, otrzymasz darmowy e-book <span className="text-emerald-600 dark:text-emerald-400 font-medium">&quot;10 Najczęstszych Błędów w Grafikach&quot;</span>
-          </p>
-        </div>
-      </div>
     </div>
   );
 }

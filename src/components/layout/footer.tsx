@@ -9,14 +9,6 @@ import { motion } from "framer-motion";
 export default function Footer() {
   const footerSections = [
     {
-      title: "Produkt",
-      links: [
-        { label: "Funkcje", href: "/funkcje" },
-        { label: "Cennik", href: "/cennik" },
-        { label: "Demo", href: "#demo" },
-      ],
-    },
-    {
       title: "Zasoby",
       links: [{ label: "Blog", href: "/blog" }],
     },
@@ -25,8 +17,10 @@ export default function Footer() {
       links: [
         { label: "Tutoriale", href: "/tutoriale" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
-        { label: "Formularz DSA", href: "https://forms.gle/1bwP5z2WFdsrkT55A" },
-        { label: "Zgłoś sugestię", href: "mailto:autozaba@ainything.pl" },
+        // { label: "Formularz DSA", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1" }, // Updated per request logic but cleaner to just have it in the array. Wait, user said generic DSA form? "Klikając 'Formularz DSA' chciałbym abyśmy otwierali nowy tab". 
+        // Current href is https://forms.gle/1bwP5z2WFdsrkT55A. I will keep the href but ensure it opens in new tab.
+        { label: "Formularz DSA", href: "https://forms.gle/1bwP5z2WFdsrkT55A", target: "_blank" },
+        { label: "Zgłoś sugestię", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1", target: "_blank" },
       ],
     },
     {
@@ -90,7 +84,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-muted text-foreground py-12 dark:bg-slate-950 dark:text-slate-100">
-      <div className="container-spacing space-y-12">
+      <div className="container-spacing space-y-8">
         <motion.div
           className="grid gap-10 md:grid-cols-5"
           initial="hidden"
@@ -166,6 +160,8 @@ export default function Footer() {
                       ) : (
                         <a
                           href={link.href}
+                          target={(link as any).target || undefined}
+                          rel={(link as any).target === "_blank" ? "noopener noreferrer" : undefined}
                           className="footer-link hover:text-foreground transition-colors"
                           data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                         >
@@ -216,6 +212,8 @@ export default function Footer() {
                       ) : (
                         <a
                           href={link.href}
+                          target={(link as any).target || undefined}
+                          rel={(link as any).target === "_blank" ? "noopener noreferrer" : undefined}
                           className="footer-link hover:text-foreground transition-colors"
                           data-testid={`link-footer-${sectionIndex}-${linkIndex}`}
                         >

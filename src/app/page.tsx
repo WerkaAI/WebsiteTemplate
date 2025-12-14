@@ -16,21 +16,21 @@ import { getCspNonce } from "@/lib/security/csp";
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'AutoŻaba - Twój Cyfrowy Pomocnik | Automatyzacja Sklepu i Tarcza Prawna',
-    description: 'AutoŻaba to Twój Cyfrowy Pomocnik w sklepie. Automatyzuje grafiki, chroni przed karami PIP (Tarcza Prawna) i pomaga w zarządzaniu Żabką.',
+    description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.',
     alternates: {
       canonical: '/'
     },
     openGraph: {
       title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-      description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
+      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
       type: 'website',
-      images: ['/og-image.jpg']
+      images: ['/blog-illustrations/jak-wdrazamy.png']
     },
     twitter: {
       card: 'summary_large_image',
       title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-      description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
-      images: ['/og-image.jpg']
+      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
+      images: ['/blog-illustrations/jak-wdrazamy.png']
     }
   }
 }

@@ -80,10 +80,10 @@ type PlanCardProps = {
 function PlanCard({ plan }: PlanCardProps) {
   const isExternal = !plan.disabled && plan.ctaHref.startsWith('http')
   const cardClasses = cn(
-    'relative flex h-full flex-col rounded-3xl p-8 transition-all duration-300',
+    'relative flex h-full flex-col rounded-3xl p-8 transition-all duration-300 backdrop-blur-xl border border-emerald-900/10 bg-white/60 dark:bg-white/5 dark:border-white/10 shadow-xl !overflow-visible',
     plan.isFeatured
-      ? 'glass-premium ring-1 ring-emerald-400/40 lg:-translate-y-4 shadow-2xl z-10'
-      : 'glass-premium hover:border-emerald-300/60 hover:-translate-y-1'
+      ? 'ring-1 ring-emerald-400/40 shadow-2xl z-10'
+      : 'hover:border-emerald-300/60 hover:-translate-y-1'
   )
 
   return (
@@ -204,7 +204,7 @@ export default function PricingPage() {
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid gap-8 lg:grid-cols-3 items-start max-w-6xl mx-auto">
+          <div className="grid gap-8 lg:grid-cols-3 items-stretch max-w-6xl mx-auto">
             {pricingPlans.map((plan) => (
               <PlanCard key={plan.id} plan={plan} />
             ))}
@@ -352,48 +352,7 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-emerald-600 px-6 py-16 text-center shadow-2xl sm:px-16">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_50%)]" />
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                Gotowy, by odzyskać kontrolę?
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg text-emerald-100">
-                Dołącz do programu Early Adopters i zyskaj dostęp do pełnej automatyzacji przed innymi.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
-                {heroPrimaryHref.startsWith('http') ? (
-                  <a
-                    href={heroPrimaryHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-emerald-900 shadow-lg transition hover:bg-emerald-50"
-                  >
-                    {heroPrimaryLabel}
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link
-                    href={heroPrimaryHref}
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-emerald-900 shadow-lg transition hover:bg-emerald-50"
-                  >
-                    {heroPrimaryLabel}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
-                <Link
-                  href="/kontakt"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-emerald-700/50 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-emerald-700"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  Umów rozmowę
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

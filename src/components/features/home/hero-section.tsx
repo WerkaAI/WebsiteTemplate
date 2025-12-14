@@ -291,7 +291,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative section-padding overflow-hidden">
+    <section id="hero" className="relative pt-12 pb-20 lg:py-32 overflow-hidden">
       {/* Refined Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-emerald-50/50 via-white to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950" />

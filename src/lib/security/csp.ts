@@ -4,7 +4,7 @@ import { headers as nextHeaders } from "next/headers";
 
 import { buildSecurityHeaders } from "./headers";
 
-export const CSP_NONCE_HEADER = "x-csp-nonce";
+export const CSP_NONCE_HEADER = "x-nonce";
 
 export type CspMode = "enforce" | "report-only" | "dual";
 

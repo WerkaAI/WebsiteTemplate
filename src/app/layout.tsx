@@ -14,8 +14,12 @@ export const metadata: Metadata = {
     default: 'AutoŻaba - Twój Cyfrowy Pomocnik w Sklepie | Automatyzacja i Tarcza Prawna',
     template: '%s | AutoŻaba - Cyfrowy Pomocnik'
   },
-  description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój cyfrowy pomocnik, który automatyzuje grafiki, chroni przed karami PIP (Tarcza Prawna) i daje spokój ducha.',
-  keywords: ['Cyfrowy Pomocnik Żabki', 'Asystent Żabki', 'Automatyzacja Żabki', 'Tarcza Prawna Żabka', 'zarządzanie żabką', 'pomoc w żabce', 'grafiki żabka'],
+  description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.',
+  keywords: [
+    'autozaba', 'zaba', 'zabka', 'zabka polska', 'franczyzobiorca zabka',
+    'Cyfrowy Pomocnik Żabki', 'Asystent Żabki', 'Automatyzacja Żabki',
+    'Tarcza Prawna Żabka', 'zarządzanie żabką', 'pomoc w żabce', 'grafiki żabka'
+  ],
   authors: [{ name: 'AutoŻaba Team' }],
   creator: 'AutoŻaba',
   openGraph: {
@@ -34,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-    description: 'Automatyzacja grafików i Tarcza Prawna dla Twojego sklepu.',
+    description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
     images: ['/blog-illustrations/jak-wdrazamy.png'],
   }
 }

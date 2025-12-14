@@ -35,6 +35,7 @@ const IMAGE_DOMAINS = [
   "https://images.unsplash.com",
   "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
   "https://img.youtube.com",
+  "https://i.ytimg.com",
 ] as const;
 
 const SCRIPT_DOMAINS = [
