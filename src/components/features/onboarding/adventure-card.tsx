@@ -136,6 +136,7 @@ export function AdventureCard({
                                     onToggle={onToggleQuest}
                                     steps={quest.steps}
                                     media={quest.media}
+                                    mediaVariants={quest.mediaVariants}
                                     difficulty={quest.difficulty}
                                     deepLink={quest.deepLink}
                                     canSkip={quest.canSkip}

@@ -160,7 +160,7 @@ export function CheatSheetPanel({ isOpen, onClose }: CheatSheetPanelProps) {
                             {displayQuests.length === 0 ? (
                                 <div className="text-center py-12 text-muted-foreground">
                                     <Search className="w-12 h-12 mx-auto mb-3 opacity-30" />
-                                    <p>Brak wyników dla "{searchQuery}"</p>
+                                    <p>Brak wyników dla &ldquo;{searchQuery}&rdquo;</p>
                                     <p className="text-sm mt-1">Spróbuj innego słowa kluczowego</p>
                                 </div>
                             ) : (

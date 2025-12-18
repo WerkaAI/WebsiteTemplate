@@ -1,11 +1,96 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Clock, ChevronDown, Play, Image as ImageIcon, ExternalLink, Star, FastForward } from 'lucide-react';
+import { Check, Clock, ChevronDown, Play, Image as ImageIcon, ExternalLink, Star, FastForward, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import type { QuestStep, QuestMedia } from '@/lib/onboarding/onboarding-content';
+import type { QuestStep, QuestMedia, QuestMediaVariant } from '@/lib/onboarding/onboarding-content';
+
+// Lazy-loaded video component with IntersectionObserver
+function LazyVideo({ src, alt, poster }: { src: string; alt: string; poster?: string }) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasError, setHasError] = useState(false);
+
+    // IntersectionObserver - only load video when visible
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect(); // Stop observing once visible
+                }
+            },
+            { threshold: 0.1, rootMargin: '50px' }
+        );
+
+        observer.observe(container);
+        return () => observer.disconnect();
+    }, []);
+
+    // Start playing when loaded
+    useEffect(() => {
+        if (isLoaded && videoRef.current) {
+            videoRef.current.play().catch(() => {
+                // Autoplay may be blocked, that's OK
+            });
+        }
+    }, [isLoaded]);
+
+    return (
+        <div
+            ref={containerRef}
+            className="relative aspect-video rounded-lg overflow-hidden bg-muted"
+        >
+            {/* Loading skeleton */}
+            {!isLoaded && !hasError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted animate-pulse">
+                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                        <Loader2 className="w-8 h-8 animate-spin" />
+                        <span className="text-xs">Ładowanie...</span>
+                    </div>
+                </div>
+            )}
+
+            {/* Error state */}
+            {hasError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                    <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                        <Play className="w-8 h-8" />
+                        <span className="text-xs">Nie udało się załadować wideo</span>
+                    </div>
+                </div>
+            )}
+
+            {/* Video - only loads when visible */}
+            {isVisible && !hasError && (
+                <video
+                    ref={videoRef}
+                    src={src}
+                    poster={poster}
+                    preload="none"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    onLoadedData={() => setIsLoaded(true)}
+                    onError={() => setHasError(true)}
+                    className={cn(
+                        'w-full h-full object-contain transition-opacity duration-300',
+                        isLoaded ? 'opacity-100' : 'opacity-0'
+                    )}
+                    aria-label={alt}
+                />
+            )}
+        </div>
+    );
+}
 
 interface QuestItemProps {
     id: string;
@@ -18,6 +103,8 @@ interface QuestItemProps {
     steps?: QuestStep[];
     /** Media content (screenshot, gif, video) */
     media?: QuestMedia;
+    /** Conditional media variants (e.g. Android vs iOS) */
+    mediaVariants?: QuestMediaVariant[];
     /** Difficulty level 1-3 */
     difficulty?: 1 | 2 | 3;
     /** Deep link to app */
@@ -54,12 +141,17 @@ export function QuestItem({
     onToggle,
     steps,
     media,
+    mediaVariants,
     difficulty,
     deepLink,
     canSkip = true,
     autoComplete = false,
 }: QuestItemProps) {
     const [isExpanded, setIsExpanded] = useState(false);
+    // State for media variants (defaults to first variant id if available)
+    const [activeVariantId, setActiveVariantId] = useState<string | null>(
+        mediaVariants && mediaVariants.length > 0 ? mediaVariants[0].id : null
+    );
 
     // Auto-complete quests are non-interactive (just display)
     if (autoComplete && isCompleted) {
@@ -85,10 +177,16 @@ export function QuestItem({
         setIsExpanded(!isExpanded);
     };
 
+    // ... (handleCheckboxClick remains same)
     const handleCheckboxClick = (e: React.MouseEvent) => {
         e.stopPropagation();
         onToggle(id);
     };
+
+    // Resolve active media: either from active variant or default media
+    const activeMedia = mediaVariants
+        ? mediaVariants.find(v => v.id === activeVariantId)?.media
+        : media;
 
     return (
         <motion.div
@@ -110,7 +208,7 @@ export function QuestItem({
                 )}
                 aria-expanded={isExpanded}
             >
-                {/* Checkbox - larger on mobile for better touch target */}
+                {/* ... (Checkbox and header content remain same) */}
                 <div
                     onClick={handleCheckboxClick}
                     role="checkbox"
@@ -186,12 +284,34 @@ export function QuestItem({
                         className="overflow-hidden"
                     >
                         <div className="px-4 pb-4 pt-2 border-t border-border/50">
+
+                            {/* Media Variants Tabs */}
+                            {mediaVariants && mediaVariants.length > 0 && (
+                                <div className="flex gap-2 mb-3">
+                                    {mediaVariants.map((variant) => (
+                                        <button
+                                            key={variant.id}
+                                            onClick={() => setActiveVariantId(variant.id)}
+                                            className={cn(
+                                                'px-3 py-1.5 text-xs font-medium rounded-full transition-all border',
+                                                activeVariantId === variant.id
+                                                    ? 'bg-brand-green text-white border-brand-green shadow-sm'
+                                                    : 'bg-card text-muted-foreground border-border hover:border-brand-green/50'
+                                            )}
+                                        >
+                                            {variant.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+
                             {/* Media section */}
                             <div className="mb-4">
-                                <MediaPlaceholder media={media} questId={id} />
+                                <MediaPlaceholder media={activeMedia} questId={id} />
                             </div>
 
                             {/* Steps section */}
+                            {/* ... (rest remains same) */}
                             <div className="space-y-3">
                                 <h5 className="text-sm font-semibold text-foreground flex items-center gap-2">
                                     📋 Krok po kroku
@@ -279,18 +399,10 @@ export function QuestItem({
 // Media placeholder component
 function MediaPlaceholder({ media, questId }: { media?: QuestMedia; questId: string }) {
     if (media) {
+        // ... (remains same)
         // Real media content
         if (media.type === 'video') {
-            return (
-                <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
-                    <video
-                        src={media.src}
-                        controls
-                        className="w-full h-full object-cover"
-                        aria-label={media.alt}
-                    />
-                </div>
-            );
+            return <LazyVideo key={media.src} src={media.src} alt={media.alt} poster={media.poster} />;
         }
         return (
             <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
@@ -313,7 +425,7 @@ function MediaPlaceholder({ media, questId }: { media?: QuestMedia; questId: str
                 <Play className="w-8 h-8" />
             </div>
             <p className="text-sm text-muted-foreground text-center px-4">
-                📸 Tutaj pojawi się screenshot lub GIF
+                📸 Wybierz wariant powyżej aby zobaczyć wideo
                 <br />
                 <span className="text-xs opacity-70">
                     (ID: {questId})

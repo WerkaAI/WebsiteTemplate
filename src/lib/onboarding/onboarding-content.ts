@@ -16,6 +16,14 @@ export interface QuestMedia {
     src: string;
     /** Alt text for accessibility */
     alt: string;
+    /** Optional poster image for video (shown before loaded) */
+    poster?: string;
+}
+
+export interface QuestMediaVariant {
+    id: string;
+    label: string;
+    media: QuestMedia;
 }
 
 export interface Quest {
@@ -32,6 +40,8 @@ export interface Quest {
     steps?: QuestStep[];
     /** Media content - screenshots, GIFs, videos (optional) */
     media?: QuestMedia;
+    /** Conditional media variants (e.g. Android vs iOS) */
+    mediaVariants?: QuestMediaVariant[];
     /** Difficulty level: 1 = easy, 2 = medium, 3 = advanced */
     difficulty?: 1 | 2 | 3;
     /** Deep link to the app feature (optional) */
@@ -101,6 +111,47 @@ export const ADVENTURES: Adventure[] = [
                 canSkip: false,
             },
             {
+                id: 'a0-instalacja',
+                title: 'Instalacja aplikacji (PWA)',
+                description: 'Zainstaluj AutoŻabę na swoim telefonie, aby mieć do niej szybki dostęp.',
+                timeEstimate: 3,
+                keywords: ['instalacja', 'aplikacja', 'telefon', 'pwa', 'android', 'ios', 'iphone'],
+                quickAnswer: 'Otwórz panel.autozaba.pl w przeglądarce telefonu i wybierz "Dodaj do ekranu głównego".',
+                difficulty: 1,
+                mediaVariants: [
+                    {
+                        id: 'android',
+                        label: 'Android (Chrome)',
+                        media: {
+                            type: 'video',
+                            src: '/images/onboarding/a2_pwa.mp4',
+                            alt: 'Instalacja na Android',
+                            poster: '/images/onboarding/poster_android.webp'
+                        }
+                    },
+                    {
+                        id: 'ios',
+                        label: 'iOS (Safari)',
+                        media: {
+                            type: 'video',
+                            src: '/images/onboarding/a2_pwa.mp4',
+                            alt: 'Instalacja na iOS',
+                            poster: '/images/onboarding/poster_ios.webp'
+                        }
+                    }
+                ],
+                steps: [
+                    {
+                        step: 1,
+                        instruction: 'Otwórz panel.autozaba.pl w przeglądarce na telefonie.'
+                    },
+                    {
+                        step: 2,
+                        instruction: 'Wybierz system operacyjny powyżej, aby zobaczyć instrukcję wideo.'
+                    }
+                ]
+            },
+            {
                 id: 'a1-logowanie',
                 title: 'Logowanie do systemu',
                 description: 'Jak zalogować się do AutoŻaba i co zrobić gdy zapomnisz hasła.',
@@ -109,6 +160,11 @@ export const ADVENTURES: Adventure[] = [
                 quickAnswer: 'Wejdź na panel.autozaba.pl i użyj danych otrzymanych w emailu powitalnym.',
                 difficulty: 1,
                 deepLink: 'https://panel.autozaba.pl',
+                media: {
+                    type: 'video',
+                    src: '/images/onboarding/a1_logowanie2.mp4',
+                    alt: 'Film pokazujący jak zalogować się do systemu AutoŻaba'
+                },
             },
             {
                 id: 'a2-jezyk',
@@ -119,6 +175,11 @@ export const ADVENTURES: Adventure[] = [
                 quickAnswer: 'Kliknij ikonę profilu → Ustawienia → Język.',
                 difficulty: 1,
                 deepLink: 'https://panel.autozaba.pl/settings',
+                media: {
+                    type: 'video',
+                    src: '/images/onboarding/a2_zmianajezyka.mp4',
+                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                },
             },
             {
                 id: 'a3-konto',
@@ -128,6 +189,11 @@ export const ADVENTURES: Adventure[] = [
                 keywords: ['konto', 'email', 'hasło', 'profil', 'ustawienia', 'zmiana hasła'],
                 quickAnswer: 'Profil → Ustawienia konta. Tutaj zmienisz email, login i hasło.',
                 difficulty: 1,
+                media: {
+                    type: 'video',
+                    src: '/images/onboarding/a5_ustawieniakonta.mp4',
+                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                },
             },
             {
                 id: 'a4-powiadomienia',
@@ -137,6 +203,11 @@ export const ADVENTURES: Adventure[] = [
                 keywords: ['powiadomienia', 'alerty', 'email', 'push', 'notyfikacje'],
                 quickAnswer: 'Ustawienia → Powiadomienia. Włącz/wyłącz poszczególne typy alertów.',
                 difficulty: 1,
+                media: {
+                    type: 'video',
+                    src: '/images/onboarding/a6_powiadomienia.mp4',
+                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                },
             },
         ],
     },
