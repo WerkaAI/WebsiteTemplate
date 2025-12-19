@@ -6,11 +6,16 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSanitize from "rehype-sanitize";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import {
   mdxSanitizeSchema,
   mdxUrlValidator,
 } from "./src/lib/security/mdx-policy.mjs";
+import {
+  rehypeMdxProtect,
+  rehypeMdxRestore,
+} from "./src/lib/mdx-sanitization.mjs";
 
 const rehypeMdxJsxToElements = () => (tree) => {
   const convertNode = (node) => {
@@ -20,7 +25,7 @@ const rehypeMdxJsxToElements = () => (tree) => {
       (node.type === "mdxJsxFlowElement" ||
         node.type === "mdxJsxTextElement") &&
       typeof node.name === "string" &&
-      /^[a-z]/.test(node.name)
+      /^[a-z]/i.test(node.name) // Changed to case-insensitive to catch all components
     ) {
       const properties = {};
 
@@ -45,6 +50,8 @@ const rehypeMdxJsxToElements = () => (tree) => {
             }
           }
         }
+        // Preserve original attributes for restoration
+        properties['data-mdx-attributes'] = JSON.stringify(node.attributes);
       }
 
       node.type = "element";
@@ -66,7 +73,7 @@ const rehypeMdxJsxToElements = () => (tree) => {
 
 const withMDX = createMDX({
   options: {
-    providerImportSource: "../../mdx-components",
+    // providerImportSource: "@/mdx-components",
     remarkPlugins: [
       remarkGfm,
       remarkFrontmatter,
@@ -76,7 +83,10 @@ const withMDX = createMDX({
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
       rehypeMdxJsxToElements,
+      rehypeMdxProtect,
+      [rehypePrettyCode, { theme: "github-dark" }],
       [rehypeSanitize, mdxSanitizeSchema],
+      rehypeMdxRestore,
       mdxUrlValidator,
     ],
   },
@@ -87,6 +97,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ["ts", "tsx", "mdx"],
+  poweredByHeader: false,
   env: {
     CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "kontakt@autozaba.pl",
     CONTACT_FROM_EMAIL:

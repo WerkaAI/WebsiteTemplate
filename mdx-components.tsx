@@ -1,5 +1,21 @@
 import React from 'react'
-import { ChecklistItem } from './src/components/mdx/checklist-item'
+import { ChecklistItem } from '@/components/mdx/checklist-item'
+import { BlogHero } from '@/components/features/blog/blog-hero'
+import { BlogSection } from '@/components/features/blog/blog-section'
+import { BlogChecklist } from '@/components/features/blog/blog-checklist'
+import { BlogCallout } from '@/components/features/blog/blog-callout'
+import { TLDR } from '@/components/features/blog/tldr'
+import { BlogGrid } from '@/components/features/blog/blog-grid'
+import { BlogGridCard } from '@/components/features/blog/blog-grid-card'
+
+import { TutorialStep } from '@/components/features/tutorial/tutorial-step'
+import { InteractiveChecklist } from '@/components/mdx/interactive-checklist'
+import { ProgressBar } from '@/components/mdx/progress-bar'
+import { FAQAccordion } from '@/components/mdx/faq-accordion'
+import { Tip } from '@/components/mdx/tip'
+import { VideoPlayer } from '@/components/mdx/video-player'
+import { MDXTabs } from '@/components/mdx/tabs'
+import { Callout } from '@/components/mdx/callout'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props
@@ -32,10 +48,25 @@ export function useMDXComponents(components: any) {
     a: (props: any) => <Anchor {...props} />,
     ul: (props: any) => <ul {...props} />,
     ol: (props: any) => <ol {...props} />,
-  li: (props: any) => <ChecklistItem {...props} />,
+    li: (props: any) => <ChecklistItem {...props} />,
     img: (props: any) => <Img {...props} />,
     pre: (props: any) => <pre {...props} />,
     code: (props: any) => <code {...props} />,
+    BlogHero,
+    BlogSection,
+    BlogChecklist,
+    BlogCallout,
+    TLDR,
+    BlogGrid,
+    BlogGridCard,
+    TutorialStep,
+    InteractiveChecklist,
+    ProgressBar,
+    FAQAccordion,
+    Tip,
+    VideoPlayer,
+    Tabs: MDXTabs,
+    Callout,
     ...components,
   };
 }

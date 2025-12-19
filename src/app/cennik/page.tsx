@@ -1,10 +1,23 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import Navigation from '@/components/layout/navigation'
+import Footer from '@/components/layout/footer'
 import { pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
 import { cn } from '@/lib/utils'
-import { MonitorPlay, UserPlus, CalendarCheck, Timer, ShieldCheck } from 'lucide-react'
+import {
+  MonitorPlay,
+  UserPlus,
+  CalendarCheck,
+  Timer,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Wallet,
+  Rocket,
+  HelpCircle,
+  MessageSquare,
+  Mail
+} from 'lucide-react'
 
 export const metadata: Metadata = {
   description:
@@ -23,7 +36,7 @@ export const metadata: Metadata = {
 
 const onboardingSteps = [
   {
-    title: 'Przedstawienie systemu (30 minut)',
+    title: 'Przedstawienie systemu (30 min)',
     description: 'Prezentacja na tablecie i telefonie w Twoim sklepie.'
   },
   {
@@ -36,21 +49,6 @@ const onboardingSteps = [
   }
 ]
 
-const onboardingMilestones = [
-  {
-    title: 'Demo i plan startowy',
-    description: 'Na żywo na tablecie i telefonie pokazujemy pełny przepływ oraz umawiamy kolejne kroki.'
-  },
-  {
-    title: 'Aktywacja kont i Starter Cards',
-    description: 'Zakładamy konta, przekazujemy instrukcje dla zespołu i zbieramy dostępności pracowników.'
-  },
-  {
-    title: 'Sesja online + check-iny',
-    description: 'Razem z naszym przedstawicielem opublikujesz swój pierwszy grafik na wideorozmowie (Google Meet).'
-  }
-]
-
 const onboardingKit = [
   'Demo konto właściciela i pracownika z instrukcją krok po kroku',
   'Karty Startowe z instrukcjami dla pracowników w 2 językach (PL/UA)',
@@ -59,28 +57,19 @@ const onboardingKit = [
 ]
 
 const onboardingIcons = [MonitorPlay, UserPlus, CalendarCheck]
-const highlightIcons = [Timer, ShieldCheck]
 
 const costSummary = [
   {
-    label: 'Abonament AutoŻaba',
-    value: 'Wkrótce',
-    note: 'Cennik publikujemy po zakończeniu programu Early Adopters.',
-    status: {
-      badge: 'Beta testy',
-      headline: 'Abonament w przygotowaniu',
-      description: 'Trwa program Early Adopters — zostaw kontakt, aby otrzymać ofertę jako pierwszy.'
-    }
-  },
-  {
     label: 'Wdrożenie i szkolenie',
     value: '0 zł',
-    note: 'Prowadzone przez zespół AutoŻaby w ramach abonamentu.'
+    note: 'Prowadzone przez zespół AutoŻaby w ramach abonamentu.',
+    icon: Rocket
   },
   {
     label: 'Opłaty dodatkowe',
     value: '0 zł',
-    note: 'Brak prowizji, opłat za pracownika czy ukrytych kosztów.'
+    note: 'Brak prowizji, opłat za pracownika czy ukrytych kosztów.',
+    icon: Wallet
   }
 ]
 
@@ -91,46 +80,60 @@ type PlanCardProps = {
 function PlanCard({ plan }: PlanCardProps) {
   const isExternal = !plan.disabled && plan.ctaHref.startsWith('http')
   const cardClasses = cn(
-    'relative flex h-full flex-col rounded-3xl border p-8 backdrop-blur transition duration-300',
+    'relative flex h-full flex-col rounded-3xl p-8 transition-all duration-300 backdrop-blur-xl border border-emerald-900/10 bg-white/60 dark:bg-white/5 dark:border-white/10 shadow-xl !overflow-visible',
     plan.isFeatured
-      ? 'border-emerald-500/60 bg-emerald-50 shadow-[0_25px_80px_-45px_rgba(16,185,129,0.45)] ring-1 ring-emerald-400/40 lg:-translate-y-2 dark:border-emerald-400/60 dark:bg-slate-900/95 dark:ring-emerald-400/30 dark:shadow-[0_25px_80px_-45px_rgba(16,185,129,0.6)]'
-      : 'border-slate-200 bg-white hover:border-emerald-300/60 hover:shadow-[0_20px_60px_-45px_rgba(16,185,129,0.35)] dark:border-slate-800 dark:bg-slate-900/70 dark:hover:border-emerald-400/30 dark:hover:bg-slate-900/80'
+      ? 'ring-1 ring-emerald-400/40 shadow-2xl z-10'
+      : 'hover:border-emerald-300/60 hover:-translate-y-1'
   )
 
   return (
-  <article className={cardClasses} aria-label={`Plan ${plan.title}`}>
+    <article className={cardClasses} aria-label={`Plan ${plan.title}`}>
       {plan.badge && (
-        <span className="absolute -top-3 left-6 inline-flex rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-emerald-950 shadow-lg">
-          {plan.badge}
-        </span>
-      )}
-      <div className="flex items-center justify-between gap-4">
-        <span className="inline-flex items-center rounded-full border border-slate-300 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:border-slate-700/80 dark:bg-slate-950/80 dark:text-slate-200">
-          {plan.title}
-        </span>
-        {plan.bestFor && (
-          <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-200" aria-label="Rekomendowana wielkość zespołu">
-            {plan.bestFor}
+        <div className="absolute -top-4 left-0 right-0 flex justify-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/30">
+            <CheckCircle2 className="h-3.5 w-3.5" />
+            {plan.badge}
           </span>
-        )}
+        </div>
+      )}
+
+      <div className="mb-8">
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <span className="inline-flex items-center rounded-full border border-slate-200 bg-white/50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-slate-600 dark:border-slate-700/50 dark:bg-slate-900/50 dark:text-slate-300">
+            {plan.title}
+          </span>
+          {plan.bestFor && (
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-300" aria-label="Rekomendowana wielkość zespołu">
+              {plan.bestFor}
+            </span>
+          )}
+        </div>
+        <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">{plan.headline}</h3>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{plan.description}</p>
       </div>
-      <h3 className="mt-6 text-2xl font-semibold text-slate-900 dark:text-slate-50">{plan.headline}</h3>
-      <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">{plan.description}</p>
-      <div className="mt-6 space-y-1">
-        <p className="text-3xl font-semibold text-emerald-500 dark:text-emerald-300">{plan.priceMonthly}</p>
-        {plan.priceYearly && <p className="text-sm text-slate-500 dark:text-slate-200">{plan.priceYearly} przy rozliczeniu rocznym</p>}
-        {plan.annualNote && <p className="text-xs text-emerald-500 dark:text-emerald-200">{plan.annualNote}</p>}
+
+      <div className="mb-8 space-y-1">
+        <div className="flex items-baseline gap-1">
+          <span className="text-4xl font-bold text-emerald-600 dark:text-emerald-400">{plan.priceMonthly}</span>
+        </div>
+        {plan.priceYearly && <p className="text-sm text-slate-500 dark:text-slate-400">{plan.priceYearly} przy rozliczeniu rocznym</p>}
+        {plan.annualNote && <p className="text-xs font-medium text-emerald-600 dark:text-emerald-300">{plan.annualNote}</p>}
       </div>
-      <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-600 dark:text-slate-200">
-        {plan.highlights.map((highlight) => (
-          <li key={highlight} className="flex items-start gap-3">
-            <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden />
-            <span>{highlight}</span>
-          </li>
-        ))}
-      </ul>
+
+      <div className="flex-1">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent dark:via-slate-700 mb-6" />
+        <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-200">
+          {plan.highlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-3">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-500 dark:text-emerald-400" aria-hidden />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {plan.disabled ? (
-        <span className="mt-8 inline-flex items-center justify-center rounded-xl bg-slate-700/60 px-4 py-2 text-center text-sm font-semibold text-slate-200 opacity-70" aria-disabled>
+        <span className="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-400 cursor-not-allowed dark:bg-slate-800 dark:text-slate-500" aria-disabled>
           {plan.cta}
         </span>
       ) : isExternal ? (
@@ -138,26 +141,30 @@ function PlanCard({ plan }: PlanCardProps) {
           href={plan.ctaHref}
           target="_blank"
           rel="noreferrer"
-          className="mt-8 inline-flex items-center justify-center rounded-xl bg-emerald-400 px-4 py-2 text-center text-sm font-semibold text-emerald-950 shadow-[0_0_40px_rgba(16,185,129,0.35)] transition hover:bg-emerald-300"
+          className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 active:scale-95"
         >
           {plan.cta}
+          <ArrowRight className="h-4 w-4" />
         </a>
       ) : (
         <Link
           href={plan.ctaHref}
-          className="mt-8 inline-flex items-center justify-center rounded-xl bg-emerald-400 px-4 py-2 text-center text-sm font-semibold text-emerald-950 shadow-[0_0_40px_rgba(16,185,129,0.35)] transition hover:bg-emerald-300"
+          className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 active:scale-95"
         >
           {plan.cta}
+          <ArrowRight className="h-4 w-4" />
         </Link>
       )}
 
       {plan.status && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 rounded-3xl bg-slate-950/70 px-6 text-center text-white backdrop-blur-sm">
-          <span className="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-emerald-100">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-3xl bg-slate-900/80 px-6 text-center text-white backdrop-blur-md">
+          <span className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300">
             {plan.status.badge}
           </span>
-          <p className="text-lg font-semibold">{plan.status.headline}</p>
-          <p className="text-sm text-white/80">{plan.status.description}</p>
+          <div>
+            <p className="text-xl font-bold mb-2">{plan.status.headline}</p>
+            <p className="text-sm text-slate-300 leading-relaxed">{plan.status.description}</p>
+          </div>
         </div>
       )}
     </article>
@@ -166,280 +173,186 @@ function PlanCard({ plan }: PlanCardProps) {
 
 export default function PricingPage() {
   const trialPlan = pricingPlans.find((plan) => plan.id === 'trial')
-  const featuredPlan = pricingPlans.find((plan) => plan.isFeatured)
   const heroPrimaryHref = trialPlan?.ctaHref ?? '/kontakt'
   const heroPrimaryLabel = trialPlan?.cta ?? 'Aktywuj darmowy trial'
-  const heroSecondaryHref = featuredPlan?.ctaHref ?? '/kontakt'
-  const keyHighlights = valueHighlights.slice(0, 2)
 
   return (
     <div className="relative flex min-h-screen flex-col bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[780px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-200/45 via-emerald-50/60 to-white dark:from-emerald-500/15 dark:via-slate-900/65 dark:to-slate-950" />
-        <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.2),transparent_60%)] dark:bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.45),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-100/40 via-white/80 to-white dark:from-emerald-900/20 dark:via-slate-950/80 dark:to-slate-950" />
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-emerald-400/10 rounded-full blur-[100px]" />
+        <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-blue-400/10 rounded-full blur-[100px]" />
       </div>
+
       <Navigation />
+
       <main className="relative z-10 flex-1">
-        <section className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
-          <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-100">
-                Cennik
-                <span aria-hidden>•</span>
-                Transparentne warunki
-              </span>
-              <h1 className="mt-6 text-balance text-4xl font-semibold leading-tight sm:text-5xl">
-                Dobierz plan AutoŻaby do tempa rozwoju Twojej sieci
-              </h1>
-              <p className="mt-6 text-lg text-slate-700 dark:text-slate-200">
-                Każdy plan obejmuje automatyczne grafiki, ewidencję czasu pracy oraz dokumenty PIP. Różnice dotyczą poziomu wsparcia i raportowania.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                {heroPrimaryHref.startsWith('http') ? (
-                  <a
-                    href={heroPrimaryHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-emerald-950 shadow-[0_0_45px_rgba(16,185,129,0.35)] transition hover:bg-emerald-300"
-                  >
-                    {heroPrimaryLabel}
-                    <span aria-hidden>→</span>
-                  </a>
-                ) : (
-                  <Link
-                    href={heroPrimaryHref}
-                    className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-emerald-950 shadow-[0_0_45px_rgba(16,185,129,0.35)] transition hover:bg-emerald-300"
-                  >
-                    {heroPrimaryLabel}
-                    <span aria-hidden>→</span>
-                  </Link>
-                )}
-                <Link
-                  href={heroSecondaryHref}
-                  className="inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-slate-950/60 px-6 py-3 text-sm font-semibold text-emerald-200 transition hover:border-emerald-200/80 hover:text-emerald-100"
-                >
-                  Porozmawiaj z zespołem
-                  <span aria-hidden>↗</span>
-                </Link>
-              </div>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {keyHighlights.map((highlight, index) => {
-                  const Icon = highlightIcons[index] ?? Timer
-                  return (
-                    <details
-                      key={highlight.title}
-                      className="group overflow-hidden rounded-3xl border border-emerald-200/50 bg-white/80 text-left shadow-sm transition dark:border-emerald-300/20 dark:bg-slate-950/70"
-                    >
-                      <summary className="flex cursor-pointer items-center justify-between gap-4 bg-white/70 px-6 py-4 text-sm font-semibold text-slate-900 transition hover:bg-white group-open:bg-emerald-500/10 group-open:text-emerald-600 dark:bg-slate-950/50 dark:text-slate-100 dark:hover:bg-slate-950/70 [&::-webkit-details-marker]:hidden">
-                        <span className="flex items-center gap-3">
-                          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500 group-open:bg-emerald-500/20 group-open:text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-200">
-                            <Icon className="h-5 w-5" aria-hidden />
-                          </span>
-                          {highlight.title}
-                        </span>
-                        <span className="text-lg font-semibold text-emerald-500 transition group-open:rotate-45 group-open:text-emerald-600">
-                          +
-                        </span>
-                      </summary>
-                      <div className="border-t border-emerald-200/40 px-6 pb-5 pt-4 text-sm text-slate-600 dark:border-emerald-300/20 dark:text-slate-300">
-                        {highlight.description}
-                      </div>
-                    </details>
-                  )
-                })}
-              </div>
+        <section className="mx-auto max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200">
+              <ShieldCheck className="h-4 w-4" />
+              <span>Transparentne warunki, zero ukrytych kosztów</span>
             </div>
-            <aside className="relative overflow-hidden rounded-3xl border border-emerald-200/40 bg-emerald-50/70 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/80">
-              <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl dark:bg-emerald-400/10" aria-hidden />
-              <div className="absolute bottom-0 right-0 h-40 w-40 rounded-full bg-emerald-200/30 blur-3xl dark:bg-emerald-500/10" aria-hidden />
-              <div className="relative z-10">
-                <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-100">AutoŻaba — start w 3 krokach</h2>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                  Na każdym etapie wspiera Cię dedykowany opiekun.
-                </p>
-                <ol className="mt-6 space-y-5 text-sm text-slate-700 dark:text-slate-200">
-                  {onboardingSteps.map((step, index) => {
-                    const Icon = onboardingIcons[index] ?? MonitorPlay
-                    return (
-                      <li key={step.title} className="flex items-start gap-4">
-                        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-emerald-400/40 bg-white text-emerald-600 shadow-sm dark:border-emerald-300/40 dark:bg-slate-950/40 dark:text-emerald-200">
-                          <Icon className="h-5 w-5" aria-hidden />
-                        </span>
-                        <div>
-                          <p className="font-semibold text-slate-900 dark:text-slate-50">{step.title}</p>
-                          <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{step.description}</p>
-                        </div>
-                      </li>
-                    )
-                  })}
-                </ol>
-              </div>
-            </aside>
-          </div>
-        </section>
 
-        <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-            <div className="text-center">
-              <p className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:border-slate-800 dark:bg-slate-950/60 dark:text-emerald-200">
-                Koszty w skrócie
-              </p>
-              <h2 className="mt-4 text-2xl font-semibold text-slate-900 dark:text-slate-50">Płacisz tylko za dostęp do systemu</h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Żadnych opłat wdrożeniowych ani limitów na pracownika. Koszty są jasne od pierwszego dnia.
-              </p>
-            </div>
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              {costSummary.map((item) => (
-                <div
-                  key={item.label}
-                  className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white/80 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950/70"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-200">{item.label}</p>
-                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-50">{item.value}</p>
-                  <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">{item.note}</p>
-                  {item.status && (
-                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-slate-950/75 px-4 text-center text-white backdrop-blur-sm">
-                      <span className="inline-flex items-center rounded-full border border-emerald-300/60 bg-emerald-400/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100">
-                        {item.status.badge}
-                      </span>
-                      <p className="text-sm font-semibold">{item.status.headline}</p>
-                      <p className="text-xs text-white/80">{item.status.description}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl text-balance">
+              Inwestycja w spokój<br />i bezpieczeństwo
+            </h1>
 
-        <section className="relative mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:border-slate-800 dark:bg-slate-900/70 dark:text-emerald-200">
-              Porównaj pakiety
-            </p>
-            <h2 className="mt-6 text-balance text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-slate-50">
-              Trzy opcje, dzięki którym utrzymasz porządek niezależnie od liczby sklepów
-            </h2>
-            <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
-              Każdy plan zawiera monitoring zgodności z kodeksem pracy, dokumenty PIP i wsparcie ekspertów AutoŻaby.
+            <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+              Wybierz plan dopasowany do Twojej sieci. Każdy pakiet zawiera automatyzację grafików i pełną ochronę przed błędami kodeksowymi.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+
+          {/* Pricing Cards */}
+          <div className="grid gap-8 lg:grid-cols-3 items-stretch max-w-6xl mx-auto">
             {pricingPlans.map((plan) => (
               <PlanCard key={plan.id} plan={plan} />
             ))}
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 pb-24 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-3xl border border-emerald-200/40 bg-emerald-50/80 p-8 shadow-sm dark:border-emerald-400/25 dark:bg-slate-900/75">
-              <h2 className="text-lg font-semibold text-emerald-700 dark:text-emerald-200">Onboarding w 7 dni</h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Każdy etap prowadzimy razem z Tobą — od pierwszego demo po powtarzalne grafiki.
-              </p>
-              <ul className="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-300">
-                {onboardingMilestones.map((item) => (
-                  <li key={item.title} className="flex items-start gap-3">
-                    <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-300" aria-hidden />
-                    <div>
-                      <p className="font-medium text-slate-900 dark:text-slate-100">{item.title}</p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300">{item.description}</p>
+        {/* Value Bento Grid */}
+        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Main Value Prop */}
+            <div className="md:col-span-2 rounded-3xl glass-premium p-8 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Wallet className="w-32 h-32" />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-4">Płacisz tylko za dostęp</h3>
+                <p className="text-slate-600 dark:text-slate-300 text-lg mb-8 max-w-md">
+                  Żadnych opłat wdrożeniowych. Żadnych limitów na pracownika.
+                  Cena jest stała i przewidywalna od pierwszego dnia.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {costSummary.map((item) => (
+                    <div key={item.label} className="bg-white/50 dark:bg-slate-900/50 rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="p-2 rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-300">
+                          <item.icon className="h-5 w-5" />
+                        </div>
+                        <span className="font-bold text-2xl text-slate-900 dark:text-slate-50">{item.value}</span>
+                      </div>
+                      <p className="font-medium text-sm text-slate-700 dark:text-slate-200">{item.label}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{item.note}</p>
                     </div>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/kontakt"
-                className="mt-6 inline-flex items-center justify-center rounded-full border border-emerald-400/60 bg-transparent px-5 py-2 text-sm font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 dark:border-emerald-300/50 dark:text-emerald-200 dark:hover:border-emerald-200 dark:hover:text-emerald-100"
-              >
-                Umów demo lub wizytę w sklepie
-              </Link>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Co dostajesz na starcie</h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Wszystkie materiały i narzędzia, żeby zespół mógł zacząć pracować od razu.
-              </p>
-              <ul className="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-200">
-                {onboardingKit.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 inline-block h-2.5 w-2.5 flex-none rounded-full bg-emerald-500 dark:bg-emerald-400" aria-hidden />
-                    <span>{item}</span>
+
+            {/* Highlights */}
+            <div className="rounded-3xl glass-premium p-8 flex flex-col justify-center bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/10 dark:to-slate-900/50">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Timer className="h-5 w-5 text-emerald-500" />
+                W każdym pakiecie
+              </h3>
+              <ul className="space-y-4">
+                {valueHighlights.slice(0, 4).map((highlight) => (
+                  <li key={highlight.title} className="flex gap-3">
+                    <CheckCircle2 className="h-5 w-5 flex-none text-emerald-500" />
+                    <div>
+                      <p className="font-semibold text-sm">{highlight.title}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{highlight.description}</p>
+                    </div>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
         </section>
-        <section className="mx-auto max-w-5xl px-4 pb-28 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-            <div className="text-center">
-              <p className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:border-slate-800 dark:bg-slate-950/80 dark:text-emerald-200">
-                FAQ
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900 dark:text-slate-50">Najczęściej zadawane pytania</h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+
+        {/* Visual Onboarding Timeline */}
+        <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Onboarding w 7 dni</h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+              Nie zostawiamy Cię samego. Nasz proces wdrożenia jest zaprojektowany tak,
+              abyś w tydzień przeszedł od chaosu do pełnej automatyzacji.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="absolute left-[28px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-200 to-transparent dark:via-emerald-800 md:left-1/2 md:-ml-px" />
+
+            <div className="space-y-12">
+              {onboardingSteps.map((step, index) => {
+                const Icon = onboardingIcons[index] ?? MonitorPlay
+                return (
+                  <div key={step.title} className={cn(
+                    "relative flex items-center md:justify-between",
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  )}>
+                    {/* Icon Node */}
+                    <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-white border-4 border-emerald-50 shadow-lg z-10 dark:bg-slate-900 dark:border-slate-800">
+                      <Icon className="h-6 w-6 text-emerald-500" />
+                    </div>
+
+                    {/* Content Card */}
+                    <div className={cn(
+                      "ml-20 md:ml-0 md:w-[42%] p-6 rounded-2xl glass-premium hover:shadow-lg transition-shadow",
+                      index % 2 === 0 ? "md:text-right" : "md:text-left"
+                    )}>
+                      <h3 className="text-lg font-bold mb-2">{step.title}</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">{step.description}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link
+              href="/kontakt"
+              className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
+            >
+              Umów darmowe wdrożenie
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="rounded-3xl glass-premium p-8 md:p-12">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-emerald-100 text-emerald-600 mb-6 dark:bg-emerald-500/20 dark:text-emerald-300">
+                <HelpCircle className="h-6 w-6" />
+              </div>
+              <h2 className="text-3xl font-bold mb-4">Pytania? Mamy odpowiedzi.</h2>
+              <p className="text-slate-600 dark:text-slate-300">
                 Jeśli nie widzisz odpowiedzi, napisz na{' '}
-                <a href="mailto:kontakt@autozaba.pl" className="text-emerald-600 underline underline-offset-2 dark:text-emerald-300">
+                <a href="mailto:kontakt@autozaba.pl" className="text-emerald-600 font-medium hover:underline">
                   kontakt@autozaba.pl
-                </a>{' '}
-                — odpowiemy w ciągu jednego dnia roboczego.
+                </a>
               </p>
             </div>
-            <div className="mt-10 space-y-4">
-              {pricingFaq.map((item, index) => (
+
+            <div className="space-y-4">
+              {pricingFaq.map((item) => (
                 <details
                   key={item.question}
-                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition dark:border-slate-800 dark:bg-slate-950/60"
+                  className="group rounded-2xl bg-white/50 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-700/50 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-slate-900/80"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-base font-semibold text-slate-900 transition hover:bg-slate-100/70 group-open:bg-emerald-500/10 group-open:text-emerald-600 dark:text-slate-50 dark:hover:bg-slate-900/70 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 font-semibold text-slate-900 dark:text-slate-100 [&::-webkit-details-marker]:hidden">
                     <span>{item.question}</span>
-                    <span className="text-lg font-semibold text-emerald-500 transition group-open:rotate-45 group-open:text-emerald-600">+</span>
+                    <span className="text-emerald-500 transition-transform group-open:rotate-45">
+                      <CheckCircle2 className="h-5 w-5 rotate-45 group-open:rotate-0 transition-transform" />
+                    </span>
                   </summary>
-                  <div className="border-t border-slate-200 px-5 py-4 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300">
+                  <div className="px-6 pb-5 pt-0 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                     {item.answer}
                   </div>
                 </details>
               ))}
             </div>
           </div>
-          <div className="mt-12 rounded-3xl border border-emerald-200/40 bg-emerald-50/70 p-10 text-center shadow-sm dark:border-emerald-400/20 dark:bg-emerald-400/5">
-            <h2 className="text-2xl font-semibold text-emerald-700 dark:text-emerald-100">Gotowy, by zobaczyć AutoŻabę w akcji?</h2>
-            <p className="mt-3 text-sm text-emerald-700 dark:text-emerald-200">
-              Aktywuj trial lub umów spotkanie — pokażemy Ci, jak w dwa tygodnie uporządkować grafiki i dokumentację.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              {heroPrimaryHref.startsWith('http') ? (
-                <a
-                  href={heroPrimaryHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300"
-                >
-                  {heroPrimaryLabel}
-                  <span aria-hidden>→</span>
-                </a>
-              ) : (
-                <Link
-                  href={heroPrimaryHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300"
-                >
-                  {heroPrimaryLabel}
-                  <span aria-hidden>→</span>
-                </Link>
-              )}
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/60 bg-transparent px-5 py-2 text-sm font-semibold text-emerald-600 transition hover:border-emerald-500 hover:text-emerald-500 dark:border-emerald-200/60 dark:text-emerald-100 dark:hover:border-emerald-100 dark:hover:text-emerald-50"
-              >
-                Poproś o indywidualną wycenę
-                <span aria-hidden>↗</span>
-              </Link>
-            </div>
-          </div>
         </section>
+
+
       </main>
       <Footer />
     </div>

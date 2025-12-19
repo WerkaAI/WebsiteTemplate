@@ -1,8 +1,10 @@
 import { getAllPosts } from '@/lib/posts';
+import { getAllTutorials } from '@/lib/tutorials';
 import type { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
+  const tutorials = await getAllTutorials();
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000';
 
   const staticPages = [
@@ -35,6 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tutoriale`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/kontakt`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
     }
   ];
 
@@ -45,5 +59,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...blogPages];
+  const tutorialPages = tutorials.map(tutorial => ({
+    url: `${baseUrl}/tutoriale/${tutorial.slug}`,
+    lastModified: new Date(tutorial.meta.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...blogPages, ...tutorialPages];
 }

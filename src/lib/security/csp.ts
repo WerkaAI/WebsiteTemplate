@@ -4,14 +4,14 @@ import { headers as nextHeaders } from "next/headers";
 
 import { buildSecurityHeaders } from "./headers";
 
-export const CSP_NONCE_HEADER = "x-csp-nonce";
+export const CSP_NONCE_HEADER = "x-nonce";
 
 export type CspMode = "enforce" | "report-only" | "dual";
 
 const STATIC_FILE_EXTENSION = /\.(?:js|mjs|css|png|jpg|jpeg|gif|svg|ico|webp|avif|txt|xml|json|map|pdf|woff2?|ttf)$/i;
 
 const SOURCE_MODE = (process.env.CSP_MODE as CspMode | undefined) ?? "report-only";
-const ALLOW_INLINE_DEBUG = process.env.CSP_ALLOW_UNSAFE_INLINE === "1";
+const ALLOW_INLINE_DEBUG = process.env.CSP_ALLOW_UNSAFE_INLINE === "1" || process.env.NODE_ENV === "development";
 const ALLOW_EVAL_DEBUG = process.env.CSP_ALLOW_UNSAFE_EVAL === "1";
 const DISABLE_UPGRADE_INSECURE = process.env.CSP_DISABLE_UPGRADE_INSECURE_REQUESTS === "1";
 const CSP_REPORT_URI = process.env.CSP_REPORT_URI?.trim() || null;

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import Navigation from '@/components/layout/navigation'
+import Footer from '@/components/layout/footer'
 
 export const metadata: Metadata = {
   title: 'Polityka prywatności AutoŻaba — jak chronimy dane',

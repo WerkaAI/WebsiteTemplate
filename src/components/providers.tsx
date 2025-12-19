@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children, nonce }: { children: React.ReactNode; nonce?: string }) {
   return (
     <ThemeProvider
       attribute="class"
@@ -12,6 +12,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       storageKey="autozaba-theme"
       enableSystem={false}
       disableTransitionOnChange
+      nonce={nonce}
     >
       <TooltipProvider>
         <Toaster />

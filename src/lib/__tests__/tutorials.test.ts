@@ -22,12 +22,13 @@ describe('tutorials data accessors', () => {
     durationMinutes: 10,
     tags: ['start'],
     draft: false,
+    relatedTutorials: [],
   }
 
   beforeEach(() => {
-  mockedMdx.getAllEntries.mockReset()
-  mockedMdx.loadEntry.mockReset()
-  mockedMdx.getCollectionSlugs.mockReset()
+    mockedMdx.getAllEntries.mockReset()
+    mockedMdx.loadEntry.mockReset()
+    mockedMdx.getCollectionSlugs.mockReset()
   })
 
   it('returns tutorials without drafts', async () => {
