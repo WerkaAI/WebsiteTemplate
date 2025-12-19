@@ -5,6 +5,33 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 const STORAGE_KEY = 'autozaba-onboarding-progress';
 const WELCOME_QUEST_ID = 'a0-witaj';
 
+// Shop Levels Configuration
+export const XP_PER_QUEST = 100;
+
+export interface ShopLevel {
+    level: number;
+    title: string;
+    minExp: number;
+    icon: string;
+}
+
+export const SHOP_LEVELS: ShopLevel[] = [
+    { level: 1, title: 'Kiosk', minExp: 0, icon: '🏪' },
+    { level: 2, title: 'Mały Sklep', minExp: 300, icon: '🛒' },
+    { level: 3, title: 'Supermarket', minExp: 1000, icon: '🏬' },
+    { level: 4, title: 'Centrum', minExp: 2000, icon: '🏙️' },
+    { level: 5, title: 'Imperium', minExp: 3500, icon: '👑' },
+];
+
+export const getLevelForExp = (exp: number): ShopLevel => {
+    // Find the highest level where minExp <= exp
+    return [...SHOP_LEVELS].reverse().find(l => exp >= l.minExp) || SHOP_LEVELS[0];
+};
+
+export const getNextLevel = (level: number): ShopLevel | null => {
+    return SHOP_LEVELS.find(l => l.level === level + 1) || null;
+};
+
 // Hidden achievements (Easter Eggs)
 export const HIDDEN_ACHIEVEMENTS = {
     'night-owl': { id: 'night-owl', name: 'Nocny Maratończyk', icon: '🦉', description: 'Ukończono quest po 22:00' },
@@ -18,22 +45,29 @@ export type AchievementId = keyof typeof HIDDEN_ACHIEVEMENTS;
 
 export interface OnboardingProgress {
     completedQuests: string[];
+    completedQuizzes: string[]; // Track completed quizzes
     earnedBadges: string[];
     earnedAchievements: AchievementId[];
     lastVisit: string;
     isFirstVisit: boolean;
     currentStreak: number;
     lastQuestCompletedAt: string | null;
+    // New leveling fields
+    currentExp: number;
+    currentLevel: number; // 1-5
 }
 
 const DEFAULT_PROGRESS: OnboardingProgress = {
     completedQuests: [],
+    completedQuizzes: [],
     earnedBadges: [],
     earnedAchievements: [],
     lastVisit: new Date().toISOString(),
     isFirstVisit: true,
     currentStreak: 0,
     lastQuestCompletedAt: null,
+    currentExp: 0,
+    currentLevel: 1,
 };
 
 export function useOnboardingProgress() {
@@ -51,9 +85,17 @@ export function useOnboardingProgress() {
                 const parsed = JSON.parse(stored) as OnboardingProgress;
                 // Validate parsed data has required fields
                 if (parsed.completedQuests && Array.isArray(parsed.completedQuests)) {
+                    // Migration: Ensure new fields exist if loading old data
+                    const currentExp = parsed.currentExp || (parsed.completedQuests.length * XP_PER_QUEST);
+                    const currentLevel = parsed.currentLevel || getLevelForExp(currentExp).level;
+                    const completedQuizzes = parsed.completedQuizzes || [];
+
                     setProgress({
                         ...DEFAULT_PROGRESS, // Ensure all fields exist
                         ...parsed,
+                        currentExp,
+                        currentLevel,
+                        completedQuizzes,
                         lastVisit: new Date().toISOString(),
                         isFirstVisit: false,
                     });
@@ -65,6 +107,7 @@ export function useOnboardingProgress() {
                 setProgress({
                     ...DEFAULT_PROGRESS,
                     completedQuests: [WELCOME_QUEST_ID],
+                    currentExp: XP_PER_QUEST, // Award XP for welcome quest
                     lastVisit: new Date().toISOString(),
                     isFirstVisit: true,
                 });
@@ -75,6 +118,7 @@ export function useOnboardingProgress() {
             setProgress({
                 ...DEFAULT_PROGRESS,
                 completedQuests: [WELCOME_QUEST_ID],
+                currentExp: XP_PER_QUEST,
                 lastVisit: new Date().toISOString(),
                 isFirstVisit: true,
             });
@@ -82,23 +126,10 @@ export function useOnboardingProgress() {
         setIsLoaded(true);
     }, []);
 
-    // Cleanup streak timeout on unmount
-    useEffect(() => {
-        return () => {
-            if (streakTimeoutRef.current) {
-                clearTimeout(streakTimeoutRef.current);
-            }
-        };
-    }, []);
-
     // Save to localStorage whenever progress changes
     useEffect(() => {
         if (isLoaded) {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-            } catch (error) {
-                console.warn('Failed to save onboarding progress:', error);
-            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
         }
     }, [progress, isLoaded]);
 
@@ -128,13 +159,41 @@ export function useOnboardingProgress() {
     // Helper function for quest completion logic (shared between completeQuest and toggleQuest)
     const processQuestCompletion = useCallback((prev: OnboardingProgress, questId: string): OnboardingProgress => {
         const now = new Date().toISOString();
+        const dateNow = new Date();
         const newCompleted = [...prev.completedQuests, questId];
 
         // Calculate new streak
-        const newStreak = prev.currentStreak + 1;
+        let newStreak = prev.currentStreak;
+        if (!prev.lastQuestCompletedAt) {
+            newStreak = 1;
+        } else {
+            const lastDate = new Date(prev.lastQuestCompletedAt);
+            const isSameDay = lastDate.toDateString() === dateNow.toDateString();
+
+            // Check if last completion was yesterday
+            const yesterday = new Date(dateNow);
+            yesterday.setDate(yesterday.getDate() - 1);
+            const isYesterday = lastDate.toDateString() === yesterday.toDateString();
+
+            if (isSameDay) {
+                // Streak stays the same, completed more quests today
+            } else if (isYesterday) {
+                newStreak += 1;
+            } else {
+                // Streak broken, reset to 1
+                newStreak = 1;
+            }
+        }
+
+        // Calculate XP and Level
+        // Prevent XP exploit: Ensure we don't double count if something went wrong, 
+        // but primarily relies on toggleQuest removing XP correctly.
+        const newExp = prev.currentExp + XP_PER_QUEST;
+        const newLevel = getLevelForExp(newExp).level;
 
         // Check for streak achievement
         let newAchievements = [...prev.earnedAchievements];
+        // Earn streak achievement only if we actually hit the streak count (and strictly daily streaks)
         if (newStreak >= 3 && !prev.earnedAchievements.includes('streak-3')) {
             newAchievements.push('streak-3');
             setNewAchievement('streak-3');
@@ -161,8 +220,43 @@ export function useOnboardingProgress() {
             currentStreak: newStreak,
             lastQuestCompletedAt: now,
             earnedAchievements: newAchievements,
+            currentExp: newExp,
+            currentLevel: newLevel,
         };
     }, [checkTimeAchievements]);
+
+    // Helper for quest uncompletion
+    const processQuestUncompletion = useCallback((prev: OnboardingProgress, questId: string): OnboardingProgress => {
+        const newExp = Math.max(0, prev.currentExp - XP_PER_QUEST);
+        const newLevel = getLevelForExp(newExp).level;
+
+        return {
+            ...prev,
+            completedQuests: prev.completedQuests.filter(id => id !== questId),
+            currentStreak: prev.currentStreak, // Keep streak on uncomplete
+            currentExp: newExp,
+            currentLevel: newLevel,
+        };
+    }, []);
+
+    const completeQuiz = useCallback((quizId: string, xpReward: number) => {
+        setProgress(prev => {
+            if (prev.completedQuizzes.includes(quizId)) {
+                return prev;
+            }
+
+            const newCompleted = [...prev.completedQuizzes, quizId];
+            const newExp = prev.currentExp + xpReward;
+            const newLevel = getLevelForExp(newExp).level;
+
+            return {
+                ...prev,
+                completedQuizzes: newCompleted,
+                currentExp: newExp,
+                currentLevel: newLevel,
+            };
+        });
+    }, []);
 
     const completeQuest = useCallback((questId: string) => {
         setProgress(prev => {
@@ -174,25 +268,19 @@ export function useOnboardingProgress() {
     }, [processQuestCompletion]);
 
     const uncompleteQuest = useCallback((questId: string) => {
-        setProgress(prev => ({
-            ...prev,
-            completedQuests: prev.completedQuests.filter(id => id !== questId),
-            currentStreak: 0, // Reset streak on uncomplete
-        }));
-    }, []);
+        setProgress(prev => {
+            return processQuestUncompletion(prev, questId);
+        });
+    }, [processQuestUncompletion]);
 
     const toggleQuest = useCallback((questId: string) => {
         setProgress(prev => {
             if (prev.completedQuests.includes(questId)) {
-                return {
-                    ...prev,
-                    completedQuests: prev.completedQuests.filter(id => id !== questId),
-                    currentStreak: 0,
-                };
+                return processQuestUncompletion(prev, questId);
             }
             return processQuestCompletion(prev, questId);
         });
-    }, [processQuestCompletion]);
+    }, [processQuestCompletion, processQuestUncompletion]);
 
     const earnBadge = useCallback((badgeId: string) => {
         setProgress(prev => {
@@ -222,6 +310,10 @@ export function useOnboardingProgress() {
     const isQuestCompleted = useCallback((questId: string): boolean => {
         return progress.completedQuests.includes(questId);
     }, [progress.completedQuests]);
+
+    const isQuizCompleted = useCallback((quizId: string): boolean => {
+        return progress.completedQuizzes.includes(quizId);
+    }, [progress.completedQuizzes]);
 
     const isBadgeEarned = useCallback((badgeId: string): boolean => {
         return progress.earnedBadges.includes(badgeId);
@@ -260,7 +352,9 @@ export function useOnboardingProgress() {
         toggleQuest,
         earnBadge,
         earnAchievement,
+        completeQuiz,
         isQuestCompleted,
+        isQuizCompleted,
         isBadgeEarned,
         isAchievementEarned,
         getCompletionPercentage,

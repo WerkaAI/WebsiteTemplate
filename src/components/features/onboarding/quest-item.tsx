@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Clock, ChevronDown, Play, Image as ImageIcon, ExternalLink, Star, FastForward, Loader2 } from 'lucide-react';
 import Image from 'next/image';
@@ -132,7 +132,7 @@ function DifficultyStars({ level }: { level: 1 | 2 | 3 }) {
     );
 }
 
-export function QuestItem({
+export const QuestItem = memo(function QuestItem({
     id,
     title,
     description,
@@ -191,24 +191,27 @@ export function QuestItem({
     return (
         <motion.div
             layout
+            initial={false}
+            animate={isExpanded ? { scale: 1.01 } : { scale: 1 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
             className={cn(
                 'rounded-xl border transition-all duration-300 overflow-hidden',
                 isCompleted
                     ? 'bg-brand-green/5 border-brand-green/30 dark:bg-brand-green/10'
-                    : 'bg-card border-border',
-                isExpanded && 'shadow-lg'
+                    : 'bg-card border-border hover:border-brand-green/30 hover:shadow-md',
+                isExpanded && 'shadow-lg border-brand-green/20 ring-1 ring-brand-green/10'
             )}
         >
             <button
                 onClick={handleHeaderClick}
                 className={cn(
-                    'w-full text-left p-3 sm:p-4 flex items-start gap-3',
+                    'w-full text-left p-4 sm:p-5 flex items-start gap-4',
                     'hover:bg-muted/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring',
-                    'min-h-[56px]' // Ensure minimum touch target height
+                    'min-h-[64px]' // Optimized touch target
                 )}
                 aria-expanded={isExpanded}
             >
-                {/* ... (Checkbox and header content remain same) */}
+                {/* Checkbox with bounce animation */}
                 <div
                     onClick={handleCheckboxClick}
                     role="checkbox"
@@ -221,11 +224,11 @@ export function QuestItem({
                         }
                     }}
                     className={cn(
-                        'mt-0.5 flex-shrink-0 w-8 h-8 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer',
-                        'hover:scale-110 active:scale-95',
+                        'mt-1 flex-shrink-0 w-7 h-7 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer',
+                        'hover:scale-110 active:scale-95 shadow-sm',
                         isCompleted
-                            ? 'bg-brand-green border-brand-green text-white'
-                            : 'border-muted-foreground/40 bg-background hover:border-brand-green/60'
+                            ? 'bg-brand-green border-brand-green text-white shadow-brand-green/20'
+                            : 'border-muted-foreground/30 bg-background hover:border-brand-green/60'
                     )}
                 >
                     {isCompleted && (
@@ -394,7 +397,7 @@ export function QuestItem({
             </AnimatePresence>
         </motion.div>
     );
-}
+});
 
 // Media placeholder component
 function MediaPlaceholder({ media, questId }: { media?: QuestMedia; questId: string }) {

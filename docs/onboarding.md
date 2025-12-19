@@ -526,7 +526,7 @@ public/
 
 | Element | Lokalizacja | Opis |
 |---------|-------------|------|
-| Żabek mascot | `zabek-guide.tsx` | Zamień emoji na SVG/Lottie |
-| Media questów | `quest-item.tsx` | Dodaj screenshoty/GIFy |
-| Steps questów | `onboarding-content.ts` | Uzupełnij kroki |
-| Speedrunner | `use-progress.ts` | Zaimplementuj tracking czasu |
+| Żabek mascot | `zabek-guide.tsx` | Zamień emoji na SVG/Lottie (Opcjonalne) |
+| Media questów | `quest-item.tsx` | Dodaj screenshoty/GIFy (Zaimplementowano placeholders+upload) |
+| Steps questów | `onboarding-content.ts` | Uzupełnij kroki (Zrobione dla wszystkich questów) |
+| Speedrunner | `use-progress.ts` | Zaimplementuj tracking czasu (Zrobione logicznie) |

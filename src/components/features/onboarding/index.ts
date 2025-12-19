@@ -5,3 +5,4 @@ export { AdventureCard } from './adventure-card';
 export { BadgeDisplay } from './badge-display';
 export { ZabekGuide } from './zabek-guide';
 export { CheatSheetPanel } from './cheat-sheet-panel';
+export { QuizModal } from './quiz-modal';

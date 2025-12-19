@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, Book, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,6 +11,17 @@ interface CheatSheetPanelProps {
     isOpen: boolean;
     onClose: () => void;
 }
+
+// Static category keywords mapping - moved to module scope for performance
+const CATEGORY_KEYWORDS: Record<string, string[]> = {
+    ogolne: ['logowanie', 'język', 'konto', 'powiadomienia'],
+    personel: ['pracownik', 'umowa', 'zatrudnienie'],
+    sklep: ['sklep', 'adres'],
+    rozliczenia: ['rozliczenie', 'godziny', 'PIP', 'eksport'],
+    dostepnosc: ['dostępność', 'kalendarz', 'notatka'],
+    harmonogram: ['harmonogram', 'grafik', 'zmiana', 'drag'],
+    automatyzacja: ['AI', 'automatyczny', 'algorytm'],
+};
 
 export function CheatSheetPanel({ isOpen, onClose }: CheatSheetPanelProps) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -50,16 +61,7 @@ export function CheatSheetPanel({ isOpen, onClose }: CheatSheetPanelProps) {
     // Filter by category (simple keyword match for demo)
     const filteredByCategory = useMemo(() => {
         if (!selectedCategory) return allQuests;
-        const categoryKeywords: Record<string, string[]> = {
-            ogolne: ['logowanie', 'język', 'konto', 'powiadomienia'],
-            personel: ['pracownik', 'umowa', 'zatrudnienie'],
-            sklep: ['sklep', 'adres'],
-            rozliczenia: ['rozliczenie', 'godziny', 'PIP', 'eksport'],
-            dostepnosc: ['dostępność', 'kalendarz', 'notatka'],
-            harmonogram: ['harmonogram', 'grafik', 'zmiana', 'drag'],
-            automatyzacja: ['AI', 'automatyczny', 'algorytm'],
-        };
-        const keywords = categoryKeywords[selectedCategory] || [];
+        const keywords = CATEGORY_KEYWORDS[selectedCategory] || [];
         return allQuests.filter((q) =>
             keywords.some((kw) =>
                 q.title.toLowerCase().includes(kw.toLowerCase()) ||
@@ -185,8 +187,8 @@ export function CheatSheetPanel({ isOpen, onClose }: CheatSheetPanelProps) {
     );
 }
 
-// Individual cheat sheet item
-function CheatSheetItem({
+// Individual cheat sheet item - memoized to prevent re-renders when siblings change
+const CheatSheetItem = memo(function CheatSheetItem({
     quest,
     isExpanded,
     onToggle,
@@ -237,4 +239,4 @@ function CheatSheetItem({
             </AnimatePresence>
         </motion.div>
     );
-}
+});

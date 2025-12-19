@@ -2,15 +2,16 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Book, RotateCcw, Sparkles } from 'lucide-react';
+import { Book, RotateCcw, Sparkles, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
-    ProgressRing,
     AdventureCard,
     BadgeDisplay,
     ZabekGuide,
     CheatSheetPanel,
 } from '@/components/features/onboarding';
+import { ShopLevelDisplay } from '@/components/features/onboarding/shop-level-display';
+import { OnboardingSkeleton } from '@/components/features/onboarding/skeleton-loader';
 import { ADVENTURES, getAllQuests } from '@/lib/onboarding/onboarding-content';
 import { useOnboardingProgress, HIDDEN_ACHIEVEMENTS } from '@/lib/onboarding/use-progress';
 
@@ -27,21 +28,11 @@ export function OnboardingPageContent() {
         getCompletionPercentage,
         resetProgress,
         clearNewAchievement,
+        completeQuiz,
     } = useOnboardingProgress();
 
     const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
-    const [ringSize, setRingSize] = useState(140); // Default for SSR
-
-    // Handle responsive ring size
-    useEffect(() => {
-        const updateRingSize = () => {
-            setRingSize(window.innerWidth < 640 ? 100 : 140);
-        };
-        updateRingSize();
-        window.addEventListener('resize', updateRingSize);
-        return () => window.removeEventListener('resize', updateRingSize);
-    }, []);
 
     // Calculate total quests
     const totalQuests = useMemo(() => getAllQuests().length, []);
@@ -110,13 +101,7 @@ export function OnboardingPageContent() {
 
     // Loading state
     if (!isLoaded) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-background">
-                <div className="animate-pulse text-muted-foreground">
-                    Ładowanie postępów...
-                </div>
-            </div>
-        );
+        return <OnboardingSkeleton />;
     }
 
     return (
@@ -127,7 +112,6 @@ export function OnboardingPageContent() {
                 onClose={() => setIsCheatSheetOpen(false)}
             />
 
-            {/* Fixed Cheat Sheet Button */}
             {/* Fixed Cheat Sheet Button - iOS safe area + larger touch target on mobile */}
             <motion.button
                 onClick={() => setIsCheatSheetOpen(true)}
@@ -141,7 +125,6 @@ export function OnboardingPageContent() {
                 <span className="font-medium hidden sm:inline">Ściąga</span>
             </motion.button>
 
-            {/* Main Content */}
             {/* Main Content - extra bottom padding for iOS safe area */}
             <div className="container-spacing pt-6 sm:pt-8 pb-28 sm:pb-24" style={{ paddingBottom: 'max(7rem, calc(6rem + env(safe-area-inset-bottom)))' }}>
                 {/* Hero Section */}
@@ -150,6 +133,7 @@ export function OnboardingPageContent() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
+                        className="mb-8"
                     >
                         {/* Żabek Mascot */}
                         <div className="flex justify-center mb-6">
@@ -161,67 +145,54 @@ export function OnboardingPageContent() {
                             <span className="text-brand-green">Przygodzie Żabiana</span>! 🐸
                         </h1>
                         <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-                            Naucz się korzystać z AutoŻaba krok po kroku. Ukończ wszystkie
-                            przygody i zdobądź odznakę{' '}
-                            <span className="font-semibold">Żabozbawcy</span>!
+                            Rozwiń swój sklep od małego Kiosku do wielkiego Imperium! Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
                         </p>
                     </motion.div>
-                </section>
 
-                {/* Progress Section */}
-                <section className="mb-12">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2, duration: 0.5 }}
-                        className="glass-premium rounded-2xl p-4 sm:p-6 md:p-8 text-center"
-                    >
-                        {/* Stack vertically on mobile, side-by-side on larger screens */}
-                        <div className="flex flex-col items-center justify-center gap-6 sm:gap-8">
-                            {/* Progress Ring - responsive via state */}
-                            <ProgressRing
-                                percentage={completionPercentage}
-                                size={ringSize}
-                                className="flex-shrink-0"
-                            />
+                    {/* Shop Level Display & Progress */}
+                    <div className="max-w-xl mx-auto mb-10">
+                        <ShopLevelDisplay
+                            currentLevel={progress.currentLevel}
+                            currentExp={progress.currentExp}
+                        />
+                    </div>
 
-                            {/* Badges - horizontal scroll on mobile */}
-                            <div className="w-full">
-                                <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center justify-center gap-2">
-                                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
-                                    Twoje Odznaki
-                                </h2>
-                                <div className="overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
-                                    <BadgeDisplay
-                                        badges={allBadges}
-                                        earnedBadges={progress.earnedBadges}
-                                        className="flex-nowrap sm:flex-wrap justify-start sm:justify-center"
-                                    />
-                                </div>
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Badges */}
+                        <BadgeDisplay
+                            badges={allBadges}
+                            earnedBadges={progress.earnedBadges}
+                        />
+
+                        {/* Secondary Stats */}
+                        <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full border shadow-sm">
+                                <Sparkles className="w-4 h-4 text-amber-500" />
+                                <span className="font-medium">{progress.currentStreak}</span> dni serii
+                            </div>
+                            <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full border shadow-sm">
+                                <TrendingUp className="w-4 h-4 text-blue-500" />
+                                <span className="font-medium">{completionPercentage}%</span> kursu
                             </div>
                         </div>
-
-                        {/* Reset button (small, subtle) */}
-                        <div className="mt-6 pt-4 border-t border-border/50">
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    if (
-                                        confirm(
-                                            'Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.'
-                                        )
-                                    ) {
-                                        resetProgress();
-                                    }
-                                }}
-                                className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
-                            >
-                                <RotateCcw className="w-3 h-3" />
-                                Resetuj postępy
-                            </button>
-                        </div>
-                    </motion.div>
+                    </div>
                 </section>
+
+                {/* Reset button (small, subtle) */}
+                <div className="mt-6 pt-4 border-t border-border/50">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (confirm('Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.')) {
+                                resetProgress();
+                            }
+                        }}
+                        className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
+                    >
+                        <RotateCcw className="w-3 h-3" />
+                        Resetuj postępy
+                    </button>
+                </div>
 
                 {/* Adventures Section */}
                 <section>
@@ -239,7 +210,9 @@ export function OnboardingPageContent() {
                                 <AdventureCard
                                     adventure={adventure}
                                     completedQuests={progress.completedQuests}
+                                    completedQuizzes={progress.completedQuizzes}
                                     onToggleQuest={toggleQuest}
+                                    onCompleteQuiz={completeQuiz}
                                     onBadgeEarned={earnBadge}
                                     defaultExpanded={index === 0}
                                 />

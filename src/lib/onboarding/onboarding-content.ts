@@ -26,6 +26,22 @@ export interface QuestMediaVariant {
     media: QuestMedia;
 }
 
+export interface QuizQuestion {
+    id: string;
+    question: string;
+    options: string[];
+    correctIndex: number;
+    explanation?: string;
+}
+
+export interface AdventureQuiz {
+    id: string;
+    title: string;
+    description: string;
+    questions: QuizQuestion[];
+    xpReward: number;
+}
+
 export interface Quest {
     id: string;
     title: string;
@@ -66,6 +82,8 @@ export interface Adventure {
         icon: string;
     };
     quests: Quest[];
+    /** Optional quiz at the end of adventure */
+    quiz?: AdventureQuiz;
 }
 
 export interface CheatSheetCategory {
@@ -97,6 +115,47 @@ export const ADVENTURES: Adventure[] = [
             id: 'badge-nowy',
             name: 'Nowy w Stawie',
             icon: '🐣',
+        },
+        quiz: {
+            id: 'quiz-basic',
+            title: 'Wielki Test Kijanki',
+            description: 'Ukończ ten test, aby udowodnić, że jesteś gotów na większe wyzwania i zdobyć odznakę!',
+            xpReward: 500,
+            questions: [
+                {
+                    id: 'q1',
+                    question: 'Co jest głównym celem AutoŻaba?',
+                    options: [
+                        'Gotowanie obiadu',
+                        'Automatyzacja marketingu i oszczędność czasu',
+                        'Sadzenie grządek'
+                    ],
+                    correctIndex: 1,
+                    explanation: 'Dokładnie! AutoŻaba to Twój osobisty asystent do zadań specjalnych w sklepie.'
+                },
+                {
+                    id: 'q2',
+                    question: 'Gdzie znajdziesz ustawienia swojego konta?',
+                    options: [
+                        'W zakładce "Ustawienia Konta"',
+                        'Pod kamieniem',
+                        'Dzwoniąc do centrali'
+                    ],
+                    correctIndex: 0,
+                    explanation: 'Proste, prawda? Wszystko jest pod ręką w menu.'
+                },
+                {
+                    id: 'q3',
+                    question: 'Co daje Ci wyższy "Poziom Sklepu"?',
+                    options: [
+                        'Darmową kawę',
+                        'Satysfakcję i wiedzę (oraz szacunek Żabiana)',
+                        'Nic'
+                    ],
+                    correctIndex: 1,
+                    explanation: 'Wiedza to potęga! A Żabian bardzo ceni ambitnych sklepikarzy.'
+                }
+            ]
         },
         quests: [
             {
