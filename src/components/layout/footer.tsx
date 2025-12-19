@@ -16,6 +16,7 @@ export default function Footer() {
       title: "Pomoc",
       links: [
         { label: "Tutoriale", href: "/tutoriale" },
+        { label: "Żabouczek", href: "/onboarding" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
         // { label: "Formularz DSA", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1" }, // Updated per request logic but cleaner to just have it in the array. Wait, user said generic DSA form? "Klikając 'Formularz DSA' chciałbym abyśmy otwierali nowy tab". 
         // Current href is https://forms.gle/1bwP5z2WFdsrkT55A. I will keep the href but ensure it opens in new tab.

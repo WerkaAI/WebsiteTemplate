@@ -30,8 +30,8 @@ export function BadgeDisplay({ badges, earnedBadges, className }: BadgeDisplayPr
                         className={cn(
                             'flex flex-col items-center gap-1 p-2 sm:p-3 rounded-xl border transition-all duration-300 min-w-[72px] sm:min-w-[80px]',
                             isEarned
-                                ? 'bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/20 dark:to-amber-800/20 border-amber-300 dark:border-amber-600 shadow-lg'
-                                : 'bg-muted/30 border-border opacity-50 grayscale'
+                                ? 'bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/30 dark:to-amber-800/30 border-amber-300 dark:border-amber-600/50 shadow-md shadow-amber-200/50 dark:shadow-amber-900/30'
+                                : 'bg-gray-50 dark:bg-slate-800/50 border-gray-200 dark:border-slate-600/50 opacity-60 grayscale'
                         )}
                         title={isEarned ? `Odznaka: ${badge.name}` : 'Odznaka zablokowana'}
                     >

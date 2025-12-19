@@ -58,10 +58,10 @@ export const AdventureCard = memo(function AdventureCard({
             <motion.div
                 layout
                 className={cn(
-                    'rounded-2xl border overflow-hidden transition-all duration-300 backdrop-blur-sm',
+                    'rounded-2xl border overflow-hidden transition-all duration-300',
                     isBadgeEarned
-                        ? 'bg-gradient-to-br from-brand-green/10 to-brand-green-secondary/5 border-brand-green/30 shadow-[0_0_25px_-5px_rgba(var(--brand-green-rgb),0.15)]'
-                        : 'bg-card/80 border-border/50 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/5'
+                        ? 'bg-gradient-to-br from-brand-green/5 to-brand-green-secondary/5 border-brand-green/40 shadow-lg shadow-brand-green/10 dark:from-brand-green/15 dark:to-brand-green-secondary/10 dark:border-brand-green/30 dark:shadow-[0_0_25px_-5px_rgba(var(--brand-green-rgb),0.2)]'
+                        : 'bg-white dark:bg-slate-900/80 border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-md dark:hover:shadow-lg hover:border-brand-green/40 dark:hover:border-brand-green/30 hover:shadow-brand-green/5'
                 )}
             >
                 {/* Header */}
@@ -73,10 +73,10 @@ export const AdventureCard = memo(function AdventureCard({
                     {/* Icon - smaller on mobile */}
                     <div
                         className={cn(
-                            'flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-105 shadow-inner',
+                            'flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-105',
                             isBadgeEarned
-                                ? 'bg-gradient-to-br from-brand-green to-brand-green-secondary text-white shadow-brand-green/20'
-                                : 'bg-muted/50 text-muted-foreground'
+                                ? 'bg-gradient-to-br from-brand-green to-brand-green-secondary text-white shadow-lg shadow-brand-green/30'
+                                : 'bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400'
                         )}
                     >
                         {isBadgeEarned ? <Trophy className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-md" /> : adventure.icon}

@@ -24,7 +24,7 @@ export function ShopLevelDisplay({ currentLevel, currentExp, className }: ShopLe
     }
 
     return (
-        <div className={cn("bg-card border border-border rounded-xl p-4 shadow-sm", className)}>
+        <div className={cn("bg-white dark:bg-slate-900/80 border border-gray-200 dark:border-slate-700 rounded-xl p-4 shadow-sm", className)}>
             <div className="flex items-center gap-4">
                 {/* Level Icon / Avatar */}
                 <div className="relative">

@@ -197,9 +197,9 @@ export const QuestItem = memo(function QuestItem({
             className={cn(
                 'rounded-xl border transition-all duration-300 overflow-hidden',
                 isCompleted
-                    ? 'bg-brand-green/5 border-brand-green/30 dark:bg-brand-green/10'
-                    : 'bg-card border-border hover:border-brand-green/30 hover:shadow-md',
-                isExpanded && 'shadow-lg border-brand-green/20 ring-1 ring-brand-green/10'
+                    ? 'bg-brand-green/5 border-brand-green/30 dark:bg-brand-green/10 dark:border-brand-green/20'
+                    : 'bg-white dark:bg-slate-900/80 border-gray-200 dark:border-slate-700 hover:border-brand-green/40 dark:hover:border-brand-green/30 hover:shadow-md',
+                isExpanded && 'shadow-lg border-brand-green/30 dark:border-brand-green/20 ring-1 ring-brand-green/10'
             )}
         >
             <button
@@ -225,10 +225,10 @@ export const QuestItem = memo(function QuestItem({
                     }}
                     className={cn(
                         'mt-1 flex-shrink-0 w-7 h-7 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 cursor-pointer',
-                        'hover:scale-110 active:scale-95 shadow-sm',
+                        'hover:scale-110 active:scale-95',
                         isCompleted
-                            ? 'bg-brand-green border-brand-green text-white shadow-brand-green/20'
-                            : 'border-muted-foreground/30 bg-background hover:border-brand-green/60'
+                            ? 'bg-brand-green border-brand-green text-white shadow-md shadow-brand-green/30'
+                            : 'border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-brand-green/60'
                     )}
                 >
                     {isCompleted && (

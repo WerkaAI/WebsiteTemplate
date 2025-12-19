@@ -126,73 +126,60 @@ export function OnboardingPageContent() {
             </motion.button>
 
             {/* Main Content - extra bottom padding for iOS safe area */}
-            <div className="container-spacing pt-6 sm:pt-8 pb-28 sm:pb-24" style={{ paddingBottom: 'max(7rem, calc(6rem + env(safe-area-inset-bottom)))' }}>
-                {/* Hero Section */}
-                <section className="text-center mb-12">
+            <div className="container-spacing pt-4 sm:pt-8 pb-28 sm:pb-24" style={{ paddingBottom: 'max(7rem, calc(6rem + env(safe-area-inset-bottom)))' }}>
+                {/* Hero Section - simplified for mobile */}
+                <section className="text-center mb-6 sm:mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="mb-8"
+                        className="mb-4 sm:mb-8"
                     >
-                        {/* Żabek Mascot */}
-                        <div className="flex justify-center mb-6">
+                        {/* Żabek Mascot - smaller on mobile */}
+                        <div className="flex justify-center mb-3 sm:mb-6">
                             <ZabekGuide message={zabekMessage ?? undefined} isVisible />
                         </div>
 
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2 sm:mb-3 px-2">
+                        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1 sm:mb-3 px-2">
                             Witaj w{' '}
                             <span className="text-brand-green">Przygodzie Żabiana</span>! 🐸
                         </h1>
-                        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+                        {/* Description - hidden on mobile */}
+                        <p className="hidden sm:block text-lg text-muted-foreground max-w-2xl mx-auto px-4">
                             Rozwiń swój sklep od małego Kiosku do wielkiego Imperium! Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
                         </p>
                     </motion.div>
 
                     {/* Shop Level Display & Progress */}
-                    <div className="max-w-xl mx-auto mb-10">
+                    <div className="max-w-xl mx-auto mb-4 sm:mb-10">
                         <ShopLevelDisplay
                             currentLevel={progress.currentLevel}
                             currentExp={progress.currentExp}
                         />
                     </div>
 
-                    <div className="flex flex-col items-center gap-6">
-                        {/* Badges */}
+                    {/* Badges - compact row on mobile */}
+                    <div className="flex flex-col items-center gap-3 sm:gap-6">
                         <BadgeDisplay
                             badges={allBadges}
                             earnedBadges={progress.earnedBadges}
                         />
 
-                        {/* Secondary Stats */}
-                        <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full border shadow-sm">
-                                <Sparkles className="w-4 h-4 text-amber-500" />
-                                <span className="font-medium">{progress.currentStreak}</span> dni serii
+                        {/* Secondary Stats - smaller and sideby side */}
+                        <div className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
+                                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500" />
+                                <span className="font-medium">{progress.currentStreak}</span>
+                                <span className="hidden sm:inline">dni serii</span>
                             </div>
-                            <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full border shadow-sm">
-                                <TrendingUp className="w-4 h-4 text-blue-500" />
-                                <span className="font-medium">{completionPercentage}%</span> kursu
+                            <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
+                                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
+                                <span className="font-medium">{completionPercentage}%</span>
+                                <span className="hidden sm:inline">kursu</span>
                             </div>
                         </div>
                     </div>
                 </section>
-
-                {/* Reset button (small, subtle) */}
-                <div className="mt-6 pt-4 border-t border-border/50">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            if (confirm('Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.')) {
-                                resetProgress();
-                            }
-                        }}
-                        className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
-                    >
-                        <RotateCcw className="w-3 h-3" />
-                        Resetuj postępy
-                    </button>
-                </div>
 
                 {/* Adventures Section */}
                 <section>
@@ -220,6 +207,22 @@ export function OnboardingPageContent() {
                         ))}
                     </div>
                 </section>
+
+                {/* Reset button (small, subtle) - moved to bottom */}
+                <div className="mt-8 pt-4 border-t border-border/30 max-w-3xl mx-auto">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (confirm('Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.')) {
+                                resetProgress();
+                            }
+                        }}
+                        className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
+                    >
+                        <RotateCcw className="w-3 h-3" />
+                        Resetuj postępy
+                    </button>
+                </div>
 
                 {/* Completion celebration */}
                 <AnimatePresence>
