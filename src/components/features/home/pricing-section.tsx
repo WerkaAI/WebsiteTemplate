@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
 import { APP_URLS } from "@/lib/config";
 import { motion } from "framer-motion";
@@ -11,54 +10,48 @@ export default function PricingSection() {
   const plans = [
     {
       id: "trial",
-      name: "Trial 14 dni",
+      name: "Przetestuj — 14 dni",
       price: "0 zł",
-      period: "/2 tygodnie",
+      period: "/14 dni",
       features: [
         "Pełny dostęp do wszystkich funkcji",
         "Do 10 pracowników",
         "Wsparcie przez email",
         "Bez zobowiązań",
       ],
-      cta: "Rozpocznij trial",
+      cta: "Przetestuj za darmo",
       variant: "outline" as const,
     },
     {
       id: "pro",
       name: "AutoŻaba Pro",
-      price: "Wkrótce",
-      period: "Cennik w przygotowaniu",
+      price: "149 zł",
+      originalPrice: "200 zł",
+      period: "/miesiąc",
       features: [
         "Nieograniczona liczba pracowników",
         "Automatyczne grafiki zgodne z prawem",
-        "Tarcza Prawna § - kontekstowa pomoc",
+        "Tarcza Prawna § — kontekstowa pomoc",
         "Priorytetowe wsparcie",
         "Eksporty dla PIP i księgowości",
       ],
-      cta: "Plan w przygotowaniu",
+      cta: "Wybierz plan",
       variant: "default" as const,
       popular: true,
-      disclaimer: "Aktualnie dostępny dla beta testerów",
-      disabled: true,
-      status: {
-        badge: "Beta testy",
-        headline: "Plan w przygotowaniu",
-        description:
-          "Dołączymy kolejnych klientów po zakończeniu programu beta.",
-      },
+      disclaimer: "Cena gwarantowana przez 12 miesięcy",
     },
   ];
 
   const comparison = [
     {
       label: "Inne systemy HR",
-      price: "299-599 zł/msc",
-      note: "+ 20-50 zł za pracownika",
+      price: "299–599 zł/msc",
+      note: "+ 20–50 zł za pracownika",
     },
     {
       label: "AutoŻaba",
-      price: "Program beta w toku",
-      note: "Zapisz się, aby otrzymać priorytet wdrożenia",
+      price: "149 zł/msc",
+      note: "Bez limitu pracowników • Cena gwarantowana 12 mies.",
       highlight: true,
     },
     {
@@ -115,7 +108,7 @@ export default function PricingSection() {
             data-testid="text-pricing-subtitle"
             variants={itemVariants}
           >
-            Trwają beta testy – zgłoś się, by otrzymać priorytet wdrożenia
+            Jeden sklep, jedna cena — 149 zł/mies. bez limitu pracowników
           </motion.p>
         </motion.div>
 
@@ -161,6 +154,11 @@ export default function PricingSection() {
                     className="text-4xl font-bold"
                     data-testid={`text-plan-price-${plan.id}`}
                   >
+                    {plan.originalPrice && (
+                      <span className={`text-lg line-through font-normal mr-2 ${plan.variant === "default" ? "text-white/50" : "text-muted-foreground/60"}`}>
+                        {plan.originalPrice}
+                      </span>
+                    )}
                     {plan.price}
                     <span
                       className={`text-lg font-normal ${plan.variant === "default"
@@ -170,6 +168,11 @@ export default function PricingSection() {
                     >
                       {plan.period}
                     </span>
+                    {plan.originalPrice && (
+                      <div className={`text-sm font-semibold mt-1 ${plan.variant === "default" ? "text-emerald-300" : "text-emerald-500"}`}>
+                        Oszczędzasz 25%
+                      </div>
+                    )}
                   </div>
                 </CardHeader>
 
@@ -193,12 +196,8 @@ export default function PricingSection() {
                     className={`w-full font-semibold pricing-card__button ${plan.variant === "default"
                       ? "pricing-card__button--featured"
                       : ""
-                      } ${plan.disabled ? "opacity-60 cursor-not-allowed" : ""}`}
-                    disabled={plan.disabled}
+                      }`}
                     onClick={() => {
-                      if (plan.disabled) {
-                        return;
-                      }
                       if (plan.variant === "default") {
                         window.location.href = "/cennik";
                       } else {
@@ -220,23 +219,6 @@ export default function PricingSection() {
                     </div>
                   )}
                 </CardContent>
-
-                {plan.status && (
-                  <div className="absolute inset-0 z-10 rounded-lg bg-slate-950/70 backdrop-blur-sm flex flex-col items-center justify-center gap-3 px-6 text-center text-white">
-                    <Badge
-                      variant="outline"
-                      className="bg-emerald-400/10 border-emerald-200/60 text-emerald-100 uppercase tracking-[0.28em]"
-                    >
-                      {plan.status.badge}
-                    </Badge>
-                    <div className="text-xl font-semibold drop-shadow-sm">
-                      {plan.status.headline}
-                    </div>
-                    <p className="text-sm text-white/80 max-w-xs">
-                      {plan.status.description}
-                    </p>
-                  </div>
-                )}
               </Card>
             </motion.div>
           ))}

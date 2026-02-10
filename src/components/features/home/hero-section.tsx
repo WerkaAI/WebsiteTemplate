@@ -1,29 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Shield,
-  CheckCircle2,
   Play,
   ShieldCheck,
-  Award,
-  Clock3,
-  AlertTriangle,
-  FileWarning,
   Users,
-  CalendarClock,
-  ClipboardList,
 } from "lucide-react";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { APP_URLS } from "@/lib/config";
 import { motion } from "framer-motion";
+import HeroScheduleGrid from "./hero-schedule-grid";
 
 export default function HeroSection() {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const orbRef = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [activeHighlight, setActiveHighlight] = useState(0);
 
   useEffect(() => {
     const board = boardRef.current;
@@ -179,94 +172,6 @@ export default function HeroSection() {
     };
   }, [prefersReducedMotion]);
 
-  const heroHighlights = [
-    {
-      icon: CheckCircle2,
-      label: "Program beta w toku",
-      caption: "Zapisz się na listę pierwszych wdrożeń",
-    },
-    {
-      icon: Shield,
-      label: "100% zgodność",
-      caption: "Kodeks Pracy w pakiecie",
-    },
-    {
-      icon: Award,
-      label: "120+ kontroli PIP",
-      caption: "Bez mandatów",
-    },
-    {
-      icon: Clock3,
-      label: "< 7 dni",
-      caption: "Od wdrożenia do efektu",
-    },
-  ];
-
-  const chaoticWeek = [
-    {
-      day: "Pon",
-      person: "Jan 16h",
-      issue: "Brak odpoczynku",
-      accent: "bg-rose-500/10 text-rose-700 border-rose-200 dark:bg-rose-500/15 dark:text-rose-100 dark:border-rose-500/30",
-      icon: AlertTriangle,
-    },
-    {
-      day: "Wt",
-      person: "Anna 8h",
-      issue: "UoP czy UZ?",
-      accent: "bg-amber-500/10 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-100 dark:border-amber-500/30",
-      icon: FileWarning,
-    },
-    {
-      day: "Śr",
-      person: "Piotr 12h",
-      issue: "Przekroczone normy",
-      accent: "bg-rose-500/10 text-rose-700 border-rose-200 dark:bg-rose-500/15 dark:text-rose-100 dark:border-rose-500/30",
-      icon: AlertTriangle,
-    },
-    {
-      day: "Czw",
-      person: "??? brak",
-      issue: "Nie odbiera telefonów",
-      accent: "bg-slate-200/50 text-slate-600 border-slate-200 dark:bg-slate-500/15 dark:text-slate-200 dark:border-slate-400/30",
-      icon: Users,
-    },
-    {
-      day: "Pt",
-      person: "Kasia 10h",
-      issue: "Brak umowy",
-      accent: "bg-amber-500/10 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-100 dark:border-amber-500/30",
-      icon: ClipboardList,
-    },
-    {
-      day: "Sob",
-      person: "Jan + Anna",
-      issue: "Konflikt dostępności",
-      accent: "bg-rose-500/10 text-rose-700 border-rose-200 dark:bg-rose-500/15 dark:text-rose-100 dark:border-rose-500/30",
-      icon: Users,
-    },
-    {
-      day: "Nie",
-      person: "Zamknięte?",
-      issue: "Nikt nie potwierdził",
-      accent: "bg-slate-200/50 text-slate-600 border-slate-200 dark:bg-slate-500/15 dark:text-slate-200 dark:border-slate-400/30",
-      icon: CalendarClock,
-    },
-  ];
-
-  const highlightCount = heroHighlights.length;
-
-  useEffect(() => {
-    if (prefersReducedMotion || highlightCount <= 1) {
-      setActiveHighlight(0);
-      return;
-    }
-    const interval = window.setInterval(() => {
-      setActiveHighlight((current) => (current + 1) % highlightCount);
-    }, 3600);
-    return () => window.clearInterval(interval);
-  }, [prefersReducedMotion, highlightCount]);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -403,92 +308,24 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          <div className="relative hidden md:block perspective-1000">
+          <div className="relative hidden md:block">
             <motion.div
-              className="relative isolate mx-auto w-full max-w-[460px]"
-              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              className="relative isolate mx-auto w-full max-w-[520px]"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <div
                 ref={orbRef}
-                className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[460px] rounded-full bg-emerald-400/20 blur-[80px] opacity-60 hero-orb mix-blend-multiply dark:mix-blend-screen dark:bg-emerald-500/30"
+                className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[520px] rounded-full bg-emerald-400/20 blur-[80px] opacity-60 hero-orb mix-blend-multiply dark:mix-blend-screen dark:bg-emerald-500/30"
                 aria-hidden="true"
               />
 
               <div
                 ref={boardRef}
-                className="relative w-full"
+                className="relative w-full transition-transform duration-500 ease-out will-change-transform"
               >
-                <motion.div
-                  className="absolute -top-6 -right-6 z-20 rounded-2xl bg-white dark:bg-slate-800 p-4 shadow-xl badge-pulse border border-slate-100 dark:border-slate-700"
-                  data-testid="stress-indicator"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                      <AlertTriangle className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Alert</p>
-                      <p className="text-sm font-bold text-slate-900 dark:text-white">Kontrola PIP za 2 dni!</p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <div className="rounded-[32px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-2xl p-6 sm:p-8 transition-transform duration-500 ease-out will-change-transform">
-                  <div className="space-y-6">
-                    <header className="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800">
-                      <div>
-                        <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                          Obecny grafik
-                        </p>
-                        <h3
-                          className="text-xl font-bold text-slate-900 dark:text-white"
-                          data-testid="text-schedule-title"
-                        >
-                          Grudzień, tydzień 49
-                        </h3>
-                      </div>
-                      <div className="rounded-full bg-rose-50 dark:bg-rose-500/10 px-3 py-1 text-xs font-bold text-rose-600 dark:text-rose-300 flex items-center gap-1.5 border border-rose-100 dark:border-rose-500/20">
-                        <AlertTriangle className="h-3.5 w-3.5" />
-                        6 błędów
-                      </div>
-                    </header>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {chaoticWeek.map(
-                        ({ day, person, issue, accent, icon: Icon }, index) => (
-                          <motion.div
-                            key={day}
-                            className={`rounded-xl p-3 text-xs leading-tight border ${accent} transition-all duration-300 hover:scale-105 hover:shadow-md cursor-default`}
-                            data-testid={`schedule-tile-${index}`}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.8 + index * 0.1, duration: 0.3 }}
-                          >
-                            <div className="flex items-center justify-between mb-2 opacity-80">
-                              <span className="font-semibold">{day}</span>
-                              <Icon className="h-3.5 w-3.5" />
-                            </div>
-                            <p className="font-bold mb-1">{person}</p>
-                            <p className="text-[10px] opacity-90 font-medium">
-                              {issue}
-                            </p>
-                          </motion.div>
-                        )
-                      )}
-                    </div>
-
-                    <div className="pt-2 text-center">
-                      <p className="text-xs text-slate-400 dark:text-slate-500 italic">
-                        System wykrył naruszenia Kodeksu Pracy
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <HeroScheduleGrid />
               </div>
             </motion.div>
           </div>

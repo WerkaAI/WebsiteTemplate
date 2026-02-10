@@ -219,7 +219,7 @@ export default function PrivacyPolicyPage() {
                   W Serwisie używamy cookies/SDK oraz podobnych technologii (np. piksele). Służą one zapewnieniu działania, bezpieczeństwa, analityki i – za Twoją zgodą – marketingowi. Panel zgód pozwala zarządzać kategoriami plików (niezbędne/analityczne/marketingowe). Ustawieniami cookies możesz zarządzać także w przeglądarce.
                 </p>
                 <p>
-                  Szczegółowy <strong>Wykaz Cookies</strong> (nazwa, cel, dostawca, czas przechowywania) publikujemy w banerze/polityce cookies i aktualizujemy go wraz ze zmianami narzędzi.
+                  Szczegółowy <strong>Wykaz Cookies</strong> (nazwa, cel, dostawca, czas przechowywania) publikujemy w dedykowanej <a href="/polityka-cookies" className="text-primary hover:underline">Polityce cookies</a> i aktualizujemy go wraz ze zmianami narzędzi.
                 </p>
                 <hr />
                 <h2 id="13-media-spolecznosciowe">13. Media społecznościowe</h2>

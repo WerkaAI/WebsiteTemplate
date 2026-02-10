@@ -36,13 +36,28 @@ const IMAGE_DOMAINS = [
   "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
   "https://img.youtube.com",
   "https://i.ytimg.com",
+  // Analytics & marketing tracking pixels
+  "https://www.google-analytics.com",
+  "https://www.googletagmanager.com",
+  "https://www.facebook.com",
 ] as const;
 
 const SCRIPT_DOMAINS = [
   "https://challenges.cloudflare.com",
+  // Analytics & marketing (consent-gated via GCM v2)
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+  "https://connect.facebook.net",
 ] as const;
 
-const CONNECT_DOMAINS = SCRIPT_DOMAINS;
+const CONNECT_DOMAINS: readonly string[] = [
+  "https://challenges.cloudflare.com",
+  // GA4 / GTM beacon endpoints
+  "https://www.google-analytics.com",
+  "https://analytics.google.com",
+  "https://region1.google-analytics.com",
+  "https://stats.g.doubleclick.net",
+];
 
 const PERMISSIONS_POLICY_VALUE = [
   "accelerometer=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\")",

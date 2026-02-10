@@ -199,7 +199,7 @@ export default function PricingPage() {
             </h1>
 
             <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-              Wybierz plan dopasowany do Twojej sieci. Każdy pakiet zawiera automatyzację grafików i pełną ochronę przed błędami kodeksowymi.
+              Od 149 zł/mies. za sklep — bez limitu pracowników. Każdy pakiet zawiera automatyzację grafików i wsparcie ochrony przed błędami kodeksowymi.
             </p>
           </div>
 

@@ -23,66 +23,58 @@ export type PricingPlan = {
 export const pricingPlans: PricingPlan[] = [
   {
     id: 'trial',
-    title: 'Free trial',
+    title: 'Przetestuj',
     headline: '14 dni pełnych funkcji bez zobowiązań',
     priceMonthly: '0 zł / 14 dni',
-    description: 'Przetestuj AutoŻabę bez ryzyka — konfigurację przeprowadzisz z pomocą konsultanta.',
+    description: 'Sprawdź AutoŻabę bez ryzyka — nasz konsultant pokaże Ci krok po kroku każdą funkcję i pomoże skonfigurować system.',
     bestFor: '1–3 sklepy na starcie',
     highlights: [
       'Pełen dostęp do grafików, ewidencji i dokumentów',
-      'Import danych z Excela z pomocą konsultanta',
+      'Konsultant przeprowadzi Cię przez cały system i odpowie na pytania',
       'Wsparcie czatowe 9:00–21:00 przez 14 dni'
     ],
-    cta: 'Aktywuj darmowy trial',
+    cta: 'Przetestuj za darmo',
     ctaHref: 'https://app.autozaba.pl/register',
     badge: 'Najpierw sprawdź',
     isFeatured: false
   },
   {
     id: 'single-store',
-    title: 'Pierwszy sklep',
+    title: 'Jeden sklep',
     headline: 'Stała kontrola nad grafikiem i dokumentami',
-    priceMonthly: 'Wkrótce',
+    priceMonthly: '149 zł / mies.',
+    annualNote: 'Cena gwarantowana przez 12 miesięcy',
     description: 'Automatyzuje grafik, dokumenty PIP i codzienne rozliczenia w jednym sklepie.',
     bestFor: '1 lokalizacja | do 15 osób',
     highlights: [
       'Grafiki zgodne z kodeksem pracy w kilka minut',
       'Ewidencja czasu pracy i rozliczenia kasowe w jednym miejscu',
-      'Onboarding 1:1 oraz biblioteka dokumentów PIP/BHP'
+      'Onboarding 1:1 oraz biblioteka dokumentów PIP/BHP',
+      'Nieograniczona liczba pracowników w cenie'
     ],
-    cta: 'Plan w przygotowaniu',
-    ctaHref: '/kontakt',
+    cta: 'Wybierz plan',
+    ctaHref: 'https://app.autozaba.pl/register',
     badge: 'Najczęstszy wybór',
-    isFeatured: true,
-    disabled: true,
-    status: {
-      badge: 'Beta testy',
-      headline: 'Cennik w przygotowaniu',
-      description: 'Zapraszamy do programu Early Adopters — skontaktujemy się, gdy otworzymy sprzedaż.'
-    }
+    isFeatured: true
   },
   {
     id: 'multi-store',
-    title: 'Pełna automatyzacja dla kilku sklepów',
+    title: 'Kilka sklepów',
     headline: 'Spójne operacje w 2–5 lokalizacjach',
-    priceMonthly: 'Wkrótce',
-    description: 'Centralizuje raporty, grafik i wsparcie prawne dla kilku lokalizacji.',
+    priceMonthly: '149 zł + 50 zł / kolejny sklep',
+    annualNote: 'Np. 2 sklepy = 199 zł/mies. — cena gwarantowana 12 mies.',
+    description: 'Centralizuje raporty, grafik i wsparcie prawne dla kilku lokalizacji. Każdy dodatkowy sklep to jedynie 50 zł więcej.',
     bestFor: '2–5 lokalizacji | do 50 osób',
     highlights: [
       'Wspólne planowanie obsady dla wszystkich sklepów',
-      'Raporty multi-store i kwartalne konsultacje compliance',
-      'Integracje księgowe + priorytetowe wsparcie 24/7'
+      'Raporty multi-store (wkrótce) i konsultacje compliance',
+      'Priorytetowe wsparcie 24/7',
+      'Każdy kolejny sklep tylko +50 zł/mies.'
     ],
-    cta: 'Plan w przygotowaniu',
-    ctaHref: '/kontakt',
+    cta: 'Wybierz plan',
+    ctaHref: 'https://app.autozaba.pl/register',
     badge: 'Dla sieci',
-    isFeatured: false,
-    disabled: true,
-    status: {
-      badge: 'Beta testy',
-      headline: 'Oferta w przygotowaniu',
-      description: 'Skontaktuj się z nami, aby dołączyć do kolejki dla kilku lokalizacji.'
-    }
+    isFeatured: false
   }
 ]
 
@@ -124,16 +116,21 @@ export const pricingFaq: FAQItem[] = [
   {
     question: 'Jak działa rozliczanie w przypadku kilku sklepów?',
     answer:
-      'Plan “Pełna automatyzacja dla kilku sklepów” obejmuje do pięciu lokalizacji w jednej opłacie abonamentowej. Dodatkowe sklepy możesz dodawać w dowolnym momencie, rozliczamy je proporcjonalnie do końca okresu.'
+      'Pierwszy sklep kosztuje 149 zł/mies., a każdy kolejny to jedynie 50 zł/mies. więcej. Na przykład 3 sklepy to 249 zł/mies. Dodatkowe lokalizacje możesz dodawać w dowolnym momencie — rozliczamy je proporcjonalnie do końca okresu.'
+  },
+  {
+    question: 'Czy cena 149 zł/mies. się zmieni?',
+    answer:
+      'Cena 149 zł/mies. jest gwarantowana przez 12 miesięcy od momentu aktywacji. To specjalna oferta dla klientów, którzy dołączają teraz — dzięki niej oszczędzasz 25% w porównaniu do ceny standardowej.'
   },
   {
     question: 'Czy dane są bezpieczne i zgodne z RODO?',
     answer: 'Tak. Dane hostujemy w ramach infrastruktury spełniającej wymogi RODO, z szyfrowaniem w spoczynku i w transmisji. Zapewniamy umowę powierzenia przetwarzania danych osobowych.'
   },
   {
-    question: 'Czy pomogą mi Państwo w migracji z Excela?',
+    question: 'Jak wygląda wdrożenie i czy ktoś mi pomoże?',
     answer:
-      'Oczywiście. W każdej opcji otrzymujesz checklistę migracji, a w planach “Pierwszy sklep” i “Pełna automatyzacja” dedykowany opiekun importuje dane i przygotowuje szablony grafików.'
+      'Jak najbardziej. Nasz konsultant przeprowadzi Cię przez cały system — pokaże każdą funkcję, opowie jak z niej korzystać i odpowie na wszystkie pytania. Jesteśmy z Tobą na każdym etapie.'
   }
 ]
 
@@ -153,6 +150,6 @@ export const valueHighlights: { title: string; description: string }[] = [
 ]
 
 export const guaranteePoints: string[] = [
-  'Umowa miesięczna bez długoterminowych zobowiązań — możesz zrezygnować z miesięcznym wyprzedzeniem.',
+  'Umowa miesięczna bez długoterminowych zobowiązań — możesz zrezygnować w dowolnym momencie.',
   'Wdrożenie z dedykowanym opiekunem zapewnia pełną migrację danych i przeszkolenie zespołu.'
 ]

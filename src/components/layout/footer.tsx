@@ -5,8 +5,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { APP_URLS } from "@/lib/config";
 import { motion } from "framer-motion";
+import { useConsent } from "@/components/cookies/consent-provider";
 
 export default function Footer() {
+  const { openSettings } = useConsent();
   const footerSections = [
     {
       title: "Zasoby",
@@ -39,6 +41,11 @@ export default function Footer() {
     {
       label: "Polityka prywatności",
       href: "/polityka-prywatnosci",
+      type: "route" as const,
+    },
+    {
+      label: "Polityka cookies",
+      href: "/polityka-cookies",
       type: "route" as const,
     },
     {
@@ -267,6 +274,16 @@ export default function Footer() {
 
               return null;
             })}
+            {/* Cookie settings link — legally required persistent access point */}
+            <button
+              type="button"
+              onClick={openSettings}
+              className="footer-link hover:text-foreground transition-colors inline-flex items-center gap-1"
+              data-testid="link-footer-cookie-settings"
+              aria-label="Otwórz ustawienia plików cookies"
+            >
+              🍪 Ustawienia Cookies
+            </button>
           </div>
         </div>
 

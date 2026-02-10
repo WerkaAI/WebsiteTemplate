@@ -324,10 +324,10 @@ export default function CalculatorSection() {
                       className="metric-card__value"
                       data-testid="stat-autozaba-cost"
                     >
-                      Beta testy trwają
+                      149 zł/mies.
                     </div>
                     <div className="metric-card__hint">
-                      Dołącz i odbierz pierwszeństwo wdrożenia
+                      Cena gwarantowana przez 12 miesięcy
                     </div>
                   </motion.div>
                 </motion.div>
@@ -349,7 +349,7 @@ export default function CalculatorSection() {
                     className="text-sm text-muted-foreground"
                     data-testid="text-calculator-disclaimer"
                   >
-                    Trwają beta testy • Nieograniczona liczba pracowników
+                    149 zł/mies. • Nieograniczona liczba pracowników
                   </p>
                 </div>
                 <div className="relative flex-shrink-0" aria-hidden>
