@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-const STORAGE_KEY = 'autozaba-onboarding-progress';
-const WELCOME_QUEST_ID = 'a0-witaj';
+const DEFAULT_STORAGE_KEY = 'autozaba-onboarding-progress';
+const DEFAULT_WELCOME_QUEST_ID = 'a0-witaj';
 
 // Shop Levels Configuration
 export const XP_PER_QUEST = 100;
@@ -70,7 +70,17 @@ const DEFAULT_PROGRESS: OnboardingProgress = {
     currentLevel: 1,
 };
 
-export function useOnboardingProgress() {
+export interface UseOnboardingProgressOptions {
+    /** localStorage key — use different keys per role */
+    storageKey?: string;
+    /** ID of the welcome quest that auto-completes on first visit */
+    welcomeQuestId?: string;
+}
+
+export function useOnboardingProgress(options?: UseOnboardingProgressOptions) {
+    const storageKey = options?.storageKey ?? DEFAULT_STORAGE_KEY;
+    const welcomeQuestId = options?.welcomeQuestId ?? DEFAULT_WELCOME_QUEST_ID;
+
     const [progress, setProgress] = useState<OnboardingProgress>(DEFAULT_PROGRESS);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showStreakCelebration, setShowStreakCelebration] = useState(false);
@@ -80,7 +90,7 @@ export function useOnboardingProgress() {
     // Load from localStorage on mount + auto-complete welcome quest on first visit
     useEffect(() => {
         try {
-            const stored = localStorage.getItem(STORAGE_KEY);
+            const stored = localStorage.getItem(storageKey);
             if (stored) {
                 const parsed = JSON.parse(stored) as OnboardingProgress;
                 // Validate parsed data has required fields
@@ -106,7 +116,7 @@ export function useOnboardingProgress() {
                 // First visit - auto-complete the welcome quest
                 setProgress({
                     ...DEFAULT_PROGRESS,
-                    completedQuests: [WELCOME_QUEST_ID],
+                    completedQuests: [welcomeQuestId],
                     currentExp: XP_PER_QUEST, // Award XP for welcome quest
                     lastVisit: new Date().toISOString(),
                     isFirstVisit: true,
@@ -114,24 +124,25 @@ export function useOnboardingProgress() {
             }
         } catch (error) {
             console.warn('Failed to load onboarding progress, resetting:', error);
-            localStorage.removeItem(STORAGE_KEY); // Clear corrupt data
+            localStorage.removeItem(storageKey); // Clear corrupt data
             setProgress({
                 ...DEFAULT_PROGRESS,
-                completedQuests: [WELCOME_QUEST_ID],
+                completedQuests: [welcomeQuestId],
                 currentExp: XP_PER_QUEST,
                 lastVisit: new Date().toISOString(),
                 isFirstVisit: true,
             });
         }
         setIsLoaded(true);
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [storageKey, welcomeQuestId]);
 
     // Save to localStorage whenever progress changes
     useEffect(() => {
         if (isLoaded) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+            localStorage.setItem(storageKey, JSON.stringify(progress));
         }
-    }, [progress, isLoaded]);
+    }, [progress, isLoaded, storageKey]);
 
     // Check for time-based achievements
     const checkTimeAchievements = useCallback((): AchievementId[] => {
@@ -331,11 +342,11 @@ export function useOnboardingProgress() {
     const resetProgress = useCallback(() => {
         setProgress({
             ...DEFAULT_PROGRESS,
-            completedQuests: [WELCOME_QUEST_ID], // Keep welcome quest
+            completedQuests: [welcomeQuestId], // Keep welcome quest
             isFirstVisit: false,
         });
-        localStorage.removeItem(STORAGE_KEY);
-    }, []);
+        localStorage.removeItem(storageKey);
+    }, [storageKey, welcomeQuestId]);
 
     const clearNewAchievement = useCallback(() => {
         setNewAchievement(null);

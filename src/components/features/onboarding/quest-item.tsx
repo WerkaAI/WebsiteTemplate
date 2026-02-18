@@ -261,9 +261,19 @@ export const QuestItem = memo(function QuestItem({
                             </span>
                         )}
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
-                        {description}
-                    </p>
+                    <AnimatePresence initial={false}>
+                        {!isExpanded && (
+                            <motion.p
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.15 }}
+                                className="text-xs sm:text-sm text-muted-foreground line-clamp-2"
+                            >
+                                {description}
+                            </motion.p>
+                        )}
+                    </AnimatePresence>
                 </div>
 
                 {/* Expand indicator */}

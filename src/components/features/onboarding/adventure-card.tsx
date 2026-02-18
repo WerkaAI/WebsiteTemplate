@@ -101,9 +101,19 @@ export const AdventureCard = memo(function AdventureCard({
                         <h3 className="text-lg font-bold text-foreground mt-0.5">
                             {adventure.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground truncate">
-                            {adventure.subtitle}
-                        </p>
+                        <AnimatePresence initial={false}>
+                            {!isExpanded && (
+                                <motion.p
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.15 }}
+                                    className="text-sm text-muted-foreground truncate"
+                                >
+                                    {adventure.subtitle}
+                                </motion.p>
+                            )}
+                        </AnimatePresence>
 
                         {/* Progress bar */}
                         <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">

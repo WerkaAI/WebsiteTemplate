@@ -1,34 +1,34 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Navigation from '@/components/layout/navigation'
 import Footer from '@/components/layout/footer'
-import { pricingFaq, pricingPlans, valueHighlights } from '@/data/pricing'
+import { pricingFaq, pricingSteps, pricingConfig, universalFeatures, valueHighlights } from '@/data/pricing'
 import { cn } from '@/lib/utils'
 import {
   MonitorPlay,
   UserPlus,
   CalendarCheck,
-  Timer,
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
   Wallet,
   Rocket,
   HelpCircle,
-  MessageSquare,
-  Mail
+  Sparkles,
+  Gift,
+  Store,
 } from 'lucide-react'
+import PriceCalculator from './price-calculator'
 
 export const metadata: Metadata = {
   description:
-    'Wybierz plan AutoŻaba dopasowany do liczby sklepów i zespołu. Automatyczne grafiki, ewidencja czasu pracy, raporty PIP, wsparcie prawne i onboarding 1:1.',
+    'AutoŻaba — jeden system, prosta cena. 14 dni za darmo, potem 149 zł/mies. za sklep. Bez limitu pracowników, pełna ochrona prawna.',
   alternates: {
     canonical: '/cennik'
   },
   openGraph: {
-    title: 'Cennik AutoŻaba — abonament dopasowany do Twojej sieci',
+    title: 'Cennik AutoŻaba — prosta cena, pełna ochrona',
     description:
-      'Porównaj plany Starter, Growth i Scale. Automatyczne grafiki, ewidencja czasu pracy, dokumenty PIP i dedykowane wsparcie prawne.',
+      '14 dni za darmo. Potem 149 zł/mies. za sklep (promocja -25%). Automatyczne grafiki, ewidencja, dokumenty PIP — bez limitu pracowników.',
     url: '/cennik',
     type: 'website'
   }
@@ -36,11 +36,11 @@ export const metadata: Metadata = {
 
 const onboardingSteps = [
   {
-    title: 'Przedstawienie systemu (30 min)',
-    description: 'Prezentacja na tablecie i telefonie w Twoim sklepie.'
+    title: 'Pokazujemy Ci system (30 min)',
+    description: 'Prezentacja na tablecie i telefonie — w Twoim sklepie lub przez wideorozmowę.'
   },
   {
-    title: 'Pomoc we wdrożeniu (tydzień)',
+    title: 'Pomagamy we wdrożeniu (tydzień)',
     description: 'Uczymy Ciebie i pracowników korzystania z AutoŻaby.'
   },
   {
@@ -50,9 +50,9 @@ const onboardingSteps = [
 ]
 
 const onboardingKit = [
-  'Demo konto właściciela i pracownika z instrukcją krok po kroku',
-  'Karty Startowe z instrukcjami dla pracowników w 2 językach (PL/UA)',
-  'Pełna pomoc na każdym etapie wdrożenia AutoŻaby',
+  'Konto demo z instrukcją krok po kroku',
+  'Karty startowe dla pracowników w 2 językach (PL/UA)',
+  'Pełna pomoc na każdym etapie wdrożenia',
   'Szybka linia kontaktu — odpowiedź doradcy w dni robocze do 2h'
 ]
 
@@ -73,109 +73,9 @@ const costSummary = [
   }
 ]
 
-type PlanCardProps = {
-  plan: (typeof pricingPlans)[number]
-}
-
-function PlanCard({ plan }: PlanCardProps) {
-  const isExternal = !plan.disabled && plan.ctaHref.startsWith('http')
-  const cardClasses = cn(
-    'relative flex h-full flex-col rounded-3xl p-8 transition-all duration-300 backdrop-blur-xl border border-emerald-900/10 bg-white/60 dark:bg-white/5 dark:border-white/10 shadow-xl !overflow-visible',
-    plan.isFeatured
-      ? 'ring-1 ring-emerald-400/40 shadow-2xl z-10'
-      : 'hover:border-emerald-300/60 hover:-translate-y-1'
-  )
-
-  return (
-    <article className={cardClasses} aria-label={`Plan ${plan.title}`}>
-      {plan.badge && (
-        <div className="absolute -top-4 left-0 right-0 flex justify-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-500/30">
-            <CheckCircle2 className="h-3.5 w-3.5" />
-            {plan.badge}
-          </span>
-        </div>
-      )}
-
-      <div className="mb-8">
-        <div className="flex items-center justify-between gap-4 mb-4">
-          <span className="inline-flex items-center rounded-full border border-slate-200 bg-white/50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-slate-600 dark:border-slate-700/50 dark:bg-slate-900/50 dark:text-slate-300">
-            {plan.title}
-          </span>
-          {plan.bestFor && (
-            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-300" aria-label="Rekomendowana wielkość zespołu">
-              {plan.bestFor}
-            </span>
-          )}
-        </div>
-        <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">{plan.headline}</h3>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{plan.description}</p>
-      </div>
-
-      <div className="mb-8 space-y-1">
-        <div className="flex items-baseline gap-1">
-          <span className="text-4xl font-bold text-emerald-600 dark:text-emerald-400">{plan.priceMonthly}</span>
-        </div>
-        {plan.priceYearly && <p className="text-sm text-slate-500 dark:text-slate-400">{plan.priceYearly} przy rozliczeniu rocznym</p>}
-        {plan.annualNote && <p className="text-xs font-medium text-emerald-600 dark:text-emerald-300">{plan.annualNote}</p>}
-      </div>
-
-      <div className="flex-1">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent dark:via-slate-700 mb-6" />
-        <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-200">
-          {plan.highlights.map((highlight) => (
-            <li key={highlight} className="flex items-start gap-3">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-500 dark:text-emerald-400" aria-hidden />
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {plan.disabled ? (
-        <span className="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-slate-100 px-4 py-3 text-center text-sm font-semibold text-slate-400 cursor-not-allowed dark:bg-slate-800 dark:text-slate-500" aria-disabled>
-          {plan.cta}
-        </span>
-      ) : isExternal ? (
-        <a
-          href={plan.ctaHref}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 active:scale-95"
-        >
-          {plan.cta}
-          <ArrowRight className="h-4 w-4" />
-        </a>
-      ) : (
-        <Link
-          href={plan.ctaHref}
-          className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 active:scale-95"
-        >
-          {plan.cta}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-      )}
-
-      {plan.status && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-3xl bg-slate-900/80 px-6 text-center text-white backdrop-blur-md">
-          <span className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300">
-            {plan.status.badge}
-          </span>
-          <div>
-            <p className="text-xl font-bold mb-2">{plan.status.headline}</p>
-            <p className="text-sm text-slate-300 leading-relaxed">{plan.status.description}</p>
-          </div>
-        </div>
-      )}
-    </article>
-  )
-}
+const stepIcons = [Gift, Store, Store]
 
 export default function PricingPage() {
-  const trialPlan = pricingPlans.find((plan) => plan.id === 'trial')
-  const heroPrimaryHref = trialPlan?.ctaHref ?? '/kontakt'
-  const heroPrimaryLabel = trialPlan?.cta ?? 'Aktywuj darmowy trial'
-
   return (
     <div className="relative flex min-h-screen flex-col bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[780px] overflow-hidden">
@@ -187,31 +87,161 @@ export default function PricingPage() {
       <Navigation />
 
       <main className="relative z-10 flex-1">
-        <section className="mx-auto max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
+        {/* ─── HERO ─── */}
+        <section className="mx-auto max-w-7xl px-4 pb-12 pt-24 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-6 space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200">
               <ShieldCheck className="h-4 w-4" />
               <span>Transparentne warunki, zero ukrytych kosztów</span>
             </div>
 
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl text-balance">
-              Inwestycja w spokój<br />i bezpieczeństwo
+              Jeden system.<br />Prosta cena.<br />Pełna ochrona.
             </h1>
 
             <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-              Od 149 zł/mies. za sklep — bez limitu pracowników. Każdy pakiet zawiera automatyzację grafików i wsparcie ochrony przed błędami kodeksowymi.
+              Każdy klient AutoŻaby dostaje dokładnie to samo — pełen dostęp do wszystkich funkcji, bez limitu pracowników. Zacznij od 14 dni za darmo.
+            </p>
+
+            {/* Promo badge */}
+            <div className="inline-flex items-center gap-2 rounded-2xl bg-amber-50 border border-amber-200 px-5 py-3 text-sm font-semibold text-amber-800 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-200">
+              <Sparkles className="h-4 w-4" />
+              <span>Promocja na pierwszy rok: <strong>-25%</strong> na abonament</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── 3 STEPS ─── */}
+        <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-3">
+            {pricingSteps.map((step, index) => {
+              const Icon = stepIcons[index] ?? Store
+              return (
+                <article
+                  key={step.id}
+                  className={cn(
+                    'relative flex flex-col rounded-3xl p-8 transition-all duration-300 backdrop-blur-xl border bg-white/60 dark:bg-white/5 shadow-xl',
+                    step.id === 'subscription'
+                      ? 'border-emerald-300/60 ring-1 ring-emerald-400/40 shadow-2xl z-10 dark:border-emerald-500/30'
+                      : 'border-emerald-900/10 dark:border-white/10 hover:border-emerald-300/60 hover:-translate-y-1'
+                  )}
+                >
+                  {step.badge && (
+                    <div className="absolute -top-4 left-0 right-0 flex justify-center">
+                      <span className={cn(
+                        'inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg',
+                        step.id === 'trial'
+                          ? 'bg-blue-500 shadow-blue-500/30'
+                          : 'bg-emerald-500 shadow-emerald-500/30'
+                      )}>
+                        {step.id === 'trial' ? <Gift className="h-3.5 w-3.5" /> : <Sparkles className="h-3.5 w-3.5" />}
+                        {step.badge}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Step number */}
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-lg dark:bg-emerald-500/20 dark:text-emerald-300">
+                      {step.step}
+                    </div>
+                    <span className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                      {step.title}
+                    </span>
+                  </div>
+
+                  {/* Headline */}
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">{step.headline}</h3>
+
+                  {/* Price */}
+                  {step.priceLabel && (
+                    <div className="mb-6 space-y-1">
+                      <div className="flex items-baseline gap-3">
+                        {step.priceRegular && (
+                          <span className="text-2xl font-bold text-slate-400 line-through decoration-red-400 decoration-2">
+                            {step.priceRegular}
+                          </span>
+                        )}
+                        <span className={cn(
+                          'text-3xl font-bold',
+                          step.id === 'trial'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-emerald-600 dark:text-emerald-400'
+                        )}>
+                          {step.priceLabel}
+                        </span>
+                      </div>
+                      {step.priceRegular && (
+                        <p className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
+                          Cena gwarantowana przez 12 miesięcy
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Details */}
+                  <ul className="flex-1 space-y-3 text-sm text-slate-600 dark:text-slate-200">
+                    {step.details.map((detail) => (
+                      <li key={detail} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-500 dark:text-emerald-400" aria-hidden />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* ─── SINGLE CTA ─── */}
+        <section className="mx-auto max-w-3xl px-4 pb-20 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 rounded-3xl glass-premium p-10 md:p-14 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/10 dark:to-slate-900/50">
+            <h2 className="text-2xl md:text-3xl font-bold">Gotowy, żeby odzyskać spokój?</h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto">
+              Zarejestruj się i przez 14 dni korzystaj z AutoŻaby za darmo — bez zobowiązań, bez podawania karty płatniczej.
+            </p>
+            <div>
+              <a
+                href={pricingConfig.ctaHref}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3 rounded-2xl bg-emerald-500 px-10 py-5 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-95"
+              >
+                🐸 {pricingConfig.ctaLabel}
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              {pricingConfig.ctaSubtext}
             </p>
           </div>
+        </section>
 
-          {/* Pricing Cards */}
-          <div className="grid gap-8 lg:grid-cols-3 items-stretch max-w-6xl mx-auto">
-            {pricingPlans.map((plan) => (
-              <PlanCard key={plan.id} plan={plan} />
+        {/* ─── WHAT YOU GET ─── */}
+        <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-4">Co dostajesz?</h2>
+            <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+              Każdy klient AutoŻaby — niezależnie od liczby sklepów — ma dostęp do pełnego zestawu funkcji.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {universalFeatures.map((feature) => (
+              <div key={feature} className="flex items-start gap-3 rounded-2xl glass-premium p-5 transition hover:shadow-md">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-emerald-500" />
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{feature}</span>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Value Bento Grid */}
+        {/* ─── PRICE CALCULATOR ─── */}
+        <section className="mx-auto max-w-4xl px-4 pb-20 sm:px-6 lg:px-8">
+          <PriceCalculator />
+        </section>
+
+        {/* ─── VALUE BENTO GRID ─── */}
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Main Value Prop */}
@@ -245,8 +275,8 @@ export default function PricingPage() {
             {/* Highlights */}
             <div className="rounded-3xl glass-premium p-8 flex flex-col justify-center bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/10 dark:to-slate-900/50">
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Timer className="h-5 w-5 text-emerald-500" />
-                W każdym pakiecie
+                <ShieldCheck className="h-5 w-5 text-emerald-500" />
+                Zawsze w cenie
               </h3>
               <ul className="space-y-4">
                 {valueHighlights.slice(0, 4).map((highlight) => (
@@ -263,10 +293,10 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* Visual Onboarding Timeline */}
+        {/* ─── ONBOARDING TIMELINE (renamed to Wdrożenie) ─── */}
         <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Onboarding w 7 dni</h2>
+            <h2 className="text-3xl font-bold mb-4">Wdrożenie w 7 dni</h2>
             <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               Nie zostawiamy Cię samego. Nasz proces wdrożenia jest zaprojektowany tak,
               abyś w tydzień przeszedł od chaosu do pełnej automatyzacji.
@@ -305,17 +335,19 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Link
-              href="/kontakt"
+            <a
+              href={pricingConfig.ctaHref}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
             >
-              Umów darmowe wdrożenie
+              Wypróbuj AutoŻabę za darmo
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* ─── FAQ ─── */}
         <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="rounded-3xl glass-premium p-8 md:p-12">
             <div className="text-center mb-12">
@@ -351,7 +383,6 @@ export default function PricingPage() {
             </div>
           </div>
         </section>
-
 
       </main>
       <Footer />

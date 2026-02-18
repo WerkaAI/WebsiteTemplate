@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Book, RotateCcw, Sparkles, TrendingUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Book, RotateCcw, Sparkles, TrendingUp, Users, Briefcase } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
     AdventureCard,
     BadgeDisplay,
@@ -14,8 +14,39 @@ import { ShopLevelDisplay } from '@/components/features/onboarding/shop-level-di
 import { OnboardingSkeleton } from '@/components/features/onboarding/skeleton-loader';
 import { ADVENTURES, getAllQuests } from '@/lib/onboarding/onboarding-content';
 import { useOnboardingProgress, HIDDEN_ACHIEVEMENTS } from '@/lib/onboarding/use-progress';
+import { ChatFlow } from '@/components/features/onboarding/chat-flow';
+
+type OnboardingRole = 'employee' | 'owner';
+
+const ROLE_STORAGE_KEY = 'autozaba-onboarding-role';
+const OWNER_PROGRESS_KEY = 'autozaba-onboarding-owner';
+const OWNER_WELCOME_ID = 'a0-witaj';
 
 export function OnboardingPageContent() {
+    // ── Role state (persisted in localStorage) ────────────────────────
+    const [role, setRole] = useState<OnboardingRole>('employee');
+    const [roleLoaded, setRoleLoaded] = useState(false);
+
+    useEffect(() => {
+        try {
+            const stored = localStorage.getItem(ROLE_STORAGE_KEY) as OnboardingRole | null;
+            if (stored === 'employee' || stored === 'owner') setRole(stored);
+        } catch { /* noop */ }
+        setRoleLoaded(true);
+    }, []);
+
+    const switchRole = useCallback((newRole: OnboardingRole) => {
+        setRole(newRole);
+        try { localStorage.setItem(ROLE_STORAGE_KEY, newRole); } catch { /* noop */ }
+    }, []);
+
+    // ── Derived data per role ──────────────────────────────────────────
+    const isEmployee = role === 'employee';
+    const adventures = ADVENTURES; // Owner adventures only
+    const storageKey = OWNER_PROGRESS_KEY;
+    const welcomeQuestId = OWNER_WELCOME_ID;
+
+    // ── Progress hook (owner only — employee uses ChatFlow's own hook) ─
     const {
         progress,
         isLoaded,
@@ -29,19 +60,22 @@ export function OnboardingPageContent() {
         resetProgress,
         clearNewAchievement,
         completeQuiz,
-    } = useOnboardingProgress();
+    } = useOnboardingProgress({ storageKey, welcomeQuestId });
 
     const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
 
-    // Calculate total quests
-    const totalQuests = useMemo(() => getAllQuests().length, []);
+    // Calculate total quests for owner role
+    const totalQuests = useMemo(
+        () => getAllQuests().length,
+        [],
+    );
     const completionPercentage = getCompletionPercentage(totalQuests);
 
-    // All badges
+    // All badges for current role
     const allBadges = useMemo(
-        () => ADVENTURES.map((adventure) => adventure.badge),
-        []
+        () => adventures.map((adventure) => adventure.badge),
+        [adventures],
     );
 
     // Żabek messages based on progress - with anxiety reduction
@@ -100,34 +134,15 @@ export function OnboardingPageContent() {
     }, [completionPercentage, isLoaded]);
 
     // Loading state
-    if (!isLoaded) {
+    if (!roleLoaded || (!isEmployee && !isLoaded)) {
         return <OnboardingSkeleton />;
     }
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
-            {/* Cheat Sheet Panel (side drawer) */}
-            <CheatSheetPanel
-                isOpen={isCheatSheetOpen}
-                onClose={() => setIsCheatSheetOpen(false)}
-            />
-
-            {/* Fixed Cheat Sheet Button - iOS safe area + larger touch target on mobile */}
-            <motion.button
-                onClick={() => setIsCheatSheetOpen(true)}
-                className="fixed bottom-6 right-4 sm:right-6 z-30 flex items-center justify-center gap-2 min-w-[56px] min-h-[56px] sm:min-w-0 sm:min-h-0 px-4 py-3 rounded-full bg-brand-green text-white shadow-lg hover:bg-brand-green/90 transition-colors"
-                style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Otwórz ściągę"
-            >
-                <Book className="w-6 h-6 sm:w-5 sm:h-5" />
-                <span className="font-medium hidden sm:inline">Ściąga</span>
-            </motion.button>
-
-            {/* Main Content - extra bottom padding for iOS safe area */}
+            {/* Main Content */}
             <div className="container-spacing pt-4 sm:pt-8 pb-28 sm:pb-24" style={{ paddingBottom: 'max(7rem, calc(6rem + env(safe-area-inset-bottom)))' }}>
-                {/* Hero Section - simplified for mobile */}
+                {/* Hero Section - minimal for employee, full for owner */}
                 <section className="text-center mb-6 sm:mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -135,108 +150,196 @@ export function OnboardingPageContent() {
                         transition={{ duration: 0.6 }}
                         className="mb-4 sm:mb-8"
                     >
-                        {/* Żabek Mascot - smaller on mobile */}
-                        <div className="flex justify-center mb-3 sm:mb-6">
-                            <ZabekGuide message={zabekMessage ?? undefined} isVisible />
-                        </div>
+                        {/* Żabek Mascot + title — only for owner */}
+                        {!isEmployee && (
+                            <>
+                                <div className="flex justify-center mb-3 sm:mb-6">
+                                    <ZabekGuide message={zabekMessage ?? undefined} isVisible />
+                                </div>
+                                <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1 sm:mb-3 px-2">
+                                    Witaj w{' '}
+                                    <span className="text-brand-green">Przygodzie Żabiana</span>! 🐸
+                                </h1>
+                                <p className="hidden sm:block text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+                                    Rozwiń swój sklep od małego Kiosku do wielkiego Imperium! Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
+                                </p>
+                            </>
+                        )}
 
-                        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1 sm:mb-3 px-2">
-                            Witaj w{' '}
-                            <span className="text-brand-green">Przygodzie Żabiana</span>! 🐸
-                        </h1>
-                        {/* Description - hidden on mobile */}
-                        <p className="hidden sm:block text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-                            Rozwiń swój sklep od małego Kiosku do wielkiego Imperium! Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
-                        </p>
+                        {/* Employee: brief title */}
+                        {isEmployee && (
+                            <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-1 px-2">
+                                Onboarding <span className="text-brand-green">AutoŻaba</span> 🐸
+                            </h1>
+                        )}
                     </motion.div>
 
-                    {/* Shop Level Display & Progress */}
-                    <div className="max-w-xl mx-auto mb-4 sm:mb-10">
-                        <ShopLevelDisplay
-                            currentLevel={progress.currentLevel}
-                            currentExp={progress.currentExp}
-                        />
-                    </div>
+                    {/* ── Role Toggle ─────────────────────────────────── */}
+                    {/* Owner path hidden — old system, to be rebuilt */}
+                    {/* <div className="flex justify-center mb-6 sm:mb-8">
+                        <div className="inline-flex items-center rounded-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 p-1 shadow-sm">
+                            <button
+                                onClick={() => switchRole('employee')}
+                                className={cn(
+                                    'flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                                    isEmployee
+                                        ? 'bg-brand-green text-white shadow-md'
+                                        : 'text-muted-foreground hover:text-foreground'
+                                )}
+                            >
+                                <Users className="w-4 h-4" />
+                                Pracownik
+                            </button>
+                            <button
+                                onClick={() => switchRole('owner')}
+                                className={cn(
+                                    'flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                                    !isEmployee
+                                        ? 'bg-brand-green text-white shadow-md'
+                                        : 'text-muted-foreground hover:text-foreground'
+                                )}
+                            >
+                                <Briefcase className="w-4 h-4" />
+                                Właściciel
+                            </button>
+                        </div>
+                    </div> */}
+                </section>
 
-                    {/* Badges - compact row on mobile */}
-                    <div className="flex flex-col items-center gap-3 sm:gap-6">
-                        <BadgeDisplay
-                            badges={allBadges}
-                            earnedBadges={progress.earnedBadges}
+                {/* ── EMPLOYEE: Chat-based onboarding ── */}
+                {isEmployee && (
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key="employee-chat"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <ChatFlow />
+                        </motion.div>
+                    </AnimatePresence>
+                )}
+
+                {/* ── OWNER: Classic adventure card system ── */}
+                {!isEmployee && (
+                    <>
+                        {/* Cheat Sheet Panel (side drawer) — owner only */}
+                        <CheatSheetPanel
+                            isOpen={isCheatSheetOpen}
+                            onClose={() => setIsCheatSheetOpen(false)}
                         />
 
-                        {/* Secondary Stats - smaller and sideby side */}
-                        <div className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-                            <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
-                                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500" />
-                                <span className="font-medium">{progress.currentStreak}</span>
-                                <span className="hidden sm:inline">dni serii</span>
-                            </div>
-                            <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
-                                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
-                                <span className="font-medium">{completionPercentage}%</span>
-                                <span className="hidden sm:inline">kursu</span>
+                        {/* Fixed Cheat Sheet Button */}
+                        <motion.button
+                            onClick={() => setIsCheatSheetOpen(true)}
+                            className="fixed bottom-6 right-4 sm:right-6 z-30 flex items-center justify-center gap-2 min-w-[56px] min-h-[56px] sm:min-w-0 sm:min-h-0 px-4 py-3 rounded-full bg-brand-green text-white shadow-lg hover:bg-brand-green/90 transition-colors"
+                            style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)' }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            aria-label="Otwórz ściągę"
+                        >
+                            <Book className="w-6 h-6 sm:w-5 sm:h-5" />
+                            <span className="font-medium hidden sm:inline">Ściąga</span>
+                        </motion.button>
+
+                        {/* Shop Level Display & Progress */}
+                        <div className="max-w-xl mx-auto mb-4 sm:mb-10">
+                            <ShopLevelDisplay
+                                currentLevel={progress.currentLevel}
+                                currentExp={progress.currentExp}
+                            />
+                        </div>
+
+                        {/* Badges */}
+                        <div className="flex flex-col items-center gap-3 sm:gap-6 mb-6">
+                            <BadgeDisplay
+                                badges={allBadges}
+                                earnedBadges={progress.earnedBadges}
+                            />
+
+                            {/* Secondary Stats */}
+                            <div className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
+                                <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
+                                    <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-amber-500" />
+                                    <span className="font-medium">{progress.currentStreak}</span>
+                                    <span className="hidden sm:inline">dni serii</span>
+                                </div>
+                                <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-slate-900/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
+                                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
+                                    <span className="font-medium">{completionPercentage}%</span>
+                                    <span className="hidden sm:inline">kursu</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                {/* Adventures Section */}
-                <section>
-                    <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center px-2">
-                        Twoje Przygody
-                    </h2>
-                    <div className="space-y-3 sm:space-y-4 max-w-3xl mx-auto">
-                        {ADVENTURES.map((adventure, index) => (
-                            <motion.div
-                                key={adventure.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * index, duration: 0.4 }}
+                        {/* Adventures Section */}
+                        <section>
+                            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center px-2">
+                                Twoje Przygody
+                            </h2>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key="owner"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="space-y-3 sm:space-y-4 max-w-3xl mx-auto"
+                                >
+                                    {adventures.map((adventure, index) => (
+                                        <motion.div
+                                            key={adventure.id}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.1 * index, duration: 0.4 }}
+                                        >
+                                            <AdventureCard
+                                                adventure={adventure}
+                                                completedQuests={progress.completedQuests}
+                                                completedQuizzes={progress.completedQuizzes}
+                                                onToggleQuest={toggleQuest}
+                                                onCompleteQuiz={completeQuiz}
+                                                onBadgeEarned={earnBadge}
+                                                defaultExpanded={index === 0}
+                                            />
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            </AnimatePresence>
+                        </section>
+
+                        {/* Reset button */}
+                        <div className="mt-8 pt-4 border-t border-border/30 max-w-3xl mx-auto">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    if (confirm('Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.')) {
+                                        resetProgress();
+                                    }
+                                }}
+                                className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
                             >
-                                <AdventureCard
-                                    adventure={adventure}
-                                    completedQuests={progress.completedQuests}
-                                    completedQuizzes={progress.completedQuizzes}
-                                    onToggleQuest={toggleQuest}
-                                    onCompleteQuiz={completeQuiz}
-                                    onBadgeEarned={earnBadge}
-                                    defaultExpanded={index === 0}
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </section>
+                                <RotateCcw className="w-3 h-3" />
+                                Resetuj postępy
+                            </button>
+                        </div>
 
-                {/* Reset button (small, subtle) - moved to bottom */}
-                <div className="mt-8 pt-4 border-t border-border/30 max-w-3xl mx-auto">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            if (confirm('Czy na pewno chcesz zresetować postępy? Tej akcji nie można cofnąć.')) {
-                                resetProgress();
-                            }
-                        }}
-                        className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors flex items-center gap-1 mx-auto"
-                    >
-                        <RotateCcw className="w-3 h-3" />
-                        Resetuj postępy
-                    </button>
-                </div>
-
-                {/* Completion celebration */}
-                <AnimatePresence>
-                    {showConfetti && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center"
-                        >
-                            <div className="text-6xl animate-bounce">🎉🐸🎉</div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        {/* Completion celebration */}
+                        <AnimatePresence>
+                            {showConfetti && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center"
+                                >
+                                    <div className="text-6xl animate-bounce">🎉🐸🎉</div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </>
+                )}
             </div>
         </div>
     );

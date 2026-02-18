@@ -15,8 +15,8 @@ export default function PricingSection() {
       period: "/14 dni",
       features: [
         "Pełny dostęp do wszystkich funkcji",
-        "Do 10 pracowników",
-        "Wsparcie przez email",
+        "Bez limitu pracowników",
+        "Wsparcie przez czat i e-mail",
         "Bez zobowiązań",
       ],
       cta: "Przetestuj za darmo",
@@ -24,21 +24,21 @@ export default function PricingSection() {
     },
     {
       id: "pro",
-      name: "AutoŻaba Pro",
+      name: "AutoŻaba",
       price: "149 zł",
-      originalPrice: "200 zł",
+      originalPrice: "199 zł",
       period: "/miesiąc",
       features: [
-        "Nieograniczona liczba pracowników",
+        "Bez limitu pracowników",
         "Automatyczne grafiki zgodne z prawem",
-        "Tarcza Prawna § — kontekstowa pomoc",
-        "Priorytetowe wsparcie",
-        "Eksporty dla PIP i księgowości",
+        "Tarcza Prawna § — pomoc prawna w aplikacji",
+        "Pomoc we wdrożeniu — krok po kroku",
+        "Dokumenty PIP/BHP gotowe do kontroli",
       ],
-      cta: "Wybierz plan",
+      cta: "Sprawdź cennik",
       variant: "default" as const,
       popular: true,
-      disclaimer: "Cena gwarantowana przez 12 miesięcy",
+      disclaimer: "Cena promocyjna -25% gwarantowana przez 12 miesięcy",
     },
   ];
 
@@ -51,7 +51,7 @@ export default function PricingSection() {
     {
       label: "AutoŻaba",
       price: "149 zł/msc",
-      note: "Bez limitu pracowników • Cena gwarantowana 12 mies.",
+      note: "Bez limitu pracowników · Kolejny sklep +75 zł · Cena gwarantowana 12 mies.",
       highlight: true,
     },
     {
