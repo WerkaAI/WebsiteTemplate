@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}", 
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./mdx-components.tsx",
     "./content/**/*.mdx"
@@ -18,12 +18,12 @@ export default {
       colors: {
         // AutoŻaba Brand Colors
         "brand-green": "#006625",
-        "brand-green-secondary": "#16A34A", 
+        "brand-green-secondary": "#16A34A",
         "blackout": "#090909",
         "stone": "#313847",
         "almost-white": "#F9FAFB",
         "accent-orange": "#FD7E14",
-        
+
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {
@@ -119,12 +119,23 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "scale-in": {
+          from: {
+            opacity: "0",
+            transform: "scale(0.5)",
+          },
+          to: {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out",
         "slide-up": "slide-up 0.4s ease-out",
+        "scale-in": "scale-in 0.5s ease-out",
       },
       typography: (theme: any) => ({
         DEFAULT: {
@@ -132,10 +143,19 @@ export default {
             // Brand colors dla prose
             '--tw-prose-links': theme('colors.brand-green'),
             '--tw-prose-headings': theme('colors.blackout'),
+            '--tw-prose-body': theme('colors.stone'),
+            '--tw-prose-bold': theme('colors.blackout'),
             '--tw-prose-code': theme('colors.stone'),
             '--tw-prose-pre-bg': theme('colors.muted.DEFAULT'),
+
+            // Dark mode (invert)
             '--tw-prose-invert-links': theme('colors.brand-green-secondary'),
-            
+            '--tw-prose-invert-headings': '#ffffff',
+            '--tw-prose-invert-body': '#cbd5e1', // slate-300
+            '--tw-prose-invert-bold': '#ffffff',
+            '--tw-prose-invert-code': '#ffffff',
+            '--tw-prose-invert-pre-bg': 'rgba(0,0,0,0.5)',
+
             // Custom styling
             code: {
               backgroundColor: theme('colors.muted.DEFAULT'),

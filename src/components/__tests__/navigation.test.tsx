@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
-import Navigation from '@/components/navigation'
+import Navigation from '@/components/layout/navigation'
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({

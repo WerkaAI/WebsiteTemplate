@@ -35,22 +35,38 @@ const IMAGE_DOMAINS = [
   "https://images.unsplash.com",
   "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
   "https://img.youtube.com",
+  "https://i.ytimg.com",
+  // Analytics & marketing tracking pixels
+  "https://www.google-analytics.com",
+  "https://www.googletagmanager.com",
+  "https://www.facebook.com",
 ] as const;
 
 const SCRIPT_DOMAINS = [
   "https://challenges.cloudflare.com",
+  // Analytics & marketing (consent-gated via GCM v2)
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+  "https://connect.facebook.net",
 ] as const;
 
-const CONNECT_DOMAINS = SCRIPT_DOMAINS;
+const CONNECT_DOMAINS: readonly string[] = [
+  "https://challenges.cloudflare.com",
+  // GA4 / GTM beacon endpoints
+  "https://www.google-analytics.com",
+  "https://analytics.google.com",
+  "https://region1.google-analytics.com",
+  "https://stats.g.doubleclick.net",
+];
 
 const PERMISSIONS_POLICY_VALUE = [
-  "accelerometer=()",
-  "autoplay=()",
+  "accelerometer=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\")",
+  "autoplay=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\")",
   "camera=()",
   "display-capture=()",
   "fullscreen=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\")",
   "geolocation=()",
-  "gyroscope=()",
+  "gyroscope=(self \"https://www.youtube.com\" \"https://www.youtube-nocookie.com\")",
   "magnetometer=()",
   "microphone=()",
   "payment=()",
@@ -68,10 +84,12 @@ export function createCspDirectives(options: CreateCspOptions): CspDirectives {
 
   const nonceSource = "'nonce-" + nonce + "'";
   const scriptSrc: string[] = ["'self'", ...SCRIPT_DOMAINS, nonceSource];
-  if (allowUnsafeInlineScripts) {
+
+  // Always allow unsafe-inline and unsafe-eval in development to prevent blocking
+  if (process.env.NODE_ENV === 'development' || allowUnsafeInlineScripts) {
     scriptSrc.push("'unsafe-inline'");
   }
-  if (allowUnsafeEval) {
+  if (process.env.NODE_ENV === 'development' || allowUnsafeEval) {
     scriptSrc.push("'unsafe-eval'");
   }
 
@@ -81,7 +99,7 @@ export function createCspDirectives(options: CreateCspOptions): CspDirectives {
     "frame-ancestors": ["'self'"],
     "form-action": ["'self'", "https://app.autozaba.pl"],
     "frame-src": ["'self'", ...YOUTUBE_DOMAINS, "https://challenges.cloudflare.com"],
-    "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+    "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], // unsafe-inline required for some Next.js styles and third-party tools
     "img-src": ["'self'", "data:", ...IMAGE_DOMAINS],
     "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
     "script-src": scriptSrc,
@@ -136,7 +154,13 @@ export function buildSecurityHeaders(options: BuildSecurityHeadersOptions): Buil
 
   const cspReportOnlyHeader: SecurityHeader | undefined =
     mode === "report-only" || mode === "dual"
-      ? { key: "Content-Security-Policy-Report-Only", value: policy }
+      ? {
+        key: "Content-Security-Policy-Report-Only",
+        value: serializeCspDirectives({
+          ...directives,
+          "upgrade-insecure-requests": undefined // Report-only ignores this directive
+        })
+      }
       : undefined;
 
   const additionalHeaders: SecurityHeader[] = [

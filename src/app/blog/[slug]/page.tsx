@@ -5,16 +5,18 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
 import Link from "next/link";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import { getAllSlugs, loadPost } from "@/lib/posts";
-import ShareButtons from "@/components/blog/share-buttons";
+import ShareButtons from "@/components/features/blog/share-buttons";
 import { getCspNonce } from "@/lib/security/csp";
 import { APP_URLS } from "@/lib/config";
+import { ReadingProgress } from "@/components/features/blog/reading-progress";
+import { TableOfContents } from "@/components/features/blog/table-of-contents";
 
 interface BlogPostPageProps {
   params: {
@@ -116,6 +118,7 @@ export default async function Page({ params }: BlogPostPageProps) {
 
   return (
     <div className="bg-background dark:bg-slate-950 min-h-screen flex flex-col">
+      <ReadingProgress />
       <Navigation />
       <script
         nonce={nonce}
@@ -145,6 +148,7 @@ export default async function Page({ params }: BlogPostPageProps) {
                 fill
                 priority
                 className="absolute inset-0 h-full w-full object-cover opacity-60"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1024px"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/70 to-slate-900/80 dark:from-slate-950/95 dark:via-slate-950/75 dark:to-slate-950/90" />
@@ -158,7 +162,7 @@ export default async function Page({ params }: BlogPostPageProps) {
                 </Badge>
               )}
               <div className="space-y-4 max-w-3xl">
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white dark:text-white">
                   {title}
                 </h1>
                 <p className="text-base md:text-lg text-slate-200/90">
@@ -226,6 +230,9 @@ export default async function Page({ params }: BlogPostPageProps) {
           </article>
 
           <aside className="lg:sticky lg:top-32 space-y-6">
+            <div className="hidden lg:block rounded-2xl border border-border/60 dark:border-white/10 bg-card/60 dark:bg-slate-900/70 p-5 shadow-sm">
+              <TableOfContents />
+            </div>
             <div className="rounded-2xl border border-border/60 dark:border-white/10 bg-card/60 dark:bg-slate-900/70 p-5 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Udostępnij artykuł

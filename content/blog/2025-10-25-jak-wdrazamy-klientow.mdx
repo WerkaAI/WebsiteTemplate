@@ -7,224 +7,170 @@ cover: "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/landin
 draft: false
 ---
 
-<div className="blog-hero">
-	<p className="blog-hero__eyebrow">Za kulisami procesu wdrożenia</p>
-	<h1>Jak wdrażamy sklepy do AutoŻaby?</h1>
-	<p className="blog-hero__lead">
-		{`Tablet, telefon, 15 minut i kawałek kartki z hasłem. Tak wygląda początek Twojej przygody z AutoŻabą. 
-		Opowiadamy, jak naprawdę działa nasz proces wdrożenia – od pierwszego 'dzień dobry' w sklepie 
-		do pierwszego automatycznego grafiku.`}
-	</p>
-	<div className="blog-hero__metrics">
-		<span className="blog-pill">⏱️ 15 min demo</span>
-		<span className="blog-pill">📱 2 urządzenia</span>
-		<span className="blog-pill">🎯 Konkretne rezultaty</span>
-	</div>
-</div>
+<TLDR items={[
+  "Wdrożenie trwa 15 minut i odbywa się w Twoim sklepie, między klientami.",
+  "Dostajesz fizyczne karty startowe dla pracowników – zero skomplikowanych maili.",
+  "Pomagamy Ci stworzyć pierwszy grafik podczas sesji online z doradcą.",
+  "Nie zostawiamy Cię samego – sprawdzamy postępy po 3 i 7 dniach."
+]} />
 
-<section className="blog-section">
-	<h2>Wiesz, co jest najtrudniejsze w sprzedawaniu oprogramowania?</h2>
-	<p className="blog-section__lede">
-		{`To nie jest przekonanie kogoś, że produkt jest dobry. Najtrudniejsze jest pokazanie, 
-		że naprawdę rozumiesz jego codzienność.`}
-	</p>
+<BlogHero
+  eyebrow="Za kulisami procesu wdrożenia"
+  title="Jak wdrażamy sklepy do AutoŻaby?"
+  lead={`Tablet, telefon, 15 minut i kawałek kartki z hasłem. Tak wygląda początek Twojej przygody z AutoŻabą. 
+  Opowiadamy, jak naprawdę działa nasz proces wdrożenia – od pierwszego 'dzień dobry' w sklepie 
+  do pierwszego automatycznego grafiku.`}
+  metrics={[
+    { label: "15 min demo", icon: "⏱️" },
+    { label: "2 urządzenia", icon: "📱" },
+    { label: "Konkretne rezultaty", icon: "🎯" }
+  ]}
+/>
 
-	<p>
-		{`Dlatego kiedy przychodzimy do sklepu Żabka z AutoŻabą, nie przychodzimy z laptopem i prezentacją PowerPoint. 
-		Przychodzimy z tabletem, telefonem i gotowością, żeby przerwać w pół zdania – bo właśnie podszedł klient do lady.`}
-	</p>
+<BlogSection>
 
-	<p>
-		{`I to jest dokładnie ten moment, w którym właściciel sklepu wie: „Ci ludzie wiedzą, jak to jest".`}
-	</p>
-</section>
+## Wiesz, co jest najtrudniejsze w sprzedawaniu oprogramowania?
 
-<section className="blog-section">
-	<h2>Wizyta w sklepie: 15 minut między obsługą klientów</h2>
+To nie jest przekonanie kogoś, że produkt jest dobry. Najtrudniejsze jest pokazanie, 
+że naprawdę rozumiesz jego codzienność.
 
-	<p>
-		{`Pierwszy kontakt z AutoŻabą nie wygląda jak typowa prezentacja B2B. Nie ma tutaj sali konferencyjnej 
-		ani kawy z ekspresu. Jest lada w Żabce, zapach świeżej kawy z automatu i dźwięk drzwi otwierających się co chwilę.`}
-	</p>
+Dlatego kiedy przychodzimy do sklepu Żabka z AutoŻabą, nie przychodzimy z laptopem i prezentacją PowerPoint. 
+Przychodzimy z tabletem, telefonem i gotowością, żeby przerwać w pół zdania – bo właśnie podszedł klient do lady.
 
-	<p>
-		{`Wiemy, że franczyzobiorca nie ma czasu. Nie ma też przestrzeni mentalnej na słuchanie o „innowacyjnych rozwiązaniach" 
-		i „cyfrowej transformacji". Ma za to konkretny problem: grafik do zrobienia, inspekcję PIP w głowie i zero czasu na myślenie.`}
-	</p>
+I to jest dokładnie ten moment, w którym właściciel sklepu wie: „Ci ludzie wiedzą, jak to jest".
 
-	<p>
-		{`Dlatego nasze demo trwa 15 minut. I trwa je tak długo, jak długo trwa przerwa między klientami.`}
-	</p>
+</BlogSection>
 
-	<div className="blog-subsection">
-		<h3>Co pokazujemy?</h3>
-		<p>Dwa urządzenia. Dwie perspektywy.</p>
+<BlogSection>
 
-		<p>
-			{`Telefon – to widok pracownika. Pokazujemy, jak łatwo jest zgłosić wniosek o zmianę w grafiku, 
-			zaznaczyć swoją dostępność czy dodać komentarz do zmiany. Wszystko w aplikacji, która działa jak zwykła 
-			strona w przeglądarce (PWA) – bez instalacji, bez komplikacji.`}
-		</p>
+## Wizyta w sklepie: 15 minut między obsługą klientów
 
-		<p>
-			{`Tablet – to widok właściciela. Tutaj dzieje się magia. Pokazujemy:`}
-		</p>
+Pierwszy kontakt z AutoŻabą nie wygląda jak typowa prezentacja B2B. Nie ma tutaj sali konferencyjnej 
+ani kawy z ekspresu. Jest lada w Żabce, zapach świeżej kawy z automatu i dźwięk drzwi otwierających się co chwilę.
 
-		<ul className="blog-checklist">
-			<li>Jak system sam zatwierdza wnioski i aktualizuje grafik</li>
-			<li>Jak "Tarcza Prawna §" blokuje pomyłki prawne (np. mniej niż 11h odpoczynku między zmianami)</li>
-			<li>Jak wygenerować cały harmonogram automatycznie – na podstawie dostępności pracowników i wymogów prawnych</li>
-			<li>Jak wyglądają raporty gotowe dla PIP (bo to pierwszy strach każdego właściciela)</li>
-		</ul>
+Wiemy, że franczyzobiorca nie ma czasu. Nie ma też przestrzeni mentalnej na słuchanie o „innowacyjnych rozwiązaniach" 
+i „cyfrowej transformacji". Ma za to konkretny problem: grafik do zrobienia, inspekcję PIP w głowie i zero czasu na myślenie.
 
-		<p>
-			{`I na koniec – najważniejszy element: Starter Cards.`}
-		</p>
+Dlatego nasze demo trwa 15 minut. I trwa je tak długo, jak długo trwa przerwa między klientami.
 
-		<p>
-			{`To fizyczne karty dla pracowników (w języku polskim i ukraińskim), na których jest wydrukowany 
-			tymczasowy login, hasło i 3 proste kroki: zaloguj się → zmień hasło → wpisz swoją dostępność.`}
-		</p>
+### Co pokazujemy?
+Dwa urządzenia. Dwie perspektywy.
 
-		<p>Proste? Bardzo. Skuteczne? Jeszcze bardziej.</p>
-	</div>
+Telefon – to widok pracownika. Pokazujemy, jak łatwo jest zgłosić wniosek o zmianę w grafiku, 
+zaznaczyć swoją dostępność czy dodać komentarz do zmiany. Wszystko w aplikacji, która działa jak zwykła 
+strona w przeglądarce (PWA) – bez instalacji, bez komplikacji.
 
-	<div className="blog-subsection">
-		<h3>Dummy Konto do zabawy</h3>
-		<p>
-			{`Na koniec wizyty zostawiamy coś więcej niż ulotkę. Zostawiamy Dummy Konto – prawdziwe środowisko testowe, 
-			w którym właściciel może sam poklikać, przetestować, "zepsuć" (nie da się) i zobaczyć, 
-			jak to działa w praktyce.`}
-		</p>
+Tablet – to widok właściciela. Tutaj dzieje się magia. Pokazujemy:
 
-		<p>
-			{`Login i hasło zostawiamy na kartce. Albo QR kod. Staromodne? Może. Ale działa.`}
-		</p>
-	</div>
-</section>
+<BlogChecklist items={[
+  "Jak system sam zatwierdza wnioski i aktualizuje grafik",
+  "Jak \"Tarcza Prawna §\" blokuje pomyłki prawne (np. mniej niż 11h odpoczynku między zmianami)",
+  "Jak wygenerować cały harmonogram automatycznie – na podstawie dostępności pracowników i wymogów prawnych",
+  "Jak wyglądają raporty gotowe dla PIP (bo to pierwszy strach każdego właściciela)"
+]} />
 
-<section className="blog-section">
-	<h2>Onboarding: Od kart do pierwszego grafiku</h2>
+I na koniec – najważniejszy element: Starter Cards.
 
-	<p>
-		{`Okej, właściciel jest zainteresowany. Zapisał się do programu Early Adopters. Co dalej?`}
-	</p>
+To fizyczne karty dla pracowników (w języku polskim i ukraińskim), na których jest wydrukowany 
+tymczasowy login, hasło i 3 proste kroki: zaloguj się → zmień hasło → wpisz swoją dostępność.
 
-	<p>
-		{`Teraz zaczyna się prawdziwy onboarding – i tutaj nie zostawiamy nikogo samego.`}
-	</p>
+Proste? Bardzo. Skuteczne? Jeszcze bardziej.
 
-	<div className="blog-subsection">
-		<h3>Krok 1: Karty startowe trafiają do pracowników</h3>
-		<p>
-			{`Po utworzeniu konta produkcyjnego drukujemy Starter Cards z prawdziwymi loginami dla każdego pracownika. 
-			Właściciel rozdaje je w sklepie – i tyle.`}
-		</p>
+### Dummy Konto do zabawy
+Na koniec wizyty zostawiamy coś więcej niż ulotkę. Zostawiamy Dummy Konto – prawdziwe środowisko testowe, 
+w którym właściciel może sam poklikać, przetestować, "zepsuć" (nie da się) i zobaczyć, 
+jak to działa w praktyce.
 
-		<p>
-			{`Naszym celem jest, żeby minimum 80% pracowników zalogowało się i uzupełniło swoją dostępność 
-			przed pierwszą sesją z doradcą.`}
-		</p>
+Login i hasło zostawiamy na kartce. Albo QR kod. Staromodne? Może. Ale działa.
 
-		<p>
-			{`Dlaczego to ważne? Bo bez dostępności pracowników nie ma automatycznego harmonogramu. 
-			To taka "benzyna" dla systemu.`}
-		</p>
-	</div>
+</BlogSection>
 
-	<div className="blog-subsection">
-		<h3>Krok 2: Sesja z doradcą (45–60 min, Google Meet)</h3>
-		<p>
-			{`Kiedy większość zespołu już jest w systemie, umawiamy sesję online z doradcą. 
-			To nie jest szkolenie z PowerPointa. To wspólne tworzenie pierwszego automatycznego grafiku.`}
-		</p>
+<BlogSection>
 
-		<p>Co robimy podczas tej sesji?</p>
+## Onboarding: Od kart do pierwszego grafiku
 
-		<ul className="blog-checklist">
-			<li>Podstawowa konfiguracja – dane sklepu, język, role użytkowników</li>
-			<li>Harmonogram + Tarcza Prawna – uruchamiamy kreator, pokazujemy jak działa symbol "§" (czyli walidacja zgodności z prawem pracy) na żywym przykładzie</li>
-			<li>Publikacja pierwszego grafiku – właściciel klika "opublikuj", system wysyła powiadomienia do pracowników, wszyscy widzą swoje zmiany w telefonie</li>
-		</ul>
+Okej, właściciel jest zainteresowany. Zapisał się do programu Early Adopters. Co dalej?
 
-		<p>
-			{`I to jest ten moment, kiedy właściciel widzi, że to naprawdę działa. Nie jest to obietnica. 
-			To jest gotowy grafik, zgodny z prawem, w 15 minut.`}
-		</p>
-	</div>
+Teraz zaczyna się prawdziwy onboarding – i tutaj nie zostawiamy nikogo samego.
 
-	<div className="blog-subsection">
-		<h3>Krok 3: Tydzień 1 – budowanie nawyku</h3>
-		<p>
-			{`Po sesji nie zostawiamy klienta samego. Umawiamy dwa krótkie check-iny:`}
-		</p>
+### Krok 1: Karty startowe trafiają do pracowników
+Po utworzeniu konta produkcyjnego drukujemy Starter Cards z prawdziwymi loginami dla każdego pracownika. 
+Właściciel rozdaje je w sklepie – i tyle.
 
-		<ul className="blog-checklist">
-			<li>D+2/D+3 (15 min) – sprawdzamy, czy wszystko działa, czy pracownicy mają dostęp, czy powstał kolejny grafik</li>
-			<li>D+7 (15–30 min) – przeglądamy użycie systemu, zbieramy feedback, ustalamy rytm pracy na miesiąc</li>
-		</ul>
+Naszym celem jest, żeby minimum 80% pracowników zalogowało się i uzupełniło swoją dostępność 
+przed pierwszą sesją z doradcą.
 
-		<p>
-			{`Bo prawda jest taka: nowa aplikacja to jak nowy nawyk. Potrzeba wsparcia, by się przyjął.`}
-		</p>
-	</div>
-</section>
+Dlaczego to ważne? Bo bez dostępności pracowników nie ma automatycznego harmonogramu. 
+To taka "benzyna" dla systemu.
 
-<section className="blog-section">
-	<h2>Co nas wyróżnia? (Nie, nie to co myślisz)</h2>
+### Krok 2: Sesja z doradcą (45–60 min, Google Meet)
+Kiedy większość zespołu już jest w systemie, umawiamy sesję online z doradcą. 
+To nie jest szkolenie z PowerPointa. To wspólne tworzenie pierwszego automatycznego grafiku.
 
-	<p>
-		{`Może się wydawać, że to wszystko brzmi jak typowy proces onboardingowy. Ale jest jedna zasadnicza różnica.`}
-	</p>
+Co robimy podczas tej sesji?
 
-	<p className="blog-section__lede">
-		{`My nie sprzedajemy oprogramowania. My sprzedajemy spokój.`}
-	</p>
+<BlogChecklist items={[
+  "Podstawowa konfiguracja – dane sklepu, język, role użytkowników",
+  "Harmonogram + Tarcza Prawna – uruchamiamy kreator, pokazujemy jak działa symbol \"§\" (czyli walidacja zgodności z prawem pracy) na żywym przykładzie",
+  "Publikacja pierwszego grafiku – właściciel klika \"opublikuj\", system wysyła powiadomienia do pracowników, wszyscy widzą swoje zmiany w telefonie"
+]} />
 
-	<p>Każdy krok naszego procesu jest zaprojektowany tak, by:</p>
+I to jest ten moment, kiedy właściciel widzi, że to naprawdę działa. Nie jest to obietnica. 
+To jest gotowy grafik, zgodny z prawem, w 15 minut.
 
-	<ul className="blog-checklist">
-		<li>Nie zabierać czasu (demo w przerwach między klientami)</li>
-		<li>Nie wymagać technicznych umiejętności (karty fizyczne zamiast maili z instrukcjami)</li>
-		<li>Nie zostawiać samego (sesja z doradcą + follow-upy)</li>
-	</ul>
+### Krok 3: Tydzień 1 – budowanie nawyku
+Po sesji nie zostawiamy klienta samego. Umawiamy dwa krótkie check-iny:
 
-	<p>
-		{`I najważniejsze: pokazać ulgę, a nie funkcje.`}
-	</p>
+<BlogChecklist items={[
+  "D+2/D+3 (15 min) – sprawdzamy, czy wszystko działa, czy pracownicy mają dostęp, czy powstał kolejny grafik",
+  "D+7 (15–30 min) – przeglądamy użycie systemu, zbieramy feedback, ustalamy rytm pracy na miesiąc"
+]} />
 
-	<p>
-		{`Bo funkcje już pokazało Ci dziesięć innych firm. My pokazujemy, jak odzyskać wieczory dla rodziny 
-		i spać spokojnie bez strachu przed kontrolą PIP.`}
-	</p>
-</section>
+Bo prawda jest taka: nowa aplikacja to jak nowy nawyk. Potrzeba wsparcia, by się przyjął.
 
-<section className="blog-section">
-	<h2>Na koniec: Jedna kartka, jedno hasło, 15 minut</h2>
+</BlogSection>
 
-	<p>
-		{`Kiedy zostawiamy sklep po pierwszej wizycie, właściciel ma w kieszeni kawałek kartki z loginem do Dummy Konta. 
-		Telefon ma zrobione zdjęcie one-pagera z QR kodami. I ma jedną myśl w głowie:`}
-	</p>
+<BlogSection>
 
-	<p className="blog-section__lede">
-		{`„Może to naprawdę zadziała".`}
-	</p>
+## Co nas wyróżnia? (Nie, nie to co myślisz)
 
-	<p>
-		{`A my? My jesteśmy już w drodze do kolejnego sklepu. Z tabletem, telefonem i gotowością, 
-		by znowu przerwać prezentację w pół zdania.`}
-	</p>
+Może się wydawać, że to wszystko brzmi jak typowy proces onboardingowy. Ale jest jedna zasadnicza różnica.
 
-	<p>
-		{`Bo tak właśnie wygląda prawdziwe wdrożenie. Nie w sali konferencyjnej. Ale w prawdziwym sklepie, 
-		między klientami, z kawą z automatu i realnym problemem do rozwiązania.`}
-	</p>
+> My nie sprzedajemy oprogramowania. My sprzedajemy spokój.
 
-	<div className="blog-callout">
-		<p>
-			{`P.S. Jeśli jesteś właścicielem sklepu Żabka i chcesz zobaczyć, jak to działa na żywo – napisz do nas. 
-			Przyjedziemy z tabletem i 15 minutami czasu. Resztę zrobimy razem.`}
-		</p>
-	</div>
-</section>
+Każdy krok naszego procesu jest zaprojektowany tak, by:
+
+<BlogChecklist items={[
+  "Nie zabierać czasu (demo w przerwach między klientami)",
+  "Nie wymagać technicznych umiejętności (karty fizyczne zamiast maili z instrukcjami)",
+  "Nie zostawiać samego (sesja z doradcą + follow-upy)"
+]} />
+
+I najważniejsze: pokazać ulgę, a nie funkcje.
+
+Bo funkcje już pokazało Ci dziesięć innych firm. My pokazujemy, jak odzyskać wieczory dla rodziny 
+i spać spokojnie bez strachu przed kontrolą PIP.
+
+</BlogSection>
+
+<BlogSection>
+
+## Na koniec: Jedna kartka, jedno hasło, 15 minut
+
+Kiedy zostawiamy sklep po pierwszej wizycie, właściciel ma w kieszeni kawałek kartki z loginem do Dummy Konta. 
+Telefon ma zrobione zdjęcie one-pagera z QR kodami. I ma jedną myśl w głowie:
+
+> „Może to naprawdę zadziała".
+
+A my? My jesteśmy już w drodze do kolejnego sklepu. Z tabletem, telefonem i gotowością, 
+by znowu przerwać prezentację w pół zdania.
+
+Bo tak właśnie wygląda prawdziwe wdrożenie. Nie w sali konferencyjnej. Ale w prawdziwym sklepie, 
+między klientami, z kawą z automatu i realnym problemem do rozwiązania.
+
+<BlogCallout type="tip" title="Chcesz zobaczyć to na żywo?">
+  P.S. Jeśli jesteś właścicielem sklepu Żabka i chcesz zobaczyć, jak to działa na żywo – napisz do nas. 
+  Przyjedziemy z tabletem i 15 minutami czasu. Resztę zrobimy razem.
+</BlogCallout>
+
+</BlogSection>

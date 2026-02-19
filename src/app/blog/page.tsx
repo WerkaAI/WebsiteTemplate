@@ -1,18 +1,18 @@
 import { Metadata } from 'next'
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
-import BlogListing from "@/components/blog-listing";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
+import BlogListing from "@/components/features/blog/blog-listing";
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
-  title: 'Blog - Prawo Pracy w Pigułce',
-  description: 'Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem. Bez żargonu prawniczego, same konkretne wskazówki.',
+  title: 'Blog - Porady dla Żabki | Prawo Pracy i Automatyzacja',
+  description: 'Praktyczne poradniki dla franczyzobiorców Żabki. Dowiedz się jak unikać kar PIP, automatyzować grafiki i zarządzać sklepem z Cyfrowym Pomocnikiem.',
   alternates: {
     canonical: '/blog'
   },
   openGraph: {
-    title: 'Blog - AutoŻaba | Prawo Pracy w Pigułce',
-    description: 'Praktyczne poradniki o Kodeksie Pracy napisane prostym językiem.',
+    title: 'Blog - Porady dla Żabki | AutoŻaba',
+    description: 'Praktyczne poradniki dla franczyzobiorców Żabki. Prawo pracy, automatyzacja i zarządzanie.',
     type: 'website',
     url: '/blog'
   }
