@@ -12,10 +12,10 @@ import { useEffect } from 'react';
 
 export default function ContactPage() {
   useEffect(() => {
-    document.title = 'Kontakt | AutoŻaba';
+    document.title = 'Kontakt | Website Template';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Skontaktuj się z zespołem AutoŻaba. Pomożemy Ci w zarządzaniu zespołem i przestrzeganiu prawa pracy w Twojej franczyzie Żabka.');
+      metaDescription.setAttribute('content', 'Skontaktuj się z zespołem. Pomożemy Ci zaplanować wdrożenie i konfigurację rozwiązania.');
     }
   }, []);
 
@@ -23,10 +23,10 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email',
-      content: 'autozaba@ainything.pl',
+      content: 'kontakt@example.com',
       description: 'Odpowiadamy w ciągu 24 godzin',
       action: 'Napisz wiadomość',
-      href: 'mailto:autozaba@ainything.pl'
+      href: 'mailto:kontakt@example.com'
     },
     {
       icon: Phone,
@@ -67,8 +67,8 @@ export default function ContactPage() {
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed" data-testid="text-contact-subtitle">
-            Masz pytania o AutoŻabę? Chcesz poznać szczegóły?
-            Napisz do nas - pomożemy Ci zadbać o Twój zespół i spokój ducha.
+            Masz pytania o produkt? Chcesz poznać szczegóły?
+            Napisz do nas — pomożemy Ci dobrać i wdrożyć najlepszy wariant.
           </p>
         </div>
       </section>
@@ -164,8 +164,8 @@ export default function ContactPage() {
               <h3 className="text-lg font-bold text-foreground mb-6">Dlaczego warto?</h3>
               <ul className="space-y-6">
                 {[
-                  { title: 'Bezpłatna konsultacja', desc: 'Przeanalizujemy Twoją sytuację i pokażemy, jak AutoŻaba może Ci pomóc.' },
-                  { title: 'Dopasowane rozwiązanie', desc: 'Każda franczyza jest inna - dostosujemy AutoŻabę do Twoich potrzeb.' },
+                  { title: 'Bezpłatna konsultacja', desc: 'Przeanalizujemy Twoją sytuację i pokażemy, jak możemy pomóc.' },
+                  { title: 'Dopasowane rozwiązanie', desc: 'Każdy biznes jest inny — dopasujemy rozwiązanie do Twoich potrzeb.' },
                   { title: 'Wsparcie wdrożenia', desc: 'Pomożemy Ci sprawnie przejść na automatyczne zarządzanie zespołem.' }
                 ].map((item, i) => (
                   <li key={i} className="flex gap-4">

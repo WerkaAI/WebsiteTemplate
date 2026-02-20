@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 export const runtime = 'edge'
 
 export async function GET() {
-  const text = 'AutoŻaba — Automatyczna tarcza prawna'
+  const text = 'Website Template — nowoczesna strona produktowa'
   return new ImageResponse(
     (
       <div

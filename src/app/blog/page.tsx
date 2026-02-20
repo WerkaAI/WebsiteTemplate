@@ -5,14 +5,14 @@ import BlogListing from "@/components/features/blog/blog-listing";
 import { getAllPosts } from '@/lib/posts';
 
 export const metadata: Metadata = {
-  title: 'Blog - Porady dla Żabki | Prawo Pracy i Automatyzacja',
-  description: 'Praktyczne poradniki dla franczyzobiorców Żabki. Dowiedz się jak unikać kar PIP, automatyzować grafiki i zarządzać sklepem z Cyfrowym Pomocnikiem.',
+  title: 'Blog — porady produktowe i wdrożeniowe',
+  description: 'Praktyczne poradniki o wdrożeniu, procesach i automatyzacji pracy zespołu.',
   alternates: {
     canonical: '/blog'
   },
   openGraph: {
-    title: 'Blog - Porady dla Żabki | AutoŻaba',
-    description: 'Praktyczne poradniki dla franczyzobiorców Żabki. Prawo pracy, automatyzacja i zarządzanie.',
+    title: 'Blog — porady produktowe i wdrożeniowe',
+    description: 'Praktyczne poradniki o wdrożeniu, procesach i automatyzacji pracy zespołu.',
     type: 'website',
     url: '/blog'
   }

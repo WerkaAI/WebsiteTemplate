@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Tutoriale AutoŻaba',
-  description: 'Instrukcje krok po kroku, które pomagają właścicielom i pracownikom sklepów Żabka wykorzystać pełnię możliwości AutoŻaba.',
+  title: 'Tutoriale produktu',
+  description: 'Instrukcje krok po kroku pomagające użytkownikom szybciej opanować kluczowe funkcje produktu.',
   alternates: {
     canonical: '/tutoriale',
   },

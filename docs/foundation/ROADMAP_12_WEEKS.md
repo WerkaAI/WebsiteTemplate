@@ -9,7 +9,8 @@
 - [x] Step 08: CSP production default mode + env controls
 - [x] Step 09: template cleanup pass (neutral baseline)
 - [x] Step 10A: white-label inventory + targeted cleanup
-- [ ] Kolejne etapy: full white-label pass, MDX hardening, CSP enforce rollout telemetry
+- [ ] Step 10B: full white-label pass (w toku)
+- [ ] Kolejne etapy: MDX hardening, CSP enforce rollout telemetry
 
 ## Faza 1 (Tydzień 1–2): Baseline jakości i governance
 - Deliverables:

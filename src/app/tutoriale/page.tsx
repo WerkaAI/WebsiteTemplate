@@ -8,22 +8,22 @@ import { TutorialGrid } from '@/components/features/tutorial/tutorial-grid'
 import { GraduationCap, ArrowRight, MessageSquare, Rocket } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Tutoriale AutoŻaba — Krok po kroku',
+  title: 'Tutoriale produktu — krok po kroku',
   description:
-    'Zbiór tutoriali dla właścicieli i pracowników sklepów Żabka. Naucz się korzystać z AutoŻaba w codziennej pracy.',
+    'Zbiór tutoriali dla zespołu i administratorów. Naucz się korzystać z produktu w codziennej pracy.',
   openGraph: {
-    title: 'Tutoriale AutoŻaba',
+    title: 'Tutoriale produktu',
     description:
-      'Dowiedz się jak korzystać z AutoŻaba. Tutoriale dla właścicieli i pracowników sklepów Żabka.',
+      'Dowiedz się jak korzystać z produktu dzięki praktycznym tutorialom.',
     type: 'website',
     url: '/tutoriale',
     images: ['/og-image-placeholder.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tutoriale AutoŻaba',
+    title: 'Tutoriale produktu',
     description:
-      'Dowiedz się jak korzystać z AutoŻaba. Tutoriale dla właścicieli i pracowników sklepów Żabka.',
+      'Dowiedz się jak korzystać z produktu dzięki praktycznym tutorialom.',
     images: ['/og-image-placeholder.png'],
   },
   robots: {
@@ -77,7 +77,7 @@ export default async function TutorialsPage() {
             </h1>
 
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Naucz się w pełni wykorzystywać potencjał AutoŻaby.
+              Naucz się w pełni wykorzystywać potencjał produktu.
               Od pierwszego logowania po zaawansowane raporty.
             </p>
 
@@ -93,7 +93,7 @@ export default async function TutorialsPage() {
           </div>
         </section>
 
-        {/* Żaboouczek Banner */}
+        {/* Onboarding Banner */}
         <section className="container-spacing pb-12">
           <Link
             href="/onboarding"
@@ -106,7 +106,7 @@ export default async function TutorialsPage() {
               <div className="flex-1 space-y-1">
                 <div className="flex items-center gap-2">
                   <h2 className="text-xl md:text-2xl font-bold text-foreground">
-                    Nowy w AutoŻaba? Rozpocznij od Żabouczka!
+                    Nowy użytkownik? Rozpocznij od onboardingu!
                   </h2>
                   <Rocket className="w-5 h-5 text-emerald-500 hidden md:block" />
                 </div>
@@ -142,7 +142,7 @@ export default async function TutorialsPage() {
                 Przygotujemy dedykowany materiał wideo dla Twojego zespołu.
               </p>
               <Button asChild size="lg" className="rounded-full">
-                <Link href="mailto:autozaba@ainything.pl">Zgłoś propozycję tematu</Link>
+                <Link href="mailto:kontakt@example.com">Zgłoś propozycję tematu</Link>
               </Button>
             </div>
           </div>
