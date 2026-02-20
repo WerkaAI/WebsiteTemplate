@@ -7,7 +7,7 @@
 
 ## Architectural Priming
 - Treat security controls as a modular layer that mirrors existing site architecture: `next.config.mjs` for platform headers, middleware for edge logic, `src/lib` for reusable policies.
-- Reuse blueprint from existing content plans (`docs/New-pages-plan.md`) for structure and naming conventions; keep security artifacts in `docs/` for traceability.
+- Reuse blueprint from foundation docs (`docs/foundation/ROADMAP_12_WEEKS.md`) for structure and naming conventions; keep security artifacts in `docs/` for traceability.
 - Require every mitigation to publish a contract (type definition, config schema, or markdown spec) before implementation so agents can propagate intent consistently.
 
 ## Constraint Layering

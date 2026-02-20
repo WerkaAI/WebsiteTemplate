@@ -75,3 +75,23 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 1. finalny pass `src/lib/onboarding/*` i `src/app/tutoriale/page.tsx`
 2. ograniczyć legacy `docs/*` do sekcji archiwalnych i wyraźnie oznaczyć je jako historical
 3. porządki `public/` (usunąć nieużywane legacy assets)
+
+---
+
+## Aktualizacja po Step 10B (part 4)
+
+### Wynik ponownego skanu (grep)
+- `src`: 37 trafień
+- `content`: 47 trafień
+- `docs`: 54 trafienia
+
+### Postęp
+- usunięto nieużywane legacy assets z `public/` (PNG/MP4/PDF)
+- usunięto przestarzałe dokumenty planistyczne z `docs/` (m.in. `CENNIK_REDESIGN_PLAN.md`)
+- zaktualizowano odwołania w dokumentacji do aktualnych plików foundation
+- brak nieużywanych plików multimedialnych w `public/` po skanie referencji
+
+### Kolejność dalszych działań
+1. finalny pass white-label dla `src/lib/onboarding/*` i `src/app/tutoriale/page.tsx`
+2. redukcja legacy wpisów w `content/*` (draft/historyczne materiały)
+3. domknięcie Step 10B i przejście do finalnego polish pass

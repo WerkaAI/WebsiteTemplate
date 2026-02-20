@@ -25,7 +25,7 @@ Operationalizes the mobile evaluation using GPT-5 Codex with the Vibe Coding met
 - All Codex prompts reference an approved blueprint summary (see Review Workflow) before requesting code changes.
 
 ## Inputs & References
-- Design intent: `docs/visual-refresh-plan.md`, `docs/review/theme-review.md`, `docs/review/FINAL_REPORT.md`.
+- Design intent: `docs/review/theme-review.md`, `docs/review/FINAL_REPORT.md`, `docs/foundation/ROADMAP_12_WEEKS.md`.
 - Component inventory: `src/components`, `src/app/layout.tsx` for global chrome, `mdx-components.tsx` for rich content.
 - Breakpoint logic: `tailwind.config.ts` (`theme.screens`) and any `@media` rules inside `globals.css`.
 - Interaction scripts: `src/hooks`, `src/lib`, and API routes affecting client behaviour.

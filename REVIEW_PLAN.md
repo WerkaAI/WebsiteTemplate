@@ -210,7 +210,7 @@ Note: Bundle analyzer is already wired; set `ANALYZE=true` when building to emit
 
 ## Next steps
 
-- Review the detailed visual roadmap in `docs/visual-refresh-plan.md` and slot upcoming design sprints.
+- Review the current foundation roadmap in `docs/foundation/ROADMAP_12_WEEKS.md` and slot upcoming design sprints.
 - Tighten CSP further with nonces/hashed scripts and `next/script` where possible; enumerate any external `connect-src` if needed.
 - Run Lighthouse (mobile/desktop) and capture screenshots; address top opportunities (fonts/LCP/INP).
 - Verify canonical tags site-wide; consider BreadcrumbList JSON-LD.
