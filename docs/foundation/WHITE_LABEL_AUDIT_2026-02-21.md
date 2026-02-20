@@ -54,3 +54,24 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 1. dokończyć white-label `src/app/page.tsx`, `src/app/funkcje/page.tsx`, `src/data/blog-posts.ts`
 2. ograniczyć legacy w `src/lib/onboarding/*` do neutralnego słownika
 3. odchudzić `docs/` i `public/` z archiwalnych artefaktów
+
+---
+
+## Aktualizacja po Step 10B (part 3)
+
+### Wynik ponownego skanu (grep)
+- `src`: 37 trafień
+- `content`: 47 trafień
+- `docs`: 71 trafień
+
+### Postęp
+- dokończono neutralizację metadata i copy w:
+  - `src/app/page.tsx`
+  - `src/app/funkcje/page.tsx`
+  - `src/data/blog-posts.ts`
+- dalsza redukcja legacy w runtime (`src`) — z 55 do 37
+
+### Kolejność dalszych działań
+1. finalny pass `src/lib/onboarding/*` i `src/app/tutoriale/page.tsx`
+2. ograniczyć legacy `docs/*` do sekcji archiwalnych i wyraźnie oznaczyć je jako historical
+3. porządki `public/` (usunąć nieużywane legacy assets)

@@ -23,16 +23,16 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Funkcje AutoŻaba – System, który myśli jak najlepszy manager',
+  title: 'Funkcje produktu – System, który wspiera managera',
   description:
-    'Poznaj system, który automatyzuje grafiki, pilnuje Kodeksu Pracy i daje Ci pełną kontrolę nad siecią sklepów. Oszczędzaj czas i śpij spokojnie.',
+    'Poznaj system, który automatyzuje grafiki, wspiera zgodność i daje pełną kontrolę nad zespołem. Oszczędzaj czas i pracuj spokojniej.',
   alternates: {
     canonical: '/funkcje'
   },
   openGraph: {
-    title: 'Funkcje AutoŻaba – Twój cyfrowy manager',
+    title: 'Funkcje produktu – Twój cyfrowy manager',
     description:
-      'Automatyzacja grafików, Tarcza Prawna i pełna kontrola nad biznesem. Zobacz, jak AutoŻaba zmienia zarządzanie siecią Żabka.',
+      'Automatyzacja grafików, wsparcie zgodności i pełna kontrola nad operacjami. Zobacz, jak działa gotowy szablon SaaS.',
     url: '/funkcje',
     type: 'website'
   }
@@ -76,8 +76,8 @@ export default function FunkcjePage() {
             data-animate="rise"
             data-animate-delay="100"
           >
-            AutoŻaba to nie tylko grafik. To Twój osobisty asystent, który zdejmuje Ci z głowy
-            planowanie, pilnuje przepisów i dba o to, by w Twoim biznesie wszystko grało.
+            To nie tylko grafik. To cyfrowy asystent, który zdejmuje z głowy
+            planowanie, wspiera zgodność i pomaga utrzymać porządek w codziennej pracy zespołu.
           </p>
 
           <div
@@ -90,8 +90,8 @@ export default function FunkcjePage() {
               className="h-14 px-8 text-lg rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 w-full sm:w-auto"
               asChild
             >
-              <Link href="https://app.autozaba.pl/register">
-                Rozpocznij darmowy trial
+              <Link href="/onboarding">
+                Rozpocznij onboarding
               </Link>
             </Button>
             <Button
@@ -221,7 +221,7 @@ export default function FunkcjePage() {
               </h2>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Koniec ze stresem przed kontrolą. AutoŻaba analizuje Twój grafik
+                Koniec ze stresem przed kontrolą. System analizuje Twój grafik
                 w czasie rzeczywistym i blokuje zmiany niezgodne z prawem.
                 Doba pracownicza, odpoczynki, nadgodziny – mamy to pod kontrolą.
               </p>

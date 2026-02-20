@@ -15,21 +15,21 @@ import { getCspNonce } from "@/lib/security/csp";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'AutoŻaba - Twój Cyfrowy Pomocnik | Automatyzacja Sklepu i Tarcza Prawna',
-    description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.',
+    title: 'WebsiteTemplate - Nowoczesny system do zarządzania zespołem',
+    description: 'Szablon SaaS dla firm usługowych i retail. Automatyzuj planowanie, monitoruj zgodność i rozwijaj biznes szybciej.',
     alternates: {
       canonical: '/'
     },
     openGraph: {
-      title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
+      title: 'WebsiteTemplate - Nowoczesny system do zarządzania zespołem',
+      description: 'Szablon SaaS dla firm usługowych i retail. Automatyzuj planowanie i monitoruj zgodność.',
       type: 'website',
       images: ['/blog-illustrations/jak-wdrazamy.png']
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-      description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
+      title: 'WebsiteTemplate - Nowoczesny system do zarządzania zespołem',
+      description: 'Szablon SaaS dla firm usługowych i retail. Automatyzuj planowanie i monitoruj zgodność.',
       images: ['/blog-illustrations/jak-wdrazamy.png']
     }
   }
