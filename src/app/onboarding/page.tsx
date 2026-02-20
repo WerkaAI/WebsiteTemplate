@@ -4,13 +4,13 @@ import Footer from '@/components/layout/footer';
 import { OnboardingPageContent } from './content';
 
 export const metadata: Metadata = {
-    title: 'Żabouczek - Twoja Przygoda z AutoŻaba | Nauka Systemu',
+    title: 'Onboarding — interaktywny przewodnik',
     description:
-        'Rozpocznij swoją przygodę z AutoŻaba! Interaktywny przewodnik, który przeprowadzi Cię przez wszystkie funkcje systemu. Szybka ściąga zawsze pod ręką.',
+        'Rozpocznij onboarding. Interaktywny przewodnik przeprowadzi Cię przez kluczowe funkcje systemu.',
     openGraph: {
-        title: 'Żabouczek - Twoja Przygoda z AutoŻaba',
+        title: 'Onboarding — interaktywny przewodnik',
         description:
-            'Interaktywny przewodnik po systemie AutoŻaba. Naucz się zarządzać sklepem, zespołem i harmonogramem.',
+            'Interaktywny przewodnik po systemie. Naucz się pracy z kluczowymi modułami.',
         type: 'website',
     },
 };

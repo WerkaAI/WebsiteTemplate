@@ -36,7 +36,7 @@ import {
 
 // ─── localStorage helpers ─────────────────────────────────────────────
 
-const STORAGE_KEY = 'autozaba-chat-employee';
+const STORAGE_KEY = 'template-chat-employee';
 
 function loadProgress(): ChatProgress | null {
     if (typeof window === 'undefined') return null;

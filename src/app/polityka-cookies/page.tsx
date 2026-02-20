@@ -4,16 +4,16 @@ import Footer from '@/components/layout/footer'
 import { CookieSettingsButton } from '@/components/cookies/cookie-settings-button'
 
 export const metadata: Metadata = {
-  title: 'Polityka cookies AutoŻaba — pliki cookies i technologie śledzące',
+  title: 'Polityka cookies — pliki cookies i technologie śledzące',
   description:
-    'Informacja o plikach cookies i podobnych technologiach używanych w serwisie autozaba.pl. Poznaj kategorie cookies, dostawców, okresy retencji i zarządzaj swoimi preferencjami.',
+    'Informacja o plikach cookies i podobnych technologiach używanych w serwisie. Poznaj kategorie cookies, dostawców, okresy retencji i zarządzaj swoimi preferencjami.',
   alternates: {
     canonical: '/polityka-cookies',
   },
   openGraph: {
-    title: 'Polityka cookies AutoŻaba',
+    title: 'Polityka cookies',
     description:
-      'Transparentna informacja o cookies i technologiach śledzących w serwisie autozaba.pl.',
+      'Transparentna informacja o cookies i technologiach śledzących w serwisie.',
     url: '/polityka-cookies',
     type: 'website',
   },
@@ -35,7 +35,7 @@ export default function CookiePolicyPage() {
                 Polityka plików cookies
               </h1>
               <p className="mt-4 text-base text-slate-700 dark:text-slate-300">
-                Niniejszy dokument wyjaśnia, w jaki sposób serwis autozaba.pl
+                Niniejszy dokument wyjaśnia, w jaki sposób serwis
                 wykorzystuje pliki cookies i podobne technologie, jakie dane
                 zbieramy oraz jak możesz zarządzać swoimi preferencjami.
               </p>
@@ -85,14 +85,14 @@ export default function CookiePolicyPage() {
                     <tbody>
                       <tr>
                         <td>az_consent</td>
-                        <td>AutoŻaba</td>
+                        <td>Serwis</td>
                         <td>Zapamiętanie preferencji zgody na cookies</td>
                         <td>HTTP Cookie</td>
                         <td>12 miesięcy</td>
                       </tr>
                       <tr>
-                        <td>autozaba-theme</td>
-                        <td>AutoŻaba</td>
+                        <td>website-template-theme</td>
+                        <td>Serwis</td>
                         <td>Zapamiętanie wybranego motywu (jasny/ciemny)</td>
                         <td>Local Storage</td>
                         <td>Bezterminowo</td>
@@ -203,7 +203,7 @@ export default function CookiePolicyPage() {
 
                 <h2 id="google-consent-mode">3. Google Consent Mode v2</h2>
                 <p>
-                  Na stronie autozaba.pl stosujemy <strong>Google Consent Mode v2</strong>{' '}
+                  Na stronie stosujemy <strong>Google Consent Mode v2</strong>{' '}
                   w trybie Advanced. Oznacza to, że:
                 </p>
                 <ul>
@@ -307,9 +307,9 @@ export default function CookiePolicyPage() {
 
                 <hr />
 
-                <h2 id="app-autozaba">8. Cookies w aplikacji app.autozaba.pl</h2>
+                <h2 id="app">8. Cookies w aplikacji</h2>
                 <p>
-                  Aplikacja SaaS dostępna pod adresem app.autozaba.pl stosuje
+                  Aplikacja SaaS dostępna pod adresem aplikacji produkcyjnej stosuje
                   wyłącznie <strong>pliki cookies niezbędne</strong> do działania
                   systemu:
                 </p>
@@ -326,8 +326,8 @@ export default function CookiePolicyPage() {
                   per wytyczne UODO).
                 </p>
                 <p>
-                  Cookies z domeny www.autozaba.pl <strong>nie propagują się</strong>{' '}
-                  do subdomeny app.autozaba.pl — izolacja domen jest wymuszana
+                  Cookies z domeny marketingowej <strong>nie propagują się</strong>{' '}
+                  do subdomen aplikacyjnych — izolacja domen jest wymuszana
                   poprzez brak atrybutu Domain= w ustawieniach cookies.
                 </p>
 
@@ -338,10 +338,10 @@ export default function CookiePolicyPage() {
                   W sprawach dotyczących plików cookies i prywatności skontaktuj
                   się z nami:{' '}
                   <a
-                    href="mailto:autozaba@ainything.pl"
+                    href="mailto:kontakt@example.com"
                     className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
                   >
-                    autozaba@ainything.pl
+                    kontakt@example.com
                   </a>
                 </p>
 
@@ -352,10 +352,10 @@ export default function CookiePolicyPage() {
                   Zastrzegamy możliwość aktualizacji niniejszej polityki cookies.
                   Aktualna wersja jest zawsze dostępna pod adresem{' '}
                   <a
-                    href="https://autozaba.pl/polityka-cookies"
+                    href="/polityka-cookies"
                     className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
                   >
-                    https://autozaba.pl/polityka-cookies
+                    /polityka-cookies
                   </a>{' '}
                   i opatrzona datą obowiązywania.
                 </p>

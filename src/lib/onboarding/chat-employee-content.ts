@@ -110,7 +110,7 @@ const stepA0_welcome: ChatStep = {
     difficulty: 'easy',
     xpReward: 25,
     messages: withStepIds('emp-a0-witaj', [
-        zabek('Cześć! Jestem Żabek — Twój przewodnik po AutoŻabie. 🐸'),
+        zabek('Cześć! Jestem Żabek — Twój przewodnik po aplikacji. 🐸'),
         zabek('Pokażę Ci krok po kroku jak korzystać z aplikacji. W każdej chwili kliknij **🗺️ mapę** w prawym górnym rogu — tam znajdziesz mapę rozdziałów i swój postęp.'),
         buttons('Gotowy?', [
             { label: 'Zaczynamy! 🚀', action: 'complete' },
@@ -127,7 +127,7 @@ const stepA1_instalacja: ChatStep = {
     id: 'emp-a1-instalacja',
     chapterId: 'emp-ch-pierwsze-kroki',
     title: 'Instalacja aplikacji',
-    quickAnswer: 'Otwórz app.autozaba.pl w przeglądarce → „⋮" → „Dodaj do ekranu głównego".',
+    quickAnswer: 'Otwórz adres aplikacji w przeglądarce → „⋮" → „Dodaj do ekranu głównego".',
     keywords: ['instalacja', 'aplikacja', 'telefon', 'pwa', 'android', 'ios'],
     difficulty: 'normal',
     xpReward: 50,
@@ -137,7 +137,7 @@ const stepA1_instalacja: ChatStep = {
             { label: 'iPhone 🍎', action: 'branch', branchId: 'ios' },
         ]),
         // ── Android branch ──
-        zabek('① Otwórz **app.autozaba.pl** w Chrome\n② Kliknij menu **⋮** (trzy kropki)\n③ Wybierz **„Dodaj do ekranu głównego"**\n④ Potwierdź — gotowe! 📱', { branchId: 'android' }),
+        zabek('① Otwórz adres aplikacji w Chrome\n② Kliknij menu **⋮** (trzy kropki)\n③ Wybierz **„Dodaj do ekranu głównego"**\n④ Potwierdź — gotowe! 📱', { branchId: 'android' }),
         screenshot(
             '/images/onboarding/a2_pwa.mp4',
             'Instalacja PWA na Androidzie',
@@ -145,7 +145,7 @@ const stepA1_instalacja: ChatStep = {
             { branchId: 'android', playbackRate: 0.5 },
         ),
         // ── iOS branch ──
-        zabek('① Otwórz **app.autozaba.pl** w **Safari**\n② Kliknij ikonkę udostępniania **↑** na dole ekranu\n③ Wybierz **„Dodaj do ekranu początkowego"**\n④ Kliknij **„Dodaj"** — gotowe! 📱', { branchId: 'ios' }),
+        zabek('① Otwórz adres aplikacji w **Safari**\n② Kliknij ikonkę udostępniania **↑** na dole ekranu\n③ Wybierz **„Dodaj do ekranu początkowego"**\n④ Kliknij **„Dodaj"** — gotowe! 📱', { branchId: 'ios' }),
         screenshot(
             '/images/onboarding/a2_pwa.mp4',
             'Instalacja PWA na iPhonie',
@@ -169,15 +169,15 @@ const stepA2_logowanie: ChatStep = {
     id: 'emp-a2-logowanie',
     chapterId: 'emp-ch-pierwsze-kroki',
     title: 'Logowanie do systemu',
-    quickAnswer: 'Otwórz app.autozaba.pl → przepisz dane z karty startowej.',
+    quickAnswer: 'Otwórz adres aplikacji → przepisz dane z karty startowej.',
     keywords: ['logowanie', 'login', 'hasło', 'zaloguj', 'karta startowa'],
     difficulty: 'normal',
     xpReward: 50,
     messages: withStepIds('emp-a2-logowanie', [
-        zabek('Weź do ręki **kartę startową** od pracodawcy, otwórz **app.autozaba.pl** i przepisz dane z karty.'),
+        zabek('Weź do ręki **kartę startową** od pracodawcy, otwórz aplikację i przepisz dane z karty.'),
         screenshot(
             '/images/onboarding/a1_logowanie2.mp4',
-            'Logowanie do systemu AutoŻaba',
+            'Logowanie do systemu',
             'Przepisz dane z karty startowej',
         ),
         buttons('Zalogowałeś się?', [
@@ -548,7 +548,7 @@ export const EMPLOYEE_CHAT_CHAPTERS: ChatChapter[] = [
         icon: '🗓️',
         badge: { id: 'emp-badge-harmonogram', name: 'Zawsze Na Czas', icon: '🗓️' },
         steps: [stepD1_grafik],
-        celebrationMessage: 'Gratulacje! Wiesz już wszystko co potrzebne! Jesteś Mistrzem AutoŻaby! 🏆🐸',
+        celebrationMessage: 'Gratulacje! Wiesz już wszystko co potrzebne! Jesteś mistrzem onboardingu! 🏆🐸',
         zabekEvolution: 'golden',
         completionBonusXP: 150,
     },

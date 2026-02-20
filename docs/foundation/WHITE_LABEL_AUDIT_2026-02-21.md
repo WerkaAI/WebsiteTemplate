@@ -36,3 +36,21 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 - pełny pass white-label w `src/app/*` i `src/lib/onboarding/*`
 - czyszczenie/lub archiwizacja legacy docs i draft contentu historycznego
 - porządki w `public/` (usunąć nieużywane assety i/lub ujednolicić nazewnictwo)
+
+---
+
+## Aktualizacja po Step 10B (part 2)
+
+### Wynik ponownego skanu (grep)
+- `src`: 55 trafień
+- `content`: 47 trafień
+- `docs`: 70 trafień
+
+### Postęp
+- istotna redukcja legacy w runtime (`src`) — z 134 do 55
+- zneutralizowane legal pages i część onboarding/cookies/metadata
+
+### Kolejność dalszych działań
+1. dokończyć white-label `src/app/page.tsx`, `src/app/funkcje/page.tsx`, `src/data/blog-posts.ts`
+2. ograniczyć legacy w `src/lib/onboarding/*` do neutralnego słownika
+3. odchudzić `docs/` i `public/` z archiwalnych artefaktów

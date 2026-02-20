@@ -27,7 +27,7 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
             {
                 id: 'emp-a0-witaj',
                 title: 'Witaj w Przygodzie!',
-                description: 'Właśnie zaczynasz swoją przygodę z AutoŻabą. Spokojnie — krok po kroku!',
+                description: 'Właśnie zaczynasz onboarding. Spokojnie — krok po kroku!',
                 timeEstimate: 0,
                 keywords: ['start', 'początek', 'witaj'],
                 quickAnswer: 'Jesteś tutaj — to już sukces! 🎉',
@@ -39,10 +39,10 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
             {
                 id: 'emp-a1-instalacja',
                 title: 'Instalacja aplikacji',
-                description: 'Zainstaluj AutoŻabę na swoim telefonie, aby mieć do niej szybki dostęp.',
+                description: 'Zainstaluj aplikację na swoim telefonie, aby mieć do niej szybki dostęp.',
                 timeEstimate: 3,
                 keywords: ['instalacja', 'aplikacja', 'telefon', 'pwa', 'android', 'ios'],
-                quickAnswer: 'Otwórz app.autozaba.pl w przeglądarce telefonu → „⋮" → „Dodaj do ekranu głównego".',
+                quickAnswer: 'Otwórz adres aplikacji w przeglądarce telefonu → „⋮" → „Dodaj do ekranu głównego".',
                 difficulty: 1,
                 mediaVariants: [
                     {
@@ -65,7 +65,7 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                     },
                 ],
                 steps: [
-                    { step: 1, instruction: 'Otwórz app.autozaba.pl w przeglądarce na telefonie.' },
+                    { step: 1, instruction: 'Otwórz adres aplikacji w przeglądarce na telefonie.' },
                     { step: 2, instruction: 'Kliknij ikonę menu „⋮" (trzy kropki).' },
                     { step: 3, instruction: 'Wybierz „Dodaj do ekranu głównego".' },
                     { step: 4, instruction: 'Potwierdź instalację — gotowe!' },
@@ -75,19 +75,19 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
             {
                 id: 'emp-a2-logowanie',
                 title: 'Logowanie do systemu',
-                description: 'Jak zalogować się do AutoŻaba.',
+                description: 'Jak zalogować się do systemu.',
                 timeEstimate: 2,
                 keywords: ['logowanie', 'login', 'hasło', 'zaloguj', 'karta startowa'],
-                quickAnswer: 'Otwórz app.autozaba.pl → przepisz dane z karty startowej.',
+                quickAnswer: 'Otwórz adres aplikacji → przepisz dane z karty startowej.',
                 difficulty: 1,
                 media: {
                     type: 'video',
                     src: '/images/onboarding/a1_logowanie2.mp4',
-                    alt: 'Film pokazujący jak zalogować się do systemu AutoŻaba',
+                    alt: 'Film pokazujący jak zalogować się do systemu',
                 },
                 steps: [
                     { step: 1, instruction: 'Weź do ręki swoją kartę startową.' },
-                    { step: 2, instruction: 'Przejdź na stronę app.autozaba.pl.' },
+                    { step: 2, instruction: 'Przejdź na stronę aplikacji.' },
                     { step: 3, instruction: 'Przepisz tymczasowe dane z karty.', tip: 'Po pierwszym logowaniu ustaw własne hasło — będzie Ci łatwiej je zapamiętać.' },
                 ],
             },

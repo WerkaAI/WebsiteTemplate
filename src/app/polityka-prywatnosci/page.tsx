@@ -3,16 +3,16 @@ import Navigation from '@/components/layout/navigation'
 import Footer from '@/components/layout/footer'
 
 export const metadata: Metadata = {
-  title: 'Polityka prywatności AutoŻaba — jak chronimy dane',
+  title: 'Polityka prywatności — jak chronimy dane',
   description:
-    'Dowiedz się, jak AutoŻaba przetwarza dane klientów, użytkowników i pracowników. Poznaj cele, podstawy prawne, okresy przechowywania oraz swoje prawa.',
+    'Dowiedz się, jak przetwarzamy dane klientów i użytkowników. Poznaj cele, podstawy prawne, okresy przechowywania oraz swoje prawa.',
   alternates: {
     canonical: '/polityka-prywatnosci'
   },
   openGraph: {
-    title: 'Polityka prywatności AutoŻaba — ochrona danych w praktyce',
+    title: 'Polityka prywatności — ochrona danych w praktyce',
     description:
-      'Poznaj zasady przetwarzania danych w AutoŻaba: role administratora i procesora, bezpieczeństwo, cookies, prawa osób i gwarancje współpracy.',
+      'Poznaj zasady przetwarzania danych: role administratora i procesora, bezpieczeństwo, cookies oraz prawa osób.',
     url: '/polityka-prywatnosci',
     type: 'website'
   }
@@ -30,29 +30,29 @@ export default function PrivacyPolicyPage() {
                 Dokument prawny
               </span>
               <h1 className="mt-6 text-balance text-4xl font-semibold leading-tight text-slate-900 dark:text-slate-50">
-                Polityka prywatności AutoŻaba
+                Polityka prywatności
               </h1>
               <p className="mt-4 text-base text-slate-700 dark:text-slate-300">
-                Niniejszy dokument opisuje, w jaki sposób AutoŻaba gromadzi, wykorzystuje i chroni dane osobowe użytkowników oraz zespołów korzystających z systemu SaaS do zarządzania sklepami.
+                Niniejszy dokument opisuje, w jaki sposób serwis gromadzi, wykorzystuje i chroni dane osobowe użytkowników oraz zespołów korzystających z systemu SaaS.
               </p>
             </header>
             <div className="mt-12 rounded-3xl border border-slate-200 bg-white/95 p-10 shadow-sm backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/80">
               <div className="prose prose-slate max-w-none text-sm leading-relaxed dark:prose-invert">
                 <h2 id="polityka-prywatnosci">Polityka prywatności</h2>
                 <p>
-                  <strong>AUTOŻABA (&quot;Polityka&quot;)</strong>
+                  <strong>SERWIS (&quot;Polityka&quot;)</strong>
                 </p>
                 <blockquote>
                   <p>
-                    Niniejsza Polityka została przygotowana specjalnie dla platformy AutoŻaba – systemu SaaS do zarządzania personelem i harmonogramami pracy w sklepach. Zastępuje ogólne szablony i uwzględnia specyfikę działania aplikacji (m.in. planowanie grafików, ewidencję czasu pracy, rozliczenia zmian, eksporty dla PIP i księgowości, panel feedbacku oraz powiadomienia).
+                    Niniejsza Polityka została przygotowana dla platformy SaaS do zarządzania personelem i harmonogramami pracy. Zastępuje ogólne szablony i uwzględnia specyfikę działania aplikacji.
                   </p>
                 </blockquote>
                 <hr />
                 <h2 id="1-kim-jestesmy-i-kogo-dotyczy-ta-polityka">1. Kim jesteśmy i kogo dotyczy ta Polityka</h2>
                 <p>
-                  <strong>Administrator danych:</strong> <strong>Dmytro Bliakharchuk CloudDevs</strong> (nazwa skrócona: <strong>CloudDevs</strong>), NIP: <strong>5243006270</strong>, REGON: <strong>528603362</strong> (dalej: &quot;<strong>my</strong>&quot;, &quot;<strong>AutoŻaba</strong>&quot;, &quot;<strong>Administrator</strong>&quot;).
+                  <strong>Administrator danych:</strong> <strong>[Uzupełnij dane administratora]</strong> (dalej: &quot;<strong>my</strong>&quot;, &quot;<strong>Administrator</strong>&quot;).
                   <br />
-                  Kontakt w sprawach prywatności: <strong>autozaba@ainything.pl</strong>. Nie powołaliśmy inspektora ochrony danych (IOD).
+                  Kontakt w sprawach prywatności: <strong>kontakt@example.com</strong>. [Uzupełnij informację o IOD, jeśli dotyczy].
                 </p>
                 <p>
                   <strong>Zakres podmiotowy.</strong> Polityka dotyczy w szczególności:
@@ -206,7 +206,7 @@ export default function PrivacyPolicyPage() {
                   Przysługuje Ci także prawo skargi do Prezesa <strong>Urzędu Ochrony Danych Osobowych</strong> (<a href="https://uodo.gov.pl" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">uodo.gov.pl</a>).
                 </p>
                 <p>
-                  W celu realizacji praw skontaktuj się z nami: <strong>autozaba@ainything.pl</strong>. W niektórych przypadkach (gdy działamy jako procesor) możemy przekazać Twoje zgłoszenie właściwemu administratorowi (Twojemu pracodawcy/zleceniodawcy).
+                  W celu realizacji praw skontaktuj się z nami: <strong>kontakt@example.com</strong>. W niektórych przypadkach (gdy działamy jako procesor) możemy przekazać Twoje zgłoszenie właściwemu administratorowi (Twojemu pracodawcy/zleceniodawcy).
                 </p>
                 <hr />
                 <h2 id="11-bezpieczenstwo-danych">11. Bezpieczeństwo danych</h2>
@@ -229,18 +229,18 @@ export default function PrivacyPolicyPage() {
                 <hr />
                 <h2 id="14-kontakt">14. Kontakt</h2>
                 <p>
-                  W sprawach ochrony prywatności, rezygnacji z usługi lub innych kwestii: <strong>autozaba@ainything.pl</strong>
+                  W sprawach ochrony prywatności, rezygnacji z usługi lub innych kwestii: <strong>kontakt@example.com</strong>
                   <br />
-                  Formularz wsparcia: <a href="https://autozaba.pl/kontakt" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/kontakt</a>
+                  Formularz wsparcia: <a href="/kontakt" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">/kontakt</a>
                   <br />
-                  Cennik usług: <a href="https://autozaba.pl/cennik" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/cennik</a>
+                  Cennik usług: <a href="/cennik" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">/cennik</a>
                   <br />
                   Formularz zgłoszeń DSA: <a href="https://forms.gle/c62oz5rdg9C8os3E6" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://forms.gle/c62oz5rdg9C8os3E6</a>
                 </p>
                 <hr />
                 <h2 id="15-zmiany-polityki">15. Zmiany Polityki</h2>
                 <p>
-                  Zastrzegamy możliwość aktualizacji Polityki – aktualna wersja jest zawsze dostępna pod adresem <a href="https://autozaba.pl/polityka-prywatnosci" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">https://autozaba.pl/polityka-prywatnosci</a> i opatrzona datą. O istotnych zmianach poinformujemy w aplikacji lub e-mailem (jeśli to możliwe).
+                  Zastrzegamy możliwość aktualizacji Polityki – aktualna wersja jest zawsze dostępna pod adresem <a href="/polityka-prywatnosci" className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400">/polityka-prywatnosci</a> i opatrzona datą. O istotnych zmianach poinformujemy w aplikacji lub e-mailem (jeśli to możliwe).
                 </p>
                 <p>
                   <strong>Data obowiązywania:</strong> 01.10.2025 r.
@@ -257,7 +257,7 @@ export default function PrivacyPolicyPage() {
                 </ol>
                 <hr />
                 <h3 id="zalacznik-b-podmioty-przetwarzajace">Załącznik B: Podmioty przetwarzające (podprocesory)</h3>
-                <p>Poniżej znajduje się lista kluczowych podmiotów przetwarzających dane w ramach świadczenia usługi AutoŻaba:</p>
+                <p>Poniżej znajduje się lista kluczowych podmiotów przetwarzających dane w ramach świadczenia usługi:</p>
                 <table className="min-w-full border-collapse border border-slate-300 dark:border-slate-700 mt-4">
                   <thead>
                     <tr className="bg-slate-100 dark:bg-slate-800">

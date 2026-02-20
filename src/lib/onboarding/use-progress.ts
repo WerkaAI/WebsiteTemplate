@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-const DEFAULT_STORAGE_KEY = 'autozaba-onboarding-progress';
+const DEFAULT_STORAGE_KEY = 'template-onboarding-progress';
 const DEFAULT_WELCOME_QUEST_ID = 'a0-witaj';
 
 // Shop Levels Configuration
