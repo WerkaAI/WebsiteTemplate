@@ -95,3 +95,8 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 1. finalny pass white-label dla `src/lib/onboarding/*` i `src/app/tutoriale/page.tsx`
 2. redukcja legacy wpisów w `content/*` (draft/historyczne materiały)
 3. domknięcie Step 10B i przejście do finalnego polish pass
+
+### Decyzja zespołu (meeting)
+- zwołano spotkanie Step 10B dot. mediów (`assets + onboarding video`)
+- decyzja: CoreStarter ma być neutralny również wizualnie (nie tylko tekstowo)
+- action: uruchomić part 5 „Asset Neutralization Pass” + checklista zgodności assetów

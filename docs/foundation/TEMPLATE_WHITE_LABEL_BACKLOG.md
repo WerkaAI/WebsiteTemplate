@@ -34,8 +34,17 @@ Dokończyć pełny pass white-label, aby w kodzie produkcyjnym nie pozostały od
 - root: `BLOG_SETUP.md`, `MDX_MASTER_PLAN.md`, `REVIEW_PLAN.md`, `replit.md`
 - docs: plany redesign/onboarding/review z poprzedniego projektu
 
+### 5) Media visual de-branding (assets + onboarding video)
+- usunąć z CoreStarter wszystkie materiały, które wizualnie identyfikują poprzedni brand (np. maskotka, brandowe UI w nagraniach)
+- wprowadzić neutralny zestaw starterowy:
+	- ilustracje placeholder (bez brandu)
+	- onboarding bez wideo brandowego (wariant tekst + screenshot neutralny)
+- przenieść brandowe media do paczki `PerProject` (poza głównym runtime startera)
+- dodać checklistę „Asset Compliance” do Definition of Done dla kolejnych wdrożeń
+
 ## Kryterium zamknięcia
 - brak stringów `autozaba|AutoŻaba|Żabka` w kodzie runtime startera,
+- brak brandowo-identyfikujących mediów poprzedniego klienta w `public/` używanym przez runtime,
 - lint/test/typecheck green,
 - smoke E2E green,
 - commit + meeting note dla Step 10.
