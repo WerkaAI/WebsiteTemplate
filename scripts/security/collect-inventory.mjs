@@ -13,9 +13,9 @@ const outputPath = path.join(rootDir, "docs", "security", "inventory.json");
 
 const ROUTE_FILE_REGEX = /^page\.(tsx|ts|jsx|js|mdx)$/;
 const FIRST_PARTY_HOSTS = new Set([
-  "autozaba.pl",
-  "www.autozaba.pl",
-  "app.autozaba.pl",
+  "example.com",
+  "www.example.com",
+  "app.example.com",
 ]);
 
 async function pathExists(targetPath) {

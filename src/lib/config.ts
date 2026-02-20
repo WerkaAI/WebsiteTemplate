@@ -4,7 +4,7 @@
  */
 
 export const getAppUrl = (): string => {
-  return process.env.NEXT_PUBLIC_APP_URL || "https://app.autozaba.pl";
+  return process.env.NEXT_PUBLIC_APP_URL || "https://app.example.com";
 };
 
 /**

@@ -7,7 +7,8 @@
 - [x] Step 04: zero-warning baseline + build potwierdzający
 - [x] Step 07: smoke E2E dla krytycznych tras
 - [x] Step 08: CSP production default mode + env controls
-- [ ] Kolejne etapy: MDX hardening, CSP enforce rollout telemetry
+- [x] Step 09: template cleanup pass (neutral baseline)
+- [ ] Kolejne etapy: full white-label pass, MDX hardening, CSP enforce rollout telemetry
 
 ## Faza 1 (Tydzień 1–2): Baseline jakości i governance
 - Deliverables:

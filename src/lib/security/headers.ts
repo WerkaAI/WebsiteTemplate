@@ -33,7 +33,6 @@ const YOUTUBE_DOMAINS = [
 
 const IMAGE_DOMAINS = [
   "https://images.unsplash.com",
-  "https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
   "https://img.youtube.com",
   "https://i.ytimg.com",
   // Analytics & marketing tracking pixels
@@ -73,6 +72,19 @@ const PERMISSIONS_POLICY_VALUE = [
   "usb=()",
 ].join(", ");
 
+function resolveAppOrigin(): string | null {
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+  if (!appUrl) {
+    return null;
+  }
+
+  try {
+    return new URL(appUrl).origin;
+  } catch {
+    return null;
+  }
+}
+
 export function createCspDirectives(options: CreateCspOptions): CspDirectives {
   const {
     nonce,
@@ -81,6 +93,7 @@ export function createCspDirectives(options: CreateCspOptions): CspDirectives {
     disableUpgradeInsecureRequests = false,
     reportUri,
   } = options;
+  const appOrigin = resolveAppOrigin();
 
   const nonceSource = "'nonce-" + nonce + "'";
   const scriptSrc: string[] = ["'self'", ...SCRIPT_DOMAINS, nonceSource];
@@ -97,7 +110,7 @@ export function createCspDirectives(options: CreateCspOptions): CspDirectives {
     "default-src": ["'self'"],
     "base-uri": ["'self'"],
     "frame-ancestors": ["'self'"],
-    "form-action": ["'self'", "https://app.autozaba.pl"],
+    "form-action": appOrigin ? ["'self'", appOrigin] : ["'self'"],
     "frame-src": ["'self'", ...YOUTUBE_DOMAINS, "https://challenges.cloudflare.com"],
     "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], // unsafe-inline required for some Next.js styles and third-party tools
     "img-src": ["'self'", "data:", ...IMAGE_DOMAINS],

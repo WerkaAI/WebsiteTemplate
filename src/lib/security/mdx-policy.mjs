@@ -3,7 +3,8 @@ import { defaultSchema } from "rehype-sanitize";
 const allowedIframeHosts = new Set(["www.youtube.com", "www.youtube-nocookie.com"]);
 const allowedImageHosts = new Set([
   "images.unsplash.com",
-  "autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
+  "img.youtube.com",
+  "i.ytimg.com",
 ]);
 
 const clonedSchema = typeof structuredClone === "function"

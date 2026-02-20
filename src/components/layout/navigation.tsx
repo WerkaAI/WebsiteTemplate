@@ -97,22 +97,14 @@ export default function Navigation() {
             >
               <Image
                 src="/illustrations/logo_xcolor64x64.png"
-                alt="AutoŻaba - Cyfrowy Pomocnik Logo"
+                alt="Logo marki"
                 width={32}
                 height={32}
-                className="h-8 w-8 dark:hidden"
-                priority
-              />
-              <Image
-                src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
-                alt="AutoŻaba - Cyfrowy Pomocnik Logo"
-                width={32}
-                height={32}
-                className="hidden h-8 w-8 dark:block"
+                className="h-8 w-8"
                 priority
               />
               <span className="text-xl font-bold text-foreground">
-                AutoŻaba
+                WebsiteTemplate
               </span>
             </div>
           </Link>

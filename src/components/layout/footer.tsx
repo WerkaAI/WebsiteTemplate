@@ -18,7 +18,7 @@ export default function Footer() {
       title: "Pomoc",
       links: [
         { label: "Tutoriale", href: "/tutoriale" },
-        { label: "Żabouczek", href: "/onboarding" },
+        { label: "Onboarding", href: "/onboarding" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
         // { label: "Formularz DSA", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1" }, // Updated per request logic but cleaner to just have it in the array. Wait, user said generic DSA form? "Klikając 'Formularz DSA' chciałbym abyśmy otwierali nowy tab". 
         // Current href is https://forms.gle/1bwP5z2WFdsrkT55A. I will keep the href but ensure it opens in new tab.
@@ -30,8 +30,8 @@ export default function Footer() {
       title: "Kontakt",
       links: [
         {
-          label: "autozaba@ainything.pl",
-          href: "mailto:autozaba@ainything.pl",
+          label: "kontakt@example.com",
+          href: "mailto:kontakt@example.com",
         },
       ],
     },
@@ -50,8 +50,8 @@ export default function Footer() {
     },
     {
       label: "Regulamin",
-      href: "/Regulamin_Serwisu_Autozaba.pdf",
-      type: "asset" as const,
+      href: "/polityka-prywatnosci",
+      type: "route" as const,
     },
   ];
 
@@ -109,20 +109,13 @@ export default function Footer() {
               >
                 <Image
                   src="/illustrations/logo_xcolor64x64.png"
-                  alt="AutoŻaba - Cyfrowy Pomocnik Logo"
+                  alt="Logo marki"
                   width={32}
                   height={32}
-                  className="h-8 w-8 dark:hidden"
-                />
-                <Image
-                  src="https://autozaba-app-storage.fra1.cdn.digitaloceanspaces.com/prod/logo64x64.png"
-                  alt="AutoŻaba - Cyfrowy Pomocnik Logo"
-                  width={32}
-                  height={32}
-                  className="hidden h-8 w-8 dark:block"
+                  className="h-8 w-8"
                 />
                 <span className="text-xl font-bold text-foreground">
-                  AutoŻaba
+                  WebsiteTemplate
                 </span>
               </div>
             </Link>
@@ -130,8 +123,7 @@ export default function Footer() {
               className="text-muted-foreground"
               data-testid="text-footer-description"
             >
-              Automatyczna tarcza prawna dla franczyzobiorców Żabki. Zarządzaj
-              zespołem, nie ryzykiem.
+              Starter do budowy nowoczesnych stron marketingowych i contentowych.
             </p>
           </motion.div>
 
@@ -240,7 +232,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-muted-foreground text-sm">
           <div data-testid="text-footer-copyright">
-            © 2024 AutoŻaba. Wszystkie prawa zastrzeżone.
+            © 2026 WebsiteTemplate. Wszystkie prawa zastrzeżone.
           </div>
           <div className="flex flex-wrap gap-4">
             {legalLinks.map((link, index) => {

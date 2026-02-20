@@ -1,6 +1,6 @@
-# AutoŻaba Marketing (Next.js + MDX)
+# Website Template (Next.js + MDX)
 
-Marketing site and blog for AutoŻaba, built with Next.js App Router, TypeScript, Tailwind, shadcn/radix UI, and MDX.
+Reusable starter for marketing websites and content hubs. Built with Next.js App Router, TypeScript, Tailwind, shadcn/radix UI, and MDX.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ Marketing site and blog for AutoŻaba, built with Next.js App Router, TypeScript
 
 ```bash
 npm install
-cp .env.local.example .env.local  # set NEXT_PUBLIC_SITE_URL and NEXT_PUBLIC_APP_URL
+cp .env.local.example .env.local
 ```
 
 ## Scripts
@@ -22,6 +22,7 @@ npm run start        # run production server
 npm run lint         # eslint
 npm run typecheck    # typescript check
 npm run browserslist:update  # optional, update caniuse db
+npm run test:smoke    # smoke test for critical routes
 ```
 
 To analyze bundle sizes:
@@ -32,10 +33,9 @@ ANALYZE=true npm run build
 
 ## Content authoring
 
-- Blog posts live in `content/blog/*.mdx` with frontmatter (title, description, date, tags, cover, draft)
-- Tutoriale produktu żyją w `content/tutorials/*.mdx`; wymagane pola frontmatteru opisuje `content/tutorials/README.md`
-- MDX headings są auto-linkowane; więcej w `mdx-components.tsx`
-- Dodatkowe szczegóły dla zespołu contentu: `BLOG_SETUP.md` i `docs/tutorials-page-plan.md`
+- Blog posts live in `content/blog/*.mdx` with frontmatter (`title`, `description`, `date`, `tags`, `cover`, `draft`)
+- Tutorials live in `content/tutorials/*.mdx`; required fields are described in `content/tutorials/README.md`
+- MDX headings are auto-linkable; mapping is in `mdx-components.tsx`
 
 ## Images
 
@@ -49,7 +49,16 @@ ANALYZE=true npm run build
 
 ## CI
 
-- GitHub Actions workflow runs typecheck, lint, and build on PRs and pushes to `main`.
+- GitHub Actions workflow runs typecheck, lint, tests, and build on PRs and pushes to `main`.
+
+## White-label checklist
+
+Before starting a new client project:
+- replace brand copy in `src/app` and `src/components`
+- set `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_APP_URL`, contact emails in `.env.local`
+- replace logo/favicon/manifest assets in `public/`
+- add project-specific legal pages and policy text
+- replace sample MDX content in `content/blog` and `content/tutorials`
 
 ## Notes
 

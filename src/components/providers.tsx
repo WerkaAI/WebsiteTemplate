@@ -10,7 +10,7 @@ export function Providers({ children, nonce }: { children: React.ReactNode; nonc
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
-      storageKey="autozaba-theme"
+      storageKey="website-template-theme"
       enableSystem={false}
       disableTransitionOnChange
       nonce={nonce}

@@ -99,10 +99,10 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
   poweredByHeader: false,
   env: {
-    CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "kontakt@autozaba.pl",
+    CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "kontakt@example.com",
     CONTACT_FROM_EMAIL:
       process.env.CONTACT_FROM_EMAIL ||
-      "AutoŻaba Formularz <no-reply@autozaba.pl>",
+      "Formularz <no-reply@example.com>",
     NEXT_PUBLIC_ENABLE_PWA: process.env.NEXT_PUBLIC_ENABLE_PWA || "false",
   },
   images: {
@@ -113,28 +113,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "autozaba-app-storage.fra1.cdn.digitaloceanspaces.com",
-      },
-      {
-        protocol: "https",
         hostname: "img.youtube.com",
       },
     ],
   },
   async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "www.autozaba.pl",
-          },
-        ],
-        destination: "https://autozaba.pl/:path*",
-        permanent: true,
-      },
-    ];
+    return [];
   },
   async rewrites() {
     return [{ source: "/og-image.jpg", destination: "/opengraph-image" }];

@@ -4,7 +4,7 @@ import { getAllTutorials } from '@/lib/tutorials';
 export async function GET() {
     const posts = await getAllPosts();
     const tutorials = await getAllTutorials();
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://autozaba.pl';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
 
     const allContent = [
         ...posts.map(post => ({ ...post, type: 'blog', url: `${baseUrl}/blog/${post.slug}` })),
@@ -14,9 +14,9 @@ export async function GET() {
     const rss = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AutoŻaba - Blog i Tutoriale</title>
+    <title>Website Template - Blog i Tutoriale</title>
     <link>${baseUrl}</link>
-    <description>Automatyzacja grafików i zarządzanie sklepem Żabka</description>
+    <description>Aktualności i materiały edukacyjne dla projektu opartego o template</description>
     <language>pl</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml" />

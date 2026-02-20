@@ -143,8 +143,8 @@ export async function POST(request: NextRequest) {
     const formattedMessage = escapeHtml(payload.message).replace(/\n/g, '<br>');
 
     const emailData = {
-      from: process.env.CONTACT_FROM_EMAIL || 'Formularz <no-reply@autozaba.pl>',
-      to: process.env.CONTACT_TO_EMAIL || 'kontakt@autozaba.pl',
+      from: process.env.CONTACT_FROM_EMAIL || 'Formularz <no-reply@example.com>',
+      to: process.env.CONTACT_TO_EMAIL || 'kontakt@example.com',
       reply_to: payload.email,
       subject: `Nowe zgłoszenie z formularza: ${payload.name}`,
       html: `

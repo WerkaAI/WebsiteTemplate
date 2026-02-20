@@ -6,7 +6,7 @@ Każdy tutorial zapisujemy w pliku `.mdx` w tym katalogu. Poniżej krótka check
    ```yaml
    ---
    title: "Jak uruchomić raport dzienny"
-   description: "Krok po kroku jak wygenerować raport dzienny w AutoŻaba."
+   description: "Krok po kroku jak wykonać zadanie w produkcie."
    date: "2025-10-15"
    persona: ["właściciel", "manager"]
    difficulty: "podstawowy"
@@ -22,4 +22,4 @@ Każdy tutorial zapisujemy w pliku `.mdx` w tym katalogu. Poniżej krótka check
 6. Dodaj alternatywny tekst do każdej grafiki (`alt="..."`).
 7. Na końcu dodaj sekcję z następnym krokiem lub linkiem do wsparcia.
 
-> TODO: Rozszerzyć listę o zasady nazewnictwa plików i persony, kiedy zespół contentu zatwierdzi słownik.
+> Tip: utrzymuj nazwy plików w formacie `YYYY-MM-DD-temat.mdx`.

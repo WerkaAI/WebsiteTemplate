@@ -19,7 +19,7 @@ const DEFAULT_VIEWPORTS = [
 const DEFAULT_ROUTES = [
   { path: "/", name: "home" },
   { path: "/blog", name: "blog" },
-  { path: "/blog/2025-08-21-witaj-autozaba", name: "blog-post" },
+  { path: "/blog/2026-02-21-template-start", name: "blog-post" },
   { path: "/kontakt", name: "kontakt" }
 ];
 

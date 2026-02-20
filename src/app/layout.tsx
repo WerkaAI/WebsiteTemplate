@@ -16,19 +16,17 @@ const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'),
   title: {
-    default: 'AutoŻaba - Twój Cyfrowy Pomocnik w Sklepie | Automatyzacja i Tarcza Prawna',
-    template: '%s | AutoŻaba - Cyfrowy Pomocnik'
+    default: 'Website Template — nowoczesna strona dla Twojej marki',
+    template: '%s | Website Template'
   },
-  description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.',
+  description: 'Uniwersalny starter marketingowy Next.js z blogiem MDX, formularzem kontaktu i security baseline.',
   keywords: [
-    'autozaba', 'zaba', 'zabka', 'zabka polska', 'franczyzobiorca zabka',
-    'Cyfrowy Pomocnik Żabki', 'Asystent Żabki', 'Automatyzacja Żabki',
-    'Tarcza Prawna Żabka', 'zarządzanie żabką', 'pomoc w żabce', 'grafiki żabka'
+    'website template', 'next.js template', 'starter', 'landing page', 'mdx blog'
   ],
-  authors: [{ name: 'AutoŻaba Team' }],
-  creator: 'AutoŻaba',
+  authors: [{ name: 'Template Team' }],
+  creator: 'Website Template',
   openGraph: {
-    siteName: 'AutoŻaba',
+    siteName: 'Website Template',
     locale: 'pl_PL',
     type: 'website',
     images: [
@@ -36,14 +34,14 @@ export const metadata: Metadata = {
         url: '/blog-illustrations/jak-wdrazamy.png',
         width: 1200,
         height: 630,
-        alt: 'AutoŻaba - Cyfrowy Pomocnik dla Twojego Sklepu'
+        alt: 'Website Template'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AutoŻaba - Twój Cyfrowy Pomocnik',
-    description: 'Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent, który automatyzuje pracę.',
+    title: 'Website Template',
+    description: 'Starter marketingowy z MDX i gotową architekturą.',
     images: ['/blog-illustrations/jak-wdrazamy.png'],
   }
 }

@@ -16,7 +16,7 @@ function getFallbackOrigin() {
   if (envOrigin && envOrigin.length > 0) {
     return envOrigin.replace(/\/$/, "");
   }
-  return "https://autozaba.pl";
+  return "https://example.com";
 }
 
 function buildServerShareUrl(slug: string) {
