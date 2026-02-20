@@ -116,7 +116,7 @@ export default function SolutionSection() {
                   <div className="relative flex-shrink-0" aria-hidden>
                     <div className="absolute inset-0 rounded-full bg-emerald-200/35 blur-2xl" />
                     <Image
-                      src="/illustrations/tarcza-prawna-zaba.png"
+                      src="/illustrations/legal-shield-illustration.png"
                       alt=""
                       width={220}
                       height={220}
