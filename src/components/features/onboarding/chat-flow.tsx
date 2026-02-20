@@ -409,12 +409,12 @@ export function ChatFlow() {
                                     className="mt-5"
                                 >
                                     <a
-                                        href="https://app.autozaba.pl"
+                                        href="https://app.example.com"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-brand-green text-white hover:bg-brand-green/90 transition-colors shadow-sm"
                                     >
-                                        Otwórz AutoŻabę
+                                        Otwórz aplikację
                                         <ChevronRight className="w-4 h-4" />
                                     </a>
                                 </motion.div>

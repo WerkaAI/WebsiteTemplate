@@ -5,7 +5,7 @@
  * Global Privacy Control (GPC) signal detection, and consent resolution.
  *
  * Cookie scope: exact hostname only (no Domain= attribute) to prevent
- * leaking from www.autozaba.pl to app.autozaba.pl.
+ * leakage across subdomains.
  *
  * Legal basis: PKE art. 173, RODO art. 6/7, Digital Omnibus (GPC)
  */
@@ -83,8 +83,8 @@ export function readConsentCookie(): ConsentState | null {
  * Write consent preferences to a first-party cookie.
  *
  * Important: We intentionally omit `Domain=` so the browser
- * scopes the cookie to the exact hostname (e.g. www.autozaba.pl),
- * preventing it from being readable by app.autozaba.pl.
+ * scopes the cookie to the exact hostname,
+ * preventing it from being readable by sibling subdomains.
  */
 export function writeConsentCookie(preferences: ConsentPreferences): void {
   if (typeof document === 'undefined') return;

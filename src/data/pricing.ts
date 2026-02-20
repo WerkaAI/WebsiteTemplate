@@ -10,8 +10,8 @@ export const pricingConfig = {
   additionalStorePromo: 75,
   trialDays: 14,
   guaranteeMonths: 12,
-  ctaHref: 'https://app.autozaba.pl/register',
-  ctaLabel: 'Wypróbuj AutoŻabę za darmo',
+  ctaHref: 'https://app.example.com/register',
+  ctaLabel: 'Wypróbuj produkt za darmo',
   ctaSubtext: 'Bez zobowiązań · Bez karty płatniczej · Pełen dostęp przez 14 dni',
 } as const
 
@@ -137,7 +137,7 @@ export const pricingPlans: PricingPlan[] = [
       'Wsparcie czatowe 9:00–21:00 przez 14 dni',
     ],
     cta: 'Przetestuj za darmo',
-    ctaHref: 'https://app.autozaba.pl/register',
+    ctaHref: 'https://app.example.com/register',
     badge: 'Najpierw sprawdź',
     isFeatured: false,
   },
@@ -156,7 +156,7 @@ export const pricingPlans: PricingPlan[] = [
       'Bez limitu pracowników',
     ],
     cta: 'Wypróbuj za darmo',
-    ctaHref: 'https://app.autozaba.pl/register',
+    ctaHref: 'https://app.example.com/register',
     badge: 'Najczęstszy wybór',
     isFeatured: true,
   },
@@ -197,12 +197,12 @@ export type FAQItem = {
 
 export const pricingFaq: FAQItem[] = [
   {
-    question: 'Czy mogę przetestować AutoŻabę przed podpisaniem umowy?',
+    question: 'Czy mogę przetestować produkt przed podpisaniem umowy?',
     answer:
-      'Tak. Po rejestracji masz 14 dni pełnego dostępu do wszystkich funkcji — za darmo i bez zobowiązań. W tym czasie konsultant AutoŻaby pomoże Ci skonfigurować system i odpowie na każde pytanie.',
+      'Tak. Po rejestracji masz 14 dni pełnego dostępu do wszystkich funkcji — za darmo i bez zobowiązań. W tym czasie konsultant pomoże Ci skonfigurować system i odpowie na każde pytanie.',
   },
   {
-    question: 'Ile kosztuje AutoŻaba, jeśli mam kilka sklepów?',
+    question: 'Ile kosztuje system, jeśli mam kilka lokalizacji?',
     answer:
       'Pierwszy sklep to 149 zł/mies. (cena promocyjna, regularnie 199 zł). Każdy kolejny sklep to +75 zł/mies. (regularnie +100 zł). Na przykład: 2 sklepy = 224 zł/mies., 3 sklepy = 299 zł/mies. Cena promocyjna jest gwarantowana przez 12 miesięcy.',
   },
@@ -214,7 +214,7 @@ export const pricingFaq: FAQItem[] = [
   {
     question: 'Czy wszyscy klienci dostają te same funkcje?',
     answer:
-      'Tak. Każdy użytkownik AutoŻaby ma dostęp do wszystkich funkcji — automatycznych grafików, ewidencji czasu pracy, dokumentów PIP/BHP, wsparcia prawnego i pomocy we wdrożeniu. Nie ma „pakietów" z różnym zakresem.',
+      'Tak. Każdy użytkownik ma dostęp do wszystkich funkcji — bez sztucznego podziału na pakiety o różnym zakresie.',
   },
   {
     question: 'Czy dane są bezpieczne i zgodne z RODO?',
@@ -243,7 +243,7 @@ export const valueHighlights: { title: string; description: string }[] = [
   {
     title: 'Wsparcie ekspertów',
     description:
-      'Konsultanci AutoŻaby są dostępni przez telefon, e-mail i w aplikacji — zawsze gotowi pomóc.',
+      'Konsultanci są dostępni przez telefon, e-mail i w aplikacji — zawsze gotowi pomóc.',
   },
 ]
 

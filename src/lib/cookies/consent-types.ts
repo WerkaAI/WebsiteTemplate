@@ -2,7 +2,7 @@
  * Cookie Consent Types & Constants
  *
  * Central definitions for the cookie consent system.
- * Covers both www.autozaba.pl (marketing) and documents requirements for app.autozaba.pl (SaaS).
+ * Covers marketing site consent handling for this template.
  *
  * Legal basis: PKE 2026, RODO Art. 6/7, DSA, Digital Omnibus, Google Consent Mode v2
  */
@@ -107,7 +107,7 @@ export const COOKIE_CATEGORIES: readonly CookieCategoryInfo[] = [
       'Pliki cookies wymagane do prawidłowego działania strony. Zapewniają podstawowe funkcje, takie jak nawigacja, bezpieczeństwo i zapamiętanie Twoich preferencji zgody. Nie można ich wyłączyć.',
     required: true,
     providers: [
-      'AutoŻaba (sesja, preferencje)',
+      'Serwis (sesja, preferencje)',
       'Cloudflare (bezpieczeństwo, CAPTCHA)',
     ],
   },

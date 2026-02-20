@@ -9,7 +9,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "autozaba@ainything.pl",
+    content: "kontakt@example.com",
     iconColor: "text-primary",
   },
   {

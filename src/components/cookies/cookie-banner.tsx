@@ -135,7 +135,7 @@ export function CookieBanner() {
                   id="cookie-banner-desc"
                   className="mt-1.5 text-sm leading-relaxed text-muted-foreground"
                 >
-                  Serwis autozaba.pl wykorzystuje pliki cookies niezbędne do
+                  Serwis wykorzystuje pliki cookies niezbędne do
                   jego prawidłowego działania. Za Twoją zgodą używamy także
                   plików cookies analitycznych i marketingowych, aby dopasować
                   treści do Twoich potrzeb i mierzyć skuteczność naszych
