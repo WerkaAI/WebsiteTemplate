@@ -1,6 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { vi } from 'vitest'
 import { TutorialGrid } from '@/components/features/tutorial/tutorial-grid'
 import type { TutorialMeta } from '@/lib/tutorials'
+
+vi.mock('@/hooks/use-analytics', () => ({
+  useAnalytics: () => ({
+    track: vi.fn(),
+  }),
+}))
 
 const baseMeta: TutorialMeta = {
   title: 'Konfiguracja startowa',

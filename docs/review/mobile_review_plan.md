@@ -25,7 +25,7 @@ Operationalizes the mobile evaluation using GPT-5 Codex with the Vibe Coding met
 - All Codex prompts reference an approved blueprint summary (see Review Workflow) before requesting code changes.
 
 ## Inputs & References
-- Design intent: `docs/visual-refresh-plan.md`, `attached_assets/Marketing_SSOT_1756378934444.md`, `attached_assets/General-Principles-of-the-Calm-Control-Theme-Vibe-Emotional-Arc-Reception--1756381593845_1756381593846.txt`.
+- Design intent: `docs/visual-refresh-plan.md`, `docs/review/theme-review.md`, `docs/review/FINAL_REPORT.md`.
 - Component inventory: `src/components`, `src/app/layout.tsx` for global chrome, `mdx-components.tsx` for rich content.
 - Breakpoint logic: `tailwind.config.ts` (`theme.screens`) and any `@media` rules inside `globals.css`.
 - Interaction scripts: `src/hooks`, `src/lib`, and API routes affecting client behaviour.
@@ -38,14 +38,10 @@ Operationalizes the mobile evaluation using GPT-5 Codex with the Vibe Coding met
 - **Component mapping**: leverage `npx tsx scripts/map-components.ts` to parse `src/components` and produce a list of props/responsive classes pulled from `className` and `data-testid` attributes.
 - **Accessibility linting**: run `node scripts/run-axe.mjs` (honours `REVIEW_BASE_URL`, auto-starts the dev server, and saves JSON reports under `docs/review/artifacts/mobile/axe/`). The script wraps `@axe-core/cli` with the default 360×740 viewport and exits non-zero when violations are detected so Codex can triage.
 
-## Status Overview (2025-10-17)
-- ✅ DOM snapshots current for 360×740, 414×896, and 768×1024 viewports (`docs/review/artifacts/mobile/dom/*`).
-- ✅ Route blueprints published for home, blog index, blog post, and contact flows (`docs/review/artifacts/mobile/*-blueprint.md`).
-- ✅ Component inventory extracted (`docs/review/artifacts/mobile/component-map.json`) and Tailwind tokens captured (`docs/review/artifacts/mobile/tokens.json`).
-- ✅ Latest accessibility sweep via `scripts/run-axe.mjs` returns zero violations across audited routes (`docs/review/artifacts/mobile/axe/`).
-- ✅ Findings tracker updated to show resolved accessibility defects (`docs/review/mobile-findings.csv`).
-- ✅ Lighthouse mobile performance audit captured from the post-fix production build (performance 0.83; FCP 2.0 s, LCP 3.8 s, TBT 0 ms) with reports in `docs/review/artifacts/mobile/lighthouse-mobile-2025-10-18-report.report.{html,json}`.
-- ⏳ Stakeholder sign-off package (memo + recommended PR tasks) still to assemble.
+## Status Overview (2026-02-20)
+- ℹ️ Historyczne artefakty audytowe zostały usunięte podczas czyszczenia repozytorium template.
+- ✅ Skrypty generujące artefakty pozostają aktywne i odtworzą zestaw raportów przy kolejnym przeglądzie.
+- ✅ Findings tracker pozostaje źródłem prawdy dla ustaleń (`docs/review/mobile-findings.csv`).
 
 ## Review Workflow
 1. **Preparation — Complete**

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { ChecklistItem } from '@/components/mdx/checklist-item'
 import { BlogHero } from '@/components/features/blog/blog-hero'

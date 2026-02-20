@@ -349,7 +349,19 @@ export function useChatProgress({ chapters }: UseChatProgressOptions): UseChatPr
 
             // Handle jump
             if (action === 'jump' && target) {
-                jumpToStep(target);
+                for (const ch of chapters) {
+                    const step = ch.steps.find((s) => s.id === target);
+                    if (step) {
+                        setProgress((prev) => ({
+                            ...prev,
+                            currentChapterId: ch.id,
+                            currentStepId: step.id,
+                            lastSeenMessageId: '',
+                        }));
+                        setActiveBranch(null);
+                        break;
+                    }
+                }
                 return;
             }
 
@@ -371,7 +383,7 @@ export function useChatProgress({ chapters }: UseChatProgressOptions): UseChatPr
                 return;
             }
         },
-        [currentStep, visibleMessages, chapters, currentChapter],
+        [currentStep, visibleMessages, chapters, currentChapter, progress.completedChapters],
     );
 
     // ── Jump to step ──

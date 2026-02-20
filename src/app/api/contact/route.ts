@@ -2,11 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { ZodError } from 'zod';
 import { createContactSchema } from '@/lib/validation/contact';
+import { createRateLimiter } from '@/lib/security/rate-limit';
 
 export const runtime = 'nodejs';
 
-// Simple in-memory rate limiting
-const rateLimit = new Map<string, { count: number; resetTime: number }>();
+const contactRateLimiter = createRateLimiter({
+  namespace: 'contact-form',
+  maxRequests: 3,
+  windowSeconds: 5 * 60,
+});
 
 async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   // Bypass in development mode
@@ -39,49 +43,42 @@ async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
   }
 }
 
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const windowMs = 5 * 60 * 1000; // 5 minutes
-  const maxRequests = 3;
-
-  const record = rateLimit.get(ip);
-
-  if (!record || now > record.resetTime) {
-    rateLimit.set(ip, { count: 1, resetTime: now + windowMs });
-    return true;
-  }
-
-  if (record.count >= maxRequests) {
-    return false;
-  }
-
-  record.count++;
-  return true;
+function getClientIp(request: NextRequest): string {
+  return (
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  );
 }
 
 export async function POST(request: NextRequest) {
-  const headers = {
+  const baseHeaders: Record<string, string> = {
     'Cache-Control': 'no-store',
     'Content-Type': 'application/json',
-  } as const;
+  };
 
   try {
     const contentLength = request.headers.get('content-length');
     if (contentLength && parseInt(contentLength, 10) > 10240) {
       return NextResponse.json(
         { error: 'Dane są za duże' },
-        { status: 400, headers }
+        { status: 400, headers: baseHeaders }
       );
     }
 
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-      request.headers.get('x-real-ip') ||
-      'unknown';
+    const ip = getClientIp(request);
+    const rateLimitDecision = await contactRateLimiter.limit(ip);
 
-    if (!checkRateLimit(ip)) {
+    baseHeaders['X-RateLimit-Limit'] = String(rateLimitDecision.limit);
+    baseHeaders['X-RateLimit-Remaining'] = String(rateLimitDecision.remaining);
+    baseHeaders['X-RateLimit-Reset'] = String(rateLimitDecision.retryAfterSeconds);
+
+    if (!rateLimitDecision.allowed) {
+      baseHeaders['Retry-After'] = String(rateLimitDecision.retryAfterSeconds);
       return NextResponse.json(
         { error: 'Za dużo zgłoszeń. Spróbuj ponownie za 5 minut.' },
-        { status: 429, headers }
+        { status: 429, headers: baseHeaders }
       );
     }
 
@@ -90,7 +87,7 @@ export async function POST(request: NextRequest) {
     if (body.company && typeof body.company === 'string' && body.company.trim() !== '') {
       return NextResponse.json(
         { message: 'Wiadomość została wysłana' },
-        { status: 200, headers }
+        { status: 200, headers: baseHeaders }
       );
     }
 
@@ -107,7 +104,7 @@ export async function POST(request: NextRequest) {
       if (!isValidToken) {
         return NextResponse.json(
           { error: 'Weryfikacja CAPTCHA nie powiodła się' },
-          { status: 403, headers }
+          { status: 403, headers: baseHeaders }
         );
       }
     }
@@ -125,7 +122,7 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json(
         { message: 'Wiadomość została wysłana (tryb testowy)' },
-        { status: 200, headers }
+        { status: 200, headers: baseHeaders }
       );
     }
 
@@ -184,7 +181,7 @@ IP: ${ip}
 
     return NextResponse.json(
       { message: 'Wiadomość została wysłana' },
-      { status: 200, headers }
+      { status: 200, headers: baseHeaders }
     );
   } catch (error: unknown) {
     console.error('Contact form error:', error);
@@ -192,20 +189,20 @@ IP: ${ip}
     if (error instanceof ZodError) {
       return NextResponse.json(
         { error: 'Nieprawidłowe dane', details: error.errors },
-        { status: 400, headers }
+        { status: 400, headers: baseHeaders }
       );
     }
 
     if (error instanceof Error && error.message.includes('TURNSTILE_SECRET_KEY')) {
       return NextResponse.json(
         { error: 'Serwis tymczasowo niedostępny' },
-        { status: 503, headers }
+        { status: 503, headers: baseHeaders }
       );
     }
 
     return NextResponse.json(
       { error: 'Wystąpił błąd podczas wysyłania wiadomości' },
-      { status: 500, headers }
+      { status: 500, headers: baseHeaders }
     );
   }
 }
