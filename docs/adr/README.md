@@ -15,3 +15,4 @@ Skopiuj [ADR-TEMPLATE.md](ADR-TEMPLATE.md).
 - [ADR-0001-team-governance-and-decision-model.md](ADR-0001-team-governance-and-decision-model.md)
 - [ADR-0002-contact-rate-limit-strategy.md](ADR-0002-contact-rate-limit-strategy.md)
 - [ADR-0003-core-vs-project-boundary.md](ADR-0003-core-vs-project-boundary.md)
+- [ADR-0004-smoke-e2e-critical-routes.md](ADR-0004-smoke-e2e-critical-routes.md)

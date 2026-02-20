@@ -13,6 +13,7 @@
     "analyze": "cross-env ANALYZE=true next build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:smoke": "node scripts/smoke-e2e.mjs",
     "prepare": "husky",
     "security:inventory": "node scripts/security/collect-inventory.mjs"
   },

@@ -5,7 +5,8 @@
 - [x] Step 02: hardening rate limiting kontaktu
 - [x] Step 03: formalna granica CoreStarter vs PerProject
 - [x] Step 04: zero-warning baseline + build potwierdzający
-- [ ] Kolejne etapy: MDX hardening, CSP enforce rollout, smoke E2E
+- [x] Step 07: smoke E2E dla krytycznych tras
+- [ ] Kolejne etapy: MDX hardening, CSP enforce rollout
 
 ## Faza 1 (Tydzień 1–2): Baseline jakości i governance
 - Deliverables:
