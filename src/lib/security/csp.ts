@@ -10,7 +10,7 @@ export type CspMode = "enforce" | "report-only" | "dual";
 
 const STATIC_FILE_EXTENSION = /\.(?:js|mjs|css|png|jpg|jpeg|gif|svg|ico|webp|avif|txt|xml|json|map|pdf|woff2?|ttf)$/i;
 
-const SOURCE_MODE = (process.env.CSP_MODE as CspMode | undefined) ?? "report-only";
+const ENV_CSP_MODE = process.env.CSP_MODE as CspMode | undefined;
 const ALLOW_INLINE_DEBUG = process.env.CSP_ALLOW_UNSAFE_INLINE === "1" || process.env.NODE_ENV === "development";
 const ALLOW_EVAL_DEBUG = process.env.CSP_ALLOW_UNSAFE_EVAL === "1";
 const DISABLE_UPGRADE_INSECURE = process.env.CSP_DISABLE_UPGRADE_INSECURE_REQUESTS === "1";
@@ -77,8 +77,11 @@ function pathHasFileExtension(pathname: string): boolean {
 }
 
 function resolveMode(request: NextRequest): CspMode {
+  const defaultMode: CspMode = process.env.VERCEL_ENV === "production" ? "dual" : "report-only";
+  const sourceMode = ENV_CSP_MODE ?? defaultMode;
+
   if (process.env.VERCEL_ENV === "production") {
-    return SOURCE_MODE;
+    return sourceMode;
   }
 
   // Allow per-request override via header for integration tests.
@@ -87,7 +90,7 @@ function resolveMode(request: NextRequest): CspMode {
     return modeOverride;
   }
 
-  return SOURCE_MODE;
+  return sourceMode;
 }
 
 export function applySecurityHeaders(request: NextRequest): NextResponse {
