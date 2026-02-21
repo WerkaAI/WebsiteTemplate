@@ -1,0 +1,21 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Onboarding placeholder</title>
+  <desc id="desc">Neutral onboarding placeholder for template mode.</desc>
+  <rect width="1280" height="720" rx="24" fill="url(#bg)"/>
+  <rect x="72" y="72" width="1136" height="576" rx="20" fill="white" fill-opacity="0.95"/>
+  <rect x="132" y="132" width="360" height="26" rx="13" fill="#D1FAE5"/>
+  <rect x="132" y="176" width="520" height="18" rx="9" fill="#E2E8F0"/>
+  <rect x="132" y="210" width="460" height="18" rx="9" fill="#E2E8F0"/>
+  <rect x="132" y="276" width="1016" height="300" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M190 430H1090" stroke="#CBD5E1" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="190" cy="430" r="26" fill="#10B981"/>
+  <rect x="234" y="408" width="280" height="44" rx="12" fill="#ECFDF5"/>
+  <rect x="530" y="408" width="220" height="44" rx="12" fill="#F1F5F9"/>
+  <rect x="766" y="408" width="170" height="44" rx="12" fill="#F1F5F9"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFDF5"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+  </defs>
+</svg>

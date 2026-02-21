@@ -182,20 +182,18 @@ export const ADVENTURES: Adventure[] = [
                         id: 'android',
                         label: 'Android (Chrome)',
                         media: {
-                            type: 'video',
-                            src: '/images/onboarding/a2_pwa.mp4',
-                            alt: 'Instalacja na Android',
-                            poster: '/images/onboarding/poster_android.webp'
+                            type: 'image',
+                            src: '/images/placeholders/onboarding-neutral.svg',
+                            alt: 'Neutralna instrukcja instalacji na Android'
                         }
                     },
                     {
                         id: 'ios',
                         label: 'iOS (Safari)',
                         media: {
-                            type: 'video',
-                            src: '/images/onboarding/a2_pwa.mp4',
-                            alt: 'Instalacja na iOS',
-                            poster: '/images/onboarding/poster_ios.webp'
+                            type: 'image',
+                            src: '/images/placeholders/onboarding-neutral.svg',
+                            alt: 'Neutralna instrukcja instalacji na iOS'
                         }
                     }
                 ],
@@ -220,9 +218,9 @@ export const ADVENTURES: Adventure[] = [
                 difficulty: 1,
                 deepLink: 'https://panel.autozaba.pl',
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a1_logowanie2.mp4',
-                    alt: 'Film pokazujący jak zalogować się do systemu AutoŻaba'
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja logowania do systemu'
                 },
             },
             {
@@ -235,9 +233,9 @@ export const ADVENTURES: Adventure[] = [
                 difficulty: 1,
                 deepLink: 'https://panel.autozaba.pl/settings',
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a2_zmianajezyka.mp4',
-                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja zmiany języka interfejsu'
                 },
             },
             {
@@ -249,9 +247,9 @@ export const ADVENTURES: Adventure[] = [
                 quickAnswer: 'Profil → Ustawienia konta. Tutaj zmienisz email, login i hasło.',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a5_ustawieniakonta.mp4',
-                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja ustawień konta'
                 },
             },
             {
@@ -263,9 +261,9 @@ export const ADVENTURES: Adventure[] = [
                 quickAnswer: 'Ustawienia → Powiadomienia. Włącz/wyłącz poszczególne typy alertów.',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a6_powiadomienia.mp4',
-                    alt: 'Film pokazujący jak zmienić język interfejsu'
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja powiadomień'
                 },
             },
         ],

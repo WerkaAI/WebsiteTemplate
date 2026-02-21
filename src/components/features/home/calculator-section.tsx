@@ -355,7 +355,7 @@ export default function CalculatorSection() {
                 <div className="relative flex-shrink-0" aria-hidden>
                   <div className="absolute inset-0 rounded-full bg-primary/30 blur-3xl" />
                   <Image
-                    src="/illustrations/calculator-illustration.png"
+                    src="/illustrations/neutral-feature.svg"
                     alt=""
                     width={240}
                     height={240}

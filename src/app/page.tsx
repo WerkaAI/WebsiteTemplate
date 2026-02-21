@@ -24,13 +24,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'WebsiteTemplate - Nowoczesny system do zarządzania zespołem',
       description: 'Szablon SaaS dla firm usługowych i retail. Automatyzuj planowanie i monitoruj zgodność.',
       type: 'website',
-      images: ['/blog-illustrations/jak-wdrazamy.png']
+      images: ['/illustrations/og-template-cover.svg']
     },
     twitter: {
       card: 'summary_large_image',
       title: 'WebsiteTemplate - Nowoczesny system do zarządzania zespołem',
       description: 'Szablon SaaS dla firm usługowych i retail. Automatyzuj planowanie i monitoruj zgodność.',
-      images: ['/blog-illustrations/jak-wdrazamy.png']
+      images: ['/illustrations/og-template-cover.svg']
     }
   }
 }

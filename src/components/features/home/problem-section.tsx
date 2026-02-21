@@ -23,7 +23,7 @@ export default function ProblemSection() {
         amount: 30000,
         suffix: " zł",
       },
-      mascot: "/illustrations/problem-chaos.png",
+      mascot: "/illustrations/neutral-feature.svg",
       accent: "from-emerald-500/35 via-emerald-400/15 to-transparent",
     },
     {
@@ -36,7 +36,7 @@ export default function ProblemSection() {
         "Różnice UoP vs umowa zlecenie",
         "Ewidencja czasu pracy (RCP)",
       ],
-      mascot: "/illustrations/problem-pip.png",
+      mascot: "/illustrations/neutral-feature.svg",
       accent: "from-emerald-500/35 via-teal-400/20 to-transparent",
     },
     {
@@ -49,7 +49,7 @@ export default function ProblemSection() {
         paperwork: { label: "Grafiki i papiery", value: 40, prefix: "+" },
         total: { label: "Razem", value: 280 },
       },
-      mascot: "/illustrations/problem-time.png",
+      mascot: "/illustrations/neutral-feature.svg",
       accent: "from-emerald-500/35 via-green-400/15 to-transparent",
     },
   ];

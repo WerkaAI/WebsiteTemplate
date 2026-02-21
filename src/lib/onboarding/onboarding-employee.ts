@@ -49,18 +49,18 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                         id: 'android',
                         label: 'Android (Chrome)',
                         media: {
-                            type: 'video',
-                            src: '/images/onboarding/a2_pwa.mp4',
-                            alt: 'Instalacja aplikacji na Android',
+                            type: 'image',
+                            src: '/images/placeholders/onboarding-neutral.svg',
+                            alt: 'Neutralna instrukcja instalacji na Android',
                         },
                     },
                     {
                         id: 'ios',
                         label: 'iOS (Safari)',
                         media: {
-                            type: 'video',
-                            src: '/images/onboarding/a2_pwa.mp4',
-                            alt: 'Instalacja aplikacji na iOS',
+                            type: 'image',
+                            src: '/images/placeholders/onboarding-neutral.svg',
+                            alt: 'Neutralna instrukcja instalacji na iOS',
                         },
                     },
                 ],
@@ -81,9 +81,9 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                 quickAnswer: 'Otwórz adres aplikacji → przepisz dane z karty startowej.',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a1_logowanie2.mp4',
-                    alt: 'Film pokazujący jak zalogować się do systemu',
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja logowania do systemu',
                 },
                 steps: [
                     { step: 1, instruction: 'Weź do ręki swoją kartę startową.' },
@@ -101,9 +101,9 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                 quickAnswer: 'Górny pasek → ikonka flagi → wybierz język.',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a2_zmianajezyka.mp4',
-                    alt: 'Film pokazujący jak zmienić język interfejsu',
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja zmiany języka',
                 },
                 steps: [
                     { step: 1, instruction: 'Po zalogowaniu znajdź ikonkę flagi na górnym pasku.' },
@@ -120,9 +120,9 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                 quickAnswer: 'Kliknij swoją nazwę w prawym górnym rogu → „Profil".',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a5_ustawieniakonta.mp4',
-                    alt: 'Film pokazujący ustawienia konta',
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja ustawień konta',
                 },
                 steps: [
                     { step: 1, instruction: 'Kliknij na swoją nazwę w prawym górnym rogu.' },
@@ -139,9 +139,9 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                 quickAnswer: 'Ikonka dzwoneczka na górnym pasku → kliknij powiadomienie.',
                 difficulty: 1,
                 media: {
-                    type: 'video',
-                    src: '/images/onboarding/a6_powiadomienia.mp4',
-                    alt: 'Film pokazujący powiadomienia w systemie',
+                    type: 'image',
+                    src: '/images/placeholders/onboarding-neutral.svg',
+                    alt: 'Neutralna instrukcja powiadomień',
                 },
                 steps: [
                     { step: 1, instruction: 'Kliknij ikonkę dzwoneczka na górnym pasku.' },

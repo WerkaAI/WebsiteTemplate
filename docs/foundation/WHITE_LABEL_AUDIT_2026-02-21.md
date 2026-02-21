@@ -100,3 +100,23 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 - zwołano spotkanie Step 10B dot. mediów (`assets + onboarding video`)
 - decyzja: CoreStarter ma być neutralny również wizualnie (nie tylko tekstowo)
 - action: uruchomić part 5 „Asset Neutralization Pass” + checklista zgodności assetów
+
+---
+
+## Aktualizacja po Step 10B (part 5)
+
+### Wynik ponownego skanu (grep)
+- `src`: 36 trafień
+- `content`: 47 trafień
+- `docs`: 55 trafień
+
+### Postęp
+- runtime odpięty od brandowych mediów onboarding (MP4) na rzecz neutralnych placeholderów
+- runtime odpięty od brandowych ilustracji „maskotki” na rzecz neutralnych grafik template
+- usunięto brandowe media z `public/images/onboarding/*` i legacy ilustracje używane wcześniej w home
+- social preview (OG/Twitter) przełączony na neutralny cover
+
+### Kolejność dalszych działań
+1. finalny pass treści onboarding (copy + nazewnictwo) w `src/lib/onboarding/*`
+2. domknięcie cleanup historycznych treści w `content/*`
+3. finalne zamknięcie Step 10B

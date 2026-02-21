@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/blog-illustrations/jak-wdrazamy.png',
+        url: '/illustrations/og-template-cover.svg',
         width: 1200,
         height: 630,
         alt: 'Website Template'
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Website Template',
     description: 'Starter marketingowy z MDX i gotową architekturą.',
-    images: ['/blog-illustrations/jak-wdrazamy.png'],
+    images: ['/illustrations/og-template-cover.svg'],
   }
 }
 

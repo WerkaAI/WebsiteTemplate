@@ -139,7 +139,7 @@ const stepA1_instalacja: ChatStep = {
         // ── Android branch ──
         zabek('① Otwórz adres aplikacji w Chrome\n② Kliknij menu **⋮** (trzy kropki)\n③ Wybierz **„Dodaj do ekranu głównego"**\n④ Potwierdź — gotowe! 📱', { branchId: 'android' }),
         screenshot(
-            '/images/onboarding/a2_pwa.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Instalacja PWA na Androidzie',
             'Menu ⋮ → Dodaj do ekranu → Potwierdź',
             { branchId: 'android', playbackRate: 0.5 },
@@ -147,7 +147,7 @@ const stepA1_instalacja: ChatStep = {
         // ── iOS branch ──
         zabek('① Otwórz adres aplikacji w **Safari**\n② Kliknij ikonkę udostępniania **↑** na dole ekranu\n③ Wybierz **„Dodaj do ekranu początkowego"**\n④ Kliknij **„Dodaj"** — gotowe! 📱', { branchId: 'ios' }),
         screenshot(
-            '/images/onboarding/a2_pwa.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Instalacja PWA na iPhonie',
             'Udostępnij ↑ → Do ekranu → Dodaj',
             { branchId: 'ios', playbackRate: 0.5 },
@@ -176,7 +176,7 @@ const stepA2_logowanie: ChatStep = {
     messages: withStepIds('emp-a2-logowanie', [
         zabek('Weź do ręki **kartę startową** od pracodawcy, otwórz aplikację i przepisz dane z karty.'),
         screenshot(
-            '/images/onboarding/a1_logowanie2.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Logowanie do systemu',
             'Przepisz dane z karty startowej',
         ),
@@ -209,7 +209,7 @@ const stepA3_jezyk: ChatStep = {
     messages: withStepIds('emp-a3-jezyk', [
         zabek('Możesz zmienić język interfejsu. Kliknij **ikonkę flagi** 🏳️ na górnym pasku i wybierz swój język.'),
         screenshot(
-            '/images/onboarding/a2_zmianajezyka.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Zmiana języka interfejsu',
             'Kliknij flagę → Wybierz język',
         ),
@@ -236,7 +236,7 @@ const stepA4_konto: ChatStep = {
     messages: withStepIds('emp-a4-konto', [
         zabek('Kliknij swoją **nazwę** w prawym górnym rogu → wybierz **„Profil"**. Tam możesz sprawdzić i zmienić swoje dane.'),
         screenshot(
-            '/images/onboarding/a5_ustawieniakonta.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Ustawienia konta i profilu',
             'Twoja nazwa → Profil',
         ),
@@ -262,7 +262,7 @@ const stepA5_powiadomienia: ChatStep = {
     messages: withStepIds('emp-a5-powiadomienia', [
         zabek('Kliknij ikonkę **dzwoneczka 🔔** na górnym pasku — tam pojawiają się powiadomienia. Sprawdź, czy coś na Ciebie czeka!'),
         screenshot(
-            '/images/onboarding/a6_powiadomienia.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Powiadomienia w systemie',
             'Kliknij 🔔 → Sprawdź powiadomienia',
         ),
@@ -291,7 +291,7 @@ const stepB1_dostepnosc: ChatStep = {
         zabek('Przejdź do zakładki **„Dostępność"**, klikaj kafelki z datami i zaznacz dni, w których możesz pracować. Na koniec kliknij **„Zapisz"**.'),
         tip('Im dokładniej wypełnisz dostępność, tym lepszy grafik otrzymasz!'),
         screenshot(
-            '/images/onboarding/b2_ustawianierecznie.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Ustawianie dostępności — kalendarz',
             'Kalendarz → Kliknij dzień → Zapisz',
         ),
@@ -317,7 +317,7 @@ const stepB2_pedzel: ChatStep = {
     xpReward: 25,
     messages: withStepIds('emp-b2-pedzel', [
         zabek('Szybszy sposób — **pędzel** 🖌️! Wybierz kolor odpowiadający zmianie i klikaj kafelki. Na koniec **„Zapisz"**.'),        screenshot(
-            '/images/onboarding/b4_pedzel.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Pędzel dostępności',
             'Wybierz kolor → Klikaj kafelki → Zapisz',
         ),        buttons('Przetestowałeś?', [
@@ -341,7 +341,7 @@ const stepB3_notatka: ChatStep = {
     xpReward: 25,
     messages: withStepIds('emp-b3-notatka', [
         zabek('Pod kafelkami jest pole tekstowe — wpisz notatkę dla pracodawcy (np. „W piątek mam lekarza") i kliknij **„Zapisz"**.'),        screenshot(
-            '/images/onboarding/b3_notatka.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Notatka dla pracodawcy',
             'Wpisz notatkę → Zapisz',
         ),        buttons('Jasne?', [
@@ -366,7 +366,7 @@ const stepB4_zakres: ChatStep = {
     messages: withStepIds('emp-b4-zakres', [
         zabek('Czas na Twoją dostępność! 📅 Najpierw — możesz zmienić widok kalendarza. Kliknij selektor daty i wybierz zakres: **tydzień**, **2 tygodnie** lub **miesiąc**.'),
         screenshot(
-            '/images/onboarding/b1_miesiactydzientoggle.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Przełączanie widoku kalendarza',
             'Selektor daty → Tydzień / 2 Tygodnie / Miesiąc',
         ),
@@ -395,7 +395,7 @@ const stepC1_rozlicz: ChatStep = {
         zabek('Po każdej zmianie rozlicz godziny — to najważniejszy krok! Wejdź w **„Rozliczenie Godzin"** → kliknij **„+ Rozlicz Zmianę"** → wypełnij formularz → **„Zapisz"**.'),
         tip('Rób to od razu po zmianie — później łatwo zapomnieć!'),
         screenshot(
-            '/images/onboarding/c1_rozliczaniezmiany.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Rozliczanie zmiany krok po kroku',
             'Rozliczenie → + Rozlicz Zmianę → Zapisz',
         ),
@@ -423,7 +423,7 @@ const stepC2_edytuj: ChatStep = {
         zabek('Pomyliłeś się? Wybierz zmianę z listy, popraw formularz i kliknij **„Zapisz"**.'),
         tip('Edycja jest dostępna przez 24h. Później skontaktuj się z przełożonym.'),
         screenshot(
-            '/images/onboarding/c2_edytujzmiane.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Edycja rozliczonej zmiany',
             'Wybierz zmianę → Popraw → Zapisz',
         ),
@@ -455,7 +455,7 @@ const stepC3_sklep: ChatStep = {
         ]),
         zabek('Możesz przełączać się między sklepami! Kliknij **selektor sklepu** i wybierz właściwy.'),
         screenshot(
-            '/images/onboarding/c3_zmiensklep.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Przełączanie między sklepami',
             'Selektor sklepu → Wybierz sklep',
         ),
@@ -483,7 +483,7 @@ const stepD1_grafik: ChatStep = {
         zabek('Ostatni krok! Przejdź do **„Harmonogram Pracy"** i przeglądaj swoje zaplanowane zmiany. 🗓️'),
         tip('Nie widzisz zmian? Pracodawca jeszcze ich nie wystawił — wypełnij dostępność, żeby mu pomóc!'),
         screenshot(
-            '/images/onboarding/d1_mojgrafik.mp4',
+            '/images/placeholders/onboarding-neutral.svg',
             'Harmonogram pracy — widok zaplanowanych zmian',
             'Harmonogram Pracy → Twoje zmiany',
         ),
