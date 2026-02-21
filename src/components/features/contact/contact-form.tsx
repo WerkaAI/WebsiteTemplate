@@ -16,8 +16,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Send } from "lucide-react";
+import { Loader2, Send, ArrowRight, ArrowLeft } from "lucide-react";
 import Turnstile from "react-turnstile";
+import { motion } from "framer-motion";
 
 import {
   ContactPayload,
@@ -53,9 +54,13 @@ export default function ContactForm({
 }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shouldRenderTurnstile, setShouldRenderTurnstile] = useState(false);
+  const [step, setStep] = useState(1);
   const { toast } = useToast();
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const requiresToken = Boolean(turnstileSiteKey);
+
+  const hasStep2 = showPhone || showShops;
+  const totalSteps = hasStep2 ? 3 : 2;
 
   const validationSchema = useMemo(
     () =>
@@ -83,6 +88,7 @@ export default function ContactForm({
   const form = useForm<ContactPayload>({
     resolver: zodResolver(validationSchema),
     defaultValues,
+    mode: "onTouched",
   });
 
   const onSubmit = async (data: ContactPayload) => {
@@ -106,6 +112,7 @@ export default function ContactForm({
           description: successToast?.description ?? result.message ?? "Wiadomość została wysłana",
         });
         form.reset(defaultValues);
+        setStep(1);
       } else {
         toast({
           variant: "destructive",
@@ -169,11 +176,29 @@ export default function ContactForm({
     }
   }, [consentValue, form, requiresToken, shouldRenderTurnstile]);
 
+  const nextStep = async () => {
+    let fieldsToValidate: (keyof ContactPayload)[] = [];
+    if (step === 1) {
+      fieldsToValidate = ["name", "email"];
+    } else if (step === 2 && hasStep2) {
+      fieldsToValidate = ["phone", "shops"];
+    }
+
+    const isValid = await form.trigger(fieldsToValidate);
+    if (isValid) {
+      setStep((prev) => Math.min(prev + 1, totalSteps));
+    }
+  };
+
+  const prevStep = () => {
+    setStep((prev) => Math.max(prev - 1, 1));
+  };
+
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
       noValidate
-      className={cn("space-y-6", className)}
+      className={cn("space-y-6 relative", className)}
     >
       {/* Honeypot field - stays out of the accessibility tree */}
       <input
@@ -182,185 +207,258 @@ export default function ContactForm({
         autoComplete="off"
       />
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Name field */}
-        <div className="space-y-2">
-          <Label htmlFor="name">
-            Imię i nazwisko <span className="text-red-500">*</span>
-          </Label>
-          <Input
-            id="name"
-            {...form.register('name')}
-            placeholder="Jan Kowalski"
-            data-testid="input-contact-name"
-          />
-          {form.formState.errors.name && (
-            <p className="text-sm text-red-500" data-testid="error-name">
-              {form.formState.errors.name.message}
-            </p>
-          )}
-        </div>
-
-        {/* Email field */}
-        <div className="space-y-2">
-          <Label htmlFor="email">
-            Email <span className="text-red-500">*</span>
-          </Label>
-          <Input
-            id="email"
-            type="email"
-            {...form.register('email')}
-            placeholder="jan@example.com"
-            data-testid="input-contact-email"
-          />
-          {form.formState.errors.email && (
-            <p className="text-sm text-red-500" data-testid="error-email">
-              {form.formState.errors.email.message}
-            </p>
-          )}
-        </div>
+      {/* Progress Bar */}
+      <div className="w-full bg-muted rounded-full h-1.5 mb-8 overflow-hidden">
+        <motion.div
+          className="bg-primary h-1.5 rounded-full"
+          initial={{ width: "0%" }}
+          animate={{ width: `${(step / totalSteps) * 100}%` }}
+          transition={{ duration: 0.3 }}
+        />
       </div>
 
-      {showPhone && (
-        <div className="space-y-2">
-          <Label htmlFor="phone">Telefon (opcjonalnie)</Label>
-          <Input
-            id="phone"
-            type="tel"
-            {...form.register('phone')}
-            placeholder="+48 123 456 789"
-            data-testid="input-contact-phone"
-          />
-          {form.formState.errors.phone && (
-            <p className="text-sm text-red-500" data-testid="error-phone">
-              {form.formState.errors.phone.message}
-            </p>
-          )}
-        </div>
-      )}
+      <div className="min-h-[300px] relative overflow-hidden">
+        <motion.div
+          animate={{ x: `-${(step - 1) * 100}%` }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="flex w-full"
+          style={{ width: `${totalSteps * 100}%` }}
+        >
+          {/* Step 1 */}
+          <div className="w-full px-1" style={{ width: `${100 / totalSteps}%` }}>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <h3 className="text-lg font-medium">Zacznijmy od podstaw</h3>
+                <p className="text-sm text-muted-foreground">Jak możemy się do Ciebie zwracać?</p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Name field */}
+                <div className="space-y-2">
+                  <Label htmlFor="name">
+                    Imię i nazwisko <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="name"
+                    {...form.register('name')}
+                    placeholder="Jan Kowalski"
+                    data-testid="input-contact-name"
+                  />
+                  {form.formState.errors.name && (
+                    <p className="text-sm text-red-500" data-testid="error-name">
+                      {form.formState.errors.name.message}
+                    </p>
+                  )}
+                </div>
 
-      {showShops && (
-        <div className="space-y-2">
-          <Label htmlFor="shops" id="contact-shops-label">
-            Liczba lokalizacji <span className="text-red-500">*</span>
-          </Label>
-          <Controller
-            control={form.control}
-            name="shops"
-            render={({ field }) => (
-              <Select
-                value={field.value ?? ""}
-                onValueChange={(value) => field.onChange(value)}
-              >
-                <SelectTrigger
-                  id="shops"
-                  aria-labelledby="contact-shops-label"
-                  aria-invalid={!!form.formState.errors.shops}
-                  aria-describedby={form.formState.errors.shops ? "shops-error" : undefined}
-                  data-testid="select-contact-shops"
-                >
-                  <SelectValue placeholder="Wybierz liczbę lokalizacji" />
-                </SelectTrigger>
-                <SelectContent>
-                  {SHOP_OPTIONS.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {SHOP_OPTION_LABELS[option]}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            )}
-          />
-          {form.formState.errors.shops && (
-            <p className="text-sm text-red-500" id="shops-error" data-testid="error-shops">
-              {form.formState.errors.shops.message}
-            </p>
-          )}
-        </div>
-      )}
+                {/* Email field */}
+                <div className="space-y-2">
+                  <Label htmlFor="email">
+                    Email <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    {...form.register('email')}
+                    placeholder="jan@example.com"
+                    data-testid="input-contact-email"
+                  />
+                  {form.formState.errors.email && (
+                    <p className="text-sm text-red-500" data-testid="error-email">
+                      {form.formState.errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
 
-      {/* Message field */}
-      <div className="space-y-2">
-        <Label htmlFor="message">
-          Wiadomość <span className="text-red-500">*</span>
-        </Label>
-        <Textarea
-          id="message"
-          {...form.register('message')}
-          placeholder="Opisz swoje pytanie lub potrzeby..."
-          className="min-h-[120px]"
-          data-testid="input-contact-message"
-        />
-        {form.formState.errors.message && (
-          <p className="text-sm text-red-500" data-testid="error-message">
-            {form.formState.errors.message.message}
-          </p>
+          {/* Step 2 */}
+          {hasStep2 && (
+            <div className="w-full px-1" style={{ width: `${100 / totalSteps}%` }}>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-medium">Dodatkowe informacje</h3>
+                  <p className="text-sm text-muted-foreground">Pozwoli nam to lepiej przygotować się do rozmowy.</p>
+                </div>
+                {showPhone && (
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Telefon (opcjonalnie)</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      {...form.register('phone')}
+                      placeholder="+48 123 456 789"
+                      data-testid="input-contact-phone"
+                    />
+                    {form.formState.errors.phone && (
+                      <p className="text-sm text-red-500" data-testid="error-phone">
+                        {form.formState.errors.phone.message}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {showShops && (
+                  <div className="space-y-2">
+                    <Label htmlFor="shops" id="contact-shops-label">
+                      Liczba lokalizacji <span className="text-red-500">*</span>
+                    </Label>
+                    <Controller
+                      control={form.control}
+                      name="shops"
+                      render={({ field }) => (
+                        <Select
+                          value={field.value ?? ""}
+                          onValueChange={(value) => field.onChange(value)}
+                        >
+                          <SelectTrigger
+                            id="shops"
+                            aria-labelledby="contact-shops-label"
+                            aria-invalid={!!form.formState.errors.shops}
+                            aria-describedby={form.formState.errors.shops ? "shops-error" : undefined}
+                            data-testid="select-contact-shops"
+                          >
+                            <SelectValue placeholder="Wybierz liczbę lokalizacji" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {SHOP_OPTIONS.map((option) => (
+                              <SelectItem key={option} value={option}>
+                                {SHOP_OPTION_LABELS[option]}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                    {form.formState.errors.shops && (
+                      <p className="text-sm text-red-500" id="shops-error" data-testid="error-shops">
+                        {form.formState.errors.shops.message}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Step 3 */}
+          <div className="w-full px-1" style={{ width: `${100 / totalSteps}%` }}>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <h3 className="text-lg font-medium">W czym możemy pomóc?</h3>
+                <p className="text-sm text-muted-foreground">Opisz krótko swoje potrzeby.</p>
+              </div>
+              {/* Message field */}
+              <div className="space-y-2">
+                <Label htmlFor="message">
+                  Wiadomość <span className="text-red-500">*</span>
+                </Label>
+                <Textarea
+                  id="message"
+                  {...form.register('message')}
+                  placeholder="Opisz swoje pytanie lub potrzeby..."
+                  className="min-h-[120px]"
+                  data-testid="input-contact-message"
+                />
+                {form.formState.errors.message && (
+                  <p className="text-sm text-red-500" data-testid="error-message">
+                    {form.formState.errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Consent checkbox */}
+              <div className="flex items-start space-x-3">
+                <Checkbox
+                  id="consent"
+                  checked={consentValue}
+                  onCheckedChange={handleConsentChange}
+                  data-testid="checkbox-consent"
+                />
+                <div className="space-y-1">
+                  <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na zapytanie zgodnie z{' '}
+                    <a href="/polityka-prywatnosci" className="text-primary dark:text-emerald-300 underline hover:underline">
+                      polityką prywatności
+                    </a>
+                    . <span className="text-red-500">*</span>
+                  </Label>
+                  {form.formState.errors.consent && (
+                    <p className="text-sm text-red-500" data-testid="error-consent">
+                      {form.formState.errors.consent.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Turnstile CAPTCHA */}
+              {requiresToken && shouldRenderTurnstile && (
+                <div className="space-y-2">
+                  <Turnstile
+                    sitekey={turnstileSiteKey!}
+                    onVerify={handleTurnstileVerify}
+                    onError={handleTurnstileError}
+                    theme="auto"
+                    language="auto"
+                    data-testid="turnstile-widget"
+                  />
+                  {form.formState.errors.token && (
+                    <p className="text-sm text-red-500" data-testid="error-token">
+                      {form.formState.errors.token.message}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="flex justify-between pt-4 border-t">
+        {step > 1 && (
+          <Button
+            type="button"
+            variant="outline"
+            onClick={prevStep}
+            data-testid="button-prev-step"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Wstecz
+          </Button>
         )}
-      </div>
 
-      {/* Consent checkbox */}
-      <div className="flex items-start space-x-3">
-        <Checkbox
-          id="consent"
-          checked={consentValue}
-          onCheckedChange={handleConsentChange}
-          data-testid="checkbox-consent"
-        />
-        <div className="space-y-1">
-          <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu udzielenia odpowiedzi na zapytanie zgodnie z{' '}
-            <a href="/polityka-prywatnosci" className="text-primary dark:text-emerald-300 underline hover:underline">
-              polityką prywatności
-            </a>
-            . <span className="text-red-500">*</span>
-          </Label>
-          {form.formState.errors.consent && (
-            <p className="text-sm text-red-500" data-testid="error-consent">
-              {form.formState.errors.consent.message}
-            </p>
-          )}
-        </div>
-      </div>
-
-      {/* Turnstile CAPTCHA */}
-      {requiresToken && shouldRenderTurnstile && (
-        <div className="space-y-2">
-          <Turnstile
-            sitekey={turnstileSiteKey!}
-            onVerify={handleTurnstileVerify}
-            onError={handleTurnstileError}
-            theme="auto"
-            language="auto"
-            data-testid="turnstile-widget"
-          />
-          {form.formState.errors.token && (
-            <p className="text-sm text-red-500" data-testid="error-token">
-              {form.formState.errors.token.message}
-            </p>
-          )}
-        </div>
-      )}
-
-      {/* Submit button */}
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        size={submitButtonSize}
-        className={cn("w-full bg-primary hover:bg-primary/90", submitButtonClassName)}
-        data-testid="button-submit-contact"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            Wysyłanie...
-          </>
+        {step < totalSteps ? (
+          <Button
+            type="button"
+            onClick={nextStep}
+            data-testid="button-next-step"
+            className="ml-auto"
+          >
+            Dalej
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         ) : (
-          <>
-            <Send className="w-4 h-4 mr-2" />
-            {submitLabel}
-          </>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            size={submitButtonSize}
+            className={cn("bg-primary hover:bg-primary/90 ml-auto", submitButtonClassName)}
+            data-testid="button-submit-contact"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Wysyłanie...
+              </>
+            ) : (
+              <>
+                <Send className="w-4 h-4 mr-2" />
+                {submitLabel}
+              </>
+            )}
+          </Button>
         )}
-      </Button>
+      </div>
     </form>
   );
 }

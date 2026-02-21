@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "next-themes";
 import { ConsentProvider } from "@/components/cookies/consent-provider";
+import { CommandPalette } from "@/components/ui/command-palette";
 
 export function Providers({ children, nonce }: { children: React.ReactNode; nonce?: string }) {
   return (
@@ -18,6 +19,7 @@ export function Providers({ children, nonce }: { children: React.ReactNode; nonc
       <ConsentProvider>
         <TooltipProvider>
           <Toaster />
+          <CommandPalette />
           {children}
         </TooltipProvider>
       </ConsentProvider>

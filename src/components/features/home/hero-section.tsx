@@ -12,6 +12,8 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { APP_URLS } from "@/lib/config";
 import { motion } from "framer-motion";
 import HeroScheduleGrid from "./hero-schedule-grid";
+import { triggerHaptic } from "@/lib/utils/haptic";
+import { TiltWrapper } from "@/components/ui/tilt-wrapper";
 
 export default function HeroSection() {
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -259,13 +261,14 @@ export default function HeroSection() {
                 <Button
                   size="touch"
                   className="bg-emerald-600 text-white hover:bg-emerald-700 text-lg px-9 shadow-xl shadow-emerald-500/20 transition-all duration-300 w-full sm:w-auto justify-center"
-                  onClick={() =>
+                  onClick={() => {
+                    triggerHaptic("success");
                     window.open(
                       APP_URLS.register,
                       "_blank",
                       "noopener,noreferrer"
-                    )
-                  }
+                    );
+                  }}
                   data-testid="button-hero-register"
                 >
                   Zacznij teraz →
@@ -275,11 +278,12 @@ export default function HeroSection() {
                 variant="outline"
                 size="touch"
                 className="text-lg px-9 transition-transform duration-300 hover:-translate-y-0.5 bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:text-emerald-700 dark:bg-white/5 dark:text-white dark:border-white/10 dark:hover:bg-white/10 w-full sm:w-auto justify-center"
-                onClick={() =>
+                onClick={() => {
+                  triggerHaptic("light");
                   document
                     .getElementById("demo")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
                 data-testid="button-hero-demo"
               >
                 <Play className="w-5 h-5 mr-2" />
@@ -309,25 +313,27 @@ export default function HeroSection() {
           </motion.div>
 
           <div className="relative hidden md:block">
-            <motion.div
-              className="relative isolate mx-auto w-full max-w-[520px]"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            >
-              <div
-                ref={orbRef}
-                className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[520px] rounded-full bg-emerald-400/20 blur-[80px] opacity-60 hero-orb mix-blend-multiply dark:mix-blend-screen dark:bg-emerald-500/30"
-                aria-hidden="true"
-              />
-
-              <div
-                ref={boardRef}
-                className="relative w-full transition-transform duration-500 ease-out will-change-transform"
+            <TiltWrapper rotationRange={10}>
+              <motion.div
+                className="relative isolate mx-auto w-full max-w-[520px]"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               >
-                <HeroScheduleGrid />
-              </div>
-            </motion.div>
+                <div
+                  ref={orbRef}
+                  className="absolute inset-0 -z-10 mx-auto aspect-square w-full max-w-[520px] rounded-full bg-emerald-400/20 blur-[80px] opacity-60 hero-orb mix-blend-multiply dark:mix-blend-screen dark:bg-emerald-500/30"
+                  aria-hidden="true"
+                />
+
+                <div
+                  ref={boardRef}
+                  className="relative w-full transition-transform duration-500 ease-out will-change-transform"
+                >
+                  <HeroScheduleGrid />
+                </div>
+              </motion.div>
+            </TiltWrapper>
           </div>
         </div>
       </div>

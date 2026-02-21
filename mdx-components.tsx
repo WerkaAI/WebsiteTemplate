@@ -16,6 +16,7 @@ import { Tip } from '@/components/mdx/tip'
 import { VideoPlayer } from '@/components/mdx/video-player'
 import { MDXTabs } from '@/components/mdx/tabs'
 import { Callout } from '@/components/mdx/callout'
+import { ABTest } from '@/components/mdx/ab-test'
 
 function Anchor(props: React.ComponentProps<'a'>) {
   const { href = '', ...rest } = props
@@ -67,6 +68,7 @@ export function useMDXComponents(components: any) {
     VideoPlayer,
     Tabs: MDXTabs,
     Callout,
+    ABTest,
     ...components,
   };
 }

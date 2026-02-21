@@ -21,6 +21,7 @@
     "security:inventory": "node scripts/security/collect-inventory.mjs"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@hookform/resolvers": "^3.10.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",

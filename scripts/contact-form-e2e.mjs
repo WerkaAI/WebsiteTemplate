@@ -39,25 +39,42 @@ async function fillContactForm(page, {
   withPhone,
   withShops,
 }) {
+  // Step 1
   await page.type('[data-testid="input-contact-name"]', name);
   await page.type('[data-testid="input-contact-email"]', email);
+  await new Promise(r => setTimeout(r, 500));
+  await page.click('[data-testid="button-next-step"]');
 
-  if (withPhone) {
-    await page.type('[data-testid="input-contact-phone"]', "+48123456789");
+  // Step 2 (if applicable)
+  if (withPhone || withShops) {
+    if (withPhone) {
+      await page.waitForSelector('[data-testid="input-contact-phone"]', { timeout: 5000 });
+      await new Promise(r => setTimeout(r, 500)); // Wait for animation
+      await page.type('[data-testid="input-contact-phone"]', "+48123456789");
+    }
+
+    if (withShops) {
+      await page.waitForSelector('[data-testid="select-contact-shops"]', { timeout: 5000 });
+      await new Promise(r => setTimeout(r, 500)); // Wait for animation
+      await page.evaluate(() => {
+        document.querySelector('[data-testid="select-contact-shops"]').click();
+      });
+      await page.waitForSelector('[role="option"]', { timeout: 5000 });
+      await page.evaluate(() => {
+        const firstOption = document.querySelector('[role="option"]');
+        if (!(firstOption instanceof HTMLElement)) {
+          throw new Error('Shops option is not available');
+        }
+        firstOption.click();
+      });
+    }
+    await new Promise(r => setTimeout(r, 500));
+    await page.click('[data-testid="button-next-step"]');
   }
 
-  if (withShops) {
-    await page.click('[data-testid="select-contact-shops"]');
-    await page.waitForSelector('[role="option"]', { timeout: 5000 });
-    await page.evaluate(() => {
-      const firstOption = document.querySelector('[role="option"]');
-      if (!(firstOption instanceof HTMLElement)) {
-        throw new Error('Shops option is not available');
-      }
-      firstOption.click();
-    });
-  }
-
+  // Step 3
+  await page.waitForSelector('[data-testid="input-contact-message"]', { timeout: 5000 });
+  await new Promise(r => setTimeout(r, 1000)); // Wait for animation
   await page.type('[data-testid="input-contact-message"]', message);
 
   const consentState = await page.$eval(
@@ -66,7 +83,9 @@ async function fillContactForm(page, {
   );
 
   if (consentState !== 'checked') {
-    await page.click('[data-testid="checkbox-consent"]');
+    await page.evaluate(() => {
+      document.querySelector('[data-testid="checkbox-consent"]').click();
+    });
     await page.waitForFunction(
       () =>
         document
@@ -75,6 +94,7 @@ async function fillContactForm(page, {
       { timeout: 5000 }
     );
   }
+  await new Promise(r => setTimeout(r, 500));
 }
 
 async function submitAndAssertLoading(page) {
@@ -111,10 +131,9 @@ async function runLandingFlow(page, baseUrl) {
   await page.goto(new URL('/#contact', baseUrl).toString(), { waitUntil: 'networkidle2' });
   await assertVisible(page, '[data-testid="input-contact-name"]', 'landing form name input');
 
-  // Validation state
-  await page.click('[data-testid="button-submit-contact"]');
+  // Validation state - Step 1
+  await page.click('[data-testid="button-next-step"]');
   await assertVisible(page, '[data-testid="error-name"]', 'landing validation error name');
-  await assertVisible(page, '[data-testid="error-shops"]', 'landing validation error shops');
 
   await fillContactForm(page, {
     name: 'Jan Kowalski',
@@ -124,6 +143,7 @@ async function runLandingFlow(page, baseUrl) {
     withShops: true,
   });
 
+  await new Promise(r => setTimeout(r, 1000)); // Wait for form state to update
   await submitAndAssertLoading(page);
   await assertToastContains(page, 'Dziękujemy za wiadomość!');
 
@@ -134,8 +154,8 @@ async function runContactPageFlow(page, baseUrl) {
   await page.goto(new URL('/kontakt', baseUrl).toString(), { waitUntil: 'networkidle2' });
   await assertVisible(page, '[data-testid="input-contact-name"]', 'kontakt form name input');
 
-  // Validation state
-  await page.click('[data-testid="button-submit-contact"]');
+  // Validation state - Step 1
+  await page.click('[data-testid="button-next-step"]');
   await assertVisible(page, '[data-testid="error-name"]', 'kontakt validation error name');
 
   await fillContactForm(page, {
@@ -146,6 +166,7 @@ async function runContactPageFlow(page, baseUrl) {
     withShops: false,
   });
 
+  await new Promise(r => setTimeout(r, 1000)); // Wait for form state to update
   await submitAndAssertLoading(page);
   await assertToastContains(page, 'Sukces!');
 
@@ -159,6 +180,7 @@ async function runContactPageFlow(page, baseUrl) {
     withShops: false,
   });
 
+  await new Promise(r => setTimeout(r, 1000)); // Wait for form state to update
   await submitAndAssertLoading(page);
   await assertToastContains(page, 'Wystąpił błąd podczas wysyłania wiadomości');
   await page.setOfflineMode(false);
