@@ -24,7 +24,7 @@ export default function PricingSection() {
     },
     {
       id: "pro",
-      name: "AutoŻaba",
+      name: "System",
       price: "149 zł",
       originalPrice: "199 zł",
       period: "/miesiąc",
@@ -49,7 +49,7 @@ export default function PricingSection() {
       note: "+ 20–50 zł za pracownika",
     },
     {
-      label: "AutoŻaba",
+      label: "System",
       price: "149 zł/msc",
       note: "Bez limitu pracowników · Kolejny sklep +75 zł · Cena gwarantowana 12 mies.",
       highlight: true,

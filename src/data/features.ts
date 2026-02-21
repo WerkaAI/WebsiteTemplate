@@ -150,7 +150,7 @@ export const experienceHighlights: { title: string; description: string }[] = [
   },
   {
     title: 'Widget pomocy 24/7',
-    description: 'Bezpośrednie wsparcie zespołu AutoŻaba i dostęp do bazy wiedzy w jednym miejscu.'
+    description: 'Bezpośrednie wsparcie zespołu oraz dostęp do bazy wiedzy w jednym miejscu.'
   },
   {
     title: 'Bezpieczeństwo i RODO',
@@ -171,7 +171,7 @@ export const heroMetrics: { value: string; label: string; description: string }[
   },
   {
     value: '24/7',
-    label: 'wsparcie AutoŻaba',
+    label: 'wsparcie zespołu',
     description: 'Pomoc techniczna i prawną otrzymujesz dokładnie wtedy, gdy jej potrzebujesz.'
   }
 ]

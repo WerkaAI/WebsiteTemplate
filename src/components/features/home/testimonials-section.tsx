@@ -9,7 +9,7 @@ const testimonials = [
   {
     name: "Michał",
     role: "Franczyzobiorca, Warszawa",
-    content: "Wcześniej układanie grafiku zajmowało mi cały weekend. Teraz robię to w 15 minut przy kawie. AutoŻaba to gamechanger.",
+    content: "Wcześniej układanie grafiku zajmowało mi cały weekend. Teraz robię to w 15 minut przy kawie. Ten system to gamechanger.",
     rating: 5,
     avatar: "/illustrations/testimonials/michal.png"
   },
@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
             Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">Franczyzobiorcy</span>
           </motion.h2>
           <motion.p className="text-xl text-muted-foreground" variants={itemVariants}>
-            Dołącz do grona zadowolonych właścicieli sklepów Żabka.
+            Dołącz do grona zadowolonych właścicieli sklepów convenience.
           </motion.p>
         </motion.div>
 

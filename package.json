@@ -14,6 +14,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:smoke": "node scripts/smoke-e2e.mjs",
+    "test:contact-form": "node scripts/contact-form-e2e.mjs",
+    "test:csp": "node scripts/csp-lifecycle-check.mjs",
+    "test:boundary": "node scripts/starter-boundary-check.mjs",
     "prepare": "husky",
     "security:inventory": "node scripts/security/collect-inventory.mjs"
   },

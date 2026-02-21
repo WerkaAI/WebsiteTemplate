@@ -2,6 +2,11 @@
 
 Reusable starter for marketing websites and content hubs. Built with Next.js App Router, TypeScript, Tailwind, shadcn/radix UI, and MDX.
 
+## Documentation
+
+- Central index: [docs/README.md](docs/README.md)
+- Operational plans: [docs/plans/README.md](docs/plans/README.md)
+
 ## Requirements
 
 - Node.js 20+
@@ -23,6 +28,9 @@ npm run lint         # eslint
 npm run typecheck    # typescript check
 npm run browserslist:update  # optional, update caniuse db
 npm run test:smoke    # smoke test for critical routes
+npm run test:contact-form  # browser check for landing + /kontakt forms
+npm run test:csp      # CSP lifecycle gate check
+npm run test:boundary # CoreStarter vs PerProject boundary check
 ```
 
 To analyze bundle sizes:
@@ -36,6 +44,7 @@ ANALYZE=true npm run build
 - Blog posts live in `content/blog/*.mdx` with frontmatter (`title`, `description`, `date`, `tags`, `cover`, `draft`)
 - Tutorials live in `content/tutorials/*.mdx`; required fields are described in `content/tutorials/README.md`
 - MDX headings are auto-linkable; mapping is in `mdx-components.tsx`
+- Blog authoring quick guide: `docs/plans/BLOG_SETUP.md`
 
 ## Images
 

@@ -7,14 +7,17 @@ import { buildSecurityHeaders } from "./headers";
 export const CSP_NONCE_HEADER = "x-nonce";
 
 export type CspMode = "enforce" | "report-only" | "dual";
+export type CspLifecycleStage = "build" | "pre-release" | "release";
 
 const STATIC_FILE_EXTENSION = /\.(?:js|mjs|css|png|jpg|jpeg|gif|svg|ico|webp|avif|txt|xml|json|map|pdf|woff2?|ttf)$/i;
 
 const ENV_CSP_MODE = process.env.CSP_MODE as CspMode | undefined;
+const ENV_CSP_LIFECYCLE_STAGE =
+  process.env.CSP_LIFECYCLE_STAGE as CspLifecycleStage | undefined;
 const ALLOW_INLINE_DEBUG = process.env.CSP_ALLOW_UNSAFE_INLINE === "1" || process.env.NODE_ENV === "development";
 const ALLOW_EVAL_DEBUG = process.env.CSP_ALLOW_UNSAFE_EVAL === "1";
 const DISABLE_UPGRADE_INSECURE = process.env.CSP_DISABLE_UPGRADE_INSECURE_REQUESTS === "1";
-const CSP_REPORT_URI = process.env.CSP_REPORT_URI?.trim() || null;
+const CSP_REPORT_URI = process.env.CSP_REPORT_URI?.trim() || "/api/csp-report";
 const CSP_DISABLED = process.env.CSP_DISABLE === "1";
 
 export function createNonce(): string {
@@ -76,21 +79,53 @@ function pathHasFileExtension(pathname: string): boolean {
   return lastSegment.includes(".");
 }
 
+function isCspMode(value: string | null | undefined): value is CspMode {
+  return value === "enforce" || value === "dual" || value === "report-only";
+}
+
+function isLifecycleStage(value: string | null | undefined): value is CspLifecycleStage {
+  return value === "build" || value === "pre-release" || value === "release";
+}
+
+export function resolveCspMode(options: {
+  envMode?: CspMode;
+  lifecycleStage?: CspLifecycleStage;
+  requestOverrideMode?: string | null;
+}): CspMode {
+  const { envMode, lifecycleStage = "build", requestOverrideMode } = options;
+
+  if (isCspMode(envMode)) {
+    return envMode;
+  }
+
+  if (isCspMode(requestOverrideMode)) {
+    return requestOverrideMode;
+  }
+
+  if (lifecycleStage === "release") {
+    return "enforce";
+  }
+
+  if (lifecycleStage === "pre-release") {
+    return "dual";
+  }
+
+  return "report-only";
+}
+
 function resolveMode(request: NextRequest): CspMode {
-  const defaultMode: CspMode = process.env.VERCEL_ENV === "production" ? "dual" : "report-only";
-  const sourceMode = ENV_CSP_MODE ?? defaultMode;
+  const headerStage = request.headers.get("x-csp-lifecycle-stage");
+  const lifecycleStage = isLifecycleStage(headerStage)
+    ? headerStage
+    : isLifecycleStage(ENV_CSP_LIFECYCLE_STAGE)
+      ? ENV_CSP_LIFECYCLE_STAGE
+      : "build";
 
-  if (process.env.VERCEL_ENV === "production") {
-    return sourceMode;
-  }
-
-  // Allow per-request override via header for integration tests.
-  const modeOverride = request.headers.get("x-csp-mode");
-  if (modeOverride === "enforce" || modeOverride === "dual" || modeOverride === "report-only") {
-    return modeOverride;
-  }
-
-  return sourceMode;
+  return resolveCspMode({
+    envMode: ENV_CSP_MODE,
+    lifecycleStage,
+    requestOverrideMode: request.headers.get("x-csp-mode"),
+  });
 }
 
 export function applySecurityHeaders(request: NextRequest): NextResponse {
@@ -127,6 +162,7 @@ export function applySecurityHeaders(request: NextRequest): NextResponse {
   }
 
   response.headers.set(CSP_NONCE_HEADER, nonce);
+  response.headers.set("x-csp-active-mode", mode);
 
   return response;
 }

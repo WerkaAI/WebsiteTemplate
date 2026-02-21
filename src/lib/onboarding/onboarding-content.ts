@@ -1,4 +1,4 @@
-// Onboarding content data - curriculum structure for the "Przygoda Żabiana" experience
+// Onboarding content data - curriculum structure for the onboarding experience
 
 export interface QuestStep {
     /** Step number */
@@ -124,14 +124,14 @@ export const ADVENTURES: Adventure[] = [
             questions: [
                 {
                     id: 'q1',
-                    question: 'Co jest głównym celem AutoŻaba?',
+                    question: 'Co jest głównym celem systemu?',
                     options: [
                         'Gotowanie obiadu',
                         'Automatyzacja marketingu i oszczędność czasu',
                         'Sadzenie grządek'
                     ],
                     correctIndex: 1,
-                    explanation: 'Dokładnie! AutoŻaba to Twój osobisty asystent do zadań specjalnych w sklepie.'
+                    explanation: 'Dokładnie! To Twój osobisty asystent do zadań specjalnych w sklepie.'
                 },
                 {
                     id: 'q2',
@@ -161,7 +161,7 @@ export const ADVENTURES: Adventure[] = [
             {
                 id: 'a0-witaj',
                 title: 'Witaj w Przygodzie!',
-                description: 'Gratulacje! Właśnie zacząłeś swoją przygodę z AutoŻaba.',
+                description: 'Gratulacje! Właśnie zaczynasz swoją przygodę z systemem.',
                 timeEstimate: 0,
                 keywords: ['start', 'początek', 'witaj'],
                 quickAnswer: 'Jesteś tutaj - to już sukces! 🎉',
@@ -172,10 +172,10 @@ export const ADVENTURES: Adventure[] = [
             {
                 id: 'a0-instalacja',
                 title: 'Instalacja aplikacji (PWA)',
-                description: 'Zainstaluj AutoŻabę na swoim telefonie, aby mieć do niej szybki dostęp.',
+                description: 'Zainstaluj aplikację na swoim telefonie, aby mieć szybki dostęp.',
                 timeEstimate: 3,
                 keywords: ['instalacja', 'aplikacja', 'telefon', 'pwa', 'android', 'ios', 'iphone'],
-                quickAnswer: 'Otwórz panel.autozaba.pl w przeglądarce telefonu i wybierz "Dodaj do ekranu głównego".',
+                quickAnswer: 'Otwórz panel Twojej firmy w przeglądarce telefonu i wybierz "Dodaj do ekranu głównego".',
                 difficulty: 1,
                 mediaVariants: [
                     {
@@ -200,7 +200,7 @@ export const ADVENTURES: Adventure[] = [
                 steps: [
                     {
                         step: 1,
-                        instruction: 'Otwórz panel.autozaba.pl w przeglądarce na telefonie.'
+                        instruction: 'Otwórz adres panelu Twojej firmy w przeglądarce na telefonie.'
                     },
                     {
                         step: 2,
@@ -211,12 +211,12 @@ export const ADVENTURES: Adventure[] = [
             {
                 id: 'a1-logowanie',
                 title: 'Logowanie do systemu',
-                description: 'Jak zalogować się do AutoŻaba i co zrobić gdy zapomnisz hasła.',
+                description: 'Jak zalogować się do systemu i co zrobić, gdy zapomnisz hasła.',
                 timeEstimate: 2,
                 keywords: ['logowanie', 'login', 'hasło', 'zaloguj', 'wejść'],
-                quickAnswer: 'Wejdź na panel.autozaba.pl i użyj danych otrzymanych w emailu powitalnym.',
+                quickAnswer: 'Wejdź na adres panelu i użyj danych otrzymanych w e-mailu powitalnym.',
                 difficulty: 1,
-                deepLink: 'https://panel.autozaba.pl',
+                deepLink: 'https://panel.twoja-firma.pl',
                 media: {
                     type: 'image',
                     src: '/images/placeholders/onboarding-neutral.svg',
@@ -231,7 +231,7 @@ export const ADVENTURES: Adventure[] = [
                 keywords: ['język', 'polski', 'angielski', 'language'],
                 quickAnswer: 'Kliknij ikonę profilu → Ustawienia → Język.',
                 difficulty: 1,
-                deepLink: 'https://panel.autozaba.pl/settings',
+                deepLink: 'https://panel.twoja-firma.pl/settings',
                 media: {
                     type: 'image',
                     src: '/images/placeholders/onboarding-neutral.svg',

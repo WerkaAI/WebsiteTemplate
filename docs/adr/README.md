@@ -18,3 +18,5 @@ Skopiuj [ADR-TEMPLATE.md](ADR-TEMPLATE.md).
 - [ADR-0004-smoke-e2e-critical-routes.md](ADR-0004-smoke-e2e-critical-routes.md)
 - [ADR-0005-csp-production-default-mode.md](ADR-0005-csp-production-default-mode.md)
 - [ADR-0006-template-neutral-baseline.md](ADR-0006-template-neutral-baseline.md)
+- [ADR-0007-historical-docs-legacy-references-policy.md](ADR-0007-historical-docs-legacy-references-policy.md)
+- [ADR-0008-csp-per-project-enforcement-gate.md](ADR-0008-csp-per-project-enforcement-gate.md)

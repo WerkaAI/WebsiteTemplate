@@ -1,70 +1,9 @@
-# AutoŻaba Marketing Website
+# Przeniesione (historyczne)
 
-## Project Overview
-A professional marketing website and blog for AutoŻaba SaaS platform, focusing on customer acquisition and educational content for Żabka franchise staff management.
+Ten dokument historyczny został przeniesiony do:
 
-## Project Architecture
+- [docs/plans/REPLIT_HISTORY.md](docs/plans/REPLIT_HISTORY.md)
 
-### Tech Stack
-- **Frontend**: React + TypeScript + Vite
-- **Backend**: Express.js (minimal, mainly for blog content management)
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Database**: In-memory storage for blog posts (can upgrade to PostgreSQL later if needed)
-- **Routing**: Wouter for frontend routing
+Aktualny indeks dokumentacji:
 
-### Key Features
-1. **Landing Page**
-   - Hero section with value proposition
-   - Problem/solution sections
-   - Pricing information (149 PLN per shop)
-   - YouTube demo integration
-   - CTA to login to SaaS
-
-2. **Blog System**
-   - Educational content about labor law
-   - SEO-optimized articles
-   - Categories and tags
-   - Search functionality
-
-3. **Legal Shield Feature**
-   - Interactive explanations of legal protection
-   - PIP compliance information
-   - Cost of non-compliance calculator
-
-4. **Multi-language Support**
-   - Primary: Polish
-   - Optional: English, Ukrainian
-
-### External Integrations
-- Login button redirects to external SaaS platform
-- YouTube video embed for demo
-
-## User Preferences
-- Language: Polish primary, professional tone
-- Target audience: Żabka franchise owners
-- Key messaging: Time saving, legal compliance, stress reduction
-- No free trial offered
-- Pricing: 149 PLN per shop, unlimited employees
-
-## Recent Changes
-- 2025-01-28: Cleaned up Next.js migration
-  - Fixed tailwind.config.ts content paths (./client/src/** → ./src/**)
-  - Removed duplicate nextjs-app/ folder and old Vite files
-  - Removed unused drizzle.config.ts and shared/ folder
-  - Single clean Next.js structure with working Tailwind styles
-- 2025-01-28: Migrated to Next.js 14 App Router
-  - Converted from Vite + wouter to Next.js with App Router
-  - Preserved all visual design and functionality 1:1
-  - Routes: / (landing) and /blog working identically
-  - Marked interactive components as Client Components
-  - Fixed all ESLint errors for production build
-- 2025-01-28: Completed "Calm & Control" theme implementation
-  - Applied AutoŻaba brand colors (#006625 primary green)
-  - Enhanced calculator with realistic franchise owner benefits
-  - Removed trial offers, focused on 149 PLN/month pricing
-  - Added chaos-to-calm animations and professional shadows
-  - Updated CTAs to direct to registration instead of trial
-- 2025-01-26: Initial project setup
-- Created data models for blog system
-- Implemented landing page structure
-- Added Polish content and translations
+- [docs/README.md](docs/README.md)

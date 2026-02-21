@@ -120,3 +120,60 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 1. finalny pass treści onboarding (copy + nazewnictwo) w `src/lib/onboarding/*`
 2. domknięcie cleanup historycznych treści w `content/*`
 3. finalne zamknięcie Step 10B
+
+---
+
+## Aktualizacja po Step 10B (part 6)
+
+### Wynik ponownego skanu (grep)
+- `src`: 0 trafień
+- `content`: 49 trafień
+- `docs`: 65 trafień
+
+### Postęp
+- domknięto runtime cleanup: brak stringów legacy w `src/**` dla wzorca `autozaba|AutoŻaba|Żabka|app.autozaba.pl|panel.autozaba.pl`
+- zneutralizowano onboarding runtime (copy, localStorage keys, deepLink placeholders)
+- zneutralizowano pozostałe copy i metadata runtime (home, cennik, blog/tutorial structured data)
+
+### Kolejność dalszych działań
+1. finalny pass white-label dla `content/**` (frontmatter, copy i legacy URL-e CDN/app)
+2. oznaczenie historycznych dokumentów w `docs/**` jako archiwalne lub ich przeniesienie do sekcji historical
+3. po czyszczeniu content/docs: formalne zamknięcie Step 10B w roadmapie
+
+---
+
+## Aktualizacja po Step 10B (part 7)
+
+### Wynik ponownego skanu (grep)
+- `src`: 0 trafień
+- `content`: 0 trafień
+- `docs`: 70 trafień
+
+### Postęp
+- domknięto cleanup white-label dla `content/**`:
+  - zneutralizowano tytuły/opisy i copy brandowe w blog/tutorial drafts
+  - usunięto legacy domeny app/panel i adresy mailowe brandowe
+  - podmieniono legacy URL-e coverów i części obrazów na neutralne placeholdery lokalne
+- runtime + content są teraz neutralne względem wzorca legacy
+
+### Pozostały zakres
+1. utrzymać `docs/**` jako obszar historyczny (świadomie zawiera legacy referencje audytowe i archiwalne)
+2. dodać finalną notę zamknięcia Step 10B po decyzji zespołu, czy czyścimy historyczne docs czy je oznaczamy
+
+---
+
+## Aktualizacja po Step 10B (part 8) — closure
+
+### Wynik końcowy
+- `src`: 0 trafień
+- `content`: 0 trafień
+- `docs`: trafienia wyłącznie historyczne/audytowe
+
+### Domknięcie dokumentacji
+- skonsolidowano plany operacyjne do `docs/plans/*`
+- dodano centralny indeks dokumentacji: `docs/README.md`
+- root markdown ograniczony do plików-przekierowań + `README.md`
+
+### Decyzja formalna
+- policy dla legacy referencji w docs: **Accepted** (`ADR-0007`)
+- Step 10B uznany za zamknięty

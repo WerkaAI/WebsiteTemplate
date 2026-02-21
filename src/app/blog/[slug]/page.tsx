@@ -91,7 +91,7 @@ export default async function Page({ params }: BlogPostPageProps) {
     image: cover || "/og-image.jpg",
     author: {
       "@type": "Organization",
-      name: "AutoŻaba",
+      name: "CoreStarter",
     },
     url: `${baseUrl}/blog/${params.slug}`,
   };
@@ -247,7 +247,7 @@ export default async function Page({ params }: BlogPostPageProps) {
                 Następny krok
               </h3>
               <p className="mt-2 text-sm text-muted-foreground/80">
-                Przetestuj AutoŻaba i zobacz jak automatyzacja grafiku działa w
+                Przetestuj system i zobacz jak automatyzacja grafiku działa w
                 praktyce.
               </p>
               <Button asChild className="w-full mt-3">
@@ -256,7 +256,7 @@ export default async function Page({ params }: BlogPostPageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Wypróbuj AutoŻaba
+                  Wypróbuj system
                 </Link>
               </Button>
             </div>

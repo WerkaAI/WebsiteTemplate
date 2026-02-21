@@ -18,8 +18,8 @@ import { ChatFlow } from '@/components/features/onboarding/chat-flow';
 
 type OnboardingRole = 'employee' | 'owner';
 
-const ROLE_STORAGE_KEY = 'autozaba-onboarding-role';
-const OWNER_PROGRESS_KEY = 'autozaba-onboarding-owner';
+const ROLE_STORAGE_KEY = 'template-onboarding-role';
+const OWNER_PROGRESS_KEY = 'template-onboarding-owner';
 const OWNER_WELCOME_ID = 'a0-witaj';
 
 export function OnboardingPageContent() {
@@ -169,7 +169,7 @@ export function OnboardingPageContent() {
                         {/* Employee: brief title */}
                         {isEmployee && (
                             <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-1 px-2">
-                                Onboarding <span className="text-brand-green">AutoŻaba</span> 🐸
+                                Onboarding <span className="text-brand-green">produktu</span> 🐸
                             </h1>
                         )}
                     </motion.div>

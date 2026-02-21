@@ -38,3 +38,6 @@ Oddzielić reusable `CoreStarter` od warstwy `PerProject`, aby każdy nowy proje
 - Green CI (`typecheck + lint + test + build`).
 - Uzupełnione env (w tym rate limiting).
 - Ustalony owner dla `PerProject` content i integracji.
+
+## Playbook wydania
+- [RELEASE_PLAYBOOK.md](RELEASE_PLAYBOOK.md)

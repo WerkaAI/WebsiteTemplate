@@ -246,7 +246,7 @@ export default function HeroSection() {
                 variants={itemVariants}
                 data-testid="text-hero-subtitle"
               >
-                Zarządzaj sklepem, a nie grafikami. AutoŻaba to Twój asystent,
+                Zarządzaj sklepem, a nie grafikami. To Twój asystent,
                 który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.
               </motion.p>
             </div>

@@ -8,6 +8,10 @@ _Version 1.0 — Drafted 2025-10-27_
 - Maintain compatibility with existing embeds (YouTube, Turnstile, Unsplash/DigitalOcean images) and outbound social share links.
 - Roll out via `Content-Security-Policy-Report-Only` before switching to enforcement.
 
+Aktualizacja 2026-02-21:
+- lifecycle gate per project wdrożony (`build -> pre-release -> release`),
+- telemetry endpoint aktywny domyślnie: `/api/csp-report`.
+
 ## Header Set & Owners
 | Header | Status | Owner | Notes |
 | --- | --- | --- | --- |
@@ -83,12 +87,20 @@ Target policy string: `accelerometer=(), ambient-light-sensor=(), autoplay=(), c
 6. Document allow-list changes in `docs/security/post-rollout.md`.
 
 ## Runtime Configuration Flags
-- `CSP_MODE`: `report-only` (default), `enforce`, or `dual` to control header placement.
+- `CSP_MODE`: explicit override (`report-only`, `enforce`, `dual`) — highest priority.
+- `CSP_LIFECYCLE_STAGE`: `build` (default), `pre-release`, `release`.
+  - `build` -> `report-only`
+  - `pre-release` -> `dual`
+  - `release` -> `enforce`
 - `CSP_ALLOW_UNSAFE_INLINE`: set to `1` for troubleshooting to append `'unsafe-inline'` back into `script-src`.
 - `CSP_ALLOW_UNSAFE_EVAL`: set to `1` to temporarily re-enable `'unsafe-eval'`.
 - `CSP_DISABLE_UPGRADE_INSECURE_REQUESTS`: set to `1` to drop the directive altogether.
 - `CSP_REPORT_URI`: absolute URL for violation collection; omit to disable reporting.
 - `CSP_DISABLE`: set to `1` to bypass middleware entirely (debug builds only).
+
+## Operational Checklist
+- Release checklist: [docs/security/csp-release-checklist.md](csp-release-checklist.md)
+- Telemetry log: [docs/security/post-rollout.md](post-rollout.md)
 
 ## Non-Goals
 - HSTS preload submission management (handled by infrastructure).

@@ -50,7 +50,7 @@ export default function SolutionSection() {
             Twoja <span className="text-primary dark:text-emerald-300">Automatyczna Tarcza Prawna</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-solution-subtitle">
-            AutoŻaba to nie kolejne narzędzie HR. To system ochrony, który automatyzuje 
+            To nie kolejne narzędzie HR. To system ochrony, który automatyzuje 
             najbardziej ryzykowne procesy i daje spokój ducha.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function SolutionSection() {
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-before-title"
               >
-                Bez AutoŻaby
+                Bez systemu
               </h3>
               <div className="h-full">
                 <div className="h-full rounded-[1.75rem] border border-red-200/70 bg-red-50/90 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-red-500/35 dark:bg-red-900/25">
@@ -108,7 +108,7 @@ export default function SolutionSection() {
                 className="text-2xl font-semibold text-foreground"
                 data-testid="text-after-title"
               >
-                Z AutoŻabą
+                Z systemem
               </h3>
               <div className="h-full">
                 <div className="h-full rounded-[1.75rem] border border-green-200/70 bg-green-50/95 p-6 sm:p-8 shadow-sm transition-transform duration-500 motion-ease-out group-hover:-translate-y-1 dark:border-emerald-500/30 dark:bg-emerald-900/25">

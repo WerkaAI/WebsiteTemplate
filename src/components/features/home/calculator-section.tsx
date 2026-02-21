@@ -27,7 +27,7 @@ export default function CalculatorSection() {
 
   const calculations = useMemo(() => {
     const monthlyHours = hoursPerWeek * 4.33; // Average weeks per month
-    const timeSavedPerShop = monthlyHours * 0.75; // 75% time reduction with AutoŻaba
+    const timeSavedPerShop = monthlyHours * 0.75; // 75% time reduction with the system
     const totalTimeSaved = Math.round(timeSavedPerShop * shops);
 
     const weekendsSaved = Math.round(shops * 6);
@@ -43,7 +43,7 @@ export default function CalculatorSection() {
       timeSaved: totalTimeSaved,
       weekendsSaved,
       riskAvoided,
-      autozabaCost: monthlyCost,
+      systemCost: monthlyCost,
       monthlyBenefit,
     };
   }, [hadPIPControl, hoursPerWeek, shops]);
@@ -319,10 +319,10 @@ export default function CalculatorSection() {
                     className="metric-card metric-card--investment"
                     variants={itemVariants}
                   >
-                    <div className="metric-card__label">AutoŻaba na teraz</div>
+                    <div className="metric-card__label">System na teraz</div>
                     <div
                       className="metric-card__value"
-                      data-testid="stat-autozaba-cost"
+                      data-testid="stat-system-cost"
                     >
                       149 zł/mies.
                     </div>

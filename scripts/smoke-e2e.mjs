@@ -45,7 +45,12 @@ async function runRoute(page, baseUrl, route) {
 
     const nonEssentialFailure = requestFailures.find((item) => {
       const lower = item.toLowerCase();
-      return !lower.includes("googletagmanager") && !lower.includes("google-analytics") && !lower.includes("facebook.net");
+      return (
+        !lower.includes("googletagmanager") &&
+        !lower.includes("google-analytics") &&
+        !lower.includes("facebook.net") &&
+        !lower.includes("hot-update.js")
+      );
     });
 
     if (nonEssentialFailure) {

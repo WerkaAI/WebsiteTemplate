@@ -94,11 +94,11 @@ export default async function TutorialPage({ params }: TutorialPageProps) {
     image: meta.cover ?? `${baseUrl}/og-image-placeholder.png`,
     author: {
       '@type': 'Organization',
-      name: 'AutoŻaba',
+      name: 'CoreStarter',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'AutoŻaba',
+      name: 'CoreStarter',
       logo: {
         '@type': 'ImageObject',
         url: `${baseUrl}/logo.png`, // Assuming logo exists

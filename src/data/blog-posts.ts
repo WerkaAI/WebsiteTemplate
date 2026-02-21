@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     category: "Start",
     date: "10 stycznia 2026",
     readTime: "6 min czytania",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    image: "/images/placeholders/onboarding-neutral.svg",
     content: `
       <h2>Plan działania na pierwszy dzień</h2>
       <p>Najlepszy start to prosty zakres: ustawienia globalne, podmiana treści na stronie głównej i publikacja pierwszej wersji.</p>
@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     category: "Deploy",
     date: "14 stycznia 2026",
     readTime: "5 min czytania",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    image: "/images/placeholders/onboarding-neutral.svg",
     content: `
       <h2>Minimum do bezpiecznego startu</h2>
       <p>Przed deployem upewnij się, że najważniejsze elementy jakości i bezpieczeństwa są domknięte.</p>
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
     category: "Produkt",
     date: "20 stycznia 2026",
     readTime: "7 min czytania",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+    image: "/images/placeholders/onboarding-neutral.svg",
     content: `
       <h2>Co robić po uruchomieniu MVP</h2>
       <p>Największą wartość daje regularny rytm: pomiar, decyzje i krótki cykl wdrożeń.</p>

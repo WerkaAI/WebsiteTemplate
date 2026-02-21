@@ -1,6 +1,6 @@
 # ADR-0005: CSP default mode strategy for production rollout
 
-- Status: Accepted
+- Status: Superseded by ADR-0008
 - Data: 2026-02-21
 
 ## Kontekst

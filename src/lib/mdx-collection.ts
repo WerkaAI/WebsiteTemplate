@@ -27,9 +27,9 @@ export interface GetAllEntriesOptions<TMeta extends BaseMeta> {
 }
 
 const BaseMetaSchema = z.object({
-  title: z.string(),
+  title: z.string().min(1),
   description: z.string().optional(),
-  date: z.string(),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
   draft: z.boolean().optional(),
 })
 
@@ -49,6 +49,7 @@ export function getCollectionSlugs(dir: string): string[] {
     .readdirSync(collectionDir)
     .filter(fileName => fileName.endsWith('.mdx'))
     .map(fileName => fileName.replace(/\.mdx$/, ''))
+    .sort((a, b) => a.localeCompare(b))
 }
 
 function readFrontmatterFromFile(dir: string, slug: string) {
@@ -68,7 +69,13 @@ function validateMeta<TMeta>(
   schema?: ZodSchema<TMeta, ZodTypeDef, unknown>
 ) {
   if (!schema) {
-    return meta as TMeta
+    const result = BaseMetaSchema.safeParse(meta)
+    if (!result.success) {
+      console.warn(`Invalid frontmatter in ${dir}/${slug}.mdx`, result.error.flatten())
+      throw result.error
+    }
+
+    return result.data as TMeta
   }
 
   const result = schema.safeParse(meta)

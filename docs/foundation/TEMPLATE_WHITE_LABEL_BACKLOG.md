@@ -31,7 +31,7 @@ Dokończyć pełny pass white-label, aby w kodzie produkcyjnym nie pozostały od
 - finalna rewizja contentu legal pod nowy projekt
 
 ### 4) Legacy docs/pliki do usunięcia lub archiwizacji
-- root: `BLOG_SETUP.md`, `MDX_MASTER_PLAN.md`, `REVIEW_PLAN.md`, `replit.md`
+- skonsolidować plany operacyjne w `docs/plans/*` i zostawić w root tylko pliki-przekierowania
 - docs: plany redesign/onboarding/review z poprzedniego projektu
 
 ### 5) Media visual de-branding (assets + onboarding video)

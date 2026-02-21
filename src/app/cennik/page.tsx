@@ -21,12 +21,12 @@ import PriceCalculator from './price-calculator'
 
 export const metadata: Metadata = {
   description:
-    'AutoŻaba — jeden system, prosta cena. 14 dni za darmo, potem 149 zł/mies. za sklep. Bez limitu pracowników, pełna ochrona prawna.',
+    'Jeden system, prosta cena. 14 dni za darmo, potem 149 zł/mies. za sklep. Bez limitu pracowników, pełna ochrona prawna.',
   alternates: {
     canonical: '/cennik'
   },
   openGraph: {
-    title: 'Cennik AutoŻaba — prosta cena, pełna ochrona',
+    title: 'Cennik systemu — prosta cena, pełna ochrona',
     description:
       '14 dni za darmo. Potem 149 zł/mies. za sklep (promocja -25%). Automatyczne grafiki, ewidencja, dokumenty PIP — bez limitu pracowników.',
     url: '/cennik',
@@ -41,7 +41,7 @@ const onboardingSteps = [
   },
   {
     title: 'Pomagamy we wdrożeniu (tydzień)',
-    description: 'Uczymy Ciebie i pracowników korzystania z AutoŻaby.'
+    description: 'Uczymy Ciebie i pracowników korzystania z systemu.'
   },
   {
     title: 'Twój pierwszy automatyczny grafik',
@@ -62,7 +62,7 @@ const costSummary = [
   {
     label: 'Wdrożenie i szkolenie',
     value: '0 zł',
-    note: 'Prowadzone przez zespół AutoŻaby w ramach abonamentu.',
+    note: 'Prowadzone przez zespół wdrożeniowy w ramach abonamentu.',
     icon: Rocket
   },
   {
@@ -100,7 +100,7 @@ export default function PricingPage() {
             </h1>
 
             <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-              Każdy klient AutoŻaby dostaje dokładnie to samo — pełen dostęp do wszystkich funkcji, bez limitu pracowników. Zacznij od 14 dni za darmo.
+              Każdy klient dostaje dokładnie to samo — pełen dostęp do wszystkich funkcji, bez limitu pracowników. Zacznij od 14 dni za darmo.
             </p>
 
             {/* Promo badge */}
@@ -199,7 +199,7 @@ export default function PricingPage() {
           <div className="text-center space-y-6 rounded-3xl glass-premium p-10 md:p-14 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/10 dark:to-slate-900/50">
             <h2 className="text-2xl md:text-3xl font-bold">Gotowy, żeby odzyskać spokój?</h2>
             <p className="text-slate-600 dark:text-slate-300 max-w-lg mx-auto">
-              Zarejestruj się i przez 14 dni korzystaj z AutoŻaby za darmo — bez zobowiązań, bez podawania karty płatniczej.
+              Zarejestruj się i przez 14 dni korzystaj z systemu za darmo — bez zobowiązań, bez podawania karty płatniczej.
             </p>
             <div>
               <a
@@ -223,7 +223,7 @@ export default function PricingPage() {
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Co dostajesz?</h2>
             <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
-              Każdy klient AutoŻaby — niezależnie od liczby sklepów — ma dostęp do pełnego zestawu funkcji.
+              Każdy klient — niezależnie od liczby sklepów — ma dostęp do pełnego zestawu funkcji.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -341,7 +341,7 @@ export default function PricingPage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
             >
-              Wypróbuj AutoŻabę za darmo
+              Wypróbuj system za darmo
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -357,8 +357,8 @@ export default function PricingPage() {
               <h2 className="text-3xl font-bold mb-4">Pytania? Mamy odpowiedzi.</h2>
               <p className="text-slate-600 dark:text-slate-300">
                 Jeśli nie widzisz odpowiedzi, napisz na{' '}
-                <a href="mailto:kontakt@autozaba.pl" className="text-emerald-600 font-medium hover:underline">
-                  kontakt@autozaba.pl
+                <a href="mailto:kontakt@example.com" className="text-emerald-600 font-medium hover:underline">
+                  kontakt@example.com
                 </a>
               </p>
             </div>

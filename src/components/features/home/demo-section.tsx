@@ -23,7 +23,7 @@ export default function DemoSection() {
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Wystarczą 3 minuty, aby ułożyć grafik na cały miesiąc.
-              Zobacz krótkie wideo i przekonaj się, jak prosta jest AutoŻaba.
+              Zobacz krótkie wideo i przekonaj się, jak prosty jest ten system.
             </p>
 
             <div className="space-y-2 md:space-y-4">
@@ -64,7 +64,7 @@ export default function DemoSection() {
                 width="100%"
                 height="100%"
                 src="https://www.youtube.com/embed/HbdNWDznFYY?rel=0"
-                title="AutoŻaba Demo"
+                title="Demo systemu"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
