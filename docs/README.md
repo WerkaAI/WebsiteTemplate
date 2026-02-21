@@ -6,6 +6,7 @@ Ten katalog jest **głównym miejscem dokumentacji** projektu.
 
 - [docs/adr/README.md](adr/README.md) — decyzje architektoniczne (ADR)
 - [docs/foundation/ROADMAP_12_WEEKS.md](foundation/ROADMAP_12_WEEKS.md) — roadmapa i status etapów
+- [docs/foundation/CURRENT_STATE_2026-02-21.md](foundation/CURRENT_STATE_2026-02-21.md) — aktualny stan techniczny projektu
 - [docs/foundation/WHITE_LABEL_AUDIT_2026-02-21.md](foundation/WHITE_LABEL_AUDIT_2026-02-21.md) — audyt white-label
 - [docs/security](security) — specyfikacje bezpieczeństwa, threat model, inventory
 

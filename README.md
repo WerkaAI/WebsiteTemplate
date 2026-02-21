@@ -6,6 +6,7 @@ Reusable starter for marketing websites and content hubs. Built with Next.js App
 
 - Central index: [docs/README.md](docs/README.md)
 - Roadmap/status: [docs/foundation/ROADMAP_12_WEEKS.md](docs/foundation/ROADMAP_12_WEEKS.md)
+- Current technical state: [docs/foundation/CURRENT_STATE_2026-02-21.md](docs/foundation/CURRENT_STATE_2026-02-21.md)
 
 Kept by default:
 - Architecture decisions: `docs/adr/**`

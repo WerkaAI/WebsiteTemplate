@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import Script from 'next/script'
 import './globals.css'
 import { Providers } from "@/components/providers"
@@ -10,7 +11,6 @@ import { CookieSettingsPanel } from "@/components/cookies/cookie-settings-panel"
 import { ConsentScripts } from "@/components/cookies/consent-scripts"
 import { generateGcmDefaultScript } from "@/lib/cookies/gcm-v2"
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
 const enablePwa = process.env.NEXT_PUBLIC_ENABLE_PWA === 'true'
 
 export const metadata: Metadata = {
@@ -60,8 +60,8 @@ export default function RootLayout({
   const hasGoogleTracking = !!(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GTM_ID);
 
   return (
-    <html lang="pl" className="scroll-smooth" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+    <html lang="pl" className={`scroll-smooth ${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <body className={`${GeistSans.className} antialiased tracking-tight`} suppressHydrationWarning>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded"
