@@ -110,7 +110,7 @@ const stepA0_welcome: ChatStep = {
     difficulty: 'easy',
     xpReward: 25,
     messages: withStepIds('emp-a0-witaj', [
-        zabek('Cześć! Jestem Żabek — Twój przewodnik po aplikacji. 🐸'),
+        zabek('Cześć! Jestem Twoim przewodnikiem po aplikacji. 👋'),
         zabek('Pokażę Ci krok po kroku jak korzystać z aplikacji. W każdej chwili kliknij **🗺️ mapę** w prawym górnym rogu — tam znajdziesz mapę rozdziałów i swój postęp.'),
         buttons('Gotowy?', [
             { label: 'Zaczynamy! 🚀', action: 'complete' },
@@ -160,7 +160,7 @@ const stepA1_instalacja: ChatStep = {
     ]),
     rewardVariants: [
         'Aplikacja gotowa! 📱',
-        'Masz AutoŻabę na telefonie!',
+        'Masz aplikację na telefonie!',
         'Świetnie!',
     ],
 };
@@ -441,31 +441,31 @@ const stepC2_edytuj: ChatStep = {
 const stepC3_sklep: ChatStep = {
     id: 'emp-c3-sklep',
     chapterId: 'emp-ch-rozliczenia',
-    title: 'Wybierz sklep',
-    quickAnswer: 'Kliknij selektor sklepu → wybierz jeden lub więcej sklepów.',
-    keywords: ['sklep', 'selektor', 'wiele sklepów', 'przełącz'],
+    title: 'Wybierz lokalizację',
+    quickAnswer: 'Kliknij selektor lokalizacji → wybierz jedną lub więcej lokalizacji.',
+    keywords: ['lokalizacja', 'selektor', 'wiele lokalizacji', 'przełącz'],
     difficulty: 'easy',
     xpReward: 25,
     isOptional: true,
-    conditionalNote: 'Ten krok dotyczy tylko osób pracujących w więcej niż jednym sklepie.',
+    conditionalNote: 'Ten krok dotyczy tylko osób pracujących w więcej niż jednej lokalizacji.',
     messages: withStepIds('emp-c3-sklep', [
-        buttons('Pracujesz w więcej niż jednym sklepie?', [
+        buttons('Pracujesz w więcej niż jednej lokalizacji?', [
             { label: 'Tak, w kilku 🏪', action: 'next' },
             { label: 'Nie, w jednym', action: 'complete' },
         ]),
-        zabek('Możesz przełączać się między sklepami! Kliknij **selektor sklepu** i wybierz właściwy.'),
+        zabek('Możesz przełączać się między lokalizacjami! Kliknij **selektor lokalizacji** i wybierz właściwą.'),
         screenshot(
             '/images/placeholders/onboarding-neutral.svg',
-            'Przełączanie między sklepami',
-            'Selektor sklepu → Wybierz sklep',
+            'Przełączanie między lokalizacjami',
+            'Selektor lokalizacji → Wybierz lokalizację',
         ),
         buttons('Jasne?', [
             { label: 'Gotowe ✅', action: 'complete' },
         ]),
     ]),
     rewardVariants: [
-        'Multi-sklep opanowany! 🏪',
-        'Przełączanie sklepów — check!',
+        'Wiele lokalizacji opanowane! 🏢',
+        'Przełączanie lokalizacji — check!',
     ],
 };
 
@@ -535,7 +535,7 @@ export const EMPLOYEE_CHAT_CHAPTERS: ChatChapter[] = [
         number: 3,
         title: 'Rozliczanie Godzin',
         icon: '⏱️',
-        badge: { id: 'emp-badge-rozliczenia', name: 'Punktualny Żabian', icon: '⏱️' },
+        badge: { id: 'emp-badge-rozliczenia', name: 'Punktualny Specjalista', icon: '⏱️' },
         steps: [stepC1_rozlicz, stepC2_edytuj, stepC3_sklep],
         celebrationMessage: 'Rozliczanie godzin opanowane! Żadna zmiana Ci nie umknie! ⏱️',
         zabekEvolution: 'flag',
@@ -548,7 +548,7 @@ export const EMPLOYEE_CHAT_CHAPTERS: ChatChapter[] = [
         icon: '🗓️',
         badge: { id: 'emp-badge-harmonogram', name: 'Zawsze Na Czas', icon: '🗓️' },
         steps: [stepD1_grafik],
-        celebrationMessage: 'Gratulacje! Wiesz już wszystko co potrzebne! Jesteś mistrzem onboardingu! 🏆🐸',
+        celebrationMessage: 'Gratulacje! Wiesz już wszystko co potrzebne! Jesteś mistrzem onboardingu! 🏆',
         zabekEvolution: 'golden',
         completionBonusXP: 150,
     },

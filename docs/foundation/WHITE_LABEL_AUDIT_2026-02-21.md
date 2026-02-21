@@ -170,7 +170,7 @@ Zidentyfikować pozostałości po poprzednim projekcie i oszacować zakres dalsz
 - `docs`: trafienia wyłącznie historyczne/audytowe
 
 ### Domknięcie dokumentacji
-- skonsolidowano plany operacyjne do `docs/plans/*`
+- skonsolidowano plany operacyjne i zachowano tylko kluczową dokumentację w `docs/**`
 - dodano centralny indeks dokumentacji: `docs/README.md`
 - root markdown ograniczony do plików-przekierowań + `README.md`
 

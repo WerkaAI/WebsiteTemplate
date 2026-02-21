@@ -7,25 +7,25 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Michał",
-    role: "Franczyzobiorca, Warszawa",
-    content: "Wcześniej układanie grafiku zajmowało mi cały weekend. Teraz robię to w 15 minut przy kawie. Ten system to gamechanger.",
+    name: "Klient A",
+    role: "Manager operacyjny",
+    content: "Wcześniej planowanie zajmowało nam cały weekend. Teraz zamykamy temat w kilkanaście minut i mamy pełen porządek.",
     rating: 5,
-    avatar: "/illustrations/testimonials/michal.png"
+    avatar: "/illustrations/neutral-feature.svg"
   },
   {
-    name: "Polina",
-    role: "Franczyzobiorca, Wrocław",
-    content: "Autożabę wdrożyłam od pierwszego dnia prowadzenia sklepu i do dziś jestem zachwycona - wszystko działa pewnie i bez stresu.",
+    name: "Klient B",
+    role: "Właściciel firmy usługowej",
+    content: "Wdrożenie przebiegło bardzo sprawnie. Zespół szybko zaczął korzystać z narzędzia i od razu widać lepszą organizację.",
     rating: 5,
-    avatar: "/illustrations/testimonials/polina64.png"
+    avatar: "/illustrations/neutral-feature.svg"
   },
   {
-    name: "Wiktor",
-    role: "Franczyzobiorca, Gdańsk",
-    content: "Pracownicy są zachwyceni aplikacją. Sami wpisują dyspozycyjność, widzą grafik w telefonie. Skończyły się telefony 'kiedy mam przyjść?'.",
+    name: "Klient C",
+    role: "Koordynator zespołu",
+    content: "Komunikacja i planowanie stały się przewidywalne. Każdy widzi, co ma zrobić i kiedy, bez zbędnych telefonów.",
     rating: 5,
-    avatar: "/illustrations/testimonials/wiktor64.png"
+    avatar: "/illustrations/neutral-feature.svg"
   }
 ];
 
@@ -63,10 +63,10 @@ export default function TestimonialsSection() {
           variants={containerVariants}
         >
           <motion.h2 className="text-3xl md:text-4xl font-bold text-foreground" variants={itemVariants}>
-            Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">Franczyzobiorcy</span>
+            Zaufali nam <span className="text-emerald-600 dark:text-emerald-400">klienci z różnych branż</span>
           </motion.h2>
           <motion.p className="text-xl text-muted-foreground" variants={itemVariants}>
-            Dołącz do grona zadowolonych właścicieli sklepów convenience.
+            Dołącz do zespołów, które stawiają na prosty i powtarzalny proces pracy.
           </motion.p>
         </motion.div>
 

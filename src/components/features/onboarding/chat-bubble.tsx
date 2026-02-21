@@ -22,7 +22,7 @@ import type { ChatMessage } from '@/lib/onboarding/chat-types';
 // ─── Typing Indicator ─────────────────────────────────────────────────
 function TypingDots() {
     return (
-        <div className="flex items-end gap-3 motion-safe:animate-fade-in" role="status" aria-label="Żabek pisze...">
+        <div className="flex items-end gap-3 motion-safe:animate-fade-in" role="status" aria-label="Przewodnik pisze...">
             {/* Avatar placeholder */}
             <div className="w-8 h-8 rounded-full bg-brand-green/10 flex items-center justify-center text-lg shrink-0" aria-hidden="true">
                 🐸
@@ -137,12 +137,12 @@ export const ChatBubble = memo(function ChatBubble({
         );
     }
 
-    // ── Żabek bubble (left-aligned) ──
+    // ── Guide bubble (left-aligned) ──
     const isTip = type === 'tip';
 
     return (
         <div ref={bubbleRef} className="flex items-end gap-3 motion-safe:animate-fade-in">
-            {/* Żabek avatar */}
+            {/* Guide avatar */}
             <div className="w-8 h-8 rounded-full bg-brand-green/10 flex items-center justify-center text-lg shrink-0" aria-hidden>
                 🐸
             </div>

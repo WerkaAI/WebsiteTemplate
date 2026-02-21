@@ -30,10 +30,10 @@ export default function PricingSection() {
       period: "/miesiąc",
       features: [
         "Bez limitu pracowników",
-        "Automatyczne grafiki zgodne z prawem",
-        "Tarcza Prawna § — pomoc prawna w aplikacji",
+        "Automatyczne grafiki zgodne z regułami",
+        "Wsparcie zgodności w aplikacji",
         "Pomoc we wdrożeniu — krok po kroku",
-        "Dokumenty PIP/BHP gotowe do kontroli",
+        "Dokumenty operacyjne gotowe do eksportu",
       ],
       cta: "Sprawdź cennik",
       variant: "default" as const,
@@ -51,13 +51,13 @@ export default function PricingSection() {
     {
       label: "System",
       price: "149 zł/msc",
-      note: "Bez limitu pracowników · Kolejny sklep +75 zł · Cena gwarantowana 12 mies.",
+      note: "Bez limitu pracowników · Dodatkowa lokalizacja +75 zł · Cena gwarantowana 12 mies.",
       highlight: true,
     },
     {
       label: "Koszt braku systemu",
-      price: "30 000 zł",
-      note: "Maksymalna kara PIP",
+      price: "Wysoki",
+      note: "Koszt chaosu i poprawek",
       warning: true,
     },
   ];
@@ -108,7 +108,7 @@ export default function PricingSection() {
             data-testid="text-pricing-subtitle"
             variants={itemVariants}
           >
-            Jeden sklep, jedna cena — 149 zł/mies. bez limitu pracowników
+            Jedna lokalizacja, jedna cena — 149 zł/mies. bez limitu pracowników
           </motion.p>
         </motion.div>
 

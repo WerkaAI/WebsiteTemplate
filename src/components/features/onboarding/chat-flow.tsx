@@ -6,10 +6,10 @@
  * │ Chapter header (title + step count)     │
  * │                                         │
  * │  [Scrollable message area]              │
- * │   🐸 Żabek message                     │
- * │   🐸 Żabek message                     │
+ * │   🐸 Guide message                     │
+ * │   🐸 Guide message                     │
  * │              User response ■            │
- * │   🐸 Żabek message                     │
+ * │   🐸 Guide message                     │
  * │                                         │
  * │  [Pill buttons area]                    │
  * │                                         │
@@ -216,7 +216,7 @@ export function ChatFlow() {
             {/* ── Chapter header ── */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
                 <div className="flex items-center gap-3 min-w-0">
-                    {/* Żabek evolution avatar (sm) */}
+                    {/* Guide evolution avatar (sm) */}
                     <ZabekEvolutionAvatar evolution={zabekEvolution} size="sm" />
                     <div className="min-w-0">
                         <h2 className="text-sm font-semibold text-foreground truncate">
@@ -251,7 +251,7 @@ export function ChatFlow() {
                 className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth"
                 role="log"
                 aria-live="polite"
-                aria-label="Historia rozmowy z Żabkiem"
+                aria-label="Historia rozmowy z przewodnikiem"
             >
                 {/* Return greeting (context-aware, only on mount) */}
                 {returnGreeting && returnScenario === 'resume' && !greetingDismissedRef.current && renderedMessages.length <= 1 && (
@@ -281,7 +281,7 @@ export function ChatFlow() {
                     />
                 )}
 
-                {/* Retry prompt — Żabek invites to redo skipped step */}
+                {/* Retry prompt — guide invites to redo skipped step */}
                 {!isTyping && progress.skippedSteps.includes(currentStep.id) && (
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -332,7 +332,7 @@ export function ChatFlow() {
                                 <div className="absolute bottom-8 left-8 w-1 h-1 rounded-full bg-brand-green/15 motion-safe:animate-pulse" style={{ animationDelay: '1s' }} />
                             </div>
 
-                            {/* Żabek hero */}
+                            {/* Guide hero */}
                             <div className="flex flex-col items-center text-center relative z-10">
                                 <motion.div
                                     initial={{ y: 10, opacity: 0 }}
@@ -352,7 +352,7 @@ export function ChatFlow() {
                                         Masz to! 🎉
                                     </h3>
                                     <p className="text-sm text-muted-foreground leading-relaxed max-w-[250px]">
-                                        Znasz już AutoŻabę. Jeśli zapomnisz — wróć tu w każdej chwili.
+                                        Znasz już onboarding. Jeśli zapomnisz — wróć tu w każdej chwili.
                                     </p>
                                 </motion.div>
 

@@ -53,7 +53,7 @@ export default function FeaturesBento() {
                         Wszystko, czego potrzebujesz do <span className="text-emerald-600 dark:text-emerald-400">spokojnego snu</span>
                     </motion.h2>
                     <motion.p className="text-xl text-muted-foreground" variants={itemVariants}>
-                        Zastąp chaos w Excelu inteligentnym systemem, który dba o prawo pracy za Ciebie.
+                        Zastąp chaos w Excelu inteligentnym systemem, który dba o spójne zasady pracy za Ciebie.
                     </motion.p>
                 </motion.div>
 
@@ -88,7 +88,7 @@ export default function FeaturesBento() {
                         </div>
                     </motion.div>
 
-                    {/* Feature 2: Legal Shield (Tall) */}
+                    {/* Feature 2: Compliance support (Tall) */}
                     <motion.div
                         className="md:row-span-2 rounded-3xl glass-premium p-8 md:p-10 relative overflow-hidden group"
                         initial={{ opacity: 0, y: 30 }}
@@ -104,7 +104,7 @@ export default function FeaturesBento() {
                             <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6 dark:bg-blue-500/20 dark:text-blue-300">
                                 <Shield className="w-6 h-6" />
                             </div>
-                            <h3 className="text-2xl font-bold text-foreground mb-3">Tarcza Prawna 24/7</h3>
+                            <h3 className="text-2xl font-bold text-foreground mb-3">Wsparcie zgodności 24/7</h3>
                             <p className="text-lg text-muted-foreground mb-6">
                                 System na bieżąco monitoruje Kodeks Pracy. Ostrzeże Cię przed:
                             </p>
@@ -123,8 +123,8 @@ export default function FeaturesBento() {
                                 ))}
                             </ul>
                             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 border border-blue-100 dark:border-blue-800/50">
-                                <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider mb-1">Gwarancja</p>
-                                <p className="text-sm text-blue-900 dark:text-blue-100 font-medium">Zero mandatów PIP u naszych klientów</p>
+                                <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider mb-1">Efekt</p>
+                                <p className="text-sm text-blue-900 dark:text-blue-100 font-medium">Mniej błędów i mniej ręcznych korekt</p>
                             </div>
                         </div>
                     </motion.div>

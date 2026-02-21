@@ -17,7 +17,7 @@ export interface ShopLevel {
 
 export const SHOP_LEVELS: ShopLevel[] = [
     { level: 1, title: 'Kiosk', minExp: 0, icon: '🏪' },
-    { level: 2, title: 'Mały Sklep', minExp: 300, icon: '🛒' },
+    { level: 2, title: 'Mała Lokalizacja', minExp: 300, icon: '🛒' },
     { level: 3, title: 'Supermarket', minExp: 1000, icon: '🏬' },
     { level: 4, title: 'Centrum', minExp: 2000, icon: '🏙️' },
     { level: 5, title: 'Imperium', minExp: 3500, icon: '👑' },

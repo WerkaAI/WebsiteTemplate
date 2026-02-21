@@ -5,7 +5,12 @@ Reusable starter for marketing websites and content hubs. Built with Next.js App
 ## Documentation
 
 - Central index: [docs/README.md](docs/README.md)
-- Operational plans: [docs/plans/README.md](docs/plans/README.md)
+- Roadmap/status: [docs/foundation/ROADMAP_12_WEEKS.md](docs/foundation/ROADMAP_12_WEEKS.md)
+
+Kept by default:
+- Architecture decisions: `docs/adr/**`
+- Foundation/process docs: `docs/foundation/**`
+- Security documentation: `docs/security/**`
 
 ## Requirements
 
@@ -31,6 +36,7 @@ npm run test:smoke    # smoke test for critical routes
 npm run test:contact-form  # browser check for landing + /kontakt forms
 npm run test:csp      # CSP lifecycle gate check
 npm run test:boundary # CoreStarter vs PerProject boundary check
+npm run security:inventory # security inventory snapshot
 ```
 
 To analyze bundle sizes:
@@ -44,7 +50,6 @@ ANALYZE=true npm run build
 - Blog posts live in `content/blog/*.mdx` with frontmatter (`title`, `description`, `date`, `tags`, `cover`, `draft`)
 - Tutorials live in `content/tutorials/*.mdx`; required fields are described in `content/tutorials/README.md`
 - MDX headings are auto-linkable; mapping is in `mdx-components.tsx`
-- Blog authoring quick guide: `docs/plans/BLOG_SETUP.md`
 
 ## Images
 
@@ -68,6 +73,12 @@ Before starting a new client project:
 - replace logo/favicon/manifest assets in `public/`
 - add project-specific legal pages and policy text
 - replace sample MDX content in `content/blog` and `content/tutorials`
+
+## Repository hygiene
+
+- Keep repository content minimal: source code, required assets, and key documentation only.
+- Do not commit local artifacts (`.next/`, logs, temporary reports, local caches).
+- Remove one-off migration notes and ad-hoc review files after decisions are captured in ADR/foundation/security docs.
 
 ## Notes
 

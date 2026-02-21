@@ -17,20 +17,20 @@ export default function ProblemSection() {
       id: "schedule-chaos",
       title: "Chaos w grafikach",
       description:
-        '"Spędzam wieczory nad Excelem zamiast z rodziną. Każdy grafik to 3 godziny kombinowania i strach, czy nie pomyliłem się w prawie."',
+        '"Spędzam wieczory nad Excelem zamiast z rodziną. Każdy grafik to 3 godziny kombinowania i stres, czy wszystko jest poprawnie."',
       risk: {
-        label: "Ryzyko kary do",
-        amount: 30000,
-        suffix: " zł",
+        label: "Ryzyko kosztownych błędów",
+        amount: 0,
+        suffix: "",
       },
       mascot: "/illustrations/neutral-feature.svg",
       accent: "from-emerald-500/35 via-emerald-400/15 to-transparent",
     },
     {
       id: "legal-compliance",
-      title: "Strach przed PIP",
+      title: "Niepewność zgodności",
       description:
-        '"Kodeks Pracy to dla mnie czarna magia. Nie wiem, czy ewidencja czasu pracy jest poprawna. Każda kontrola to łoteria."',
+        '"Wymagania formalne są trudne. Nie wiem, czy ewidencja czasu pracy jest poprawna i kompletna."',
       legalIssues: [
         "11h odpoczynku między zmianami",
         "Różnice UoP vs umowa zlecenie",
@@ -43,9 +43,9 @@ export default function ProblemSection() {
       id: "work-life-balance",
       title: "Brak czasu dla siebie",
       description:
-        '"240 godzin miesięcznie w sklepie plus papierkowa robota w domu. Kiedy mam żyć?"',
+        '"240 godzin miesięcznie w operacjach plus papierkowa robota w domu. Kiedy mam żyć?"',
       timeBreakdown: {
-        shop: { label: "Praca w sklepie", value: 240 },
+        shop: { label: "Praca operacyjna", value: 240 },
         paperwork: { label: "Grafiki i papiery", value: 40, prefix: "+" },
         total: { label: "Razem", value: 280 },
       },
@@ -102,7 +102,7 @@ export default function ProblemSection() {
             Wiemy, <span className="text-primary dark:text-emerald-300">przez co przechodzisz</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-problem-subtitle">
-            16 godzin pracy dziennie, chaos w grafikach i ciągły strach przed kontrolą PIP.
+            16 godzin pracy dziennie, chaos w grafikach i ciągła niepewność formalna.
             Nie jesteś sam z tymi problemami.
           </p>
         </div>
@@ -156,10 +156,6 @@ export default function ProblemSection() {
                         <div className="flex flex-col gap-1">
                           <span className="text-xs font-semibold uppercase tracking-wide text-accent/80">
                             {problem.risk.label}
-                          </span>
-                          <span className="text-2xl font-semibold">
-                            {formatNumber(problem.risk.amount)}
-                            {problem.risk.suffix}
                           </span>
                         </div>
                       </div>

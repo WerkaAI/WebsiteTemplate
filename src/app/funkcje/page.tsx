@@ -212,7 +212,7 @@ export default function FunkcjePage() {
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold">
                 <Shield className="w-5 h-5" />
-                <span>Tarcza Prawna</span>
+                <span>Wsparcie zgodności</span>
               </div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">
@@ -230,7 +230,7 @@ export default function FunkcjePage() {
                 {[
                   'Weryfikacja odpoczynków dobowych (11h) i tygodniowych (35h)',
                   'Pilnowanie limitów umów zlecenie i etatów',
-                  'Automatyczne generowanie dokumentacji dla PIP',
+                  'Automatyczne generowanie dokumentacji operacyjnej',
                   'Alerty o kończących się badaniach i szkoleniach BHP'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -290,7 +290,7 @@ export default function FunkcjePage() {
                     ))}
                   </div>
                   <div className="mt-8 pt-6 border-t border-white/10 flex justify-between text-sm text-slate-400">
-                    <span>Sklepy: 5</span>
+                    <span>Lokalizacje: 5</span>
                     <span>Pracownicy: 24</span>
                   </div>
                 </div>
@@ -319,7 +319,7 @@ export default function FunkcjePage() {
                   'Aplikacja dla pracowników (iOS / Android)',
                   'Cyfrowy obieg wniosków urlopowych',
                   'Ewidencja czasu pracy (RCP) z geolokalizacją',
-                  'Centralny panel dla wielu sklepów'
+                  'Centralny panel dla wielu lokalizacji'
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />

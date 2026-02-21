@@ -16,13 +16,13 @@ export default function PriceCalculator() {
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-3">Oblicz swoją cenę</h2>
         <p className="text-slate-600 dark:text-slate-300">
-          Wybierz liczbę sklepów i zobacz, ile zapłacisz z promocją -25%.
+          Wybierz liczbę lokalizacji i zobacz, ile zapłacisz z promocją -25%.
         </p>
       </div>
 
       {/* Store selector */}
       <div className="flex items-center justify-center gap-3 mb-10">
-        <span className="text-sm font-medium text-slate-600 dark:text-slate-300">Ile masz sklepów?</span>
+        <span className="text-sm font-medium text-slate-600 dark:text-slate-300">Ile masz lokalizacji?</span>
         <div className="flex gap-2">
           {[1, 2, 3, 4, 5].map((n) => (
             <button
@@ -35,7 +35,7 @@ export default function PriceCalculator() {
                   ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 scale-110'
                   : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
               )}
-              aria-label={`${n} ${n === 1 ? 'sklep' : n < 5 ? 'sklepy' : 'sklepów'}`}
+              aria-label={`${n} ${n === 1 ? 'lokalizacja' : n < 5 ? 'lokalizacje' : 'lokalizacji'}`}
             >
               {n}
             </button>
@@ -63,7 +63,7 @@ export default function PriceCalculator() {
         {/* Price breakdown */}
         <div className="pt-4 max-w-md mx-auto text-sm text-slate-500 dark:text-slate-400 space-y-1">
           <div className="flex justify-between">
-            <span>Pierwszy sklep</span>
+            <span>Pierwsza lokalizacja</span>
             <span>
               <span className="line-through mr-2">{pricingConfig.regularPrice} zł</span>
               <span className="font-semibold text-slate-700 dark:text-slate-200">{pricingConfig.promoPrice} zł</span>
@@ -71,7 +71,7 @@ export default function PriceCalculator() {
           </div>
           {stores > 1 && (
             <div className="flex justify-between">
-              <span>{stores - 1} {stores - 1 === 1 ? 'dodatkowy sklep' : stores - 1 < 5 ? 'dodatkowe sklepy' : 'dodatkowych sklepów'}</span>
+              <span>{stores - 1} {stores - 1 === 1 ? 'dodatkowa lokalizacja' : stores - 1 < 5 ? 'dodatkowe lokalizacje' : 'dodatkowych lokalizacji'}</span>
               <span>
                 <span className="line-through mr-2">{(stores - 1) * pricingConfig.additionalStoreRegular} zł</span>
                 <span className="font-semibold text-slate-700 dark:text-slate-200">{(stores - 1) * pricingConfig.additionalStorePromo} zł</span>
@@ -98,7 +98,7 @@ export default function PriceCalculator() {
           rel="noreferrer"
           className="group inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 active:scale-95"
         >
-          Wypróbuj {stores > 1 ? `z ${stores} sklepami` : ''} za darmo
+          Wypróbuj {stores > 1 ? `z ${stores} lokalizacjami` : ''} za darmo
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>
       </div>

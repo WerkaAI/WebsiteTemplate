@@ -21,14 +21,14 @@ import PriceCalculator from './price-calculator'
 
 export const metadata: Metadata = {
   description:
-    'Jeden system, prosta cena. 14 dni za darmo, potem 149 zł/mies. za sklep. Bez limitu pracowników, pełna ochrona prawna.',
+    'Jeden system, prosta cena. 14 dni za darmo, potem 149 zł/mies. za lokalizację. Bez limitu pracowników i pełny zestaw funkcji.',
   alternates: {
     canonical: '/cennik'
   },
   openGraph: {
     title: 'Cennik systemu — prosta cena, pełna ochrona',
     description:
-      '14 dni za darmo. Potem 149 zł/mies. za sklep (promocja -25%). Automatyczne grafiki, ewidencja, dokumenty PIP — bez limitu pracowników.',
+      '14 dni za darmo. Potem 149 zł/mies. za lokalizację (promocja -25%). Automatyczne grafiki, ewidencja i dokumenty operacyjne — bez limitu pracowników.',
     url: '/cennik',
     type: 'website'
   }
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 const onboardingSteps = [
   {
     title: 'Pokazujemy Ci system (30 min)',
-    description: 'Prezentacja na tablecie i telefonie — w Twoim sklepie lub przez wideorozmowę.'
+    description: 'Prezentacja na tablecie i telefonie — w Twojej lokalizacji lub przez wideorozmowę.'
   },
   {
     title: 'Pomagamy we wdrożeniu (tydzień)',
@@ -96,7 +96,7 @@ export default function PricingPage() {
             </div>
 
             <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl text-balance">
-              Jeden system.<br />Prosta cena.<br />Pełna ochrona.
+              Jeden system.<br />Prosta cena.<br />Pełna kontrola.
             </h1>
 
             <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -208,7 +208,7 @@ export default function PricingPage() {
                 rel="noreferrer"
                 className="group inline-flex items-center gap-3 rounded-2xl bg-emerald-500 px-10 py-5 text-lg font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:bg-emerald-600 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-95"
               >
-                🐸 {pricingConfig.ctaLabel}
+                {pricingConfig.ctaLabel}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
@@ -223,7 +223,7 @@ export default function PricingPage() {
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Co dostajesz?</h2>
             <p className="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
-              Każdy klient — niezależnie od liczby sklepów — ma dostęp do pełnego zestawu funkcji.
+              Każdy klient — niezależnie od liczby lokalizacji — ma dostęp do pełnego zestawu funkcji.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

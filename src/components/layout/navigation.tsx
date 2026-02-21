@@ -96,7 +96,7 @@ export default function Navigation() {
               data-testid="link-logo"
             >
               <Image
-                src="/illustrations/logo_xcolor64x64.png"
+                src="/illustrations/neutral-feature.svg"
                 alt="Logo marki"
                 width={32}
                 height={32}

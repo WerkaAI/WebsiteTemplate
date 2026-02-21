@@ -4,7 +4,7 @@
  * Manages the entire chat flow state:
  * - Current position (chapter, step, visible messages)
  * - Step completion / skip
- * - XP, badges, Żabek evolution
+ * - XP, badges, guide evolution
  * - Session streak
  * - Chat history (compact, max 50 messages in localStorage)
  * - Return flow (resume, quick help)

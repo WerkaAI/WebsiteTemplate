@@ -78,13 +78,13 @@ export function OnboardingPageContent() {
         [adventures],
     );
 
-    // Żabek messages based on progress - with anxiety reduction
+    // Guide messages based on progress - with anxiety reduction
     const zabekMessage = useMemo(() => {
         if (!isLoaded) return null;
 
         // First visit - warm welcome
         if (isFirstVisit) {
-            return 'Cześć, Żabianie! 👋 Witaj w swojej przygodzie! Spokojnie, wszystko jest proste - idź krok po kroku. 🐸';
+            return 'Cześć! 👋 Witaj w swojej przygodzie! Spokojnie, wszystko jest proste - idź krok po kroku.';
         }
 
         // Streak celebration
@@ -113,7 +113,7 @@ export function OnboardingPageContent() {
         if (completionPercentage < 100) {
             return 'Prawie mistrz! Jeszcze kilka kroków i będziesz znać system jak własną kieszeń! 🏆';
         }
-        return 'Gratulacje, Żabozbawco! Ukończyłeś wszystkie przygody! 🎉🐸';
+        return 'Gratulacje! Ukończyłeś wszystkie przygody! 🎉';
     }, [completionPercentage, isLoaded, isFirstVisit, showStreakCelebration, newAchievement]);
 
     // Clear achievement notification after 5 seconds
@@ -150,7 +150,7 @@ export function OnboardingPageContent() {
                         transition={{ duration: 0.6 }}
                         className="mb-4 sm:mb-8"
                     >
-                        {/* Żabek Mascot + title — only for owner */}
+                        {/* Mascot + title — only for owner */}
                         {!isEmployee && (
                             <>
                                 <div className="flex justify-center mb-3 sm:mb-6">
@@ -158,10 +158,10 @@ export function OnboardingPageContent() {
                                 </div>
                                 <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1 sm:mb-3 px-2">
                                     Witaj w{' '}
-                                    <span className="text-brand-green">Przygodzie Żabiana</span>! 🐸
+                                    <span className="text-brand-green">Przygodzie Użytkownika</span>!
                                 </h1>
                                 <p className="hidden sm:block text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-                                    Rozwiń swój sklep od małego Kiosku do wielkiego Imperium! Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
+                                    Rozwijaj swój zespół krok po kroku. Wykonuj misje, zdobywaj wiedzę i awansuj na kolejne poziomy.
                                 </p>
                             </>
                         )}

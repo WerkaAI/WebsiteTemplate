@@ -2,9 +2,9 @@ import { z } from "zod";
 
 export const SHOP_OPTIONS = ["1", "2-3", "4-5", "5+"] as const;
 export const SHOP_OPTION_LABELS: Record<typeof SHOP_OPTIONS[number], string> = {
-  "1": "1 sklep",
-  "2-3": "2-3 sklepy",
-  "4-5": "4-5 sklepów",
+  "1": "1 lokalizacja",
+  "2-3": "2-3 lokalizacje",
+  "4-5": "4-5 lokalizacji",
   "5+": "Więcej niż 5",
 };
 
@@ -25,7 +25,7 @@ const phoneSchema = optionalString(
 
 const shopsSchema = optionalString(
   z.enum(SHOP_OPTIONS, {
-    errorMap: () => ({ message: "Wybierz liczbę sklepów" })
+    errorMap: () => ({ message: "Wybierz liczbę lokalizacji" })
   })
 );
 
@@ -71,7 +71,7 @@ export const createContactSchema = (options: ContactSchemaOptions = {}) =>
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["shops"],
-        message: "Wybierz liczbę sklepów",
+        message: "Wybierz liczbę lokalizacji",
       });
     }
 

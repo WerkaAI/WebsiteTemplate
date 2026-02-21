@@ -129,9 +129,9 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const phoneHtml = payload.phone ? `<p><strong>Telefon:</strong> ${payload.phone}</p>` : '';
-    const shopsHtml = payload.shops ? `<p><strong>Liczba sklepów:</strong> ${payload.shops}</p>` : '';
+    const shopsHtml = payload.shops ? `<p><strong>Liczba lokalizacji:</strong> ${payload.shops}</p>` : '';
     const phoneText = payload.phone ? `Telefon: ${payload.phone}\n` : '';
-    const shopsText = payload.shops ? `Liczba sklepów: ${payload.shops}\n` : '';
+    const shopsText = payload.shops ? `Liczba lokalizacji: ${payload.shops}\n` : '';
     const escapeHtml = (text: string) =>
       text
         .replace(/&/g, "&amp;")

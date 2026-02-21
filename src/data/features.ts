@@ -9,12 +9,12 @@ export type FeatureModule = {
 export const featureModules: FeatureModule[] = [
   {
     id: 'stores',
-    title: 'Zarządzanie sklepami',
-    summary: 'Centralne miejsce do prowadzenia wszystkich lokalizacji wraz z bieżącą kontrolą obsady i zgodnością BHP.',
+    title: 'Zarządzanie lokalizacjami',
+    summary: 'Centralne miejsce do prowadzenia wszystkich lokalizacji wraz z bieżącą kontrolą obsady i zgodnością procesów.',
     highlights: [
-      'Twórz i aktualizuj profile sklepów wraz z adresami i parametrami operacyjnymi.',
+      'Twórz i aktualizuj profile lokalizacji wraz z adresami i parametrami operacyjnymi.',
       'Przypisuj zespoły do konkretnych lokalizacji i monitoruj kompletność obsady.',
-      'Otrzymuj kontekstowe wskazówki BHP i prawne dopasowane do danej placówki.'
+      'Otrzymuj kontekstowe wskazówki operacyjne dopasowane do danej placówki.'
     ],
     badge: 'Moduł główny'
   },
@@ -23,7 +23,7 @@ export const featureModules: FeatureModule[] = [
     title: 'Zarządzanie personelem',
     summary: 'Pełna ewidencja pracowników, ról i umów z systemem ostrzeżeń przed ryzykiem naruszeń prawa pracy.',
     highlights: [
-      'Dodawaj pracowników, przypisuj role i dostęp do sklepów w kilku kliknięciach.',
+      'Dodawaj pracowników, przypisuj role i dostęp do lokalizacji w kilku kliknięciach.',
       'Przechowuj dane o typach umów, stawkach i obowiązywaniu w jednym miejscu.',
       'Korzystaj z automatycznych alertów prawnych przy ryzykownych konfiguracjach umów.'
     ]
@@ -34,7 +34,7 @@ export const featureModules: FeatureModule[] = [
     summary: 'Zbierz deklaracje zmian bez konieczności wymiany wiadomości i wykorzystaj je w planowaniu.',
     highlights: [
       'Pracownicy sami zgłaszają dostępność i preferowane zmiany.',
-      'Notatki dla właściciela pomagają reagować na wyjątkowe potrzeby.',
+      'Notatki dla przełożonego pomagają reagować na wyjątkowe potrzeby.',
       'Preferencje trafiają prosto do silnika układania grafików.'
     ]
   },
@@ -56,26 +56,26 @@ export const featureModules: FeatureModule[] = [
     highlights: [
       'Pracownicy zatwierdzają zmiany, a system rozlicza godziny automatycznie.',
       'Prowadź ewidencję gotówki, niedoborów oraz zaliczek w jednym widoku.',
-      'Generuj kompletne zestawienia PIP i księgowości gotowe do wysyłki.'
+      'Generuj kompletne zestawienia operacyjne i księgowe gotowe do wysyłki.'
     ]
   },
   {
     id: 'automation',
     title: 'Silnik automatyzacji grafików',
-    summary: 'Algorytm, który rozumie realia franczyzy i respektuje zarówno potrzeby biznesu, jak i prawo pracy.',
+    summary: 'Algorytm, który rozumie realia operacyjne i respektuje zarówno potrzeby biznesu, jak i prawo pracy.',
     highlights: [
       'Układa grafiki na podstawie dostępności, umów i sezonowości ruchu.',
       'Tworzy szablony obsady, które możesz zapisać i szybko uruchomić na nowy tydzień.',
-      'Proponuje korekty, gdy wykryje ryzyko naruszeń, zanim zobaczy je PIP.'
+      'Proponuje korekty, gdy wykryje ryzyko naruszeń standardu.'
     ],
     badge: 'AI wspomaganie'
   }
 ]
 
 export const legalHighlights: string[] = [
-  'Ikony § z kontekstową pomocą prawną pojawiają się dokładnie w miejscach podejmowania decyzji.',
+  'Ikony § z kontekstową pomocą pojawiają się dokładnie w miejscach podejmowania decyzji.',
   'Alerty o potencjalnych naruszeniach (np. doba pracownicza, zbyt mało odpoczynku) wraz z gotową podpowiedzią co poprawić.',
-  'Szablony dokumentów i eksporty zgodne z wymaganiami PIP oraz RODO.',
+  'Szablony dokumentów i eksporty zgodne z wymaganiami compliance oraz RODO.',
   'Automatyczne przypomnienia o terminach retencji dokumentów i aktualizacji umów.'
 ]
 
@@ -87,16 +87,16 @@ export type BenefitGroup = {
 
 export const benefitGroups: BenefitGroup[] = [
   {
-    audience: 'Franczyzobiorcy i właściciele sklepów',
+    audience: 'Właściciele i managerowie',
     summary: 'Spokój operacyjny i prawny bez utraty kontroli nad biznesem.',
     points: [
       'Oszczędzasz 8–12 godzin tygodniowo na planowaniu i rozliczeniach.',
-      'Masz pewność, że grafiki i dokumentacja przechodzą kontrolę PIP.',
-      'Widzisz stan obsady każdego sklepu i reagujesz zanim powstanie luka.'
+      'Masz pewność, że grafiki i dokumentacja spełniają standard.',
+      'Widzisz stan obsady każdej lokalizacji i reagujesz zanim powstanie luka.'
     ]
   },
   {
-    audience: 'Zespół sklepu',
+    audience: 'Zespół operacyjny',
     summary: 'Transparentny grafik i jasna komunikacja bez dodatkowych aplikacji.',
     points: [
       'Pracownicy deklarują dostępność i preferują zmiany, co buduje fair kulturę.',
@@ -109,7 +109,7 @@ export const benefitGroups: BenefitGroup[] = [
     summary: 'Dane dostarczone w standardowych formatach, gotowe do księgowania.',
     points: [
       'Eksporty XLSX i CSV z pełnymi danymi do rozliczeń delegowanych.',
-      'Komplet dokumentów pracowniczych bez dzwonienia do sklepu.',
+      'Komplet dokumentów pracowniczych bez dodatkowych telefonów.',
       'Stały podgląd zgodności z przepisami ułatwia audyty i doradztwo.'
     ]
   }
@@ -123,7 +123,7 @@ export type TimelineStep = {
 export const onboardingTimeline: TimelineStep[] = [
   {
     title: 'Dzień 1: konfiguracja konta',
-    description: 'Wprowadzasz sklepy, umowy i członków zespołu. Asystent prowadzi Cię krok po kroku.'
+    description: 'Wprowadzasz lokalizacje, umowy i członków zespołu. Asystent prowadzi Cię krok po kroku.'
   },
   {
     title: 'Dzień 2–3: pierwszy grafik',
@@ -135,7 +135,7 @@ export const onboardingTimeline: TimelineStep[] = [
   },
   {
     title: 'Dzień 6–7: raporty i spokój',
-    description: 'Generujesz dokumenty PIP, zestawienia kasowe i ustalasz ciągły rytm pracy.'
+    description: 'Generujesz dokumenty operacyjne, zestawienia kasowe i ustalasz ciągły rytm pracy.'
   }
 ]
 
@@ -166,8 +166,8 @@ export const heroMetrics: { value: string; label: string; description: string }[
   },
   {
     value: '0 kar',
-    label: 'z kontroli PIP',
-    description: 'Wbudowana tarcza prawna pilnuje, by grafiki i dokumentacja spełniały wymagania.'
+    label: 'krytycznych błędów',
+    description: 'Wbudowane wsparcie zgodności pilnuje, by grafiki i dokumentacja spełniały wymagania.'
   },
   {
     value: '24/7',

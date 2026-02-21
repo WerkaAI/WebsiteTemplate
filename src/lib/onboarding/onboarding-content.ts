@@ -96,7 +96,7 @@ export interface CheatSheetCategory {
 export const CHEAT_SHEET_CATEGORIES: CheatSheetCategory[] = [
     { id: 'ogolne', name: 'Ogólne', icon: '⚙️' },
     { id: 'personel', name: 'Personel', icon: '👥' },
-    { id: 'sklep', name: 'Sklep', icon: '🏪' },
+    { id: 'sklep', name: 'Lokalizacja', icon: '🏢' },
     { id: 'rozliczenia', name: 'Rozliczenia', icon: '📊' },
     { id: 'dostepnosc', name: 'Dostępność', icon: '📅' },
     { id: 'harmonogram', name: 'Harmonogram', icon: '🗓️' },
@@ -131,7 +131,7 @@ export const ADVENTURES: Adventure[] = [
                         'Sadzenie grządek'
                     ],
                     correctIndex: 1,
-                    explanation: 'Dokładnie! To Twój osobisty asystent do zadań specjalnych w sklepie.'
+                    explanation: 'Dokładnie! To Twój osobisty asystent do zadań operacyjnych.'
                 },
                 {
                     id: 'q2',
@@ -146,14 +146,14 @@ export const ADVENTURES: Adventure[] = [
                 },
                 {
                     id: 'q3',
-                    question: 'Co daje Ci wyższy "Poziom Sklepu"?',
+                    question: 'Co daje Ci wyższy poziom zaawansowania?',
                     options: [
                         'Darmową kawę',
-                        'Satysfakcję i wiedzę (oraz szacunek Żabiana)',
+                        'Satysfakcję i wiedzę (oraz większą swobodę działania)',
                         'Nic'
                     ],
                     correctIndex: 1,
-                    explanation: 'Wiedza to potęga! A Żabian bardzo ceni ambitnych sklepikarzy.'
+                    explanation: 'Wiedza to potęga! Ambitne zespoły szybko widzą efekty.'
                 }
             ]
         },
@@ -272,21 +272,21 @@ export const ADVENTURES: Adventure[] = [
         id: 'twoja-twierdza',
         number: 2,
         title: 'Twoja Twierdza',
-        subtitle: 'Skonfiguruj swój sklep i zbuduj zespół',
+        subtitle: 'Skonfiguruj lokalizację i zbuduj zespół',
         icon: '🏪',
         badge: {
             id: 'badge-wlasciciel',
-            name: 'Właściciel Sklepu',
+            name: 'Właściciel Lokalizacji',
             icon: '🏪',
         },
         quests: [
             {
                 id: 'c1-sklep',
-                title: 'Edycja danych sklepu',
-                description: 'Uzupełnij dane swojego sklepu - adres, godziny otwarcia, itp.',
+                title: 'Edycja danych lokalizacji',
+                description: 'Uzupełnij dane lokalizacji - adres, godziny pracy, itp.',
                 timeEstimate: 3,
-                keywords: ['sklep', 'dane sklepu', 'adres', 'godziny otwarcia', 'edycja sklepu'],
-                quickAnswer: 'Menu → Sklepy → Wybierz sklep → Edytuj. Uzupełnij wszystkie pola.',
+                keywords: ['lokalizacja', 'dane lokalizacji', 'adres', 'godziny pracy', 'edycja lokalizacji'],
+                quickAnswer: 'Menu → Lokalizacje → Wybierz lokalizację → Edytuj. Uzupełnij wszystkie pola.',
                 difficulty: 1,
             },
             {
@@ -295,13 +295,13 @@ export const ADVENTURES: Adventure[] = [
                 description: 'Jak dodać nowego członka zespołu do systemu.',
                 timeEstimate: 3,
                 keywords: ['pracownik', 'dodaj pracownika', 'nowy pracownik', 'zatrudnienie'],
-                quickAnswer: 'Personel → Dodaj pracownika. Wypełnij dane i przypisz do sklepu.',
+                quickAnswer: 'Personel → Dodaj pracownika. Wypełnij dane i przypisz do lokalizacji.',
                 difficulty: 2,
             },
             {
                 id: 'b2-edycja',
                 title: 'Edycja pracowników',
-                description: 'Zmiana danych, przypisanie do sklepu, role, hasła i blokowanie kont.',
+                description: 'Zmiana danych, przypisanie do lokalizacji, role, hasła i blokowanie kont.',
                 timeEstimate: 4,
                 keywords: ['edycja pracownika', 'rola', 'uprawnienia', 'zablokuj', 'zmień hasło pracownika'],
                 quickAnswer: 'Personel → Kliknij pracownika → Edytuj. Możesz zmienić dane, rolę, hasło.',
@@ -417,7 +417,7 @@ export const ADVENTURES: Adventure[] = [
         icon: '🚀',
         badge: {
             id: 'badge-master',
-            name: 'Żabozbawca',
+            name: 'Mistrz Automatyzacji',
             icon: '🐸',
         },
         quests: [
@@ -459,11 +459,11 @@ export const ADVENTURES: Adventure[] = [
             },
             {
                 id: 'd4-pip',
-                title: 'Eksport dla PIP',
-                description: 'Generuj dokumenty zgodne z wymaganiami Państwowej Inspekcji Pracy.',
+                title: 'Eksport dokumentów',
+                description: 'Generuj dokumenty zgodne z przyjętym standardem Twojej organizacji.',
                 timeEstimate: 3,
-                keywords: ['PIP', 'inspekcja pracy', 'eksport', 'dokumenty'],
-                quickAnswer: 'Rozliczenia → Eksport → Format PIP. Pobierz gotowy dokument.',
+                keywords: ['eksport', 'dokumenty', 'compliance', 'raport'],
+                quickAnswer: 'Rozliczenia → Eksport → Wybierz format. Pobierz gotowy dokument.',
                 difficulty: 2,
             },
             {
@@ -478,7 +478,7 @@ export const ADVENTURES: Adventure[] = [
             {
                 id: 'e1-custom',
                 title: 'Własne typy zmian',
-                description: 'Twórz niestandardowe typy zmian dla swojego sklepu.',
+                description: 'Twórz niestandardowe typy zmian dla swojej lokalizacji.',
                 timeEstimate: 3,
                 keywords: ['typ zmiany', 'własna zmiana', 'customowa zmiana', 'ustawienia zmian'],
                 quickAnswer: 'Ustawienia → Typy zmian → Dodaj nowy. Ustaw nazwę, kolor, godziny.',

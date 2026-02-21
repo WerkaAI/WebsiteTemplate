@@ -20,10 +20,8 @@ export default function Footer() {
         { label: "Tutoriale", href: "/tutoriale" },
         { label: "Onboarding", href: "/onboarding" },
         { label: "Wsparcie techniczne", href: "/kontakt" },
-        // { label: "Formularz DSA", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1" }, // Updated per request logic but cleaner to just have it in the array. Wait, user said generic DSA form? "Klikając 'Formularz DSA' chciałbym abyśmy otwierali nowy tab". 
-        // Current href is https://forms.gle/1bwP5z2WFdsrkT55A. I will keep the href but ensure it opens in new tab.
-        { label: "Formularz DSA", href: "https://forms.gle/1bwP5z2WFdsrkT55A", target: "_blank" },
-        { label: "Zgłoś sugestię", href: "https://docs.google.com/forms/d/e/1FAIpQLSdPLQ9Eap18ISm1OMXnepPTA5iBVHy_0wG1y_H-Wts4caD8BQ/viewform?pli=1", target: "_blank" },
+        { label: "Formularz DSA", href: "https://example.com/dsa-form", target: "_blank" },
+        { label: "Zgłoś sugestię", href: "https://example.com/feedback-form", target: "_blank" },
       ],
     },
     {
@@ -108,7 +106,7 @@ export default function Footer() {
                 data-testid="link-footer-logo"
               >
                 <Image
-                  src="/illustrations/logo_xcolor64x64.png"
+                  src="/illustrations/neutral-feature.svg"
                   alt="Logo marki"
                   width={32}
                   height={32}
@@ -297,8 +295,8 @@ export default function Footer() {
             className="text-lg opacity-90 max-w-2xl mx-auto"
             data-testid="text-footer-cta-description"
           >
-            Dołącz do franczyzobiorców, którzy już nie boją się kontroli PIP i
-            mają czas dla rodziny. Zacznij 14-dniowy trial za darmo.
+            Dołącz do zespołów, które pracują spokojniej i efektywniej.
+            Zacznij 14-dniowy trial za darmo.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">

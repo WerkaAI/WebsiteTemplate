@@ -5,7 +5,7 @@
  * - Grid of earned badges (circle SVGs)
  * - Unearned badges = not visible (no grey placeholders)
  * - Simple, clean, no excessive animations
- * - Żabek evolution preview at top
+ * - Mascot evolution preview at top
  * - Accessible from chapter map overlay
  *
  * Phase 1B feature — gamification polish.
@@ -29,9 +29,9 @@ interface ChatBadgeCollectionProps {
     allBadges: BadgeInfo[];
     /** IDs of badges the user has earned */
     earnedBadgeIds: string[];
-    /** Current Żabek evolution level (0-4) */
+    /** Current mascot evolution level (0-4) */
     zabekLevel: number;
-    /** Current Żabek evolution type */
+    /** Current mascot evolution type */
     zabekEvolution: ZabekEvolution;
     /** Total XP */
     totalXP: number;
@@ -65,7 +65,7 @@ export const ChatBadgeCollection = memo(function ChatBadgeCollection({
             aria-label="Twoja karta postępu"
             className={cn('space-y-5', className)}
         >
-            {/* ── Żabek Evolution ── */}
+            {/* ── Mascot Evolution ── */}
             <div className="text-center">
                 <ZabekEvolutionAvatar
                     evolution={zabekEvolution}

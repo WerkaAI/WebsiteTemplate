@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
                 </p>
                 <ul>
                   <li>osób odwiedzających nasze strony i panele (dalej: &quot;<strong>Serwis</strong>&quot;);</li>
-                  <li>klientów biznesowych (właścicieli/franczyzobiorców sklepów) zakładających konta i ich użytkowników;</li>
+                  <li>klientów biznesowych (właścicieli i managerów lokalizacji) zakładających konta i ich użytkowników;</li>
                   <li>pracowników i współpracowników naszych klientów, których dane są wprowadzane do aplikacji;</li>
                   <li>osób kontaktujących się z nami (e-mail, formularz, telefon, chat);</li>
                   <li>odbiorców treści marketingowych i newslettera;</li>
@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
                   </li>
                   <li>
                     <p>
-                      <strong>Podmiot przetwarzający (procesor)</strong> – gdy przetwarzamy dane <strong>pracowników/współpracowników</strong> naszych klientów (np. dostępność, grafiki, ewidencja czasu pracy, rozliczenia zmian, eksporty do PIP/księgowości) <strong>wyłącznie na udokumentowane polecenie klienta</strong> (administrator danych). Zasady te reguluje <strong>umowa powierzenia przetwarzania danych</strong> (DPA) stanowiąca część umowy/Regulaminu. Na żądanie udostępnimy jej aktualne brzmienie.
+                      <strong>Podmiot przetwarzający (procesor)</strong> – gdy przetwarzamy dane <strong>pracowników/współpracowników</strong> naszych klientów (np. dostępność, grafiki, ewidencja czasu pracy, rozliczenia zmian, eksporty do audytu/księgowości) <strong>wyłącznie na udokumentowane polecenie klienta</strong> (administrator danych). Zasady te reguluje <strong>umowa powierzenia przetwarzania danych</strong> (DPA) stanowiąca część umowy/Regulaminu. Na żądanie udostępnimy jej aktualne brzmienie.
                     </p>
                   </li>
                 </ol>
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
                   <strong>B) Dane załogi przetwarzane na polecenie klienta (procesor)</strong>
                 </p>
                 <p>
-                  Imię i nazwisko, identyfikator pracowniczy/użytkownika, przypisanie do sklepu/lokalizacji, rodzaj i parametry umowy (np. UoP/UZ, stawki, daty obowiązywania), dostępność/preferencje, grafiki i zmiany, ewidencja czasu pracy (wejścia/wyjścia, nieobecności, urlopy), rozliczenia zmian (w tym ewidencja gotówki/niedoborów/zaliczek – jeśli włączone), komentarze i notatki służbowe, metadane operacji, eksporty do PIP/biura rachunkowego. <strong>UWAGA:</strong> system nie jest przeznaczony do gromadzenia szczególnych kategorii danych (np. o zdrowiu).
+                  Imię i nazwisko, identyfikator pracowniczy/użytkownika, przypisanie do lokalizacji, rodzaj i parametry umowy (np. UoP/UZ, stawki, daty obowiązywania), dostępność/preferencje, grafiki i zmiany, ewidencja czasu pracy (wejścia/wyjścia, nieobecności, urlopy), rozliczenia zmian (w tym ewidencja gotówki/niedoborów/zaliczek – jeśli włączone), komentarze i notatki służbowe, metadane operacji, eksporty do audytu/biura rachunkowego. <strong>UWAGA:</strong> system nie jest przeznaczony do gromadzenia szczególnych kategorii danych (np. o zdrowiu).
                 </p>
                 <p>
                   <strong>C) Odwiedzający Serwis</strong>

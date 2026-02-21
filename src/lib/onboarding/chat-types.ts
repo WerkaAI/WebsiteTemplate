@@ -7,9 +7,9 @@
  * Design decisions (from ONBOARDING_DEEP_RETHINK.md):
  * - Chat bubbles instead of expandable cards
  * - Pill buttons instead of text input
- * - Inline rewards (XP toast + Żabek comment)
+ * - Inline rewards (XP toast + guide comment)
  * - Annotated screenshots instead of video (Phase 1.5)
- * - Żabek avatar evolves per chapter completion
+ * - Guide avatar evolves per chapter completion
  * - Session streak (not daily)
  * - Soft-lock chapters (skip available, but no XP for skip)
  */
@@ -86,7 +86,7 @@ export interface ChatMessage {
     content: string;
     /** Optional media (annotated screenshot) */
     media?: ChatMedia;
-    /** Response buttons (only for sender='zabek', type='buttons') */
+    /** Response buttons (only for sender='guide', type='buttons') */
     buttons?: ChatButton[];
     /** Reward info (only for type='reward') */
     reward?: {
@@ -128,7 +128,7 @@ export interface ChatStep {
     autoComplete?: boolean;
     /** Deep link to the app feature */
     deepLink?: string;
-    /** Randomized Żabek reward comments — hook picks one on completion */
+    /** Randomized guide reward comments — hook picks one on completion */
     rewardVariants?: string[];
     /** Conditional note shown before steps (e.g. "*If you work in multiple stores*") */
     conditionalNote?: string;
@@ -136,7 +136,7 @@ export interface ChatStep {
 
 // ─── Chapter (≈ one adventure) ────────────────────────────────────────
 
-/** Żabek avatar evolution stage */
+/** Guide avatar evolution stage */
 export type ZabekEvolution = 'basic' | 'crown' | 'cape' | 'flag' | 'golden';
 
 /** A chapter grouping related steps */
@@ -159,7 +159,7 @@ export interface ChatChapter {
     steps: ChatStep[];
     /** Celebration message shown on chapter completion */
     celebrationMessage: string;
-    /** Żabek evolution stage reached after completing this chapter */
+    /** Guide evolution stage reached after completing this chapter */
     zabekEvolution: ZabekEvolution;
     /** Chapter completion bonus XP (on top of step XP) */
     completionBonusXP: number;
@@ -171,7 +171,7 @@ export interface ChatChapter {
 export interface CompactMessage {
     /** Message id */
     id: string;
-    /** Sender shorthand: z=żabek, u=user, s=system */
+    /** Sender shorthand: z=guide, u=user, s=system */
     s: 'z' | 'u' | 's';
     /** Content text */
     c: string;
@@ -204,7 +204,7 @@ export interface ChatProgress {
     sessionStreak: number;
     /** Earned badge ids */
     badges: string[];
-    /** Current Żabek evolution level (0-4) */
+    /** Current guide evolution level (0-4) */
     zabekLevel: number;
     /** ISO date of last chapter completion (for return flow context) */
     lastChapterCompletedAt?: string;
@@ -257,7 +257,7 @@ export const STATUS_THRESHOLDS: Record<UserStatus, { min: number; label: string;
     master: { min: 67, label: 'Mistrz', icon: '🏆' },
 };
 
-/** Żabek evolution stages in order */
+/** Guide evolution stages in order */
 export const ZABEK_EVOLUTION_ORDER: ZabekEvolution[] = [
     'basic',    // start: simple emoji/SVG
     'crown',    // after chapter 1

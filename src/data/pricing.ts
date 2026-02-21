@@ -15,13 +15,13 @@ export const pricingConfig = {
   ctaSubtext: 'Bez zobowiązań · Bez karty płatniczej · Pełen dostęp przez 14 dni',
 } as const
 
-/** Calculate total monthly price for N stores (promo) */
+/** Calculate total monthly price for N locations (promo) */
 export function calcPromoPrice(stores: number): number {
   if (stores <= 0) return 0
   return pricingConfig.promoPrice + Math.max(0, stores - 1) * pricingConfig.additionalStorePromo
 }
 
-/** Calculate total monthly price for N stores (regular) */
+/** Calculate total monthly price for N locations (regular) */
 export function calcRegularPrice(stores: number): number {
   if (stores <= 0) return 0
   return pricingConfig.regularPrice + Math.max(0, stores - 1) * pricingConfig.additionalStoreRegular
@@ -58,12 +58,12 @@ export const pricingSteps: PricingStep[] = [
     id: 'subscription',
     step: 2,
     title: 'Wybierz abonament',
-    headline: 'Jeden sklep — jedna stała cena, bez limitów',
+    headline: 'Jedna lokalizacja — jedna stała cena, bez limitów',
     details: [
       'Grafiki zgodne z kodeksem pracy w kilka minut',
       'Ewidencja czasu pracy i rozliczenia w jednym miejscu',
       'Pomoc we wdrożeniu — krok po kroku',
-      'Dokumenty PIP/BHP gotowe do kontroli',
+      'Dokumenty operacyjne gotowe do archiwizacji',
       'Bez limitu pracowników',
     ],
     priceLabel: '149 zł / mies.',
@@ -73,15 +73,15 @@ export const pricingSteps: PricingStep[] = [
   {
     id: 'additional-stores',
     step: 3,
-    title: 'Dodaj kolejne sklepy',
-    headline: 'Zarządzaj wieloma sklepami z jednego miejsca',
+    title: 'Dodaj kolejne lokalizacje',
+    headline: 'Zarządzaj wieloma lokalizacjami z jednego miejsca',
     details: [
-      'Wspólne planowanie obsady dla wszystkich sklepów',
+      'Wspólne planowanie obsady dla wszystkich lokalizacji',
       'Raporty dla wszystkich lokalizacji',
       'Szybka pomoc, kiedy jej potrzebujesz',
-      'Każdy kolejny sklep to prosty dodatek do abonamentu',
+      'Każda kolejna lokalizacja to prosty dodatek do abonamentu',
     ],
-    priceLabel: '+75 zł / kolejny sklep',
+    priceLabel: '+75 zł / kolejna lokalizacja',
     priceRegular: '+100 zł',
     badge: '-25% przez pierwszy rok',
   },
@@ -92,7 +92,7 @@ export const pricingSteps: PricingStep[] = [
 export const universalFeatures: string[] = [
   'Automatyczne grafiki zgodne z prawem pracy',
   'Ewidencja czasu pracy i rozliczenia kasowe',
-  'Dokumenty PIP/BHP — gotowe do kontroli',
+  'Dokumenty operacyjne — gotowe do archiwizacji',
   'Pomoc we wdrożeniu — krok po kroku',
   'Wsparcie prawne i techniczne',
   'Bez limitu pracowników',
@@ -130,7 +130,7 @@ export const pricingPlans: PricingPlan[] = [
     headline: '14 dni pełnych funkcji bez zobowiązań',
     priceMonthly: '0 zł / 14 dni',
     description: '',
-    bestFor: '1–3 sklepy na starcie',
+    bestFor: '1–3 lokalizacje na starcie',
     highlights: [
       'Pełen dostęp do grafików, ewidencji i dokumentów',
       'Konsultant przeprowadzi Cię przez cały system i odpowie na pytania',
@@ -143,7 +143,7 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     id: 'single-store',
-    title: 'Jeden sklep',
+    title: 'Jedna lokalizacja',
     headline: 'Stała kontrola nad grafikiem i dokumentami',
     priceMonthly: '149 zł / mies.',
     annualNote: 'Cena gwarantowana przez 12 miesięcy',
@@ -182,8 +182,8 @@ export const addOns: AddOn[] = [
     price: 'od 249 zł / mies.',
   },
   {
-    title: 'Audyt PIP na życzenie',
-    description: 'Symulacja kontroli PIP z raportem ryzyk i rekomendacjami działań.',
+    title: 'Audyt procesów na życzenie',
+    description: 'Symulacja audytu z raportem ryzyk i rekomendacjami działań.',
     price: '749 zł jednorazowo',
   },
 ]
@@ -204,7 +204,7 @@ export const pricingFaq: FAQItem[] = [
   {
     question: 'Ile kosztuje system, jeśli mam kilka lokalizacji?',
     answer:
-      'Pierwszy sklep to 149 zł/mies. (cena promocyjna, regularnie 199 zł). Każdy kolejny sklep to +75 zł/mies. (regularnie +100 zł). Na przykład: 2 sklepy = 224 zł/mies., 3 sklepy = 299 zł/mies. Cena promocyjna jest gwarantowana przez 12 miesięcy.',
+      'Pierwsza lokalizacja to 149 zł/mies. (cena promocyjna, regularnie 199 zł). Każda kolejna lokalizacja to +75 zł/mies. (regularnie +100 zł). Na przykład: 2 lokalizacje = 224 zł/mies., 3 lokalizacje = 299 zł/mies. Cena promocyjna jest gwarantowana przez 12 miesięcy.',
   },
   {
     question: 'Czy cena 149 zł/mies. się zmieni?',
@@ -236,9 +236,9 @@ export const valueHighlights: { title: string; description: string }[] = [
     description: 'Średnio 2–4 godziny odzyskane tygodniowo dzięki automatycznym grafikom i gotowym raportom.',
   },
   {
-    title: 'Pełna zgodność prawna',
+    title: 'Pełna spójność procesowa',
     description:
-      'Silnik AutoŻaby generuje dokumentację zgodną z PIP i podpowiada przepisy, ale nie blokuje Twoich decyzji.',
+      'Silnik systemu generuje dokumentację zgodną z przyjętymi standardami i podpowiada działania, ale nie blokuje Twoich decyzji.',
   },
   {
     title: 'Wsparcie ekspertów',

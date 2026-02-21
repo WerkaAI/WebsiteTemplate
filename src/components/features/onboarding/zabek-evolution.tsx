@@ -1,5 +1,5 @@
 /**
- * Żabek SVG Evolution System.
+ * Mascot SVG Evolution System.
  *
  * 5 progressive avatars, flat design, brand-green palette:
  *   Level 0 — basic:  simple smiling frog
@@ -210,11 +210,11 @@ const EVOLUTION_COMPONENTS: Record<ZabekEvolution, React.ComponentType<{ size: n
 };
 
 const EVOLUTION_LABELS: Record<ZabekEvolution, string> = {
-    basic: 'Żabek',
-    crown: 'Żabek z Koroną',
-    cape: 'Żabek Superbohater',
-    flag: 'Żabek Chorąży',
-    golden: 'Złoty Żabek',
+    basic: 'Maskotka',
+    crown: 'Maskotka Premium',
+    cape: 'Maskotka Pro',
+    flag: 'Maskotka Ekspert',
+    golden: 'Maskotka Master',
 };
 
 // ─── Main Exported Component ──────────────────────────────────────────

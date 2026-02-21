@@ -142,7 +142,7 @@ export default function ContactPage() {
                   </div>
 
                   <h3 className="text-xl font-bold text-foreground mb-2">
-                    Masz kontrolę PIP jutro?
+                    Masz pilną kontrolę jutro?
                   </h3>
                   <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
                     Nie czekaj na maila. Zadzwoń do nas bezpośrednio, a pomożemy Ci przygotować dokumentację w trybie ekspresowym.

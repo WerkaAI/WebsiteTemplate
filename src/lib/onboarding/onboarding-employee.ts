@@ -1,6 +1,6 @@
 /**
  * Onboarding content for the EMPLOYEE role.
- * 4 Adventures, 13 Quests — focused on day-to-day tasks a store employee needs.
+ * 4 Adventures, 13 Quests — focused on day-to-day tasks an employee needs.
  * No quizzes — less pressure, friendlier onboarding.
  *
  * Reuses interfaces from onboarding-content.ts.
@@ -236,7 +236,7 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
         icon: '⏱️',
         badge: {
             id: 'emp-badge-rozliczenia',
-            name: 'Punktualny Żabian',
+            name: 'Punktualny Specjalista',
             icon: '⏱️',
         },
         quests: [
@@ -272,18 +272,18 @@ export const EMPLOYEE_ADVENTURES: Adventure[] = [
                     { step: 3, instruction: 'Kliknij „Zapisz".', tip: 'Edycja jest dostępna przez 24 godziny od wprowadzenia. Po tym czasie skontaktuj się z przełożonym.' },
                 ],
             },
-            // 3 — Wybierz sklep
+            // 3 — Wybierz lokalizację
             {
                 id: 'emp-c3-sklep',
-                title: 'Wybierz sklep',
-                description: 'Przełączaj się między sklepami, jeśli pracujesz w kilku.',
+                title: 'Wybierz lokalizację',
+                description: 'Przełączaj się między lokalizacjami, jeśli pracujesz w kilku.',
                 timeEstimate: 1,
-                keywords: ['sklep', 'selektor', 'wiele sklepów', 'przełącz'],
-                quickAnswer: 'Kliknij selektor sklepu → wybierz jeden lub więcej sklepów.',
+                keywords: ['lokalizacja', 'selektor', 'wiele lokalizacji', 'przełącz'],
+                quickAnswer: 'Kliknij selektor lokalizacji → wybierz jedną lub więcej lokalizacji.',
                 difficulty: 1,
                 steps: [
-                    { step: 1, instruction: 'Jeśli widzisz selektor sklepu — kliknij go.' },
-                    { step: 2, instruction: 'Wybierz, czy chcesz widzieć jeden czy więcej sklepów.' },
+                    { step: 1, instruction: 'Jeśli widzisz selektor lokalizacji — kliknij go.' },
+                    { step: 2, instruction: 'Wybierz, czy chcesz widzieć jedną czy więcej lokalizacji.' },
                 ],
                 // This quest is conditional — only relevant for multi-store employees
             },

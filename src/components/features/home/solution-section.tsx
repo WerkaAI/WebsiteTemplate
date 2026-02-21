@@ -6,7 +6,7 @@ export default function SolutionSection() {
   const beforeAfter = {
     before: [
       "3h na każdy grafik",
-      "Ryzyko kar do 30k zł", 
+      "Ryzyko błędów operacyjnych", 
       "Chaos w SMS-ach",
       "Papiery do 2 w nocy"
     ],
@@ -36,9 +36,9 @@ export default function SolutionSection() {
     {
       id: "legal-shield",
       icon: Shield,
-      title: "Tarcza prawna",
-      description: "Konkretnie wskazuje, co poprawić, ostrzega przed błędami i przygotowuje na kontrolę PIP.",
-      protection: "Chronisz się przed karami do 30 000 zł"
+      title: "Wsparcie zgodności",
+      description: "Wskazuje, co poprawić, ostrzega przed błędami i pomaga utrzymać spójne standardy pracy.",
+      protection: "Mniej ryzyk i mniej ręcznych poprawek"
     }
   ];
 
@@ -47,7 +47,7 @@ export default function SolutionSection() {
       <div className="container-spacing">
         <div className="text-center space-y-4 mb-14 sm:mb-16" data-animate>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground" data-testid="text-solution-title">
-            Twoja <span className="text-primary dark:text-emerald-300">Automatyczna Tarcza Prawna</span>
+            Twoje <span className="text-primary dark:text-emerald-300">Automatyczne wsparcie operacyjne</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto copy-max" data-testid="text-solution-subtitle">
             To nie kolejne narzędzie HR. To system ochrony, który automatyzuje 

@@ -22,7 +22,7 @@ export async function BlogSection() {
                         Najnowsze z bloga
                     </h2>
                     <p className="max-w-[900px] text-slate-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
-                        Praktyczne poradniki i aktualności z zakresu prawa pracy i zarządzania w Żabce.
+                        Praktyczne poradniki i aktualności z zakresu operacji, planowania i rozwoju produktu.
                     </p>
                 </div>
 

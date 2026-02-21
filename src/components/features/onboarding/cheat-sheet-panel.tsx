@@ -16,8 +16,8 @@ interface CheatSheetPanelProps {
 const CATEGORY_KEYWORDS: Record<string, string[]> = {
     ogolne: ['logowanie', 'język', 'konto', 'powiadomienia'],
     personel: ['pracownik', 'umowa', 'zatrudnienie'],
-    sklep: ['sklep', 'adres'],
-    rozliczenia: ['rozliczenie', 'godziny', 'PIP', 'eksport'],
+    sklep: ['lokalizacja', 'adres'],
+    rozliczenia: ['rozliczenie', 'godziny', 'compliance', 'eksport'],
     dostepnosc: ['dostępność', 'kalendarz', 'notatka'],
     harmonogram: ['harmonogram', 'grafik', 'zmiana', 'drag'],
     automatyzacja: ['AI', 'automatyczny', 'algorytm'],
@@ -116,7 +116,7 @@ export function CheatSheetPanel({ isOpen, onClose }: CheatSheetPanelProps) {
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                                 <input
                                     type="text"
-                                    placeholder="Szukaj... np. 'hasło', 'PIP', 'grafik'"
+                                    placeholder="Szukaj... np. 'hasło', 'eksport', 'grafik'"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-border bg-muted/30 focus:outline-none focus:ring-2 focus:ring-brand-green text-base"

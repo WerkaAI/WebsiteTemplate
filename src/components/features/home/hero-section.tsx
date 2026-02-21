@@ -228,7 +228,7 @@ export default function HeroSection() {
                 variants={itemVariants}
               >
                 <ShieldCheck className="h-4 w-4" />
-                <span>Automatyczna Tarcza Prawna</span>
+                <span>Automatyczne wsparcie zgodności</span>
               </motion.div>
 
               <motion.h1
@@ -246,8 +246,8 @@ export default function HeroSection() {
                 variants={itemVariants}
                 data-testid="text-hero-subtitle"
               >
-                Zarządzaj sklepem, a nie grafikami. To Twój asystent,
-                który automatyzuje pracę, chroni przed karami PIP i daje Ci spokój ducha.
+                Zarządzaj operacjami, a nie ręcznym planowaniem. To asystent,
+                który automatyzuje pracę, pilnuje zasad i daje Ci spokój ducha.
               </motion.p>
             </div>
 
@@ -292,17 +292,17 @@ export default function HeroSection() {
               variants={itemVariants}
             >
               <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">
-                Zaufali nam franczyzobiorcy z całej Polski:
+                Zaufały nam zespoły z całej Polski:
               </p>
               <div className="flex flex-wrap gap-x-8 gap-y-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
                 {/* Placeholders for logos or stats */}
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-emerald-500" />
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">120+ Sklepów</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">120+ Zespołów</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Shield className="w-5 h-5 text-emerald-500" />
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">0 Mandatów</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">Stabilny proces</span>
                 </div>
               </div>
             </motion.div>

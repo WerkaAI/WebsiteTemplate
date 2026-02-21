@@ -8,7 +8,7 @@ export const JsonLd = ({ nonce }: { nonce?: string }) => {
         '@type': 'Organization',
         name: 'Website Template',
         url: siteUrl,
-        logo: `${siteUrl}/illustrations/logo_xcolor64x64.png`,
+        logo: `${siteUrl}/illustrations/neutral-feature.svg`,
         sameAs: [
             // Add social profiles here if available
         ],

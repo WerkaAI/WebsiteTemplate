@@ -40,7 +40,7 @@ export function ShopLevelDisplay({ currentLevel, currentExp, className }: ShopLe
                 <div className="flex-1">
                     <div className="flex justify-between items-center mb-1">
                         <div>
-                            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Poziom sklepu</p>
+                            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Poziom lokalizacji</p>
                             <h3 className="text-lg font-bold text-foreground leading-tight">{levelInfo.title}</h3>
                         </div>
                         <div className="text-right">

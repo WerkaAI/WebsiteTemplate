@@ -242,7 +242,7 @@ export default function ContactForm({
       {showShops && (
         <div className="space-y-2">
           <Label htmlFor="shops" id="contact-shops-label">
-            Liczba sklepów <span className="text-red-500">*</span>
+            Liczba lokalizacji <span className="text-red-500">*</span>
           </Label>
           <Controller
             control={form.control}
@@ -259,7 +259,7 @@ export default function ContactForm({
                   aria-describedby={form.formState.errors.shops ? "shops-error" : undefined}
                   data-testid="select-contact-shops"
                 >
-                  <SelectValue placeholder="Wybierz liczbę sklepów" />
+                  <SelectValue placeholder="Wybierz liczbę lokalizacji" />
                 </SelectTrigger>
                 <SelectContent>
                   {SHOP_OPTIONS.map((option) => (

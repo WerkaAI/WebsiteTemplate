@@ -19,11 +19,11 @@ const currencyFormatter = new Intl.NumberFormat("pl-PL", {
 export default function CalculatorSection() {
   const shopsFieldId = useId();
   const hoursFieldId = useId();
-  const pipFieldId = useId();
+  const complianceFieldId = useId();
 
   const [shops, setShops] = useState(1);
   const [hoursPerWeek, setHoursPerWeek] = useState(8);
-  const [hadPIPControl, setHadPIPControl] = useState(false);
+  const [hadComplianceAudit, setHadComplianceAudit] = useState(false);
 
   const calculations = useMemo(() => {
     const monthlyHours = hoursPerWeek * 4.33; // Average weeks per month
@@ -32,7 +32,7 @@ export default function CalculatorSection() {
 
     const weekendsSaved = Math.round(shops * 6);
 
-    const riskAvoided = hadPIPControl ? 30000 * shops : 30000;
+    const riskAvoided = hadComplianceAudit ? 30000 * shops : 30000;
 
     const monthlyCost = 149 * shops;
 
@@ -46,7 +46,7 @@ export default function CalculatorSection() {
       systemCost: monthlyCost,
       monthlyBenefit,
     };
-  }, [hadPIPControl, hoursPerWeek, shops]);
+  }, [hadComplianceAudit, hoursPerWeek, shops]);
 
   const timeSavedSpring = useSpringNumber(calculations.timeSaved);
   const weekendsSavedSpring = useSpringNumber(calculations.weekendsSaved);
@@ -145,10 +145,10 @@ export default function CalculatorSection() {
                       data-testid="input-calculator-shops"
                     />
                     <Label htmlFor={shopsFieldId} className="floating-label">
-                      Liczba sklepów
+                      Liczba lokalizacji
                     </Label>
                     <p className="floating-hint">
-                      Większość franczyzobiorców ma 1-2 sklepy
+                      Większość klientów zaczyna od 1-2 lokalizacji
                     </p>
                   </motion.div>
 
@@ -178,7 +178,7 @@ export default function CalculatorSection() {
                       Godzin tygodniowo spędzasz na grafikach i papierkach
                     </Label>
                     <p className="floating-hint">
-                      Średnio franczyzobiorcy spędzają 8-12h tygodniowo
+                      Średnio zespoły spędzają 8-12h tygodniowo
                     </p>
                   </motion.div>
 
@@ -188,17 +188,17 @@ export default function CalculatorSection() {
                   >
                     <input
                       type="checkbox"
-                      id={pipFieldId}
-                      checked={hadPIPControl}
-                      onChange={(e) => setHadPIPControl(e.target.checked)}
+                      id={complianceFieldId}
+                      checked={hadComplianceAudit}
+                      onChange={(e) => setHadComplianceAudit(e.target.checked)}
                       className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
-                      data-testid="checkbox-pip-control"
+                      data-testid="checkbox-compliance-audit"
                     />
                     <Label
-                      htmlFor={pipFieldId}
+                      htmlFor={complianceFieldId}
                       className="text-sm font-medium text-muted-foreground cursor-pointer leading-tight"
                     >
-                      Miałeś już kontrolę PIP w ciągu ostatnich 2 lat?
+                      Czy miałeś audyt zgodności w ciągu ostatnich 2 lat?
                     </Label>
                   </motion.div>
                 </motion.div>
@@ -262,16 +262,16 @@ export default function CalculatorSection() {
                     <div
                       className="metric-card__swap"
                       aria-live="polite"
-                      data-state={hadPIPControl ? "back" : "front"}
+                      data-state={hadComplianceAudit ? "back" : "front"}
                     >
                       <div
                         className="metric-card__panel"
                         data-panel="front"
-                        data-active={(!hadPIPControl).toString()}
-                        aria-hidden={hadPIPControl}
+                        data-active={(!hadComplianceAudit).toString()}
+                        aria-hidden={hadComplianceAudit}
                       >
                         <div className="metric-card__label">
-                          Ochrona przed karami PIP
+                          Ochrona przed kosztownymi błędami
                         </div>
                         <div
                           className={`metric-card__value transition-colors duration-300 ${riskAvoidedSpring.isAnimating
@@ -284,16 +284,16 @@ export default function CalculatorSection() {
                           {riskAvoidedSpring.formatted}
                         </div>
                         <div className="metric-card__hint">
-                          Maksymalna kara za naruszenia Kodeksu pracy to 30 000
-                          zł.
+                          Koszt poważnych naruszeń procesowych może sięgać
+                          nawet 30 000 zł.
                         </div>
                       </div>
 
                       <div
                         className="metric-card__panel"
                         data-panel="back"
-                        data-active={hadPIPControl.toString()}
-                        aria-hidden={!hadPIPControl}
+                        data-active={hadComplianceAudit.toString()}
+                        aria-hidden={!hadComplianceAudit}
                       >
                         <div className="metric-card__label">
                           Kontrola wraca częściej
@@ -308,8 +308,8 @@ export default function CalculatorSection() {
                           {riskAvoidedSpring.formatted}
                         </div>
                         <div className="metric-card__hint">
-                          Jeśli PIP był u Ciebie w ciągu ostatnich 2 lat, szansa
-                          na powtórkę rośnie, a kara 30 000 zł nadal grozi.
+                          Jeśli audyt był u Ciebie w ciągu ostatnich 2 lat,
+                          ryzyko kolejnej kontroli i kosztownych poprawek rośnie.
                         </div>
                       </div>
                     </div>

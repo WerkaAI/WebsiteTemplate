@@ -72,7 +72,7 @@ export default async function Page({ params }: BlogPostPageProps) {
     Array.isArray(tags) && tags.length > 0 ? tags[0] : undefined;
   const fallbackDescription =
     description ??
-    "Praktyczne wskazówki ze świata prawa pracy i prowadzenia sklepu.";
+    "Praktyczne wskazówki ze świata organizacji pracy i prowadzenia zespołu.";
 
   const readLength =
     typeof readTime === "string" && readTime.trim().length > 0
@@ -238,7 +238,7 @@ export default async function Page({ params }: BlogPostPageProps) {
                 Udostępnij artykuł
               </h3>
               <p className="mt-2 text-sm text-muted-foreground/80">
-                Podziel się z zespołem lub innymi franczyzobiorcami.
+                Podziel się z zespołem lub innymi managerami.
               </p>
               <ShareButtons title={title} slug={params.slug} />
             </div>

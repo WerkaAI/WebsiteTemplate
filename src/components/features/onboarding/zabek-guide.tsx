@@ -8,7 +8,7 @@ interface ZabekGuideProps {
 }
 
 /**
- * Żabek mascot guide component.
+ * Mascot guide component.
  * Displays a friendly frog with optional speech bubble.
  * 
  * NOTE: Replace the emoji with your custom SVG/Lottie asset.
@@ -27,8 +27,8 @@ export function ZabekGuide({ message, isVisible = true }: ZabekGuideProps) {
             {/* Mascot */}
             <div className="relative">
                 {/* 
-          TODO: Replace this placeholder with your custom Żabek asset
-          Example: <Image src="/images/zabek-mascot.svg" alt="Żabek" width={80} height={80} />
+                TODO: Replace this placeholder with your custom mascot asset
+                Example: <Image src="/images/guide-mascot.svg" alt="Przewodnik" width={80} height={80} />
         */}
                 <motion.div
                     animate={{
@@ -41,7 +41,7 @@ export function ZabekGuide({ message, isVisible = true }: ZabekGuideProps) {
                     }}
                     className="text-6xl select-none"
                     role="img"
-                    aria-label="Żabek - Twój przewodnik"
+                    aria-label="Przewodnik onboardingu"
                 >
                     🐸
                 </motion.div>
@@ -66,7 +66,7 @@ export function ZabekGuide({ message, isVisible = true }: ZabekGuideProps) {
                             {message}
                         </p>
                         <span className="block text-xs text-muted-foreground mt-1">
-                            — Żabek 🐸
+                            — Przewodnik 🐸
                         </span>
                     </motion.div>
                 )}
