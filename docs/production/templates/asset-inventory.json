@@ -1,0 +1,28 @@
+{
+  "generatedAt": "",
+  "project": "FizjoterapiaWrocławWeb",
+  "assets": [
+    {
+      "id": "hero-ornament-a",
+      "type": "still",
+      "status": "planned",
+      "usage": ["hero"],
+      "source": {
+        "tool": "",
+        "promptLog": "",
+        "seed": "",
+        "model": ""
+      },
+      "files": {
+        "web": [],
+        "source": []
+      },
+      "qa": {
+        "reducedMotionOk": false,
+        "noFlicker": false,
+        "mobileOk": false,
+        "notes": ""
+      }
+    }
+  ]
+}

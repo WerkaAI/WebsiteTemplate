@@ -10,7 +10,7 @@ export function Providers({ children, nonce }: { children: React.ReactNode; nonc
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       storageKey="website-template-theme"
       enableSystem={false}
       disableTransitionOnChange

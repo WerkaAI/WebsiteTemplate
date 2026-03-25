@@ -1,5 +1,6 @@
 import createMDX from "@next/mdx";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from "next-intl/plugin";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -92,36 +93,19 @@ const withMDX = createMDX({
   },
 });
 
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
-  swcMinify: true,
   pageExtensions: ["ts", "tsx", "mdx"],
   poweredByHeader: false,
   env: {
-    CONTACT_TO_EMAIL: process.env.CONTACT_TO_EMAIL || "kontakt@example.com",
-    CONTACT_FROM_EMAIL:
-      process.env.CONTACT_FROM_EMAIL ||
-      "Formularz <no-reply@example.com>",
     NEXT_PUBLIC_ENABLE_PWA: process.env.NEXT_PUBLIC_ENABLE_PWA || "false",
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "img.youtube.com",
-      },
-    ],
-  },
-  async redirects() {
-    return [];
-  },
-  async rewrites() {
-    return [{ source: "/og-image.jpg", destination: "/opengraph-image" }];
+    unoptimized: true,
   },
 };
 
@@ -129,4 +113,4 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-export default withBundleAnalyzer(withMDX(nextConfig));
+export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)));

@@ -16,13 +16,14 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        // AutoŻaba Brand Colors
-        "brand-green": "#006625",
-        "brand-green-secondary": "#16A34A",
-        "blackout": "#090909",
-        "stone": "#313847",
-        "almost-white": "#F9FAFB",
-        "accent-orange": "#FD7E14",
+        // FizjoterapiaWrocław Brand Colors — Mint Palette (Faza 3)
+        "brand-green": "#75F1EB", // Mint — primary brand color
+        "brand-green-secondary": "#E0F9F8", // Light mint — secondary accents
+        "brand-green-dark": "#0D9488", // Teal-600 — for text and icons on light backgrounds
+        "blackout": "#1A1A1A", // Dark text
+        "stone": "#71717A", // Medium graphite — secondary text
+        "almost-white": "#FAFAFA", // Clean off-white — main background
+        "accent-orange": "#75F1EB", // Mint accent
 
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -37,6 +38,7 @@ export default {
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
+          dark: "var(--primary-dark)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",
@@ -77,6 +79,7 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "sans-serif"],
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       spacing: {
@@ -144,6 +147,7 @@ export default {
             '--tw-prose-headings': theme('colors.blackout'),
             '--tw-prose-body': theme('colors.stone'),
             '--tw-prose-bold': theme('colors.blackout'),
+            '--tw-prose-headings-font': 'var(--font-playfair), Georgia, serif',
             '--tw-prose-code': theme('colors.stone'),
             '--tw-prose-pre-bg': theme('colors.muted.DEFAULT'),
 

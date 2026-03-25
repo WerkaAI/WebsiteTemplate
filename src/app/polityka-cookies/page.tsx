@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Navigation from '@/components/layout/navigation'
 import Footer from '@/components/layout/footer'
 import { CookieSettingsButton } from '@/components/cookies/cookie-settings-button'
@@ -97,20 +98,6 @@ export default function CookiePolicyPage() {
                         <td>Local Storage</td>
                         <td>Bezterminowo</td>
                       </tr>
-                      <tr>
-                        <td>__cf_bm</td>
-                        <td>Cloudflare</td>
-                        <td>Ochrona przed botami i atakami DDoS</td>
-                        <td>HTTP Cookie</td>
-                        <td>30 minut</td>
-                      </tr>
-                      <tr>
-                        <td>cf_clearance</td>
-                        <td>Cloudflare Turnstile</td>
-                        <td>Weryfikacja CAPTCHA w formularzach</td>
-                        <td>HTTP Cookie</td>
-                        <td>Sesja</td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -177,21 +164,7 @@ export default function CookiePolicyPage() {
                       <tr>
                         <td>_gcl_*</td>
                         <td>Google Ads</td>
-                        <td>Śledzenie konwersji reklamowych</td>
-                        <td>HTTP Cookie</td>
-                        <td>Do 90 dni</td>
-                      </tr>
-                      <tr>
-                        <td>_fbp</td>
-                        <td>Meta (Facebook)</td>
-                        <td>Remarketing i budowanie profili odbiorców</td>
-                        <td>HTTP Cookie</td>
-                        <td>Do 90 dni</td>
-                      </tr>
-                      <tr>
-                        <td>_fbc</td>
-                        <td>Meta (Facebook)</td>
-                        <td>Identyfikacja kliknięcia w reklamę</td>
+                        <td>Śledzenie skuteczności i konwersji (opcjonalnie, jeśli prowadzimy kampanie wspierające)</td>
                         <td>HTTP Cookie</td>
                         <td>Do 90 dni</td>
                       </tr>
@@ -226,24 +199,20 @@ export default function CookiePolicyPage() {
 
                 <h2 id="transfer-poza-eog">4. Transfer danych poza EOG</h2>
                 <p>
-                  Korzystanie z narzędzi Google Analytics i Meta Pixel wiąże się
+                  Korzystanie z narzędzi Google Analytics wiąże się
                   z transferem danych do serwerów zlokalizowanych w Stanach
                   Zjednoczonych. Transfer ten jest objęty:
                 </p>
                 <ul>
                   <li>
                     <strong>EU-US Data Privacy Framework</strong> (DPF) — Google LLC
-                    i Meta Platforms, Inc. posiadają aktualną certyfikację DPF.
+                    posiada aktualną certyfikację DPF.
                   </li>
                   <li>
                     <strong>Standardowe Klauzule Umowne (SCC)</strong> — jako
                     dodatkowe zabezpieczenie zgodne z art. 46 ust. 2 lit. c RODO.
                   </li>
                 </ul>
-                <p>
-                  W przypadku utraty ważności mechanizmu DPF, opieramy się na SCC
-                  uzupełnionych o Transfer Impact Assessment (TIA).
-                </p>
 
                 <hr />
 
@@ -263,11 +232,6 @@ export default function CookiePolicyPage() {
                     <strong>Dane analityczne (GA4):</strong> maksymalnie 14 lub 26 miesięcy
                     (zgodnie z ustawieniami retencji GA4). Na poziomie użytkownika
                     dane usuwane są po upływie tego okresu.
-                  </li>
-                  <li>
-                    <strong>Dane marketingowe:</strong> okres powiązany z cyklem
-                    sprzedażowym, zazwyczaj 90–540 dni. Listy remarketingowe Google Ads
-                    mają maksymalną retencję 540 dni.
                   </li>
                   <li>
                     <strong>Cookie zgody (az_consent):</strong> 12 miesięcy.
@@ -305,62 +269,32 @@ export default function CookiePolicyPage() {
                   <CookieSettingsButton />
                 </div>
 
-                <hr />
 
-                <h2 id="app">8. Cookies w aplikacji</h2>
-                <p>
-                  Aplikacja SaaS dostępna pod adresem aplikacji produkcyjnej stosuje
-                  wyłącznie <strong>pliki cookies niezbędne</strong> do działania
-                  systemu:
-                </p>
-                <ul>
-                  <li>Tokeny autoryzacyjne (sesja logowania) — flagi: Secure, HttpOnly, SameSite=Strict</li>
-                  <li>Ochrona przed atakami CSRF</li>
-                  <li>Równoważenie obciążenia serwerów</li>
-                </ul>
-                <p>
-                  Aplikacja <strong>nie wykorzystuje</strong> żadnych cookies
-                  analitycznych ani marketingowych. Piksele reklamowe nie są
-                  ładowane w panelu SaaS ze względu na ochronę prywatności
-                  pracowników (nierównowaga sił w relacji pracodawca-pracownik
-                  per wytyczne UODO).
-                </p>
-                <p>
-                  Cookies z domeny marketingowej <strong>nie propagują się</strong>{' '}
-                  do subdomen aplikacyjnych — izolacja domen jest wymuszana
-                  poprzez brak atrybutu Domain= w ustawieniach cookies.
-                </p>
 
                 <hr />
 
-                <h2 id="kontakt">9. Kontakt</h2>
+                <h2 id="kontakt">8. Kontakt</h2>
                 <p>
                   W sprawach dotyczących plików cookies i prywatności skontaktuj
-                  się z nami:{' '}
-                  <a
-                    href="mailto:kontakt@example.com"
-                    className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
-                  >
-                    kontakt@example.com
-                  </a>
+                  się z nami poprzez adres e-mail gabinetu wskazany w kontakcie na stronie głównej.
                 </p>
 
                 <hr />
 
-                <h2 id="zmiany">10. Zmiany polityki cookies</h2>
+                <h2 id="zmiany">9. Zmiany polityki cookies</h2>
                 <p>
                   Zastrzegamy możliwość aktualizacji niniejszej polityki cookies.
                   Aktualna wersja jest zawsze dostępna pod adresem{' '}
-                  <a
+                  <Link
                     href="/polityka-cookies"
                     className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
                   >
                     /polityka-cookies
-                  </a>{' '}
+                  </Link>{' '}
                   i opatrzona datą obowiązywania.
                 </p>
                 <p>
-                  <strong>Data obowiązywania:</strong> 09.02.2026 r.
+                  <strong>Data obowiązywania:</strong> Marzec 2026 r.
                 </p>
 
               </div>

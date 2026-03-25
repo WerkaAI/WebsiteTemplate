@@ -1,0 +1,266 @@
+{
+  "navigation": {
+    "aria": "Main navigation",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "book": "Book a visit",
+    "call": "Call",
+    "openMenu": "Open menu",
+    "switchLanguage": "Switch language"
+  },
+  "hero": {
+    "title": "Get rid of pain and regain full mobility",
+    "description": "Spine, temporomandibular joint, and peripheral joint physiotherapy in Wrocław. Over 10 years of experience, certified Maitland manual therapy. Feel relief often after the first visit.",
+    "primaryCta": "Book online",
+    "secondaryCta": "Explore my specializations"
+  },
+  "trust": {
+    "average": "Average rating",
+    "verified": "80+ verified reviews",
+    "onPortal": "on"
+  },
+  "about": {
+    "name": "MSc Aneta Kołoszyńska",
+    "paragraph1": "I am a physiotherapist with over 10 years of experience. I specialize in dental physiotherapy, orthopedic physiotherapy, manual therapy, and medical training.",
+    "paragraph2": "I work with patients suffering from back pain and spinal problems (such as disc herniations), as well as post-surgical patients and those with injuries across the entire musculoskeletal system.",
+    "paragraph3": "Years of working with competitive athletes have allowed me to refine my skills in rehabilitating peripheral joint injuries — sprains, dislocations, ligament and tendon damage.",
+    "paragraph4": "In collaboration with surgeons, orthodontists, and prosthodontists, I treat patients with temporomandibular joint disorders — pain, crepitus, joint dysfunction, preparation and rehabilitation after orthognathic surgeries, and bite deprogramming.",
+    "paragraph5": "As a functional training instructor, I conduct medical training tailored to specific needs and dysfunctions.",
+    "education": "Graduate of the University School of Physical Education in Wrocław, specializing in orthopedic and sports trauma physiotherapy.",
+    "bullet1": "Patient care in English",
+    "bullet2": "Over 10 years of experience",
+    "bullet3": "Collaboration with surgeons, orthodontists & prosthodontists",
+    "pwz": "Professional License (PWZFz):",
+    "certificates": "Certifications & Methods",
+    "cert1Title": "Maitland Concept Manual Therapy",
+    "cert1Desc": "A prestigious, globally recognized method of diagnosing and treating musculoskeletal disorders.",
+    "cert2Title": "Dr. Ackermann Method",
+    "cert2Desc": "Advanced chiropractic and structural osteopathy.",
+    "cert3Title": "Fascial Distortion Model (FDM)",
+    "cert3Desc": "High effectiveness in treating acute pain syndromes through fascial work."
+  },
+  "services": {
+    "title": "My Specializations",
+    "description": "Five pillars of my practice — from diagnostics to medical training. Every therapy individually tailored to your needs.",
+    "items": {
+      "dental": {
+        "title": "Dental Physiotherapy",
+        "description": "Treatment of temporomandibular joint disorders — pain, crepitus, bruxism. Collaboration with surgeons, orthodontists and prosthodontists. Preparation and rehab after orthognathic surgeries, bite deprogramming.",
+        "backLabel": "Who is it for?",
+        "backText": "For you if: your jaw hurts, your joint clicks, you clench your teeth at night, or you're preparing for orthognathic surgery.",
+        "backMethods": "Methods: Maitland, Dr. Ackermann, trigger point therapy"
+      },
+      "orthopedic": {
+        "title": "Orthopedic Physiotherapy",
+        "description": "Spinal rehabilitation, post-surgical recovery, and peripheral joint injuries. Years of experience with competitive athletes — sprains, dislocations, ligament and tendon damage.",
+        "backLabel": "Who is it for?",
+        "backText": "For you if: you have back pain, disc herniations, sciatica, or are recovering from surgery or sports injury.",
+        "backMethods": "Methods: Maitland, FDM, stabilization exercises"
+      },
+      "diagnostics": {
+        "title": "Diagnostics",
+        "description": "Precise identification of pain causes through detailed interview and functional assessment. Accurate diagnosis is the foundation of effective therapy.",
+        "backLabel": "What does it look like?",
+        "backText": "Detailed interview (15-20 min) + orthopedic and neurological tests + physical examination. I pinpoint exactly where the pain comes from — without it, the therapy won't be effective.",
+        "backMethods": ""
+      },
+      "manual": {
+        "title": "Manual Therapy",
+        "description": "Certified Maitland techniques, Dr. Ackermann method, and FDM. Precise work with soft tissues and joints restoring proper mobility.",
+        "backLabel": "What to expect?",
+        "backText": "Gentle, precise joint and soft tissue mobilizations and manipulations. No sudden movements. I work within your tolerance.",
+        "backMethods": "Techniques: Maitland, FDM, Dr. Ackermann chiropractic"
+      },
+      "training": {
+        "title": "Medical Training",
+        "description": "Functional training tailored to specific dysfunctions. Individual strengthening, stabilization, and recurrence-prevention exercise programs.",
+        "backLabel": "What does it include?",
+        "backText": "An individual program: strengthening, stabilization, prevention exercises, and habit changes. I teach you how to maintain your body — an investment for years.",
+        "backMethods": ""
+      }
+    }
+  },
+  "booking": {
+    "title": "Book a visit",
+    "description": "Booking via ZnanyLekarz is quick, secure, and does not require creating an account on this website.",
+    "locationTitle": "Clinic Location",
+    "hoursTitle": "Consultation Hours",
+    "hoursDesc": "Monday - Friday: 8:30 - 20:00\nAccording to calendar availability",
+    "priceTitle": "Visit Price",
+    "priceDesc": "Physiotherapy consultation: PLN 200\nDental physiotherapy: PLN 220",
+    "widgetTitle": "Book your visit",
+    "widgetDesc": "Use our ZnanyLekarz profile. Booking takes less than a minute — no registration on this site needed.",
+    "widgetCta": "Book via phone or ZnanyLekarz"
+  },  "painPoints": {
+    "badge": "What I treat",
+    "title": "You don't have to live with pain",
+    "description": "Back pain? Clicking jaw? Recovering from surgery? I help patients restore mobility and return to active life. See if your issue is listed:",
+    "tipLabel": "💡 Physiotherapist Pro tip",
+    "items": {
+      "spine": {
+        "title": "Spinal pain & disc herniations",
+        "description": "Lumbar, cervical, thoracic — I treat the cause, not just the symptom. Disc herniations, sciatica, protrusions — comprehensive manual therapy and rehabilitation.",
+        "tip": "Get up from your desk every 30 minutes — your spine needs movement, not a perfect position. Even 2 minutes of standing makes a huge difference."
+      },
+      "tmj": {
+        "title": "Jaw pain & bruxism",
+        "description": "Clenching teeth? Jaw clicking when eating? Together with orthodontists and surgeons, I eliminate the cause of pain so you can eat and speak without discomfort.",
+        "tip": "Check right now: are you clenching your teeth? Relax your jaw — tongue on the palate, teeth slightly apart. This simple habit relieves tension."
+      },
+      "postop": {
+        "title": "Post-surgical rehabilitation",
+        "description": "After orthopedic or orthognathic surgery — I will safely help you regain full mobility and return to daily activities.",
+        "tip": "The sooner you start rehabilitation, the faster the recovery. Systematic exercises, regeneration, and gradual return to load are key."
+      },
+      "sport": {
+        "title": "Sports injuries",
+        "description": "Sprains, dislocations, ligament and tendon damage — experience with competitive athletes.",
+        "tip": "Pain during movement ≠ training ban. Modify, don't quit. I'll help you find a safe alternative so you don't lose your form."
+      },
+      "headache": {
+        "title": "Headaches & migraines",
+        "description": "Tension headaches often start in the neck or jaw dysfunction. I eliminate the source.",
+        "tip": "80% of cluster and tension headaches originate from the cervical spine or jaw muscle tension. Addressing basic habits like teeth clenching often makes a huge difference."
+      },
+      "posture": {
+        "title": "Posture & desk pain",
+        "description": "Stiff neck, aching shoulders, and poor computer posture — I will help you get rid of tension and teach you how to care for your body.",
+        "tip": "There is no 'ideal posture'. The most important thing is changing positions frequently."
+      },
+      "tinnitus": {
+        "title": "Tinnitus & dizziness",
+        "description": "Experiencing tinnitus, ear ringing, or dizziness? The cause may be dysfunction of the cervical spine joints or temporomandibular joints, as well as soft tissue tension in this area. I will help you find the source of the problem and restore your comfort.",
+        "tip": "Often changing daily habits, mobilization of the temporomandibular joints, or therapy of the upper cervical spine helps."
+      }
+    }
+  },
+  "process": {
+    "badge": "How a visit works",
+    "title": "From pain to relief — feel the difference",
+    "description": "Every visit is a journey from tension to freedom. Scroll and feel how it works.",
+    "steps": {
+      "interview": {
+        "number": "01",
+        "title": "Untangling the knot",
+        "description": "I search for the true cause of pain. A thorough interview and functional assessment help me understand where the problem comes from."
+      },
+      "therapy": {
+        "number": "02",
+        "title": "Releasing the tension",
+        "description": "Precise manual therapy — Maitland, FDM, chiropractic — restores movement, loosens tissues, and reduces pain. You feel your body regenerating."
+      },
+      "plan": {
+        "number": "03",
+        "title": "You regain control",
+        "description": "You leave with a clear plan: personalized home exercises and specific recommendations. Pain doesn't return because you know what to do."
+      }
+    },
+    "cta": "Book your first visit",
+    "note": "The duration of the visit depends on the type of consultation and the chosen form of therapy. A visit usually takes approx. 30 - 45 mins. If you have them, please bring your previous diagnostic test results (e.g. MRI, X-ray, or ultrasound) to the first visit.",
+    "urgency": "Don't wait for the pain to get worse — the sooner you start, the sooner you'll feel relief."
+  },
+  "testimonials": {
+    "badge": "Patient reviews",
+    "title": "Thank you for trusting me",
+    "description": "Reviews from ZnanyLekarz from patients I've helped get back to health.",
+    "reviews": {
+      "review1": {
+        "name": "Anna K.",
+        "rating": 5,
+        "text": "After 3 visits, the back pain I'd been struggling with for a year completely disappeared. Ms. Aneta explains exactly what she does and why. I recommend her to everyone!",
+        "condition": "Lower back pain"
+      },
+      "review2": {
+        "name": "Marek W.",
+        "rating": 5,
+        "text": "I came in with sciatica, barely able to walk. Professional approach, effective therapy, and great home exercises. Now I'm running again!",
+        "condition": "Sciatica"
+      },
+      "review3": {
+        "name": "Katarzyna M.",
+        "rating": 5,
+        "text": "As a remote worker, I had chronic neck and head pain. Ms. Aneta found the cause during the very first visit. A wonderful specialist.",
+        "condition": "Tension headaches"
+      },
+      "review4": {
+        "name": "Tomasz L.",
+        "rating": 5,
+        "text": "Post-knee surgery rehabilitation went perfectly. Individual approach and a concrete exercise plan got me back to the gym faster than expected.",
+        "condition": "Post-surgical rehab"
+      },
+      "review5": {
+        "name": "Joanna P.",
+        "rating": 5,
+        "text": "The best physiotherapist I've ever been to. Patient, competent, and truly cares about her patients. My shoulder pain was gone after 4 sessions.",
+        "condition": "Shoulder pain"
+      }
+    },
+    "sourceLabel": "Reviews from",
+    "allReviews": "See all reviews"
+  },
+  "faq": {
+    "badge": "Frequently asked questions",
+    "title": "Got questions? I have answers.",
+    "items": {
+      "q1": {
+        "question": "How should I prepare for my first visit?",
+        "answer": "Bring any recent test results (X-ray, MRI, ultrasound). No referral is needed."
+      },
+      "q2": {
+        "question": "Does the therapy hurt?",
+        "answer": "Therapy is adjusted to you. Some manual therapy techniques may cause slight discomfort, but I always work within your tolerance limits."
+      },
+      "q3": {
+        "question": "How many visits will I need?",
+        "answer": "Acute problems often resolve in 2-3 visits, while chronic cases take longer. We'll set an exact plan during your first visit."
+      },
+      "q4": {
+        "question": "Do I need a doctor's referral?",
+        "answer": "No, I accept private patients directly without a referral. However, please bring any past medical imaging or test results."
+      },
+      "q5": {
+        "question": "How much does a visit cost?",
+        "answer": "The price list is available on the website and on the Znany Lekarz portal. You can pay with cash or BLIK."
+      },
+      "q6": {
+        "question": "Do you accept public health insurance (NFZ)?",
+        "answer": "I do not cooperate with the public health system. All visits are private."
+      }
+    }
+  },
+  "blogTeaser": {
+    "badge": "Knowledge Base",
+    "title": "Knowledge that helps every day",
+    "description": "Practical physiotherapy tips, home exercises, and proven ways to live pain-free.",
+    "readMore": "Read article",
+    "viewAll": "View all articles",
+    "articles": {
+      "article1": {
+        "title": "5 desk exercises for back pain you can do right now",
+        "excerpt": "Working at a computer? These simple exercises can be done during a coffee break, and your spine will thank you.",
+        "category": "Exercises",
+        "readTime": "4 min"
+      },
+      "article2": {
+        "title": "Sciatica \u2014 symptoms, causes, and when to see a physiotherapist",
+        "excerpt": "Radiating pain from your lower back to your foot? Learn when it's sciatica and how to treat it effectively.",
+        "category": "Guide",
+        "readTime": "6 min"
+      },
+      "article3": {
+        "title": "How to choose a pillow that won't hurt your neck",
+        "excerpt": "Waking up with a stiff neck? The problem might be your pillow. Here's what to look for.",
+        "category": "Guide",
+        "readTime": "5 min"
+      }
+    }
+  },  "footer": {
+    "description": "Orthopedic and dental physiotherapy in Wrocław.",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy",
+    "terms": "Terms",
+    "cookieSettings": "Cookie settings",
+    "copyright": "© 2026 Aneta Kołoszyńska Physiotherapy. All rights reserved."
+  }
+}

@@ -1,17 +1,34 @@
-# Documentation Index
+# Dokumentacja Projektu (AnetaFizjo Web) 
 
-Ten katalog jest **głównym miejscem dokumentacji** projektu.
+Witamy w glownym repozytorium dokumentacji. Znajdziesz tu wylacznie aktualne i niezbedne informacje definiujace obecny stan witryny, strategie i procesy operacyjne (bez szumu historycznych narad).
 
-## Struktura
+## Struktura wiedzy i Spis Tresci
 
-- [docs/adr/README.md](adr/README.md) — decyzje architektoniczne (ADR)
-- [docs/foundation/ROADMAP_12_WEEKS.md](foundation/ROADMAP_12_WEEKS.md) — roadmapa i status etapów
-- [docs/foundation/CURRENT_STATE_2026-02-21.md](foundation/CURRENT_STATE_2026-02-21.md) — aktualny stan techniczny projektu
-- [docs/foundation/WHITE_LABEL_AUDIT_2026-02-21.md](foundation/WHITE_LABEL_AUDIT_2026-02-21.md) — audyt white-label
-- [docs/security](security) — specyfikacje bezpieczeństwa, threat model, inventory
+### 1. context/ - Kontekst Biznesowy
+Esencja informacji na temat zalozen biznesowych marki AnetaFizjo.
+- **BUSINESS_CORE.md** - glowne zasady biznesowe i wartosci.
+- **MARKETING_STRATEGY.md** - strategia marketingowa.
+- **VISUAL_GUIDELINES.md** - wytyczne wizualne i branding.
+- **VOICE_AND_TONE.md** - ton i styl komunikacji tekstow na stronie.
 
-## Zasada porządku
+### 2. team/ - Organizacja
+Dokumentacja opisujaca zasady wspolpracy zespou i role:
+- **DREAM_TEAM.md** - role czlonkow zespolu.
+- **TEAM_OPERATING_SYSTEM.md** - zasady komunikacji, organizacja sprintow.
+- **RELEASE_PLAYBOOK.md** - ogolne zasady wdrazania zmian.
 
-- Nowa dokumentacja trafia do `docs/**`.
-- Root repo (`/`) utrzymujemy minimalny: głównie [README.md](../README.md) + pliki techniczne.
-- Dokumenty historyczne mogą zawierać legacy nazwy i pozostają jako audit trail.
+### 3. architecture/ - Architektura i Bezpieczenstwo
+Miejsce na techniczne standardy projektu:
+- **AI_ASSET_PRODUCTION_GUIDE.md** - standard produkcji assetow AI.
+- **mdx-sanitize-spec.md** - reguly sanityzacji mdx.
+- **headers-spec.md** - specyfikacja naglowkow HTTP i ochronnych.
+- **threat-model.md** - glowny opis zabezpieczen infrastruktury.
+
+### 4. guides/ - Poradniki manualne
+Instruktaze wdrozeniowe:
+- **ONBOARDING_CHAT_GUIDE.md** / **onboarding.md** - przewodnik wdrazania nowych deweloperow asystentow.
+- **deployment-guide.md** - przewodnik ostatecznych wdrozen wersji produkcyjnych.
+
+### 5. production/ - Zasoby i Assety
+Lokalizacja rejestrow produkowanych grafik:
+- **asset-inventory.json** - wykaz zasobow wizualnych oraz szablony wewnetrzne.

@@ -3,51 +3,36 @@
 @tailwind utilities;
 
 :root {
-  /* Template brand colors - Calm & Control Theme */
-  --brand-green: #006625;
-  /* Main green - professional authority */
-  --brand-green-secondary: #16A34A;
-  /* Secondary green - subtle highlights */
-  --blackout: #090909;
-  /* Strong texts and headlines */
-  --stone: #313847;
-  /* Secondary text - calming gray */
-  --almost-white: #F9FAFB;
-  /* Clean, breathing background */
-  --accent-orange: #FD7E14;
-  /* Warnings/legal only - never CTAs */
+  /* FizjoterapiaWrocław Brand Colors — Earth Tone Palette (Faza 3 · Signature Look) */
+  --brand-sage: #6B8F71;         /* Primary sage — calm authority */
+  --brand-sage-secondary: #9DB8A0; /* Light sage — accents */
+  --brand-graphite: #2B2A28;     /* Warm graphite — main text */
+  --brand-graphite-mid: #706D6A; /* Mid graphite — secondary text */
+  --brand-cream: #FAF7F4;        /* Warm cream — main background */
+  --brand-beige: #E8DDD1;        /* Warm beige — section bg accents */
+  --brand-amber: #C9A882;        /* Warm amber — accent only */
 
-  /* Semantic Colors - Calm & Control Mapping */
-  --background: #F9FAFB;
-  /* Almost white - breathing space */
-  --foreground: #090909;
-  /* Blackout - main text */
+  /* Semantic Colors — FizjoterapiaWrocław Earth Mapping */
+  --background: #FAFAFA;         /* Clean off-white */
+  --foreground: #1A1A1A;         /* Dark text */
   --card: #FFFFFF;
-  /* Pure white cards for clarity */
-  --card-foreground: #090909;
-  /* Blackout text on cards */
+  --card-foreground: #1A1A1A;
   --popover: #FFFFFF;
-  --popover-foreground: #090909;
-  --primary: #006625;
-  /* Main green - authority and trust */
-  --primary-foreground: #FFFFFF;
-  --secondary: #16A34A;
-  /* Secondary green - gentle accents */
-  --secondary-foreground: #FFFFFF;
-  --muted: #F3F4F6;
-  /* Soft backgrounds */
-  --muted-foreground: #111827;
-  /* Darkened (Gray 900) for better contrast */
-  --accent: #C2410C;
-  /* Darker orange for stronger contrast */
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
+  --popover-foreground: #1A1A1A;
+  --primary: #75F1EB;            /* Mint — Client's choice */
+  --primary-foreground: #000000; /* Black text on mint */
+  --primary-dark: #0D9488;       /* Teal-600 — for text and icons on light backgrounds */
+  --secondary: #E0F9F8;          /* Light mint — gentle accents */
+  --secondary-foreground: #000000;
+  --muted: #F4F4F5;              /* Light gray — soft backgrounds */
+  --muted-foreground: #71717A;   /* Gray — readable secondary text */
+  --accent: #75F1EB;             /* Mint accent */
+  --accent-foreground: #000000;
+  --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #E5E7EB;
-  /* Subtle, light borders */
-  --input: #E5E7EB;
-  --ring: #006625;
-  /* Main green focus ring */
+  --border: #DDD5C8;             /* Warm subtle border */
+  --input: #DDD5C8;
+  --ring: #6B8F71;               /* Sage focus ring */
   --chart-1: hsl(145, 100%, 20%);
   --chart-2: hsl(123, 47%, 42%);
   --chart-3: hsl(42, 93%, 56%);
@@ -62,7 +47,7 @@
   --sidebar-border: hsl(214, 32%, 91%);
   --sidebar-ring: hsl(145, 100%, 20%);
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-serif: Georgia, serif;
+  --font-serif: var(--font-playfair), Georgia, 'Times New Roman', serif;
   --font-mono: var(--font-geist-mono), monospace;
   --radius: 0.75rem;
   --shadow-2xs: 0px 1px 2px 0px hsl(0, 0%, 0%, 0.05);
@@ -84,25 +69,25 @@
 }
 
 .dark {
-  --background: hsl(210, 25%, 6%);
-  --foreground: hsl(210, 40%, 97%);
-  --card: hsl(210, 25%, 10%);
-  --card-foreground: hsl(210, 40%, 97%);
-  --popover: hsl(210, 25%, 6%);
-  --popover-foreground: hsl(210, 40%, 97%);
-  --primary: #34d399;
-  --primary-foreground: #022c1a;
-  --secondary: #22c55e;
-  --secondary-foreground: #022c1a;
-  --muted: hsl(210, 25%, 14%);
-  --muted-foreground: rgba(226, 232, 240, 0.88);
-  --accent: #fb923c;
-  --accent-foreground: hsl(210, 40%, 6%);
-  --destructive: hsl(0, 84%, 55%);
-  --destructive-foreground: hsl(210, 40%, 4%);
-  --border: hsl(210, 22%, 24%);
-  --input: hsl(210, 22%, 24%);
-  --ring: hsla(158, 100%, 78%, 0.95);
+  --background: #0A0A0A;         /* Deep dark */
+  --foreground: #FAFAFA;
+  --card: #141414;
+  --card-foreground: #FAFAFA;
+  --popover: #141414;
+  --popover-foreground: #FAFAFA;
+  --primary: #75F1EB;            /* Mint */
+  --primary-foreground: #000000;
+  --secondary: #1A3634;          /* Dark mint */
+  --secondary-foreground: #FAFAFA;
+  --muted: #27272A;
+  --muted-foreground: #A1A1AA;
+  --accent: #75F1EB;
+  --accent-foreground: #000000;
+  --destructive: #EF4444;
+  --destructive-foreground: #F5F0EB;
+  --border: #3A3835;
+  --input: #3A3835;
+  --ring: #9DB8A0;
 }
 
 @layer base {
@@ -125,7 +110,7 @@
   h4,
   h5,
   h6 {
-    @apply font-bold text-foreground;
+    @apply font-serif font-bold text-foreground;
     text-wrap: balance;
   }
 
@@ -154,14 +139,18 @@
 
   .hero-gradient {
     background:
-      radial-gradient(circle at top left, rgba(0, 102, 37, 0.18) 0%, rgba(0, 102, 37, 0) 60%),
-      linear-gradient(140deg, #f9fafb 0%, #ecfdf5 55%, #e0f2fe 100%);
+      radial-gradient(ellipse 60% 50% at 15% 25%, rgba(117, 241, 235, 0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 85% 75%, rgba(117, 241, 235, 0.18) 0%, transparent 65%),
+      radial-gradient(circle at 50% 50%, rgba(224, 249, 248, 0.3) 0%, transparent 60%),
+      linear-gradient(145deg, #fafafa 0%, #f4f4f5 40%, #e8e8ec 100%);
   }
 
   .dark .hero-gradient {
     background:
-      radial-gradient(circle at top right, rgba(20, 83, 45, 0.45) 0%, rgba(20, 83, 45, 0) 55%),
-      linear-gradient(145deg, #0c1a13 0%, #102a22 45%, #132f3a 100%);
+      radial-gradient(ellipse 60% 50% at 15% 25%, rgba(117, 241, 235, 0.3) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 85% 75%, rgba(117, 241, 235, 0.18) 0%, transparent 60%),
+      radial-gradient(circle at 50% 50%, rgba(117, 241, 235, 0.06) 0%, transparent 55%),
+      linear-gradient(145deg, #0a0a0a 0%, #141414 45%, #18181b 100%);
   }
 }
 
@@ -1729,6 +1718,291 @@
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SPIKE 01 — Premium Light: "Od Chaosu do Spokoju"
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hero Spotlight ────────────────────────────────────────── */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  /* Calm reveal layer — lighter, cleaner gradient visible through mask */
+  background:
+    radial-gradient(circle at 30% 40%, rgba(117, 241, 235, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(117, 241, 235, 0.14) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(250, 250, 250, 0.8) 100%);
+
+  /* Radial mask — follows cursor via CSS vars set by JS */
+  mask-image: radial-gradient(
+    circle 280px at var(--spot-x, 50%) var(--spot-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 280px at var(--spot-x, 50%) var(--spot-y, 50%),
+    black 0%,
+    transparent 100%
+  );
+
+  opacity: var(--spot-opacity, 0);
+  transition: opacity 0.45s ease-out;
+}
+
+.dark .hero-spotlight {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(117, 241, 235, 0.28) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(117, 241, 235, 0.16) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.85) 0%, rgba(10, 10, 10, 0.8) 100%);
+}
+
+/* On mobile (no fine pointer) show a static, centered glow */
+@media (pointer: coarse) {
+  .hero-spotlight {
+    --spot-x: 50%;
+    --spot-y: 40%;
+    --spot-opacity: 1;
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spotlight {
+    display: none;
+  }
+}
+
+/* ── Section Journey Backgrounds ────────────────────────── */
+/* Chaos zone (Hero + PainPoints) — visible noise grain overlay */
+.journey-chaos {
+  position: relative;
+}
+
+.journey-chaos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+  transition: opacity 0.6s ease-out;
+}
+
+.dark .journey-chaos::before {
+  opacity: 0.45;
+}
+
+/* Order zone (About + Services + Process) — clean, no noise */
+.journey-order {
+  background: var(--background);
+}
+
+/* Calm zone (Testimonials + FAQ + Blog + Booking) — warm soft glow */
+.journey-calm {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--background) 0%,
+    color-mix(in srgb, var(--background) 92%, rgba(117, 241, 235, 0.10)) 50%,
+    var(--background) 100%
+  );
+}
+
+/* ── Soft Pulse (Hero) ─────────────────────────────────────── */
+@keyframes heroSoftPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.96); }
+  50%      { opacity: 0.7;  transform: scale(1.06); }
+}
+
+.hero-soft-pulse {
+  animation: heroSoftPulse 14s ease-in-out infinite;
+}
+
+/* ── Ambient Float (gentle drifting orb) ───────────────────── */
+@keyframes heroAmbientFloat {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  25%  { transform: translate(30px, -20px) scale(1.08); opacity: 0.7; }
+  50%  { transform: translate(-15px, 15px) scale(0.95); opacity: 0.55; }
+  75%  { transform: translate(20px, 10px) scale(1.04); opacity: 0.65; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+}
+
+.hero-ambient-float {
+  animation: heroAmbientFloat 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-soft-pulse {
+    animation: none;
+    opacity: 0.5;
+  }
+  .hero-ambient-float {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* ── Booking Glow (Calm zone CTA halo) ─────────────────────── */
+@keyframes bookingGlow {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 0.7;  transform: scale(1.04); }
+}
+
+.booking-halo {
+  position: absolute;
+  inset: -16px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(117, 241, 235, 0.25) 0%, transparent 70%);
+  animation: bookingGlow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-halo {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* ── Flip Card ─────────────────────────────────────────────── */
+.flip-card {
+  perspective: 800px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s var(--motion-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front {
+  position: relative;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  height: 100%;
+}
+
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  overflow-y: hidden;
+}
+
+/* ── Flip Hint: corner ear ─────────────────────────────────── */
+.flip-ear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+  border-radius: 0 var(--radius, 1rem) 0 0;
+}
+.flip-ear::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 28px;
+  height: 28px;
+  background: rgba(117, 241, 235, 0.2);
+  transform: rotate(45deg);
+  transition: background 0.3s;
+}
+.flip-card:hover .flip-ear::before {
+  background: rgba(117, 241, 235, 0.45);
+}
+
+/* ── Flip Hint: subtle ↻ icon ──────────────────────────────── */
+.flip-icon-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #888);
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  user-select: none;
+  z-index: 20;
+}
+.flip-card:hover .flip-icon-hint {
+  opacity: 0.65;
+}
+
+/* ── Hover tilt (desktop, fine pointer only) ───────────────── */
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:not(.is-flipped):hover .flip-card-inner {
+    transform: rotateY(-5deg) scale(1.01);
+  }
+}
+
+/* ── Nudge wobble for first card ───────────────────────────── */
+@keyframes flipNudge {
+  0%, 100% { transform: rotateY(0deg); }
+  20%      { transform: rotateY(-6deg); }
+  40%      { transform: rotateY(4deg); }
+  60%      { transform: rotateY(-2deg); }
+  80%      { transform: rotateY(1deg); }
+}
+.flip-nudge .flip-card-inner {
+  animation: flipNudge 1s ease-in-out;
+}
+
+/* ── Back-side card styling ────────────────────────────────── */
+.flip-back-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--radius, 1rem);
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--background, #fafafa) 88%, rgba(117, 241, 235, 0.18));
+  border: 1px solid rgba(117, 241, 235, 0.2);
+}
+
+@media (min-width: 768px) {
+  .flip-back-card {
+    padding: 2rem;
+  }
+}
+
+.dark .flip-back-card {
+  background: color-mix(in srgb, var(--background, #1a1a1a) 90%, rgba(117, 241, 235, 0.12));
+  border-color: rgba(117, 241, 235, 0.15);
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition-duration: 0.01ms !important;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: none !important;
+  }
+  .flip-nudge .flip-card-inner {
+    animation: none !important;
   }
 }
 

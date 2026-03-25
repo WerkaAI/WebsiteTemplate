@@ -1,0 +1,269 @@
+{
+  "navigation": {
+    "aria": "Główna nawigacja",
+    "about": "O mnie",
+    "services": "Usługi",
+    "contact": "Kontakt",
+    "book": "Umów wizytę",
+    "call": "Zadzwoń",
+    "openMenu": "Otwórz menu",
+    "switchLanguage": "Zmień język"
+  },
+  "hero": {
+    "title": "Pozbądź się bólu i odzyskaj pełną sprawność",
+    "city": "Wrocławiu",
+    "description": "Skuteczna terapia manualna kręgosłupa, stawów skroniowo-żuchwowych oraz stawów obwodowych we Wrocławiu. Ponad 10 lat doświadczenia, certyfikowane metody Maitland i FDM. Ulgę poczujesz często już po pierwszej wizycie.",
+    "primaryCta": "Zarezerwuj wizytę",
+    "secondaryCta": "Sprawdź, jak mogę Ci pomóc"
+  },
+  "trust": {
+    "average": "Średnia ocen",
+    "verified": "80+ zweryfikowanych opinii",
+    "onPortal": "na portalu"
+  },
+  "about": {
+    "name": "Mgr Aneta Kołoszyńska",
+    "paragraph1": "Jestem fizjoterapeutką z ponad 10-letnim doświadczeniem. Specjalizuję się w fizjoterapii stomatologicznej i ortopedycznej, terapii manualnej oraz treningu medycznym.",
+    "paragraph2": "Pracuję z pacjentami z bólem pleców i problemami w obrębie kręgosłupa (takimi jak dyskopatie), a także z osobami po zabiegach operacyjnych i urazach w obrębie całego układu ruchu.",
+    "paragraph3": "Wieloletnia praktyka w pracy ze sportowcami wyczynowymi pozwoliła mi na udoskonalenie umiejętności w rehabilitacji po uszkodzeniach stawów obwodowych — skręcenia, zwichnięcia, urazy więzadeł i ścięgien.",
+    "paragraph4": "We współpracy z chirurgami, ortodontami i protetykami zajmuję się leczeniem pacjentów z zaburzeniami stawów skroniowo-żuchwowych — bóle, krepitacje, nieprawidłowe funkcjonowanie stawów, przygotowanie i rehabilitacja po operacjach ortognatycznych oraz deprogramacja zgryzu.",
+    "paragraph5": "Jako instruktor treningu funkcjonalnego prowadzę treningi medyczne dostosowane do określonych potrzeb oraz dysfunkcji.",
+    "education": "Absolwentka AWF we Wrocławiu ze specjalizacją w fizjoterapii w ortopedii i traumatologii sportowej.",
+    "bullet1": "Obsługa pacjentów w języku angielskim",
+    "bullet2": "Ponad 10 lat doświadczenia",
+    "bullet3": "Współpraca z chirurgami, ortodontami i protetykami",
+    "pwz": "Prawo Wykonywania Zawodu (PWZFz):",
+    "certificates": "Certyfikaty i Metody",
+    "cert1Title": "Terapia Manualna wg koncepcji Maitland",
+    "cert1Desc": "Prestiżowa, uznana na świecie metoda diagnostyki i leczenia zaburzeń układu ruchu.",
+    "cert2Title": "Metoda dr. Ackermanna",
+    "cert2Desc": "Zaawansowana chiropraktyka i osteopatia strukturalna.",
+    "cert3Title": "Fascial Distortion Model (FDM)",
+    "cert3Desc": "Wysoka skuteczność w leczeniu ostrych zespołów bólowych poprzez pracę na powięziach."
+  },
+  "services": {
+    "title": "Jak mogę Ci pomóc?",
+    "description": "Każda terapia dopasowana indywidualnie do Twoich potrzeb — od precyzyjnej diagnostyki, przez terapię manualną, po trening, który zapobiega nawrotom.",
+    "items": {
+      "dental": {
+        "title": "Fizjoterapia Stomatologiczna",
+        "description": "Leczenie zaburzeń stawów skroniowo-żuchwowych — bóle, krepitacje, bruksizm. Współpraca z chirurgami, ortodontami i protetykami. Przygotowanie i rehabilitacja po operacjach ortognatycznych, deprogramacja zgryzu.",
+        "backLabel": "Dla kogo?",
+        "backText": "Dla Ciebie, jeśli: boli Cię żuchwa, trzaska staw, zaciskasz zęby w nocy lub przygotowujesz się do operacji ortognatycznej.",
+        "backMethods": "Metody: Maitland, dr Ackermann, terapia punktów spustowych"
+      },
+      "orthopedic": {
+        "title": "Fizjoterapia Ortopedyczna",
+        "description": "Rehabilitacja kręgosłupa, stanów pooperacyjnych i urazów stawów obwodowych. Wieloletnie doświadczenie w pracy ze sportowcami wyczynowymi — skręcenia, zwichnięcia, uszkodzenia więzadeł i ścięgien.",
+        "backLabel": "Dla kogo?",
+        "backText": "Dla Ciebie, jeśli: masz ból pleców, dyskopatie, rwę kulszową lub wracasz do zdrowia po operacji czy kontuzji sportowej.",
+        "backMethods": "Metody: Maitland, FDM, ćwiczenia stabilizacyjne"
+      },
+      "diagnostics": {
+        "title": "Diagnostyka",
+        "description": "Precyzyjne określenie przyczyny bólu na podstawie szczegółowego wywiadu i badania funkcjonalnego. Właściwa diagnoza to fundament skutecznej terapii.",
+        "backLabel": "Jak to wygląda?",
+        "backText": "Szczegółowy wywiad (15-20 min) + testy ortopedyczne i neurologiczne + badanie przedmiotowe. Mapuję dokładnie skąd pochodzi ból — bez tego terapia nie będzie skuteczna.",
+        "backMethods": ""
+      },
+      "manual": {
+        "title": "Terapia Manualna",
+        "description": "Certyfikowane techniki Maitland, metoda dr. Ackermanna oraz FDM. Precyzyjna praca z tkankami miękkimi i stawami przywracająca prawidłową ruchomość.",
+        "backLabel": "Czego się spodziewać?",
+        "backText": "Delikatne, precyzyjne mobilizacje i manipulacje stawów oraz praca na tkankach miękkich. Bez gwałtownych ruchów. Pracuję w granicach Twojej tolerancji.",
+        "backMethods": "Techniki: Maitland, FDM, chiropraktyka dr Ackermanna"
+      },
+      "training": {
+        "title": "Trening Medyczny",
+        "description": "Treningi funkcjonalne dostosowane do określonych dysfunkcji. Indywidualny program ćwiczeń wzmacniających, stabilizujących i zapobiegających nawrotom.",
+        "backLabel": "Co obejmuje?",
+        "backText": "Indywidualny program: ćwiczenia wzmacniające, stabilizacyjne, profilaktyczne, a także zmiana nawyków. Uczę Cię dbać o ciało samodzielnie — to inwestycja na lata.",
+        "backMethods": ""
+      }
+    }
+  },
+  "booking": {
+    "title": "Umów wizytę",
+    "description": "Rezerwacja przez ZnanyLekarz jest szybka, bezpieczna i nie wymaga zakładania konta na naszej stronie.",
+    "locationTitle": "Lokalizacja Gabinetu",
+    "hoursTitle": "Godziny Przyjęć",
+    "hoursDesc": "Poniedziałek - Piątek: 8:30 - 20:00\nZgodnie z dostępnością w kalendarzu",
+    "priceTitle": "Koszt Wizyty",
+    "priceDesc": "Konsultacja fizjoterapeutyczna: 200 zł\nFizjoterapia stomatologiczna: 220 zł",
+    "widgetTitle": "Zarezerwuj wizytę",
+    "widgetDesc": "Skorzystaj z naszego profilu na ZnanyLekarz. Rezerwacja zajmuje mniej niż minutę — bez rejestracji na tej stronie.",
+    "widgetCta": "Zarezerwuj termin wizyty"
+  },
+  "painPoints": {
+    "badge": "Rozpoznajesz swój problem?",
+    "title": "Nie musisz żyć z bólem",
+    "description": "Boli Cię kręgosłup? Trzaskają stawy skroniowo-żuchwowe? Wracasz po operacji? Każdego dnia pomagam pacjentom odzyskać sprawność i wrócić do aktywnego życia. Sprawdź, czy Twój problem jest na liście:",
+    "tipLabel": "💡 Pro tip fizjoterapeuty",
+    "items": {
+      "spine": {
+        "title": "Ból kręgosłupa i dyskopatie",
+        "description": "Nie możesz się schylić? Budzi Cię ból pleców? Leczę przyczynę, nie tylko objaw. Dyskopatie, rwa kulszowa, przepukliny — po terapii wracasz do normalnego życia.",
+        "tip": "Wstawaj od biurka co 30 minut — Twój kręgosłup potrzebuje ruchu, nie idealnej pozycji. Nawet 2 minuty stojącej przerwy robi różnicę."
+      },
+      "tmj": {
+        "title": "Bóle szczęki i bruksizm",
+        "description": "Zaciskasz zęby? Trzaskają Ci stawy skroniowo-żuchwowe przy jedzeniu? We współpracy z ortodontą, protetykiem czy chirurgiem usuwam przyczynę bólu, żebyś mógł jeść i mówić bez dyskomfortu.",
+        "tip": "Sprawdź teraz: czy zaciskasz zęby? Rozluźnij żuchwę — język na podniebienie, zęby lekko rozchylone. Ten prosty nawyk łagodzi napięcie."
+      },
+      "postop": {
+        "title": "Szybszy powrót do formy po operacji",
+        "description": "Po zabiegu ortopedycznym lub operacji ortognatycznej — pomogę Ci bezpiecznie odzyskać pełną sprawność i wrócić do codziennych aktywności.",
+        "tip": "Im wcześniej zaczniesz rehabilitację, tym szybszy powrót do formy. Systematyczne ćwiczenia, odpowiednia regeneracja i stopniowy powrót do obciążeń to klucz do odzyskania pełnej sprawności."
+      },
+      "sport": {
+        "title": "Wróć na trening bez bólu",
+        "description": "Skręcenie, zwichnięcie, naderwane więzadło? Dzięki doświadczeniu ze sportowcami wyczynowymi pomogę Ci wrócić do treningów szybciej i bezpieczniej.",
+        "tip": "Ból przy ruchu ≠ zakaz treningu. Zmodyfikuj, nie rezygnuj. Pomogę znaleźć bezpieczną alternatywę, żebyś nie tracił formy."
+      },
+      "headache": {
+        "title": "Koniec z bólami głowy",
+        "description": "80% bólów głowy moich pacjentów ma źródło w napięciu szyi lub żuchwy. Znajduję przyczynę i usuwam ją u źródła — bez leków.",
+        "tip": "80% bólów głowy moich pacjentów ma źródło w odcinku szyjnym kręgosłupa lub napięciach mięśni narządu żucia. Często pomaga też zmiana podstawowych nawyków, takich jak zaciskanie zębów czy częste żucie gumy."
+      },
+      "posture": {
+        "title": "Pracujesz przy biurku? Mogę pomóc",
+        "description": "Sztywny kark, bolące barki i nieprawidłowa postawa ciała przed komputerem — pomogę Ci pozbyć się napięć i nauczę, jak dbać o ciało w pracy siedzącej.",
+        "tip": "Nie istnieje \"idealna postawa\". Najważniejsza jest częsta zmiana pozycji."
+      },
+      "tinnitus": {
+        "title": "Szumy uszne i zawroty głowy",
+        "description": "Masz szumy/piski w uszach lub zawroty głowy? Przyczyną mogą być dysfunkcje stawów kręgosłupa szyjnego lub stawów skroniowo-żuchwowych, a także napięcia tkanek miękkich w tym obrębie. Pomogę Ci znaleźć źródło problemu i przywrócić komfort.",
+        "tip": "Często pomaga zmiana codziennych nawyków, mobilizacja stawów skroniowo-żuchwowych czy terapia górnego odcinka szyjnego kręgosłupa."
+      }
+    }
+  },
+  "process": {
+    "badge": "Jak wygląda wizyta",
+    "title": "Od bólu do ulgi — poczuj różnicę",
+    "description": "Każda wizyta to droga od napięcia do swobody. Scrolluj i poczuj, jak to działa.",
+    "steps": {
+      "interview": {
+        "number": "01",
+        "title": "Rozplątujemy supeł",
+        "description": "Szukam prawdziwej przyczyny bólu. Dokładny wywiad i badanie funkcjonalne pozwalają mi zrozumieć, skąd bierze się problem."
+      },
+      "therapy": {
+        "number": "02",
+        "title": "Uwalniamy napięcie",
+        "description": "Precyzyjna terapia manualna — Maitland, FDM, chiropraktyka — przywraca ruch, rozluźnia tkanki i redukuje ból. Czujesz, jak ciało zaczyna się regenerować."
+      },
+      "plan": {
+        "number": "03",
+        "title": "Odzyskujesz kontrolę",
+        "description": "Wychodzisz z jasnym planem: indywidualne ćwiczenia do domu i konkretne zalecenia. Ból nie wraca, bo wiesz, co robić."
+      }
+    },
+    "cta": "Zarezerwuj swoją wizytę",
+    "note": "Czas trwania wizyty zależy od rodzaju konsultacji i potrzeb odpowiednio dobranej formy terapii. Zazwyczaj wizyta trwa ok. 30 - 45 min. Jeśli posiadasz, przynieś na pierwszą wizytę dotychczas wykonane badania diagnostyczne (t.j. MRI, RTG czy USG).",
+    "urgency": "Nie czekaj, aż ból się nasili — im wcześniej zaczniesz, tym szybciej poczujesz ulgę."
+  },
+  "testimonials": {
+    "badge": "Opinie pacjentów",
+    "title": "Dziękuję za zaufanie.",
+    "description": "Opinie z portalu ZnanyLekarz od pacjentów, którym pomogłam wrócić do zdrowia.",
+    "reviews": {
+      "review1": {
+        "name": "Anna K.",
+        "rating": 5,
+        "text": "Po 3 wizytach ból kręgosłupa, z którym zmagałam się od roku, całkowicie ustąpił. Pani Aneta dokładnie wyjaśnia co robi i dlaczego. Polecam każdemu!",
+        "condition": "Ból kręgosłupa lędźwiowego"
+      },
+      "review2": {
+        "name": "Marek W.",
+        "rating": 5,
+        "text": "Trafiłem z rwą kulszową, ledwo mogłem chodzić. Profesjonalne podejście, skuteczna terapia i świetne ćwiczenia do domu. Już biegam!",
+        "condition": "Rwa kulszowa"
+      },
+      "review3": {
+        "name": "Katarzyna M.",
+        "rating": 5,
+        "text": "Jako osoba pracująca zdalnie miałam chroniczne bóle szyi i głowy. Pani Aneta znalazła przyczynę w ciągu pierwszej wizyty. Cudowna specjalistka.",
+        "condition": "Bóle napięciowe głowy"
+      },
+      "review4": {
+        "name": "Tomasz L.",
+        "rating": 5,
+        "text": "Rehabilitacja po operacji kolana przebiegła wzorowo. Indywidualne podejście i konkretny plan ćwiczeń pozwoliły mi wrócić na siłownię szybciej niż zakładałem.",
+        "condition": "Rehabilitacja pooperacyjna"
+      },
+      "review5": {
+        "name": "Joanna P.",
+        "rating": 5,
+        "text": "Najlepsza fizjoterapeutka, do jakiej trafiłam. Cierpliwa, kompetentna i naprawdę zależy jej na pacjencie. Moje bóle barku minęły po 4 sesjach.",
+        "condition": "Ból barku"
+      }
+    },
+    "sourceLabel": "Opinie z portalu",
+    "allReviews": "Zobacz wszystkie opinie"
+  },
+  "faq": {
+    "badge": "Często zadawane pytania",
+    "title": "Masz pytania? Mam odpowiedzi.",
+    "items": {
+      "q1": {
+        "question": "Jak przygotować się do pierwszej wizyty?",
+        "answer": "Zabierz ze sobą aktualne wyniki badań (RTG, MRI, USG). Skierowanie od lekarza nie jest wymagane."
+      },
+      "q2": {
+        "question": "Czy terapia boli?",
+        "answer": "Terapia jest dostosowana do Ciebie. Niektóre techniki terapii manualnej mogą powodować lekki dyskomfort, ale zawsze pracuję w granicach Twojej tolerancji."
+      },
+      "q3": {
+        "question": "Ile wizyt potrzebuję?",
+        "answer": "Ostre dolegliwości często ustępują po 2-3 wizytach, a przewlekłe wymagają nieco więcej czasu. Dokładny plan działania ustalamy w całości na pierwszym spotkaniu."
+      },
+      "q4": {
+        "question": "Czy potrzebuję skierowania od lekarza?",
+        "answer": "Nie, przyjmuję prywatnie bez skierowania. Jeśli masz jednak wcześniejsze wyniki badań lub zalecenia, oczywiście warto je ze sobą na wszelki wypadek zabrać."
+      },
+      "q5": {
+        "question": "Ile kosztuje wizyta?",
+        "answer": "Cennik dostępny jest na stronie internetowej oraz na portalu Znany Lekarz. Możesz zapłacić gotówką lub BLIKiem."
+      },
+      "q6": {
+        "question": "Czy przyjmujesz na NFZ?",
+        "answer": "Nie współpracuję z NFZ. Wszystkie wizyty odbywają się w pełni w ramach praktyki prywatnej."
+      }
+    }
+  },
+  "blogTeaser": {
+    "badge": "Baza Wiedzy",
+    "title": "Wiedza, która pomaga na co dzień",
+    "description": "Praktyczne porady z fizjoterapii, ćwiczenia do domu i sprawdzone sposoby na życie bez bólu.",
+    "readMore": "Czytaj artykuł",
+    "viewAll": "Zobacz wszystkie artykuły",
+    "articles": {
+      "article1": {
+        "title": "5 ćwiczeń na ból kręgosłupa, które zrobisz przy biurku",
+        "excerpt": "Pracujesz przy komputerze? Te proste ćwiczenia wykonasz w przerwie na kawę, a Twój kręgosłup Ci podziękuje.",
+        "category": "Ćwiczenia",
+        "readTime": "4 min"
+      },
+      "article2": {
+        "title": "Rwa kulszowa — objawy, przyczyny i kiedy iść do fizjoterapeuty",
+        "excerpt": "Promieniujący ból od lędźwi do stopy? Dowiedz się, kiedy to rwa kulszowa i jak skutecznie ją leczyć.",
+        "category": "Poradnik",
+        "readTime": "6 min"
+      },
+      "article3": {
+        "title": "Jak wybrać poduszkę, żeby nie bolała szyja?",
+        "excerpt": "Budzisz się ze sztywnym karkiem? Problem może leżeć w Twojej poduszce. Podpowiadam, na co zwrócić uwagę.",
+        "category": "Poradnik",
+        "readTime": "5 min"
+      }
+    }
+  },
+  "footer": {
+    "description": "Fizjoterapia ortopedyczna i stomatologiczna we Wrocławiu.",
+    "privacy": "Polityka prywatności",
+    "cookies": "Polityka cookies",
+    "terms": "Regulamin",
+    "cookieSettings": "Ustawienia Cookies",
+    "copyright": "© 2026 Fizjoterapia Aneta Kołoszyńska. Wszystkie prawa zastrzeżone."
+  }
+}

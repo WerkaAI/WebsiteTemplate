@@ -3,25 +3,52 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu, Phone } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { cn } from "@/lib/utils";
-import { APP_URLS } from "@/lib/config";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { BOOKING_URL } from "@/lib/config";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const pathname = usePathname();
-  const isLanding = pathname === "/";
-  const isFunctionsRoute = pathname.startsWith("/funkcje");
-  const isPricingRoute = pathname.startsWith("/cennik");
-  const isBlogRoute = pathname.startsWith("/blog");
-  const isTutorialRoute = pathname.startsWith("/tutoriale");
-  const isContactRoute = pathname.startsWith("/kontakt");
+  const locale = pathname.startsWith('/en') ? 'en' : 'pl';
+  const navText = locale === 'en'
+    ? {
+      aria: 'Main navigation',
+      about: 'About',
+      services: 'Services',
+      reviews: 'Reviews',
+      faq: 'FAQ',
+      contact: 'Contact',
+      book: 'Book a visit',
+      call: 'Call',
+      openMenu: 'Open menu'
+    }
+    : {
+      aria: 'Główna nawigacja',
+      about: 'O mnie',
+      services: 'Usługi',
+      reviews: 'Opinie',
+      faq: 'FAQ',
+      contact: 'Kontakt',
+      book: 'Umów wizytę',
+      call: 'Zadzwoń',
+      openMenu: 'Otwórz menu'
+    };
+  const isLanding = pathname === `/${locale}`;
   const showScrollProgress = true;
 
   const { scrollYProgress } = useScroll();
@@ -32,9 +59,21 @@ export default function Navigation() {
   });
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    const SCROLL_THRESHOLD = 12;
+    const HIDE_THRESHOLD = 300;
+
     const updateScrollState = () => {
       const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 12);
+      setIsScrolled(scrollTop > SCROLL_THRESHOLD);
+
+      // Show nav when scrolling up, hide when scrolling down (after hero)
+      if (scrollTop > HIDE_THRESHOLD) {
+        setIsHidden(scrollTop > lastScrollY);
+      } else {
+        setIsHidden(false);
+      }
+      lastScrollY = scrollTop;
     };
 
     updateScrollState();
@@ -68,12 +107,15 @@ export default function Navigation() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
+      initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       role="navigation"
-      aria-label="Główna nawigacja"
-      className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${isScrolled
+      aria-label={navText.aria}
+      className={`sticky top-0 z-50 border-b transition-all duration-300 motion-ease-in-out ${isHidden
+        ? "-translate-y-full"
+        : "translate-y-0"
+        } ${isScrolled
         ? "bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl shadow-[0_12px_35px_-18px_rgba(15,23,42,0.55)] border-border/70 dark:border-white/12"
         : "bg-white/90 dark:bg-slate-900/80 backdrop-blur-lg border-transparent"
         }`}
@@ -82,7 +124,7 @@ export default function Navigation() {
       <motion.span
         aria-hidden="true"
         className={cn(
-          "absolute left-0 right-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600",
+          "absolute left-0 right-0 bottom-0 h-[3px] origin-left bg-gradient-to-r from-primary via-secondary to-primary",
           !showScrollProgress && "opacity-0"
         )}
         style={{ scaleX }}
@@ -90,21 +132,13 @@ export default function Navigation() {
       <div className="container-spacing">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <div
               className="flex items-center space-x-2"
               data-testid="link-logo"
             >
-              <Image
-                src="/illustrations/neutral-feature.svg"
-                alt="Logo marki"
-                width={32}
-                height={32}
-                className="h-8 w-8"
-                priority
-              />
-              <span className="text-xl font-bold text-foreground">
-                WebsiteTemplate
+              <span className="text-xl font-bold text-foreground tracking-tight">
+                Fizjoterapia<span className="text-primary">Wrocław</span>
               </span>
             </div>
           </Link>
@@ -113,89 +147,71 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-6">
               <Link
-                href="/funkcje"
+                href={`/${locale}/#o-mnie`}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isFunctionsRoute
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                data-testid="link-nav-funkcje"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Funkcje
+                {navText.about}
               </Link>
               <Link
-                href="/cennik"
+                href={`/${locale}/#uslugi`}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isPricingRoute
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                data-testid="link-nav-cennik"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Cennik
+                {navText.services}
               </Link>
               <Link
-                href="/blog"
+                href={`/${locale}/#opinie`}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isBlogRoute
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                data-testid="link-nav-blog"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Blog
+                {navText.reviews}
               </Link>
               <Link
-                href="/tutoriale"
+                href={`/${locale}/#faq`}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isTutorialRoute
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                data-testid="link-nav-tutoriale"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Tutoriale
+                {navText.faq}
               </Link>
               <Link
-                href="/kontakt"
+                href={`/${locale}/#kontakt`}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  isContactRoute
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                data-testid="link-nav-kontakt"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Kontakt
+                {navText.contact}
               </Link>
             </div>
             <span
               className="hidden lg:block h-5 w-px bg-border/60"
               aria-hidden="true"
             />
-            <ThemeToggle />
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <a href="tel:+48532445410" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              532 445 410
+            </a>
             <Button
               asChild
               size="touch"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-              data-testid="button-login-desktop"
+              variant="conversion"
+              className="rounded-full"
             >
-              <Link href={APP_URLS.login} target="_blank" rel="noreferrer">
-                Zaloguj
-              </Link>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${navText.book} — otwiera ZnanyLekarz w nowej karcie`}
+              >
+                {navText.book}
+              </a>
             </Button>
           </div>
 
@@ -204,12 +220,12 @@ export default function Navigation() {
             <Button
               asChild
               size="sm"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-3 min-w-[96px] justify-center flex-shrink-0 whitespace-nowrap"
-              data-testid="button-login-mobile-inline"
+              variant="outline"
+              className="px-3 min-w-[40px] justify-center flex-shrink-0"
             >
-              <Link href={APP_URLS.login} target="_blank" rel="noreferrer">
-                Zaloguj
-              </Link>
+              <a href="tel:+48532445410" aria-label={navText.call}>
+                <Phone className="h-4 w-4" />
+              </a>
             </Button>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -217,9 +233,8 @@ export default function Navigation() {
                 <Button
                   variant="ghost"
                   size="touchIcon"
-                  aria-label="Otwórz menu"
+                  aria-label={navText.openMenu}
                   aria-expanded={isOpen}
-                  data-testid="button-mobile-menu"
                 >
                   <Menu className="h-7 w-7" aria-hidden="true" />
                 </Button>
@@ -228,88 +243,68 @@ export default function Navigation() {
                 side="right"
                 className="w-[280px] xs:w-[300px] sm:w-[360px]"
               >
+                <SheetHeader className="sr-only">
+                  <SheetTitle>{navText.aria}</SheetTitle>
+                  <SheetDescription>
+                    {locale === "en"
+                      ? "Mobile navigation menu"
+                      : "Mobilne menu nawigacyjne"}
+                  </SheetDescription>
+                </SheetHeader>
                 <div className="flex flex-col space-y-6 mt-8">
                   <Link
-                    href="/funkcje"
+                    href={`/${locale}/#o-mnie`}
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-lg font-medium transition-colors",
-                      isFunctionsRoute
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                    data-testid="link-mobile-funkcje"
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Funkcje
+                    {navText.about}
                   </Link>
                   <Link
-                    href="/cennik"
+                    href={`/${locale}/#uslugi`}
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-lg font-medium transition-colors",
-                      isPricingRoute
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                    data-testid="link-mobile-cennik"
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Cennik
+                    {navText.services}
                   </Link>
                   <Link
-                    href="/blog"
+                    href={`/${locale}/#opinie`}
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-lg font-medium transition-colors",
-                      isBlogRoute
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                    data-testid="link-mobile-blog"
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Blog
+                    {navText.reviews}
                   </Link>
                   <Link
-                    href="/tutoriale"
+                    href={`/${locale}/#faq`}
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-lg font-medium transition-colors",
-                      isTutorialRoute
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                    data-testid="link-mobile-tutoriale"
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Tutoriale
+                    {navText.faq}
                   </Link>
                   <Link
-                    href="/kontakt"
+                    href={`/${locale}/#kontakt`}
                     onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "text-lg font-medium transition-colors",
-                      isContactRoute
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                    data-testid="link-mobile-kontakt"
+                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Kontakt
+                    {navText.contact}
                   </Link>
-                  <div className="pt-2">
+                  <div className="pt-2 flex items-center gap-4">
+                    <LanguageSwitcher />
                     <ThemeToggle />
                   </div>
                   <Button
                     asChild
                     size="touch"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 mt-6"
-                    data-testid="button-login-mobile"
+                    variant="conversion"
+                    className="rounded-full mt-6"
                   >
-                    <Link
-                      href={APP_URLS.login}
+                    <a
+                      href={BOOKING_URL}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
+                      aria-label={`${navText.book} — otwiera ZnanyLekarz w nowej karcie`}
                     >
-                      Zaloguj
-                    </Link>
+                      {navText.book}
+                    </a>
                   </Button>
                 </div>
               </SheetContent>

@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-02-23",
+  "project": "FizjoterapiaWrocławWeb",
+  "assets": [
+    {
+      "id": "hero-ornament-a",
+      "type": "still",
+      "status": "in-progress",
+      "usage": ["hero"],
+      "source": {
+        "tool": "Midjourney",
+        "promptLog": "docs/production/logs/PROMPTS_hero-ornament_2026-02-23.md",
+        "seed": "",
+        "model": ""
+      },
+      "files": {
+        "web": [],
+        "source": []
+      },
+      "qa": {
+        "reducedMotionOk": false,
+        "noFlicker": true,
+        "mobileOk": true,
+        "notes": "MVP: still ornament, brak animacji w samym assetcie."
+      }
+    },
+    {
+      "id": "hero-cutout",
+      "type": "cutout",
+      "status": "planned",
+      "usage": ["hero"],
+      "source": {
+        "tool": "Adobe",
+        "promptLog": "",
+        "seed": "",
+        "model": ""
+      },
+      "files": {
+        "web": [],
+        "source": []
+      },
+      "qa": {
+        "reducedMotionOk": true,
+        "noFlicker": true,
+        "mobileOk": true,
+        "notes": "Wycięcie istniejącego zdjęcia; bez zmiany wizerunku."
+      }
+    }
+  ]
+}

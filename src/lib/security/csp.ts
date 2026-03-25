@@ -167,9 +167,10 @@ export function applySecurityHeaders(request: NextRequest): NextResponse {
   return response;
 }
 
-export function getCspNonce(): string | undefined {
+export async function getCspNonce(): Promise<string | undefined> {
   try {
-    return nextHeaders().get(CSP_NONCE_HEADER) ?? undefined;
+    const headers = await nextHeaders();
+    return headers.get(CSP_NONCE_HEADER) ?? undefined;
   } catch {
     return undefined;
   }
